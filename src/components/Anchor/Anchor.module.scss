@@ -1,0 +1,55 @@
+.anchor {
+	position: relative;
+	display: inline-block;
+	margin-top: 1.5em;
+	transition: all 0.3s ease-in-out;
+
+	&:first-child {
+		overflow: hidden;
+	}
+
+	img {
+		height: calc(2em + 0.5rem);
+		width: calc(2em + 0.5rem);
+		display: inline-flex;
+		transition: 0.3s ease-in-out;
+		margin-left: 1em;
+	}
+}
+
+.anchor::before {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 1px;
+	bottom: -2px;
+	left: 0;
+	background-color: var(--foreground);
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 0.5s ease-in-out;
+}
+
+.anchor:hover::before,
+.anchor:focus::before,
+.anchor:active::before {
+	transform: scaleX(1);
+	transform-origin: left;
+	transition: transform 0.5s ease-in-out;
+}
+
+.anchor:hover > .anchor__icon,
+.anchor:focus > .anchor__icon,
+.anchor:active > .anchor__icon {
+	transform: rotate(-45deg) scale(1.1);
+	transition: 0.5s ease-in-out;
+}
+
+.anchor[data-dark-background="true"] {
+	color: #e2fbf8;
+}
+
+.anchor[data-dark-background="true"]::before {
+	background-color: #e2fbf8;
+}

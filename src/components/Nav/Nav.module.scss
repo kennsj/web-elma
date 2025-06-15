@@ -1,0 +1,25 @@
+.nav {
+	position: fixed;
+	width: 100%;
+	// padding-left: 15%;
+	max-width: var(--page-max-width);
+	// margin: 0 auto;
+	// margin-left: 15vw;
+	// top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1000;
+	color: var(--background);
+	// transform: translateX(-50%);
+
+	.nav__list {
+		display: flex;
+
+		li {
+			margin-right: 2rem;
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
