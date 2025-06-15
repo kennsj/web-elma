@@ -18,6 +18,13 @@ const nextConfig: NextConfig = {
 		],
 	},
 	reactStrictMode: false, // Disabled to prevent GSAP animation issues in production
+	webpack: (config) => {
+		config.resolve.alias = {
+			...config.resolve.alias,
+			gsap: "gsap/dist/gsap.js",
+		}
+		return config
+	},
 }
 
 export default nextConfig
