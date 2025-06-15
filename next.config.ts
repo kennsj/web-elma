@@ -21,7 +21,8 @@ const nextConfig: NextConfig = {
 	webpack: (config) => {
 		config.resolve.alias = {
 			...config.resolve.alias,
-			gsap: "gsap/dist/gsap.js",
+			gsap: "gsap",
+			"gsap/all": "gsap/dist/gsap",
 		}
 		return config
 	},
