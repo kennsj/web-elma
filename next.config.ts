@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
 			},
 		],
 	},
-	reactStrictMode: true,
+	reactStrictMode: false, // Disabled to prevent GSAP animation issues in production
 }
 
 export default nextConfig
