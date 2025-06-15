@@ -2,7 +2,7 @@
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/all"
-import { use, useRef } from "react"
+import { useRef } from "react"
 
 export default function AnimatedText({
 	children,

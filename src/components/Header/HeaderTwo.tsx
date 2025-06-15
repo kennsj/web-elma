@@ -109,8 +109,8 @@ export const HeaderTwo = () => {
 						<p>
 							Elma ble startet av Anders, som selv har levd med angst i store
 							deler av livet. Gjennom elma ønsker han å skape et trygt rom for
-							deling, forståelse og støtte–slik at ingen skal måtte stå alene
-							med sin psykiske helse.
+							deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
+							alene med sin psykiske helse.
 						</p>
 
 						<Anchor href='/historier' isDarkBackground>

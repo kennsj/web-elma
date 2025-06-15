@@ -5,7 +5,6 @@ import styles from "./Anchor.module.scss"
 import Link from "next/link"
 import gsap from "gsap"
 import { useRef } from "react"
-import _ScrollTrigger, { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 import { SplitText } from "gsap/all"
 

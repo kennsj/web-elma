@@ -43,8 +43,9 @@ export default function Test({ slides, options }: PropType) {
 											/>
 
 											<p>
-												"Å sende én melding, møte én venn, gå én tur – det føles
-												som seier når hjernen sier ‘bare bli hjemme’."
+												Å sende én melding, møte én venn, gå én tur&mdash;det
+												føles som seier når hjernen sier &apos;bare bli
+												hjemme&apos;.&quot;
 											</p>
 											<span>Lovise (41)</span>
 										</Link>
