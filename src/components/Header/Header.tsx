@@ -16,50 +16,6 @@ export const Header = () => {
 	// const h1Ref = useRef(null)
 	gsap.registerPlugin(useGSAP, SplitText)
 
-	const box = useRef<HTMLHeadingElement>(null)
-	const test = useRef<HTMLParagraphElement>(null)
-
-	useGSAP(() => {
-		gsap.registerPlugin(ScrollTrigger)
-		gsap.from(test.current, {
-			ease: "power4.out",
-			delay: 0,
-			yPercent: 50,
-			opacity: 0,
-			skewY: 2,
-			duration: 1.2,
-			scrollTrigger: {
-				trigger: test.current,
-				start: "top 80%",
-				end: "bottom 20%",
-				// scrub: true,
-			},
-		})
-	}, [test])
-
-	useGSAP(() => {
-		const split = new SplitText(box.current, {
-			type: "lines, words, chars",
-			linesClass: "line",
-			wordsClass: "word",
-			charsClass: "char",
-		})
-
-		gsap.from(split.chars, {
-			opacity: 0,
-			yPercent: 100,
-			scale: 1,
-			duration: 0.9,
-			ease: "power3.out",
-			stagger: 0.02,
-			delay: 0.02,
-		})
-
-		return () => {
-			split.revert()
-		}
-	}, [box])
-
 	const h1Ref = useRef(null)
 
 	useGSAP(() => {
@@ -84,16 +40,13 @@ export const Header = () => {
 			opacity: 0,
 			stagger: 0.01,
 			scrollTrigger: {
-				trigger: test.current,
+				trigger: h1Ref.current,
 				start: "top 90%",
 				// end: "top -=100",
 				markers: true,
 				// scrub: true,
 			},
 		})
-		return () => {
-			split.revert()
-		}
 	}, [h1Ref])
 
 	return (

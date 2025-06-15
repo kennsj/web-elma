@@ -6,7 +6,7 @@ import Link from "next/link"
 import gsap from "gsap"
 import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
-import { SplitText } from "gsap/all"
+import { ScrollTrigger, SplitText } from "gsap/all"
 
 type LinkProps = {
 	href: string
@@ -23,25 +23,6 @@ export default function Anchor({
 	...props
 }: LinkProps) {
 	const linkRef = useRef<HTMLAnchorElement>(null)
-	const iconRef = useRef<HTMLImageElement>(null)
-
-	useGSAP(() => {
-		gsap.registerPlugin(useGSAP, ScrollTrigger)
-		gsap.from(iconRef.current, {
-			ease: "power4.out",
-			yPercent: 100,
-			opacity: 0,
-			duration: 1.2,
-			delay: 0,
-			scrollTrigger: {
-				trigger: iconRef.current,
-				start: "top 90%",
-				end: "top -=100",
-				// markers: true,
-				// scrub: true,
-			},
-		})
-	}, [iconRef])
 
 	useGSAP(() => {
 		gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText)
@@ -88,7 +69,6 @@ export default function Anchor({
 
 			{/* TODO: Replace with dark mode detection */}
 			<Image
-				ref={iconRef}
 				src={
 					isDarkBackground
 						? "/images/arrow-link-light.svg"

@@ -4,10 +4,6 @@
 import Carousel from "@/components/Carousel/Carousel"
 import "@/styles/globals.css"
 import { EmblaOptionsType } from "embla-carousel"
-import { useRef } from "react"
-import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/all"
-import gsap from "gsap"
 import Anchor from "@/components/Anchor/Anchor"
 
 import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
@@ -18,34 +14,12 @@ import Image from "next/image"
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
 	loop: true,
-	// containScroll: "trimSnaps",
 	align: "start",
 }
 const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export default function Home() {
-	const test = useRef<HTMLParagraphElement>(null)
-
-	useGSAP(() => {
-		gsap.registerPlugin(ScrollTrigger)
-		gsap.from(test.current, {
-			ease: "power4.out",
-			delay: 0.1,
-			yPercent: 50,
-			// opacity: 0,
-			// skewY: 2,
-			duration: 1.2,
-			scrollTrigger: {
-				trigger: test.current,
-				start: "bottom 10%",
-				end: "bottom 30%",
-				// markers: true,
-				// scrub: true,
-			},
-		})
-	}, [test])
-
 	return (
 		<main>
 			<HeaderTwo />
