@@ -12,13 +12,13 @@ export default function Waves() {
 			}}
 		>
 			{/* Back wave */}
-			<Wave color='#12332F' speed={4} amplitude={20} offset={0} zIndex={1} />
+			<Wave />
 
 			{/* Middle wave */}
-			<Wave color='#225650' speed={6} amplitude={25} offset={900} zIndex={2} />
+			<Wave />
 
 			{/* Front wave */}
-			<Wave color='#37746D' speed={8} amplitude={30} offset={500} zIndex={3} />
+			<Wave />
 		</div>
 	)
 }
