@@ -39,13 +39,13 @@ export const Header = () => {
 			yPercent: 100,
 			opacity: 0,
 			stagger: 0.01,
-			scrollTrigger: {
-				trigger: h1Ref.current,
-				start: "top 90%",
-				// end: "top -=100",
-				markers: true,
-				// scrub: true,
-			},
+			// scrollTrigger: {
+			// 	trigger: h1Ref.current,
+			// 	start: "top 90%",
+			// 	// end: "top -=100",
+			// 	markers: true,
+			// 	// scrub: true,
+			// },
 		})
 	}, [h1Ref])
 

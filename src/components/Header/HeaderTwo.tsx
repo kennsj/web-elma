@@ -26,9 +26,6 @@ export const HeaderTwo = () => {
 			yPercent: 100,
 			skewY: 7,
 			duration: 1.2,
-			stagger: {
-				amount: 0.3,
-			},
 			ease: "power4.out",
 		})
 	}, [h1Ref])

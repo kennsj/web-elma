@@ -30,13 +30,13 @@ export default function AnimatedImage({
 			scale: 1.1,
 			// skewY: 2,
 			duration: 2.4,
-			scrollTrigger: {
-				trigger: imgRef.current,
-				start: "top 90%",
-				// end: "top -=100",
-				markers: true,
-				// scrub: true,
-			},
+			// scrollTrigger: {
+			// 	trigger: imgRef.current,
+			// 	start: "top 90%",
+			// 	// end: "top -=100",
+			// 	markers: true,
+			// 	// scrub: true,
+			// },
 		})
 	}, [imgRef])
 

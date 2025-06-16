@@ -17,13 +17,13 @@ export default function Animated({ children }: { children: React.ReactNode }) {
 			// skewY: 2,
 			duration: 1.2,
 			stagger: 0.1,
-			scrollTrigger: {
-				trigger: ref.current,
-				start: "top 90%",
-				// end: "top -=100",
-				markers: true,
-				// scrub: true,
-			},
+			// scrollTrigger: {
+			// 	trigger: ref.current,
+			// 	start: "top 90%",
+			// 	// end: "top -=100",
+			// 	markers: true,
+			// 	// scrub: true,
+			// },
 		})
 	}, [ref])
 

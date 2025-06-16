@@ -42,13 +42,13 @@ export default function Anchor({
 			// skewY: 2,
 			duration: 1.2,
 			stagger: 0.01,
-			scrollTrigger: {
-				trigger: linkRef.current,
-				start: "top 90%",
-				end: "top -=100",
-				// markers: true,
-				// scrub: true,
-			},
+			// scrollTrigger: {
+			// 	trigger: linkRef.current,
+			// 	start: "top 90%",
+			// 	end: "top -=100",
+			// 	// markers: true,
+			// 	// scrub: true,
+			// },
 		})
 	}, [linkRef])
 
