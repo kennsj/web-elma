@@ -10,6 +10,7 @@ import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
 import Animated from "@/components/AnimatedImage/Animated"
 import { HeaderTwo } from "@/components/Header/HeaderTwo"
 import Image from "next/image"
+import Waves from "@/components/WaveSeperator/Waves"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -143,19 +144,23 @@ export default function Home() {
 			</section> */}
 
 			<section className='upcoming__events'>
-				<h3>Foredrag og arrangementer</h3>
-				<h2>
-					Anders Karlsen reiser landet rundt for å snakke ærlig om angst,
-					prestasjonspress og det å tørre å være åpen. Se hvor du kan møte ham
-					neste gang.
-				</h2>
+				<div className='section__intro'>
+					<h3>Foredrag og arrangementer</h3>
+					<h2>
+						Anders Karlsen reiser landet rundt for å snakke ærlig om angst,
+						prestasjonspress og det å tørre å være åpen. Se hvor du kan møte ham
+						neste gang.
+					</h2>
+				</div>
 				<div className='event__list'>
 					<div className='event__wrapper'>
 						<span className='event__date'>8. juli</span>
 						<div className='event__card'>
 							<div className='event__title'>
 								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#'>Meld deg på</Anchor>
+								<Anchor href='#' isDarkBackground>
+									Meld deg på
+								</Anchor>
 							</div>
 							<div className='event__info'>
 								<h5>18:00 - 20:00</h5>
@@ -180,7 +185,9 @@ export default function Home() {
 						<div className='event__card'>
 							<div className='event__title'>
 								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#'>Meld deg på</Anchor>
+								<Anchor href='#' isDarkBackground>
+									Meld deg på
+								</Anchor>
 							</div>
 							<div className='event__info'>
 								<h4>Oslo</h4>
@@ -205,7 +212,9 @@ export default function Home() {
 						<div className='event__card'>
 							<div className='event__title'>
 								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#'>Meld deg på</Anchor>
+								<Anchor href='#' isDarkBackground>
+									Meld deg på
+								</Anchor>
 							</div>
 							<div className='event__info'>
 								<h4>Oslo</h4>
@@ -226,6 +235,7 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
+			<Waves />
 
 			<footer
 				className=''

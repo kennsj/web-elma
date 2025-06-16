@@ -4,6 +4,7 @@ import Image from "next/image"
 import styles from "./Header.module.scss"
 import "@/styles/globals.css"
 import Anchor from "@/components/Anchor/Anchor"
+import Waves from "../WaveSeperator/Waves"
 
 export const HeaderTwo = () => {
 	return (
@@ -31,7 +32,7 @@ export const HeaderTwo = () => {
 
 						<Image
 							className={styles.header__image}
-							src={"/man-mountain-alone.jpg"}
+							src={"/images/man-mountain-alone.jpg"}
 							alt={"Mountain"}
 							width={1000}
 							height={1000}
@@ -52,17 +53,8 @@ export const HeaderTwo = () => {
 					</div>
 				</div>
 			</header>
-			<Image
-				src={"/images/wave-seperator.svg"}
-				alt={"Wave Seperator"}
-				width={4400}
-				height={1000}
-				style={{ marginTop: "-1px" }}
-				// sizes='100vw'
-				// objectFit='contain'
-				// fill={true}
-				priority
-			/>
+
+			<Waves />
 		</>
 	)
 }

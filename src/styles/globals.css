@@ -72,6 +72,7 @@ h4 {
 .content__spotlight {
 	display: flex;
 	flex-direction: row;
+
 	overflow: hidden;
 
 	& > * {
@@ -128,7 +129,25 @@ h4 {
 	/* opacity: 0; */
 }
 
+.section__intro {
+	width: var(--page-width);
+	max-width: var(--page-max-width);
+	margin: 10rem auto 0 auto;
+	padding-top: 10rem;
+}
+
+.upcoming__events {
+	width: 100%;
+	background: var(--foreground);
+	color: white;
+	max-width: 100%;
+}
+
 .event__list {
+	width: var(--page-width);
+	max-width: var(--page-max-width);
+	margin: 10rem auto 0 auto;
+
 	.event__wrapper {
 		width: 120%;
 		margin-left: -10%;
@@ -158,10 +177,10 @@ h4 {
 			bottom: 30%;
 			font-size: 3rem;
 			font-weight: 700;
-			color: #be8c6d;
 			color: var(--foreground);
+			color: #87a49b;
 			text-align: center;
-			opacity: 0.3;
+			/* opacity: 0.3; */
 		}
 
 		.event__card {
