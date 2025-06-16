@@ -44,10 +44,11 @@ export default function Home() {
 								"https://images.pexels.com/photos/236151/pexels-photo-236151.jpeg"
 							}
 							alt='Test'
+							className='spotlight__image'
 							width={500}
 							height={500}
 						/>
-						<div>
+						<div className='spotlight__info'>
 							<h4>Om Elma</h4>
 							<h3>
 								En hånd å holde i <br />
@@ -69,10 +70,11 @@ export default function Home() {
 								"https://images.pexels.com/photos/897817/pexels-photo-897817.jpeg"
 							}
 							alt='Test'
+							className='spotlight__image'
 							width={500}
 							height={500}
 						/>
-						<div>
+						<div className='spotlight__info'>
 							<h4>Om Elma</h4>
 							<h3>
 								En hånd å holde i <br />
@@ -94,10 +96,11 @@ export default function Home() {
 								"https://images.pexels.com/photos/185801/pexels-photo-185801.jpeg"
 							}
 							alt='Test'
+							className='spotlight__image'
 							width={500}
 							height={500}
 						/>
-						<div>
+						<div className='spotlight__info'>
 							<h4>Om Elma</h4>
 							<h3>
 								En hånd å holde i <br />

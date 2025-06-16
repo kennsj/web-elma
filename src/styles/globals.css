@@ -73,6 +73,7 @@ h4 {
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
+
 	& > * {
 		flex: 1;
 	}
@@ -85,7 +86,11 @@ h4 {
 		width: 60%;
 	}
 
-	div {
+	&:hover > img {
+		transform: scale(1.2);
+	}
+
+	.spotlight__info {
 		position: relative;
 		display: flex;
 		flex-direction: column;
@@ -125,10 +130,24 @@ h4 {
 
 .event__list {
 	.event__wrapper {
+		width: 120%;
+		margin-left: -10%;
 		position: relative;
-		margin-bottom: 2rem;
+		/* margin-bottom: 2rem; */
 		padding-bottom: 2rem;
-		border-bottom: 1px solid #2c546649;
+		border-bottom: 1px solid #5b918a;
+		padding: 2rem 3rem;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		transition: 0.4s cubic-bezier(0.14, 0.18, 0.16, 1.02);
+
+		&:hover {
+			background-color: #5b918a;
+			transition: 1s cubic-bezier(0.14, 0.18, 0.16, 1.02);
+		}
 
 		.event__date {
 			position: absolute;
