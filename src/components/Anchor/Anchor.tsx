@@ -26,14 +26,14 @@ export default function Anchor({
 			{...props}
 			data-dark-background={isDarkBackground}
 			style={{
-				color: isDarkBackground ? "#e2fbf8" : "#12332f",
+				// color: isDarkBackground ? "#e2fbf8" : "#12332f",
 				fontSize,
 			}}
 		>
 			{children}
 
 			{/* TODO: Replace with dark mode detection */}
-			<Image
+			{/* <Image
 				src={
 					isDarkBackground
 						? "/images/arrow-link-light.svg"
@@ -43,7 +43,7 @@ export default function Anchor({
 				className={styles.anchor__icon}
 				width={44}
 				height={44}
-			/>
+			/> */}
 		</Link>
 		// </div>
 	)

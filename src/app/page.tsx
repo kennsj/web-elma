@@ -167,91 +167,85 @@ export default function Home() {
 					<div className='event__item'>
 						<span className='event__date'>8. juli</span>
 
-						<a href='#'>
-							<div className='event__container'>
-								<div className='event__title'>
-									<h2>Åpenhet i prestasjonskultur</h2>
-									<Anchor href='#' isDarkBackground>
-										Meld deg på
-									</Anchor>
-								</div>
-								<div className='event__details'>
-									<h5>18:00 - 20:00</h5>
-									<p>Oslo</p>
-									<p>Sentralen, Øvre Slottsgate 3</p>
-								</div>
-								<div className='event__image'>
-									<Image
-										src={
-											"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-										}
-										alt='Event preview'
-										width={450}
-										height={250}
-									/>
-								</div>
+						<div className='event__container'>
+							<div className='event__title'>
+								<h2>Åpenhet i prestasjonskultur</h2>
+								<Anchor href='#' isDarkBackground>
+									Meld deg på
+								</Anchor>
 							</div>
-						</a>
+							<div className='event__details'>
+								<h5>18:00 - 20:00</h5>
+								<p>Oslo</p>
+								<p>Sentralen, Øvre Slottsgate 3</p>
+							</div>
+							<div className='event__image'>
+								<Image
+									src={
+										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
+									}
+									alt='Event preview'
+									width={450}
+									height={250}
+								/>
+							</div>
+						</div>
 					</div>
 
 					<div className='event__item'>
 						<span className='event__date'>15. sept</span>
 
-						<a href='#'>
-							<div className='event__container'>
-								<div className='event__title'>
-									<h2>Åpenhet i prestasjonskultur</h2>
-									<Anchor href='#' isDarkBackground>
-										Meld deg på
-									</Anchor>
-								</div>
-								<div className='event__details'>
-									<h5>18:00 - 20:00</h5>
-									<p>Oslo</p>
-									<p>Sentralen, Øvre Slottsgate 3</p>
-								</div>
-								<div className='event__image'>
-									<Image
-										src={
-											"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-										}
-										alt='Event preview'
-										width={450}
-										height={250}
-									/>
-								</div>
+						<div className='event__container'>
+							<div className='event__title'>
+								<h2>Åpenhet i prestasjonskultur</h2>
+								<Anchor href='#' isDarkBackground>
+									Meld deg på
+								</Anchor>
 							</div>
-						</a>
+							<div className='event__details'>
+								<h5>18:00 - 20:00</h5>
+								<p>Oslo</p>
+								<p>Sentralen, Øvre Slottsgate 3</p>
+							</div>
+							<div className='event__image'>
+								<Image
+									src={
+										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
+									}
+									alt='Event preview'
+									width={450}
+									height={250}
+								/>
+							</div>
+						</div>
 					</div>
 
 					<div className='event__item'>
 						<span className='event__date'>5. jan</span>
 
-						<a href='#'>
-							<div className='event__container'>
-								<div className='event__title'>
-									<h2>Åpenhet i prestasjonskultur</h2>
-									<Anchor href='#' isDarkBackground>
-										Meld deg på
-									</Anchor>
-								</div>
-								<div className='event__details'>
-									<h5>18:00 - 20:00</h5>
-									<p>Oslo</p>
-									<p>Sentralen, Øvre Slottsgate 3</p>
-								</div>
-								<div className='event__image'>
-									<Image
-										src={
-											"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-										}
-										alt='Event preview'
-										width={450}
-										height={250}
-									/>
-								</div>
+						<div className='event__container'>
+							<div className='event__title'>
+								<h2>Åpenhet i prestasjonskultur</h2>
+								<Anchor href='#' isDarkBackground>
+									Meld deg på
+								</Anchor>
 							</div>
-						</a>
+							<div className='event__details'>
+								<h5>18:00 - 20:00</h5>
+								<p>Oslo</p>
+								<p>Sentralen, Øvre Slottsgate 3</p>
+							</div>
+							<div className='event__image'>
+								<Image
+									src={
+										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
+									}
+									alt='Event preview'
+									width={450}
+									height={250}
+								/>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -262,10 +256,13 @@ export default function Home() {
 				style={{
 					height: "",
 					backgroundColor: "",
-					marginBlock: "10rem",
+					marginBottom: "10rem",
 				}}
 			>
 				<section>
+					<h1>Here comes the footer!</h1>
+				</section>
+				{/* <section>
 					<div className='footer__content'>
 						<h3>Om Elma</h3>
 						<p>
@@ -282,7 +279,7 @@ export default function Home() {
 					<p className='footer__copyright'>
 						{new Date().getFullYear()} Elma. Alle rettigheter reservert.
 					</p>
-				</section>
+				</section> */}
 			</footer>
 		</main>
 	)

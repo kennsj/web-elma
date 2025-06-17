@@ -26,18 +26,12 @@ export default function AnimatedImage({
 		gsap.registerPlugin(ScrollTrigger)
 		gsap.to(imgRef.current, {
 			ease: "power4.out",
-			delay: 0.1,
-			// yPercent: 10,
-			// opacity: 0,
-			scale: 1.1,
-			// skewY: 2,
-			duration: 2.4,
+			opacity: 1,
+			scale: 1.2,
+			duration: 1.8,
 			scrollTrigger: {
 				trigger: imgRef.current,
-				start: "top 90%",
-				// end: "top -=100",
-				// markers: true,
-				scrub: true,
+				start: "top 80%",
 			},
 		})
 	}, [imgRef])

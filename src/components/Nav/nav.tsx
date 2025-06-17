@@ -18,29 +18,29 @@ export const Nav = () => {
 			<div>
 				<ul className={styles.nav__list}>
 					<li>
-						<a href='#' className=''>
+						<Link href='/' className=''>
 							Hjem
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href='#' className=''>
+						<Link href='/about' className=''>
 							Om elma
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href='#' className=''>
+						<Link href='/resources' className={styles.nav__link}>
 							Ressurser
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href='#' className=''>
+						<Link href='/events' className=''>
 							Arrangementer
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a href='#' className=''>
+						<Link href='/contact' className=''>
 							Kontakt
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>

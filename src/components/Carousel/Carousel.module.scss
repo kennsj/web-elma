@@ -87,6 +87,7 @@
 .embla__dot {
 	-webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
 	-webkit-tap-highlight-color: #779695;
+	-webkit-tap-highlight-color: var(--color-tertiary);
 	-webkit-appearance: none;
 	appearance: none;
 	background-color: transparent;

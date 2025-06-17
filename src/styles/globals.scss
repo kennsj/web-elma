@@ -3,7 +3,7 @@
 :root {
 	--background: #e2fbf8;
 	--foreground: #12332f;
-	--light-color: #e2fbf8;
+	--color-tertiary: #bce0b5;
 	--page-width: 70%;
 	--page-max-width: 1440px;
 	--page-min-width: 320px;
@@ -164,7 +164,7 @@ h4 {
 
 .event__list {
 	color: #c4ded7;
-	margin: 5rem auto;
+	margin: 5rem auto 0 auto;
 
 	.event__item {
 		position: relative;
