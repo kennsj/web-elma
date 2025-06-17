@@ -2,7 +2,7 @@
 
 // import { Header } from "@/components/Header/Header"
 import Carousel from "@/components/Carousel/Carousel"
-import "@/styles/globals.css"
+import "@/styles/globals.scss"
 import { EmblaOptionsType } from "embla-carousel"
 import Anchor from "@/components/Anchor/Anchor"
 
@@ -61,9 +61,7 @@ export default function Home() {
 						</div>
 					</div>
 				</Animated>
-			</section>
 
-			<section>
 				<Animated>
 					<div className='content__spotlight'>
 						<AnimatedImage
@@ -87,9 +85,7 @@ export default function Home() {
 						</div>
 					</div>
 				</Animated>
-			</section>
 
-			<section>
 				<Animated>
 					<div className='content__spotlight'>
 						<AnimatedImage
@@ -143,8 +139,8 @@ export default function Home() {
 				</div>
 			</section> */}
 
-			<section className='upcoming__events'>
-				<div className='section__intro'>
+			<section className='section__fullwidth event__section'>
+				<div className='section__intro' style={{ color: "#C4DED7" }}>
 					<h3>Foredrag og arrangementer</h3>
 					<h2>
 						Anders Karlsen reiser landet rundt for å snakke ærlig om angst,
@@ -152,86 +148,110 @@ export default function Home() {
 						neste gang.
 					</h2>
 				</div>
+
+				{/* <div className='upcoming-events'>
+					<div className='event-item'>
+						<div className='event-date'>5. august</div>
+						<div className='event-container'>
+							<div>
+								<h2>Bak fasaden: En personlig historie</h2>
+								<span>Gratis deltakelse</span>
+							</div>
+							<div className='event-details'>
+								<div className='event-time'>
+									<span>18:00 - 20:00</span>
+								</div>
+								<div className='event-location'></div> */}
+
 				<div className='event__list'>
-					<div className='event__wrapper'>
+					<div className='event__item'>
 						<span className='event__date'>8. juli</span>
-						<div className='event__card'>
-							<div className='event__title'>
-								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#' isDarkBackground>
-									Meld deg på
-								</Anchor>
+
+						<a href='#'>
+							<div className='event__container'>
+								<div className='event__title'>
+									<h2>Åpenhet i prestasjonskultur</h2>
+									<Anchor href='#' isDarkBackground>
+										Meld deg på
+									</Anchor>
+								</div>
+								<div className='event__details'>
+									<h5>18:00 - 20:00</h5>
+									<p>Oslo</p>
+									<p>Sentralen, Øvre Slottsgate 3</p>
+								</div>
+								<div className='event__image'>
+									<Image
+										src={
+											"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
+										}
+										alt='Event preview'
+										width={450}
+										height={250}
+									/>
+								</div>
 							</div>
-							<div className='event__info'>
-								<h5>18:00 - 20:00</h5>
-								<p>Oslo</p>
-								<p>Sentralen, Øvre Slottsgate 3</p>
-							</div>
-							<div className='event__image'>
-								<Image
-									src={
-										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-									}
-									alt='Event preview'
-									width={450}
-									height={250}
-								/>
-							</div>
-						</div>
+						</a>
 					</div>
 
-					<div className='event__wrapper'>
-						<span className='event__date'>29. aug</span>
-						<div className='event__card'>
-							<div className='event__title'>
-								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#' isDarkBackground>
-									Meld deg på
-								</Anchor>
+					<div className='event__item'>
+						<span className='event__date'>15. sept</span>
+
+						<a href='#'>
+							<div className='event__container'>
+								<div className='event__title'>
+									<h2>Åpenhet i prestasjonskultur</h2>
+									<Anchor href='#' isDarkBackground>
+										Meld deg på
+									</Anchor>
+								</div>
+								<div className='event__details'>
+									<h5>18:00 - 20:00</h5>
+									<p>Oslo</p>
+									<p>Sentralen, Øvre Slottsgate 3</p>
+								</div>
+								<div className='event__image'>
+									<Image
+										src={
+											"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
+										}
+										alt='Event preview'
+										width={450}
+										height={250}
+									/>
+								</div>
 							</div>
-							<div className='event__info'>
-								<h4>Oslo</h4>
-								<p>18:00 - 20:00</p>
-								<p>Sentralen, Øvre Slottsgate 3</p>
-							</div>
-							<div className='event__image'>
-								<Image
-									src={
-										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-									}
-									alt='Event preview'
-									width={400}
-									height={300}
-								/>
-							</div>
-						</div>
+						</a>
 					</div>
 
-					<div className='event__wrapper'>
-						<span className='event__date'>8. juli</span>
-						<div className='event__card'>
-							<div className='event__title'>
-								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#' isDarkBackground>
-									Meld deg på
-								</Anchor>
+					<div className='event__item'>
+						<span className='event__date'>5. jan</span>
+
+						<a href='#'>
+							<div className='event__container'>
+								<div className='event__title'>
+									<h2>Åpenhet i prestasjonskultur</h2>
+									<Anchor href='#' isDarkBackground>
+										Meld deg på
+									</Anchor>
+								</div>
+								<div className='event__details'>
+									<h5>18:00 - 20:00</h5>
+									<p>Oslo</p>
+									<p>Sentralen, Øvre Slottsgate 3</p>
+								</div>
+								<div className='event__image'>
+									<Image
+										src={
+											"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
+										}
+										alt='Event preview'
+										width={450}
+										height={250}
+									/>
+								</div>
 							</div>
-							<div className='event__info'>
-								<h4>Oslo</h4>
-								<p>18:00 - 20:00</p>
-								<p>Sentralen, Øvre Slottsgate 3</p>
-							</div>
-							<div className='event__image'>
-								<Image
-									src={
-										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-									}
-									alt='Event preview'
-									width={400}
-									height={300}
-								/>
-							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 			</section>

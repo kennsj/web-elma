@@ -4,7 +4,7 @@ import localFont from "next/font/local"
 
 import { Nav } from "@/components/Nav/nav"
 
-import "@/styles/globals.css"
+import "@/styles/globals.scss"
 
 const newsreader = Newsreader({
 	variable: "--font-newsreader",

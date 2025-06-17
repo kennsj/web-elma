@@ -8,7 +8,7 @@ export const Nav = () => {
 			<div>
 				<Link href='/'>
 					<Image
-						src='images/elma-logo.svg'
+						src='/images/elma-logo.svg'
 						alt='elma logo'
 						width={100}
 						height={100}

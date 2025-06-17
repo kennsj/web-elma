@@ -36,8 +36,8 @@ export default function AnimatedImage({
 				trigger: imgRef.current,
 				start: "top 90%",
 				// end: "top -=100",
-				markers: true,
-				// scrub: true,
+				// markers: true,
+				scrub: true,
 			},
 		})
 	}, [imgRef])

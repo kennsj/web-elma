@@ -2,7 +2,7 @@
 import Image from "next/image"
 
 import styles from "./Header.module.scss"
-import "@/styles/globals.css"
+import "@/styles/globals.scss"
 import Anchor from "@/components/Anchor/Anchor"
 
 import WaveSeperator from "../WaveSeperator/WaveSeperator"

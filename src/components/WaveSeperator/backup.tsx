@@ -17,7 +17,7 @@ export default function Wave() {
 			const tl = gsap.timeline({
 				repeat: -1,
 				yoyo: true,
-				defaults: { duration: 2 * -Math.random() * -1 + i, ease: "sine.inOut" },
+				defaults: { duration: 4 + i, ease: "sine.inOut" },
 			})
 
 			tl.to(wave, { morphSVG: wavePaths[1] }).to(wave, {
@@ -46,7 +46,7 @@ export default function Wave() {
 					d={wavePaths[0]}
 					fill='#7A9A89'
 					opacity={0.3}
-					style={{ transform: `translateY(10px)` }}
+					style={{ transform: `translateY(0px)` }}
 				/>
 				<path
 					ref={(el) => {
@@ -55,7 +55,7 @@ export default function Wave() {
 					d={wavePaths[0]}
 					fill='#4A6B5F'
 					opacity={0.5}
-					style={{ transform: `translateY(30px)` }}
+					style={{ transform: `translateY(20px)` }}
 				/>
 
 				<path
@@ -65,7 +65,7 @@ export default function Wave() {
 					d={wavePaths[0]}
 					fill='#12332F'
 					opacity={1}
-					style={{ transform: `translateY(50px)` }}
+					style={{ transform: `translateY(30px)` }}
 				/>
 			</svg>
 		</div>
