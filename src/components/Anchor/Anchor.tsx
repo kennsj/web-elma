@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import styles from "./Anchor.module.scss"
 import Link from "next/link"
 
