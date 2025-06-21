@@ -14,7 +14,8 @@ import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 // import gsap from "gsap"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
-import { gsap, ScrollTrigger } from "gsap/all"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,

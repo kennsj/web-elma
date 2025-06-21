@@ -2,8 +2,9 @@
 
 :root {
 	--color-primary: #12332f;
+	--color-primary-light: #bce0b5;
 	--color-secondary: #e2fbf8;
-	--color-tertiary: #bce0b5;
+	--color-tertiary: #e4d9b5;
 	--page-width: 70%;
 	--page-max-width: 1440px;
 	--page-min-width: 320px;
@@ -204,7 +205,7 @@ h4 {
 			width: var(--page-width);
 			max-width: var(--page-max-width);
 			margin: 0 auto;
-			border-bottom: var(--color-secondary) 1px solid;
+			border-bottom: var(--color-tertiary) 1px solid;
 			padding-block: 2.5rem;
 
 			.event__title {
