@@ -8,6 +8,7 @@ import Waves from "../WaveSeperator/Waves"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
+import WaveCss from "../WaveSeperator/WaveCss"
 // import { SplitText } from "gsap/all"
 
 export const HeaderTwo = () => {
@@ -131,9 +132,10 @@ export const HeaderTwo = () => {
 						</Anchor>
 					</div>
 				</div>
+				<WaveCss />
 			</header>
 
-			<Waves />
+			{/* <Waves /> */}
 		</>
 	)
 }

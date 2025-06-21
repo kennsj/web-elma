@@ -1,5 +1,5 @@
 .header {
-	background: var(--foreground);
+	background: var(--color-primary);
 	// background: radial-gradient(at center top, #851818a8, #13332f);
 	// background: url("../../../public/images/bg.svg") no-repeat center center;
 	background-size: cover;
@@ -9,8 +9,8 @@
 	// 	#11302c 60%,
 	// 	#11302c 100%
 	// );
-	color: var(--background);
-	padding-block: 10rem;
+	color: var(--color-secondary);
+	padding-top: 10rem;
 
 	// height: 170dvh;
 	&::before {

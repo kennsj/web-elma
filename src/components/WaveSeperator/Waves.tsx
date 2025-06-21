@@ -13,10 +13,8 @@ export default function Waves() {
 		>
 			{/* Back wave */}
 			<Wave />
-
 			{/* Middle wave */}
 			<Wave />
-
 			{/* Front wave */}
 			<Wave />
 		</div>
