@@ -10,7 +10,6 @@ import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
 import Animated from "@/components/AnimatedImage/Animated"
 import { HeaderTwo } from "@/components/Header/HeaderTwo"
 import Image from "next/image"
-import Waves from "@/components/WaveSeperator/Waves"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 import gsap from "gsap"
@@ -25,8 +24,8 @@ const SLIDE_COUNT = 5
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export default function Home() {
-	const sectionRef = useRef()
-	const tl = useRef()
+	const sectionRef = useRef<HTMLElement | null>(null)
+	const tl = useRef<gsap.core.Timeline | null>(null)
 
 	useGSAP(() => {
 		tl.current = gsap.timeline({
@@ -292,7 +291,6 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
-			<Waves />
 
 			<section
 				ref={sectionRef}
