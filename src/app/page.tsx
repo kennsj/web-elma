@@ -14,6 +14,7 @@ import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 import gsap from "gsap"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
+import { ScrollTrigger } from "gsap/all"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -26,6 +27,8 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 export default function Home() {
 	const sectionRef = useRef<HTMLElement | null>(null)
 	const tl = useRef<gsap.core.Timeline | null>(null)
+
+	gsap.registerPlugin(ScrollTrigger)
 
 	useGSAP(() => {
 		tl.current = gsap.timeline({
