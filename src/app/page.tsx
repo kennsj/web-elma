@@ -12,9 +12,9 @@ import { HeaderTwo } from "@/components/Header/HeaderTwo"
 import Image from "next/image"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
-import gsap from "gsap"
+// import gsap from "gsap"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
-import { ScrollTrigger } from "gsap/all"
+import { gsap, ScrollTrigger } from "gsap/all"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,

@@ -204,7 +204,7 @@ h4 {
 			width: var(--page-width);
 			max-width: var(--page-max-width);
 			margin: 0 auto;
-			border-bottom: #12332f 1px solid;
+			border-bottom: var(--color-secondary) 1px solid;
 			padding-block: 2.5rem;
 
 			.event__title {
