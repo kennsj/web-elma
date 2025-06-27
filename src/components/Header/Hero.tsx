@@ -84,7 +84,6 @@ export const Hero = () => {
 
 						<div className={styles.header__image}>
 							<Image
-								ref={imageRef}
 								// src={"/images/man-mountain-alone.jpg"}
 								src={"/images/anders-moloen.png"}
 								alt={"Mountain"}
