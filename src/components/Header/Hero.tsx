@@ -17,16 +17,16 @@ export const Hero = () => {
 
 	useGSAP(() => {}, [headerRef])
 
-	let tl = gsap.timeline({
-		ease: "power2.out",
-		scrollTrigger: {
-			trigger: headerRef.current,
-			start: "top 80%",
-			end: "bottom 30%",
-			toggleActions: "play none none reverse",
-			markers: true,
-		},
-	})
+	// let tl = gsap.timeline({
+	// 	ease: "power2.out",
+	// 	scrollTrigger: {
+	// 		trigger: headerRef.current,
+	// 		start: "top 80%",
+	// 		end: "bottom 30%",
+	// 		toggleActions: "play none none reverse",
+	// 		markers: true,
+	// 	},
+	// })
 
 	useGSAP(() => {
 		gsap.registerPlugin(SplitText)
