@@ -1,23 +1,114 @@
 .anchor {
 	position: relative;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 	margin-top: 1.5em;
 	transition: all 0.3s ease-in-out;
 	padding: 1rem 3rem;
-	border-radius: 5rem;
+	border-radius: var(--border-radius-big);
 	color: var(--color-secondary);
 	background: var(--color-primary);
+	background: var(--color-tertiary);
+	overflow: hidden;
 
 	&:first-child {
+		position: relative;
 		overflow: hidden;
+		z-index: 2;
 	}
 
-	img {
-		height: calc(2em + 0.5rem);
-		width: calc(2em + 0.5rem);
-		display: inline-flex;
-		transition: 0.3s ease-in-out;
-		margin-left: 1em;
+	svg {
+		margin-left: 1rem;
+		margin-top: 5px;
+
+		.line {
+			opacity: 0;
+			transition: opacity 100ms ease-out;
+			stroke-width: 2px;
+			fill: transparent;
+			transform: translateX(-100%);
+			transition: 0.2s ease-in;
+		}
+
+		.tip {
+			transform: translateX(-15px);
+			transition: transform 0.4s ease-out;
+			stroke-width: 2px;
+			fill: transparent;
+		}
+	}
+	&:hover .line {
+		opacity: 1;
+		transform: translateX(-40%);
+		transition: transform 0.7s ease;
+	}
+
+	&:hover .tip {
+		transform: translateX(-10px);
+		transition: 0.4s ease-out;
+	}
+
+	.wave {
+		width: 350px;
+		height: 350px;
+		// background-color: #12332f;
+		// box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+		position: absolute;
+		left: 0;
+		top: -150px;
+		transition: 0.4s;
+		z-index: 0;
+
+		&::before,
+		&::after {
+			width: 200%;
+			height: 200%;
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 40%;
+			transform: translate(-50%, -75%);
+		}
+
+		&::before {
+			border-radius: 45%;
+			background-color: rgba(72, 112, 98, 0.7);
+			animation: wave 40s linear infinite;
+			animation-play-state: paused;
+		}
+
+		&::after {
+			border-radius: 40%;
+			background-color: rgba(130, 153, 145, 0.3);
+			animation: wave 50s linear infinite;
+			animation-play-state: paused;
+		}
+	}
+
+	&:hover .wave::after,
+	&:hover .wave::before {
+		animation-play-state: running;
+		@media (prefers-reduced-motion: reduce) {
+			animation-play-state: paused;
+		}
+	}
+
+	// img {
+	// 	height: calc(2em + 0.5rem);
+	// 	width: calc(2em + 0.5rem);
+	// 	display: inline-flex;
+	// 	transition: 0.3s ease-in-out;
+	// 	margin-left: 1em;
+	// }
+}
+
+@keyframes wave {
+	0% {
+		transform: translate(-50%, -75%) rotate(0deg);
+	}
+
+	100% {
+		transform: translate(-50%, -75%) rotate(360deg);
 	}
 }
 

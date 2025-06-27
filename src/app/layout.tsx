@@ -41,7 +41,7 @@ const Atyp = localFont({
 
 export const metadata: Metadata = {
 	title: "elma",
-	description: "Ett liv med angst",
+	description: "Et liv med angst",
 }
 
 export default function RootLayout({

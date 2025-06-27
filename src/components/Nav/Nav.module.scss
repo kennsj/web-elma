@@ -1,19 +1,29 @@
 .nav {
 	position: fixed;
+	display: flex;
+	align-items: center;
 	width: 100%;
-	// padding-left: 15%;
+	// height: 5rem;
+	height: var(--nav-height);
 	max-width: var(--page-max-width);
-	// margin: 0 auto;
-	// margin-left: 15vw;
-	// top: 50%;
 	left: 50%;
 	transform: translateX(-50%);
+	background-color: var(--color-primary-light);
+	margin-top: 2rem;
+	padding-inline: 5rem;
+	color: var(--color-primary);
+	border-radius: var(--border-radius-big);
 	z-index: 1000;
-	color: var(--color-secondary);
-	// transform: translateX(-50%);
+
+	&:hover {
+		// height: 90dvh;
+		// border-radius: 2.5rem;
+	}
 
 	.nav__list {
+		position: relative;
 		display: flex;
+		align-items: center;
 
 		li {
 			margin-right: 2rem;

@@ -16,14 +16,16 @@ import { useRef } from "react"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+// import { Hero } from "@/components/Header/Hero"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
 	loop: true,
 	align: "start",
 }
-const SLIDE_COUNT = 5
-const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+
+// const SLIDE_COUNT = 9
+// const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export default function Home() {
 	const sectionRef = useRef<HTMLElement | null>(null)
@@ -67,16 +69,20 @@ export default function Home() {
 
 	return (
 		<main>
+			{/* <Hero /> */}
 			<HeaderTwo />
 
-			<section className='section__histories'>
-				<h3>Utvalgte historier</h3>
-				<h2>
-					Her deler modige stemmer sine personlige reiser med angst – til
-					ettertanke, gjenkjennelse og håp.
-				</h2>
+			<section className='section__histories section__fullwidth'>
+				<div className='section__intro'>
+					<h2>Ekte stemmer</h2>
+					<p className='intro__paragraph'>
+						Her deler modige stemmer sine personlige reiser med angst - til
+						ettertanke, gjenkjennelse og håp.
+					</p>
+				</div>
 
-				<Carousel slides={SLIDES} options={OPTIONS} />
+				<Carousel options={OPTIONS} />
+				{/* <Carousel slides={SLIDES} options={OPTIONS} /> */}
 
 				{/* <HistoryList /> */}
 			</section>
@@ -187,12 +193,12 @@ export default function Home() {
 
 			<section className='section__fullwidth event__section'>
 				<div className='section__intro' style={{ color: "#C4DED7" }}>
-					<h3>Foredrag og arrangementer</h3>
-					<h2>
+					<h2>Foredrag og arrangementer</h2>
+					<p className='intro__paragraph'>
 						Anders Karlsen reiser landet rundt for å snakke ærlig om angst,
 						prestasjonspress og det å tørre å være åpen. Se hvor du kan møte ham
 						neste gang.
-					</h2>
+					</p>
 				</div>
 
 				{/* <div className='upcoming-events'>
