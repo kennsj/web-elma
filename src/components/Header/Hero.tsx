@@ -12,52 +12,85 @@ import { SplitText } from "gsap/SplitText"
 // import { SplitText } from "gsap/all"
 
 export const Hero = () => {
+	const headingRef = useRef<HTMLHeadingElement>(null)
+	const introRef = useRef<HTMLParagraphElement>(null)
+	const ctaRef = useRef<HTMLAnchorElement>(null)
 	const headerRef = useRef<HTMLDivElement>(null)
+	const imageContainer = useRef<HTMLDivElement>(null)
 	const imageRef = useRef<HTMLDivElement>(null)
 
-	useGSAP(() => {}, [headerRef])
-
 	const tl = gsap.timeline({
-		ease: "power2.out",
-		scrollTrigger: {
-			trigger: headerRef.current,
-			start: "top 80%",
-			end: "bottom 30%",
-			toggleActions: "play none none reverse",
-			markers: true,
-		},
+		ease: "power1.out",
+		duration: 0.5,
 	})
 
 	useGSAP(() => {
 		gsap.registerPlugin(SplitText)
 
-		new SplitText(headerRef.current, { type: "lines", linesClass: "lineChild" })
-		new SplitText(headerRef.current, {
-			type: "lines",
+		new SplitText("h1", { type: "lines", linesClass: "lineChild" })
+		new SplitText("h1", { type: "lines", linesClass: "lineParent" })
+
+		const split = new SplitText(headingRef.current, {
+			type: "lines, chars",
 			linesClass: "lineParent",
 		})
 
-		tl.fromTo(
+		const splitPara = new SplitText(introRef.current, {
+			type: "lines, words",
+			linesClass: "lineParent",
+		})
+
+		console.log(split.lines)
+
+		tl.to(
 			imageRef.current,
-			{ autoAlpha: 0 },
-			{ autoAlpha: 1, duration: 3, ease: "power2.out" }
+			{ y: 0, scale: 1.2, autoAlpha: 1, duration: 2.2 },
+			"<"
 		)
-			.from(
-				".lineChild",
+			.to(
+				imageContainer.current,
 				{
-					skewY: 7,
-					duration: 0.75,
-					yPercent: 110,
-					stagger: 0.25,
+					// clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+					clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+					duration: 2,
+					ease: "power2.out",
 				},
+				"-=1.5"
+			)
+
+			.from(
+				split.chars,
+				{
+					opacity: 0,
+					skewY: 5,
+					duration: 0.8,
+					yPercent: 110,
+					stagger: 0.01,
+				},
+				"-=1.2" // Adjust the timing as needed
+			)
+			.from(
+				splitPara.words,
+				{
+					opacity: 0,
+					// skewY: 5,
+					duration: 0.7,
+					yPercent: 100,
+					stagger: 0.01,
+				},
+				"-=1" // Adjust the timing as needed
+			)
+			.to(
+				ctaRef.current,
+				{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.3 },
+				"-=.9"
+			)
+			.from(
+				introRef.current,
+				{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
 				"-=1"
 			)
-			.from(
-				".intro__paragraph",
-				{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
-				"-=0.5"
-			)
-	}, [headerRef, imageRef, tl])
+	}, [imageContainer, imageRef, introRef, headingRef, ctaRef, tl])
 
 	return (
 		<>
@@ -66,24 +99,32 @@ export const Hero = () => {
 					<div className={styles.header__content}>
 						<div className={styles.header__title}>
 							<div>
-								<h1 ref={headerRef}>
-									For deg som vil leve, <br />
-									ikke bare overleve
+								<h1 ref={headingRef}>
+									For deg som vil{" "}
+									<span className={styles.highlighted}>leve</span>
+									, <br />
+									ikke bare <span className={styles.highlighted}>overleve</span>
 								</h1>
 
-								<p>
+								<p ref={introRef}>
 									Hos ELMA møter du forståelse, fellesskap og mot. <br />
 									Det starter med å åpne opp - i ditt tempo.
 								</p>
 							</div>
 
-							<Anchor href='/historier' fontSize='1.5rem' isDarkBackground>
-								Start din reise
+							<Anchor
+								ref={ctaRef}
+								href='/historier'
+								fontSize='1.5rem'
+								isDarkBackground
+							>
+								<span>Start din reise</span>
 							</Anchor>
 						</div>
 
-						<div className={styles.header__image}>
+						<div className={styles.header__image} ref={imageContainer}>
 							<Image
+								ref={imageRef}
 								// src={"/images/man-mountain-alone.jpg"}
 								src={"/images/anders-moloen.png"}
 								alt={"Mountain"}

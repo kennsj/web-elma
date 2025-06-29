@@ -59,10 +59,11 @@ export const HeaderTwo = () => {
 					clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
 					duration: 0.8,
 					ease: "power2.out",
+					scale: 1,
 				},
 				"-=.9"
 			)
-			.to(ctaRef.current, { y: 0, opacity: 1, duration: 0.2 }, "<")
+			.from(ctaRef.current, { y: -20, opacity: 1, duration: 0.2 }, "-=0.6")
 			.from(
 				introRef.current,
 				{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },

@@ -1,21 +1,28 @@
 import type { Metadata } from "next"
-import { Newsreader, Playfair_Display } from "next/font/google"
+import { Newsreader, Playfair_Display, Oswald } from "next/font/google"
 import localFont from "next/font/local"
 
 import { Nav } from "@/components/Nav/nav"
 
 import "@/styles/globals.scss"
+import Footer from "@/components/Footer/Footer"
 
 const newsreader = Newsreader({
 	variable: "--font-newsreader",
 	subsets: ["latin"],
 })
 
-const Playfair = Playfair_Display({
+const Playfair = Oswald({
 	variable: "--font-playfair",
 	subsets: ["latin"],
-	weight: ["400", "500", "600", "700"],
+	// weight: ["400"],
 })
+
+// const Playfair = Playfair_Display({
+// 	variable: "--font-playfair",
+// 	subsets: ["latin"],
+// 	weight: ["400", "500", "600", "700"],
+// })
 
 const Atyp = localFont({
 	src: [
@@ -56,6 +63,7 @@ export default function RootLayout({
 			>
 				<Nav />
 				{children}
+				<Footer />
 			</body>
 		</html>
 	)

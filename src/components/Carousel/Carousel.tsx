@@ -24,7 +24,7 @@ const slides = [
 		quote:
 			"Å sende én melding, møte én venn, gå én tur – det føles som seier når hjernen sier ‘bare bli hjemme’.",
 		name: "Lovise (41)",
-		video: false,
+		video: true,
 	},
 	{
 		id: 2,
@@ -71,7 +71,7 @@ const slides = [
 	},
 ]
 
-export default function Test({ options }: PropType) {
+export default function Carousel({ options }: PropType) {
 	const [emblaRef, emblaApi] = useEmblaCarousel(options)
 
 	const { selectedIndex, scrollSnaps, onDotButtonClick } =
@@ -90,30 +90,6 @@ export default function Test({ options }: PropType) {
 										<div
 											className={
 												// `${styles.slide__item}` + " " + `${styles.slide__video}`
-												`${styles.slide__item}` + " " + `${styles.slide__text}`
-											}
-										>
-											<Link href={`/historier/${slide.id}`}>
-												<Image
-													src={slide.image}
-													alt='Anxiety'
-													width={800}
-													height={800}
-												/>
-												<div className={styles.slide__video_overlay}></div>
-
-												<p>{slide.quote}</p>
-												<span>{slide.name}</span>
-											</Link>
-										</div>
-									</div>
-								</div>
-							) : (
-								<div className={styles.embla__slide} key={slide.id}>
-									<div className={styles.embla__slide__number}>
-										{/* <div className={styles.history__item}> */}
-										<div
-											className={
 												`${styles.slide__item}` + " " + `${styles.slide__video}`
 											}
 										>
@@ -125,6 +101,28 @@ export default function Test({ options }: PropType) {
 													height={800}
 												/>
 												<div className={styles.slide__video_overlay}></div>
+												<span>{slide.name}</span>
+											</Link>
+										</div>
+									</div>
+								</div>
+							) : (
+								<div className={styles.embla__slide} key={slide.id}>
+									<div className={styles.embla__slide__number}>
+										{/* <div className={styles.history__item}> */}
+										<div
+											className={
+												`${styles.slide__item}` + " " + `${styles.slide__text}`
+											}
+										>
+											<Link href={`/historier/${slide.id}`}>
+												<Image
+													src={slide.image}
+													alt='Anxiety'
+													width={800}
+													height={800}
+												/>
+												<p>{slide.quote}</p>
 												<span>{slide.name}</span>
 											</Link>
 										</div>

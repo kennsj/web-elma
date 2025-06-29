@@ -2,7 +2,7 @@
 	background: var(--color-primary);
 	background: radial-gradient(at center top, #1f534d, #13332f);
 
-	background: url("../../../public/images/bg.svg") no-repeat center center;
+	// background: url("../../../public/images/bg.svg") no-repeat center center;
 	background-size: cover;
 	// background: radial-gradient(
 	// 	ellipse 60% 40% at 25% 20%,
@@ -67,7 +67,8 @@
 				}
 
 				a {
-					opacity: 0;
+					// transform: translateY(50px);
+					// opacity: 0;
 					width: fit-content;
 				}
 			}
@@ -79,6 +80,7 @@
 				// transform: translateY(20%);
 				overflow: hidden;
 				clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+				transform: scale(1.05);
 				// clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
 
 				&::after {
@@ -96,6 +98,7 @@
 				img {
 					width: 100%;
 					border-radius: var(--border-radius-small);
+
 					// margin-top: -10px;
 					// clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 				}

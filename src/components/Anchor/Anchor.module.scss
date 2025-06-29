@@ -11,15 +11,10 @@
 	background: var(--color-tertiary);
 	overflow: hidden;
 
-	&:first-child {
-		position: relative;
-		overflow: hidden;
-		z-index: 2;
-	}
-
 	svg {
-		margin-left: 1rem;
-		margin-top: 5px;
+		margin-left: 1.3rem;
+		margin-right: -1rem;
+		margin-top: 4px;
 
 		.line {
 			opacity: 0;
@@ -51,13 +46,16 @@
 	.wave {
 		width: 350px;
 		height: 350px;
-		// background-color: #12332f;
-		// box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
 		position: absolute;
 		left: 0;
-		top: -150px;
+		top: -160px;
 		transition: 0.4s;
 		z-index: 0;
+		pointer-events: none;
+
+		@media (prefers-reduced-motion: reduce) {
+			display: none;
+		}
 
 		&::before,
 		&::after {
@@ -71,35 +69,31 @@
 		}
 
 		&::before {
-			border-radius: 45%;
-			background-color: rgba(72, 112, 98, 0.7);
+			border-radius: 50%;
+			background-color: #487062b3;
+			background-color: #d6a58467;
 			animation: wave 40s linear infinite;
-			animation-play-state: paused;
+			// animation-play-state: paused;
 		}
 
 		&::after {
-			border-radius: 40%;
-			background-color: rgba(130, 153, 145, 0.3);
+			border-radius: 45%;
+			background-color: #8299914d;
+			background-color: #9b6d4e69;
 			animation: wave 50s linear infinite;
-			animation-play-state: paused;
+			// animation-play-state: paused;
 		}
 	}
 
-	&:hover .wave::after,
-	&:hover .wave::before {
-		animation-play-state: running;
-		@media (prefers-reduced-motion: reduce) {
-			animation-play-state: paused;
-		}
-	}
-
-	// img {
-	// 	height: calc(2em + 0.5rem);
-	// 	width: calc(2em + 0.5rem);
-	// 	display: inline-flex;
-	// 	transition: 0.3s ease-in-out;
-	// 	margin-left: 1em;
+	// &:hover .wave::after,
+	// &:hover .wave::before {
+	// 	animation-play-state: paused;
 	// }
+
+	&:hover .wave {
+		// animation-play-state: paused;
+		transform: translateY(-4%);
+	}
 }
 
 @keyframes wave {
@@ -115,9 +109,11 @@
 .anchor[data-dark-background="true"] {
 	color: var(--color-primary);
 	background: var(--color-secondary);
+	background: var(--color-tertiary);
 	// color: red;
 	&:hover {
 		background: var(--color-tertiary);
+		background: var(--color-tertiary-light);
 		color: var(--color-primary);
 	}
 }

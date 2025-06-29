@@ -30,7 +30,7 @@ export default function Anchor({
 			}}
 			ref={ref}
 		>
-			{/* <div className={styles.wave}></div> */}
+			<div className={styles.wave}></div>
 			<div>{children}</div>
 			<svg
 				width='24'

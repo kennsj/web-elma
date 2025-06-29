@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-	--color-primary: #0b2621;
 	--color-primary: #12332f;
+	--color-primary-lighter: #163b37;
 	--color-primary-light: #bce0b5;
 	--color-secondary: #e2fbf8;
 	--color-tertiary: #be8c6d;
@@ -15,7 +15,8 @@
 	--nav-height: 5rem;
 
 	--border-radius-big: 5rem;
-	--border-radius-small: 15px;
+	--border-radius-medium: 1.5rem;
+	--border-radius-small: 10px;
 }
 
 $breakpoint-small: 450px;
@@ -67,9 +68,10 @@ section {
 }
 
 .intro__paragraph {
-	width: var(--page-width);
+	width: 60%;
 	margin-block: 5rem;
-	font-size: 2.5rem;
+	font-size: 2rem;
+	// font-size: 32px;
 	// font-size: 40px;
 	// font-weight: 700;
 }
@@ -84,17 +86,17 @@ h1 {
 
 h2 {
 	position: relative;
-	// font-family: var(--font-playfair);
-	font-size: 3rem;
-	font-size: 65px;
+	font-family: var(--font-playfair);
+	font-size: 3.5rem;
 	font-weight: 700;
+	line-height: 4.2rem;
 	z-index: 2;
 
 	&::before {
 		position: absolute;
 		content: "";
 		width: 15px;
-		height: 140%;
+		height: 100%;
 		background: var(--color-tertiary);
 		left: -35px;
 		top: 55%;
