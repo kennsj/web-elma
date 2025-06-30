@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Newsreader, Playfair_Display, Oswald } from "next/font/google"
+import { Newsreader, Oswald } from "next/font/google"
 import localFont from "next/font/local"
 
 import { Nav } from "@/components/Nav/nav"

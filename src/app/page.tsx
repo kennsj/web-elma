@@ -6,7 +6,7 @@ import Anchor from "@/components/Anchor/Anchor"
 
 import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
 import Animated from "@/components/AnimatedImage/Animated"
-import { HeaderTwo } from "@/components/Header/HeaderTwo"
+// import { HeaderTwo } from "@/components/Header/HeaderTwo"
 import { Hero } from "@/components/Header/Hero"
 import Image from "next/image"
 import WaveCss from "@/components/WaveSeperator/WaveCss"

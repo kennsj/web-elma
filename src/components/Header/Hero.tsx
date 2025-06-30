@@ -15,7 +15,7 @@ export const Hero = () => {
 	const headingRef = useRef<HTMLHeadingElement>(null)
 	const introRef = useRef<HTMLParagraphElement>(null)
 	const ctaRef = useRef<HTMLAnchorElement>(null)
-	const headerRef = useRef<HTMLDivElement>(null)
+	// const headerRef = useRef<HTMLDivElement>(null)
 	const imageContainer = useRef<HTMLDivElement>(null)
 	const imageRef = useRef<HTMLDivElement>(null)
 
