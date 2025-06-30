@@ -17,7 +17,7 @@ export const Hero = () => {
 	const ctaRef = useRef<HTMLAnchorElement>(null)
 	// const headerRef = useRef<HTMLDivElement>(null)
 	const imageContainer = useRef<HTMLDivElement>(null)
-	const imageRef = useRef<HTMLDivElement>(null)
+	const imageRef = useRef<HTMLImageElement>(null)
 
 	const tl = gsap.timeline({
 		ease: "power1.out",
