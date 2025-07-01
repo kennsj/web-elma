@@ -10,7 +10,6 @@ import Animated from "@/components/AnimatedImage/Animated"
 import { Hero } from "@/components/Header/Hero"
 import Image from "next/image"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
-import Wave from "@/components/WaveSeperator/Wave"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,

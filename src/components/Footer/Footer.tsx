@@ -10,7 +10,6 @@ import Image from "next/image"
 import Link from "next/link"
 import Button from "@/components/Buttons/Secondary"
 import Anchor from "@/components/Buttons/Anchor"
-import WaveCss from "../WaveSeperator/WaveCss"
 
 export default function Footer() {
 	const sectionRef = useRef<HTMLElement | null>(null)
