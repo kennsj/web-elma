@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Newsreader, Oswald } from "next/font/google"
 import localFont from "next/font/local"
 
-import { Nav } from "@/components/Nav/nav"
+// import { Nav } from "@/components/Nav/nav"
 
 import "@/styles/globals.scss"
 import Footer from "@/components/Footer/Footer"
