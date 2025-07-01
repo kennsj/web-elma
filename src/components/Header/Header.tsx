@@ -5,7 +5,6 @@ import styles from "./Header.module.scss"
 import "@/styles/globals.scss"
 import CTA from "@/components/Buttons/Primary"
 
-import WaveSeperator from "../WaveSeperator/WaveSeperator"
 import Anchor from "@/components/Buttons/Anchor"
 
 export const Header = () => {
