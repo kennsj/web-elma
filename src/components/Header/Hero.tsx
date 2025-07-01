@@ -3,16 +3,17 @@ import Image from "next/image"
 
 import styles from "./Hero.module.scss"
 import "@/styles/globals.scss"
-import Anchor from "@/components/Anchor/Anchor"
+import CTA from "@/components/Buttons/Primary"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 import WaveCss from "../WaveSeperator/WaveCss"
 import { SplitText } from "gsap/SplitText"
+import Anchor from "@/components/Buttons/Anchor"
 // import { SplitText } from "gsap/all"
 
 export const Hero = () => {
-	const headingRef = useRef<HTMLHeadingElement>(null)
+	const h1Ref = useRef<HTMLHeadingElement>(null)
 	const introRef = useRef<HTMLParagraphElement>(null)
 	const ctaRef = useRef<HTMLAnchorElement>(null)
 	// const headerRef = useRef<HTMLDivElement>(null)
@@ -24,13 +25,15 @@ export const Hero = () => {
 		duration: 0.5,
 	})
 
+	const mm = gsap.matchMedia()
+
 	useGSAP(() => {
 		gsap.registerPlugin(SplitText)
 
 		new SplitText("h1", { type: "lines", linesClass: "lineChild" })
 		new SplitText("h1", { type: "lines", linesClass: "lineParent" })
 
-		const split = new SplitText(headingRef.current, {
+		const split = new SplitText(h1Ref.current, {
 			type: "lines, chars",
 			linesClass: "lineParent",
 		})
@@ -40,57 +43,120 @@ export const Hero = () => {
 			linesClass: "lineParent",
 		})
 
-		console.log(split.lines)
+		// Animations for desktop
+		mm.add(
+			"(min-width: 768px)",
+			() => {
+				tl.to(
+					imageRef.current,
+					{ y: 0, scale: 1.2, autoAlpha: 1, duration: 2.2 },
+					"<"
+				)
+					.to(
+						imageContainer.current,
+						{
+							// clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+							clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+							duration: 2,
+							ease: "power2.out",
+						},
+						"-=1.5"
+					)
 
-		tl.to(
-			imageRef.current,
-			{ y: 0, scale: 1.2, autoAlpha: 1, duration: 2.2 },
-			"<"
+					.from(
+						split.chars,
+						{
+							opacity: 0,
+							skewY: 5,
+							duration: 0.8,
+							yPercent: 110,
+							stagger: 0.01,
+						},
+						"-=1.2" // Adjust the timing as needed
+					)
+					.from(
+						splitPara.words,
+						{
+							opacity: 0,
+							// skewY: 5,
+							duration: 0.7,
+							yPercent: 100,
+							stagger: 0.01,
+						},
+						"-=1" // Adjust the timing as needed
+					)
+					.to(
+						ctaRef.current,
+						{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.3 },
+						"-=.9"
+					)
+					.from(
+						introRef.current,
+						{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
+						"-=1"
+					)
+			},
+			"desktop"
 		)
-			.to(
-				imageContainer.current,
-				{
-					// clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-					clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-					duration: 2,
-					ease: "power2.out",
-				},
-				"-=1.5"
-			)
 
-			.from(
-				split.chars,
-				{
-					opacity: 0,
-					skewY: 5,
-					duration: 0.8,
-					yPercent: 110,
-					stagger: 0.01,
-				},
-				"-=1.2" // Adjust the timing as needed
-			)
-			.from(
-				splitPara.words,
-				{
-					opacity: 0,
-					// skewY: 5,
-					duration: 0.7,
-					yPercent: 100,
-					stagger: 0.01,
-				},
-				"-=1" // Adjust the timing as needed
-			)
-			.to(
-				ctaRef.current,
-				{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.3 },
-				"-=.9"
-			)
-			.from(
-				introRef.current,
-				{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
-				"-=1"
-			)
-	}, [imageContainer, imageRef, introRef, headingRef, ctaRef, tl])
+		// Animations for mobile
+		mm.add(
+			"(max-width: 767px)",
+			() => {
+				tl.from(
+					split.chars,
+					{
+						opacity: 0,
+						skewY: 5,
+						duration: 0.8,
+						yPercent: 110,
+						stagger: 0.01,
+					}
+					// Adjust the timing as needed
+				)
+					.from(
+						introRef.current,
+						{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
+						"-=.8"
+					)
+					.from(
+						splitPara.words,
+						{
+							opacity: 0,
+							// skewY: 5,
+							duration: 0.7,
+							yPercent: 100,
+							stagger: 0.01,
+						},
+						"-=1" // Adjust the timing as needed
+					)
+					.to(
+						ctaRef.current,
+						{ opacity: 1, autoAlpha: 1, duration: 0.5 },
+						"-=.5"
+					)
+					.to(
+						imageRef.current,
+						{ y: 0, scale: 1.2, autoAlpha: 1, duration: 1.5 },
+						"<"
+					)
+					.to(
+						imageContainer.current,
+						{
+							// clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+							clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+							duration: 1.5,
+							ease: "power2.out",
+						},
+						"<"
+					)
+			},
+			"mobile"
+		)
+	}, [imageContainer, imageRef, introRef, h1Ref, ctaRef, tl])
+
+	// useGSAP(() => {
+	// 	gsap.registerPlugin(SplitText)
 
 	return (
 		<>
@@ -99,7 +165,7 @@ export const Hero = () => {
 					<div className={styles.header__content}>
 						<div className={styles.header__title}>
 							<div>
-								<h1 ref={headingRef}>
+								<h1 ref={h1Ref}>
 									For deg som vil{" "}
 									<span className={styles.highlighted}>leve</span>
 									, <br />
@@ -107,19 +173,19 @@ export const Hero = () => {
 								</h1>
 
 								<p ref={introRef}>
-									Hos ELMA møter du forståelse, fellesskap og mot. <br />
-									Det starter med å åpne opp - i ditt tempo.
+									Hos ELMA møter du forståelse, fellesskap og mot. Det starter
+									med å åpne opp - i ditt tempo. <br />
 								</p>
 							</div>
 
-							<Anchor
+							<CTA
 								ref={ctaRef}
 								href='/historier'
-								fontSize='1.5rem'
-								isDarkBackground
+								// fontSize='1.5rem'
+								// isDarkBackground
 							>
 								<span>Start din reise</span>
-							</Anchor>
+							</CTA>
 						</div>
 
 						<div className={styles.header__image} ref={imageContainer}>
@@ -130,7 +196,9 @@ export const Hero = () => {
 								alt={"Mountain"}
 								// width={1000}
 								// height={1000}
+								sizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 								fill={true}
+								// sizes='(max-width: 768px) 50px, (max-width: 1200px) 50px'
 								quality={100}
 								priority
 							/>
@@ -145,7 +213,7 @@ export const Hero = () => {
 						alene med sin psykiske helse.
 					</p>
 
-					<Anchor href='/historier' isDarkBackground>
+					<Anchor href='/historier' isDarkBackground={true}>
 						Les andres historier
 					</Anchor>
 				</div>

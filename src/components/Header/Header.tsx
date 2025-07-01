@@ -3,9 +3,10 @@ import Image from "next/image"
 
 import styles from "./Header.module.scss"
 import "@/styles/globals.scss"
-import Anchor from "@/components/Anchor/Anchor"
+import CTA from "@/components/Buttons/Primary"
 
 import WaveSeperator from "../WaveSeperator/WaveSeperator"
+import Anchor from "@/components/Buttons/Anchor"
 
 export const Header = () => {
 	return (
@@ -19,9 +20,9 @@ export const Header = () => {
 								ikke bare overleve
 							</h1>
 
-							<Anchor href='/historier' fontSize='2rem' isDarkBackground>
+							<CTA href='/historier' fontSize='2rem' isDarkBackground>
 								Start din reise
-							</Anchor>
+							</CTA>
 						</div>
 
 						<Image

@@ -1,5 +1,8 @@
+@use "@/styles/breakpoints.scss" as *;
+
 .footer {
 	background: var(--color-primary);
+	background: radial-gradient(at center bottom, #1f534d, #13332f);
 	color: var(--color-secondary);
 
 	form {
@@ -7,16 +10,16 @@
 		textarea {
 			width: 30%;
 			background: var(--color-primary-lighter);
-			color: var(--color-primary);
-			border: 1px solid var(--color-tertiary);
+			color: var(--color-secondary);
+			// border: 1px solid var(--color-primary-lighter);
 			border-radius: var(--border-radius-small);
 			padding: 1rem 2rem;
 			margin-right: 2rem;
-			font-size: 1rem;
+			// font-size: 1rem;
 		}
 		input::placeholder,
 		textarea::placeholder {
-			color: var(--color-tertiary);
+			color: var(--color-tertiary-light);
 		}
 
 		button {
@@ -25,40 +28,21 @@
 	}
 
 	hr {
-		margin-block: 5rem;
+		margin-block: var(--margin-block);
+		opacity: 0.2;
 	}
 
 	.footer__content {
 		display: flex;
-		gap: 2rem;
 		justify-content: space-between;
 
 		.footer__content__nav {
+			ul {
+				margin-top: -2rem;
+			}
+
 			a {
-				display: inline-block;
-				font-size: 1.5rem;
-				line-height: 3.5rem;
-				transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-				&::after {
-					content: "";
-					display: block;
-					width: 50%;
-					height: 1px;
-					background: var(--color-secondary);
-					transition: width 0.3s ease-in-out;
-					// transform: scaleX(100%);
-					transform-origin: left;
-					transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-				}
-
-				&:hover {
-					color: var(--color-tertiary);
-				}
-
-				&:hover::after {
-					transform: scaleX(200%);
-					background: var(--color-tertiary);
-				}
+				// font-size: 1.5rem !important;
 			}
 		}
 
@@ -70,6 +54,41 @@
 			h3 {
 				font-weight: 600;
 				color: var(--color-tertiary);
+				margin-bottom: 1rem;
+			}
+
+			a {
+				position: relative;
+				width: fit-content;
+				left: 0;
+				// font-size: 1.5rem;
+				transition: 0.4s ease-in-out;
+				margin-left: auto;
+
+				&:hover {
+					color: var(--color-tertiary);
+					transition: 0.4s ease-in-out;
+				}
+
+				&:hover::after {
+					transform: scaleX(200%);
+					background: var(--color-tertiary);
+					transition: 0.4s ease-in-out;
+				}
+			}
+		}
+
+		@media screen and (max-width: $breakpoint-medium) {
+			flex-direction: column;
+			align-items: center;
+
+			.footer__content__nav {
+				margin-bottom: 2rem;
+			}
+
+			.footer__content__contact {
+				text-align: center;
+				margin-left: 0;
 			}
 		}
 	}

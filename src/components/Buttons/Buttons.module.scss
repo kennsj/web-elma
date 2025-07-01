@@ -1,4 +1,4 @@
-.anchor {
+.button {
 	position: relative;
 	display: inline-flex;
 	align-items: center;
@@ -90,6 +90,18 @@
 	// 	animation-play-state: paused;
 	// }
 
+	&.button[data-dark-background="true"] {
+		color: var(--color-primary);
+		background: var(--color-secondary);
+		background: var(--color-tertiary);
+		// color: red;
+		&:hover {
+			background: var(--color-tertiary);
+			background: var(--color-tertiary-light);
+			color: var(--color-primary);
+		}
+	}
+
 	&:hover .wave {
 		// animation-play-state: paused;
 		transform: translateY(-4%);
@@ -103,17 +115,5 @@
 
 	100% {
 		transform: translate(-50%, -75%) rotate(360deg);
-	}
-}
-
-.anchor[data-dark-background="true"] {
-	color: var(--color-primary);
-	background: var(--color-secondary);
-	background: var(--color-tertiary);
-	// color: red;
-	&:hover {
-		background: var(--color-tertiary);
-		background: var(--color-tertiary-light);
-		color: var(--color-primary);
 	}
 }

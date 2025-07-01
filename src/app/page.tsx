@@ -2,7 +2,7 @@
 import Carousel from "@/components/Carousel/Carousel"
 import "@/styles/globals.scss"
 import { EmblaOptionsType } from "embla-carousel"
-import Anchor from "@/components/Anchor/Anchor"
+import Anchor from "@/components/Buttons/Anchor"
 
 import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
 import Animated from "@/components/AnimatedImage/Animated"
@@ -10,6 +10,7 @@ import Animated from "@/components/AnimatedImage/Animated"
 import { Hero } from "@/components/Header/Hero"
 import Image from "next/image"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
+import Wave from "@/components/WaveSeperator/Wave"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,

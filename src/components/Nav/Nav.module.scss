@@ -1,3 +1,5 @@
+@use "@/styles/breakpoints" as *;
+
 .nav {
 	position: fixed;
 	display: flex;
@@ -31,5 +33,9 @@
 				margin-right: 0;
 			}
 		}
+	}
+
+	@media screen and (max-width: $breakpoint-medium) {
+		visibility: hidden;
 	}
 }

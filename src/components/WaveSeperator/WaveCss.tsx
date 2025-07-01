@@ -2,11 +2,16 @@ import styles from "./WaveCss.module.scss"
 
 export default function WaveCss({
 	isDarkBackground = true,
+	rotate = false,
 }: {
 	isDarkBackground?: boolean
+	rotate?: boolean
 }) {
 	return (
-		<div className={styles.waveContainer}>
+		<div
+			className={styles.waveContainer}
+			style={{ transform: rotate ? "rotate(180deg)" : "none" }}
+		>
 			<svg
 				className={styles.waves}
 				xmlns='http://www.w3.org/2000/svg'

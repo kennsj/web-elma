@@ -3,7 +3,7 @@ import Image from "next/image"
 
 import styles from "./Header.module.scss"
 import "@/styles/globals.scss"
-import Anchor from "@/components/Anchor/Anchor"
+import Anchor from "@/components/Buttons/Primary"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"

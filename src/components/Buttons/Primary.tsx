@@ -1,9 +1,7 @@
-"use client"
-
-import styles from "./Anchor.module.scss"
+import styles from "./Buttons.module.scss"
 import Link from "next/link"
 
-type LinkProps = {
+type PrimaryProps = {
 	href: string
 	children: React.ReactNode
 	fontSize?: string
@@ -11,18 +9,18 @@ type LinkProps = {
 	ref?: React.Ref<HTMLAnchorElement>
 }
 
-export default function Anchor({
+export default function Primary({
 	href,
 	children,
 	fontSize = "1rem",
 	isDarkBackground = false,
 	ref,
 	...props
-}: LinkProps) {
+}: PrimaryProps) {
 	return (
 		<Link
 			href={href}
-			className={styles.anchor}
+			className={styles.button}
 			{...props}
 			data-dark-background={isDarkBackground}
 			style={{

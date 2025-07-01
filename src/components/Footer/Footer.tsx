@@ -8,7 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import styles from "./Footer.module.scss"
 import Image from "next/image"
 import Link from "next/link"
-import Anchor from "../Anchor/Anchor"
+import Button from "@/components/Buttons/Secondary"
+import Anchor from "@/components/Buttons/Anchor"
+import WaveCss from "../WaveSeperator/WaveCss"
 
 export default function Footer() {
 	const sectionRef = useRef<HTMLElement | null>(null)
@@ -78,13 +80,21 @@ export default function Footer() {
 							aria-label='Din e-postadresse'
 							className={styles.newsletter__input}
 						/>
-						<button
+						<Button
+							type='submit'
+							aria-label='Meld deg på nyhetsbrev'
+							// className={styles.newsletter__button}
+						>
+							Meld deg på
+						</Button>
+						{/* <Anchor
+							href='/'
 							type='submit'
 							className={styles.newsletter__button}
 							aria-label='Meld deg på nyhetsbrev'
 						>
-							<Anchor href='#'>Meld deg på</Anchor>
-						</button>
+							<Link href='#'>Meld deg på</Link>
+						</Anchor> */}
 					</form>
 				</div>
 				<hr />
@@ -100,29 +110,42 @@ export default function Footer() {
 					<div className={styles.footer__content__nav}>
 						<ul>
 							<li>
-								<Link href='/start'>Start din reise</Link>
+								<Anchor fontSize='1.5rem' isDarkBackground href='/start'>
+									Start din reise
+								</Anchor>
 							</li>
 							<li>
-								<Link href='/historier'>Historier</Link>
+								<Anchor fontSize='1.5rem' isDarkBackground href='/historier'>
+									Historier
+								</Anchor>
 							</li>
 							<li>
-								<Link href='/foredrag'>Foredrag</Link>
+								<Anchor fontSize='1.5rem' isDarkBackground href='/foredrag'>
+									Foredrag
+								</Anchor>
 							</li>
 							<li>
-								<Link href='/hjelp'>Trenger du hjelp?</Link>
+								<Anchor fontSize='1.5rem' isDarkBackground href='/hjelp'>
+									Trenger du hjelp?
+								</Anchor>
 							</li>
 							<li>
-								<Link href='/om'>Om elma</Link>
-							</li>
-							<li>
-								<Link href='/stotte'>Bli en støttespiller?</Link>
+								<Anchor fontSize='1.5rem' isDarkBackground href='/om'>
+									Om elma
+								</Anchor>
 							</li>
 						</ul>
 					</div>
 					<div className={styles.footer__content__contact}>
 						<h3 className='headline'>Kontakt</h3>
-						<Link href='mailto:hei@elma.no'>hei@elma.no</Link>
-						<Link href='#'>Booking av elma</Link>
+						<Anchor isDarkBackground fontSize='1.5em' href='mailto:hei@elma.no'>
+							hei@elma.no
+						</Anchor>
+						<Anchor fontSize='1.5em' isDarkBackground href='#'>
+							Booking av elma
+						</Anchor>
+						{/* <Link href='mailto:hei@elma.no'>hei@elma.no</Link>
+						<Link href='#'>Booking av elma</Link> */}
 					</div>
 				</div>
 				<hr />

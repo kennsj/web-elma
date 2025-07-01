@@ -9,7 +9,7 @@ import {
 	DotButton,
 	useDotButton,
 } from "@/components/Carousel/EmblaCarouselDotButton"
-import Anchor from "../Anchor/Anchor"
+import Anchor from "../Buttons/Anchor"
 import Link from "next/link"
 
 type PropType = {
@@ -148,7 +148,9 @@ export default function Carousel({ options }: PropType) {
 							/>
 						))}
 					</div>
-					<Anchor href='#'>Utforsk flere</Anchor>
+					<Anchor href='#' isDarkBackground={false}>
+						Utforsk flere
+					</Anchor>
 				</div>
 			</div>
 		</>

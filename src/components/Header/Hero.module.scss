@@ -1,3 +1,5 @@
+@use "@/styles/breakpoints" as *;
+
 .header {
 	background: radial-gradient(at center top, #1f534d, var(--color-primary));
 	// background: url("../../../public/images/bg.svg") no-repeat center center;
@@ -29,9 +31,8 @@
 					position: relative;
 					display: inline-block;
 					overflow: hidden;
-					font-size: clamp(1rem, -0.875rem + 8.333vw, 5rem);
+
 					font-weight: 500;
-					line-height: 6.5rem;
 					letter-spacing: -0.05rem;
 					text-shadow:
 						0 4px 24px rgba(0, 0, 0, 0.25),
@@ -46,7 +47,9 @@
 				}
 
 				p {
-					font-size: 1.5rem;
+					// font-size: 1.5rem;
+					font-size: clamp(1rem, -0.875rem + 8.333vw, 1.5rem);
+					width: 60%;
 					margin-block: 2rem;
 					text-shadow:
 						0 4px 24px rgba(0, 0, 0, 0.25),
@@ -110,8 +113,54 @@
 		p {
 			width: 70%;
 			margin-block: 4rem;
-			font-size: 2rem;
+			// font-size: 2rem;
 			font-weight: 300;
+		}
+	}
+
+	@media screen and (max-width: $breakpoint-medium) {
+		.header__container {
+			.header__content {
+				flex-direction: column;
+				.header__title {
+					position: relative;
+					bottom: 0;
+					width: 100%;
+					margin: 0;
+					padding: 0;
+
+					h1 {
+						width: 100%;
+					}
+
+					p {
+						width: 90%;
+					}
+				}
+
+				.header__image {
+					height: 300px;
+					margin-top: 2rem;
+
+					img {
+						position: relative !important;
+						height: auto;
+						object-fit: cover;
+					}
+				}
+			}
+		}
+
+		.header__intro {
+			width: 90%;
+			max-width: 100%;
+			margin: 2rem auto;
+
+			p {
+				width: 100%;
+				font-size: 1.25rem;
+				margin-block: 2rem;
+			}
 		}
 	}
 }
