@@ -9,7 +9,6 @@ import Animated from "@/components/AnimatedImage/Animated"
 // import { HeaderTwo } from "@/components/Header/HeaderTwo"
 import { Hero } from "@/components/Header/Hero"
 import Image from "next/image"
-import WaveCss from "@/components/WaveSeperator/WaveCss"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -114,8 +113,6 @@ export default function Home() {
 					</div>
 				</Animated>
 			</section>
-
-			<WaveCss isDarkBackground={false} />
 
 			{/* <section className='videoer' ref={test}>
 				<h3>Videoer</h3>
