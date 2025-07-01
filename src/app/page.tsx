@@ -9,6 +9,7 @@ import Animated from "@/components/AnimatedImage/Animated"
 // import { HeaderTwo } from "@/components/Header/HeaderTwo"
 import { Hero } from "@/components/Header/Hero"
 import Image from "next/image"
+import WaveCss from "@/components/WaveSeperator/WaveCss"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -23,7 +24,6 @@ export default function Home() {
 	return (
 		<main>
 			<Hero />
-			{/* <HeaderTwo /> */}
 
 			<section className='section__histories section__fullwidth'>
 				<div className='section__intro'>
@@ -35,9 +35,6 @@ export default function Home() {
 				</div>
 
 				<Carousel options={OPTIONS} />
-				{/* <Carousel slides={SLIDES} options={OPTIONS} /> */}
-
-				{/* <HistoryList /> */}
 			</section>
 
 			<section>
@@ -114,34 +111,7 @@ export default function Home() {
 				</Animated>
 			</section>
 
-			{/* <section className='videoer' ref={test}>
-				<h3>Videoer</h3>
-				<h2>Hør historiene til menneskene bak elma</h2>
-				<div className='video__list'>
-					<iframe
-						src='https://www.youtube.com/embed/VIDEO_ID'
-						title='YouTube video player'
-						frameBorder='0'
-						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-						allowFullScreen
-					></iframe>
-					<iframe
-						src='https://www.youtube.com/embed/VIDEO_ID'
-						title='YouTube video player'
-						frameBorder='0'
-						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-						allowFullScreen
-					></iframe>
-					<iframe
-						src='https://www.youtube.com/embed/VIDEO_ID'
-						title='YouTube video player'
-						frameBorder='0'
-						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-						allowFullScreen
-					></iframe>
-				</div>
-			</section> */}
-
+			<WaveCss isDarkBackground={false} />
 			<section className='section__fullwidth event__section'>
 				<div className='section__intro' style={{ color: "#C4DED7" }}>
 					<h2>Foredrag og arrangementer</h2>
@@ -151,20 +121,6 @@ export default function Home() {
 						neste gang.
 					</p>
 				</div>
-
-				{/* <div className='upcoming-events'>
-					<div className='event-item'>
-						<div className='event-date'>5. august</div>
-						<div className='event-container'>
-							<div>
-								<h2>Bak fasaden: En personlig historie</h2>
-								<span>Gratis deltakelse</span>
-							</div>
-							<div className='event-details'>
-								<div className='event-time'>
-									<span>18:00 - 20:00</span>
-								</div>
-								<div className='event-location'></div> */}
 
 				<div className='event__list'>
 					<div className='event__item'>
@@ -178,9 +134,16 @@ export default function Home() {
 								</Anchor>
 							</div>
 							<div className='event__details'>
-								<h5>18:00 - 20:00</h5>
-								<p>Oslo</p>
-								<p>Sentralen, Øvre Slottsgate 3</p>
+								<div>
+									<h5>18:00 - 20:00</h5>
+									<p>Oslo</p>
+								</div>
+								<div>
+									<p>
+										Sentralen,
+										<br /> Øvre Slottsgate 3
+									</p>
+								</div>
 							</div>
 							<div className='event__image'>
 								<Image
@@ -192,6 +155,13 @@ export default function Home() {
 									height={250}
 								/>
 							</div>
+							<Anchor
+								isDarkBackground
+								className='event__button_mobile'
+								href='#'
+							>
+								Gratis inngang
+							</Anchor>
 						</div>
 					</div>
 
@@ -206,9 +176,16 @@ export default function Home() {
 								</Anchor>
 							</div>
 							<div className='event__details'>
-								<h5>18:00 - 20:00</h5>
-								<p>Oslo</p>
-								<p>Sentralen, Øvre Slottsgate 3</p>
+								<div>
+									<h5>18:00 - 20:00</h5>
+									<p>Oslo</p>
+								</div>
+								<div>
+									<p>
+										Sentralen,
+										<br /> Øvre Slottsgate 3
+									</p>
+								</div>
 							</div>
 							<div className='event__image'>
 								<Image
@@ -220,6 +197,13 @@ export default function Home() {
 									height={250}
 								/>
 							</div>
+							<Anchor
+								isDarkBackground
+								className='event__button_mobile'
+								href='#'
+							>
+								Gratis inngang
+							</Anchor>
 						</div>
 					</div>
 
@@ -234,9 +218,16 @@ export default function Home() {
 								</Anchor>
 							</div>
 							<div className='event__details'>
-								<h5>18:00 - 20:00</h5>
-								<p>Oslo</p>
-								<p>Sentralen, Øvre Slottsgate 3</p>
+								<div>
+									<h5>18:00 - 20:00</h5>
+									<p>Oslo</p>
+								</div>
+								<div>
+									<p>
+										Sentralen,
+										<br /> Øvre Slottsgate 3
+									</p>
+								</div>
 							</div>
 							<div className='event__image'>
 								<Image
@@ -248,6 +239,13 @@ export default function Home() {
 									height={250}
 								/>
 							</div>
+							<Anchor
+								isDarkBackground
+								className='event__button_mobile'
+								href='#'
+							>
+								Gratis inngang
+							</Anchor>
 						</div>
 					</div>
 				</div>

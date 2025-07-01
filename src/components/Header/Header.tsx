@@ -15,8 +15,7 @@ export const Header = () => {
 					<div className={styles.header__content}>
 						<div className={styles.header__title}>
 							<h1>
-								For deg som vil leve, <br />
-								ikke bare overleve
+								For deg som vil leve, ikke bare overleve <br />
 							</h1>
 
 							<CTA href='/historier' fontSize='2rem' isDarkBackground>

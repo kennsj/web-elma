@@ -109,38 +109,38 @@ export default function Footer() {
 					<div className={styles.footer__content__nav}>
 						<ul>
 							<li>
-								<Anchor fontSize='1.5rem' isDarkBackground href='/start'>
+								<Anchor isDarkBackground href='/start'>
 									Start din reise
 								</Anchor>
 							</li>
 							<li>
-								<Anchor fontSize='1.5rem' isDarkBackground href='/historier'>
+								<Anchor isDarkBackground href='/historier'>
 									Historier
 								</Anchor>
 							</li>
 							<li>
-								<Anchor fontSize='1.5rem' isDarkBackground href='/foredrag'>
+								<Anchor isDarkBackground href='/foredrag'>
 									Foredrag
 								</Anchor>
 							</li>
 							<li>
-								<Anchor fontSize='1.5rem' isDarkBackground href='/hjelp'>
+								<Anchor isDarkBackground href='/hjelp'>
 									Trenger du hjelp?
 								</Anchor>
 							</li>
 							<li>
-								<Anchor fontSize='1.5rem' isDarkBackground href='/om'>
+								<Anchor isDarkBackground href='/om'>
 									Om elma
 								</Anchor>
 							</li>
 						</ul>
 					</div>
 					<div className={styles.footer__content__contact}>
-						<h3 className='headline'>Kontakt</h3>
-						<Anchor isDarkBackground fontSize='1.5em' href='mailto:hei@elma.no'>
+						<h3>Kontakt</h3>
+						<Link className={styles.footer__email} href='mailto:hei@elma.no'>
 							hei@elma.no
-						</Anchor>
-						<Anchor fontSize='1.5em' isDarkBackground href='#'>
+						</Link>
+						<Anchor isDarkBackground href='#'>
 							Booking av elma
 						</Anchor>
 						{/* <Link href='mailto:hei@elma.no'>hei@elma.no</Link>
@@ -150,8 +150,11 @@ export default function Footer() {
 				<hr />
 				<div className={styles.footer__bottom}>
 					<div>
-						<p>© {new Date().getFullYear()} ELMA &mdash; Laget med omtanke</p>
-						<Link href='/personvern'>Personvern og vilkår</Link>
+						<p>© {new Date().getFullYear()} E.L.M.A.</p>
+						<p>Laget med omtanke</p>
+						<Anchor isDarkBackground href='/personvern'>
+							Personvern og vilkår
+						</Anchor>
 					</div>
 					<div className={styles.footer__bottom__right}>
 						Design og kode

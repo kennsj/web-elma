@@ -3,7 +3,7 @@ import Image from "next/image"
 
 import styles from "./Hero.module.scss"
 import "@/styles/globals.scss"
-import CTA from "@/components/Buttons/Primary"
+import PrimaryButton from "@/components/Buttons/Primary"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
@@ -15,7 +15,7 @@ import Anchor from "@/components/Buttons/Anchor"
 export const Hero = () => {
 	const h1Ref = useRef<HTMLHeadingElement>(null)
 	const introRef = useRef<HTMLParagraphElement>(null)
-	const ctaRef = useRef<HTMLAnchorElement>(null)
+	const primaryButton = useRef<HTMLAnchorElement>(null)
 	// const headerRef = useRef<HTMLDivElement>(null)
 	const imageContainer = useRef<HTMLDivElement>(null)
 	const imageRef = useRef<HTMLImageElement>(null)
@@ -86,7 +86,7 @@ export const Hero = () => {
 						"-=1" // Adjust the timing as needed
 					)
 					.to(
-						ctaRef.current,
+						primaryButton.current,
 						{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.3 },
 						"-=.9"
 					)
@@ -131,7 +131,7 @@ export const Hero = () => {
 						"-=1" // Adjust the timing as needed
 					)
 					.to(
-						ctaRef.current,
+						primaryButton.current,
 						{ opacity: 1, autoAlpha: 1, duration: 0.5 },
 						"-=.5"
 					)
@@ -153,7 +153,7 @@ export const Hero = () => {
 			},
 			"mobile"
 		)
-	}, [imageContainer, imageRef, introRef, h1Ref, ctaRef, tl])
+	}, [imageContainer, imageRef, introRef, h1Ref, primaryButton, tl])
 
 	// useGSAP(() => {
 	// 	gsap.registerPlugin(SplitText)
@@ -178,27 +178,18 @@ export const Hero = () => {
 								</p>
 							</div>
 
-							<CTA
-								ref={ctaRef}
-								href='/historier'
-								// fontSize='1.5rem'
-								// isDarkBackground
-							>
+							<PrimaryButton ref={primaryButton} href='/historier'>
 								<span>Start din reise</span>
-							</CTA>
+							</PrimaryButton>
 						</div>
 
 						<div className={styles.header__image} ref={imageContainer}>
 							<Image
 								ref={imageRef}
-								// src={"/images/man-mountain-alone.jpg"}
 								src={"/images/anders-moloen.png"}
 								alt={"Mountain"}
-								// width={1000}
-								// height={1000}
 								sizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 								fill={true}
-								// sizes='(max-width: 768px) 50px, (max-width: 1200px) 50px'
 								quality={100}
 								priority
 							/>
@@ -219,8 +210,6 @@ export const Hero = () => {
 				</div>
 				<WaveCss />
 			</header>
-
-			{/* <Waves /> */}
 		</>
 	)
 }

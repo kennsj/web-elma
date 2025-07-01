@@ -86,7 +86,6 @@ export default function Carousel({ options }: PropType) {
 							return slide.video ? (
 								<div className={styles.embla__slide} key={slide.id}>
 									<div className={styles.embla__slide__number}>
-										{/* <div className={styles.history__item}> */}
 										<div
 											className={
 												// `${styles.slide__item}` + " " + `${styles.slide__video}`
@@ -109,7 +108,6 @@ export default function Carousel({ options }: PropType) {
 							) : (
 								<div className={styles.embla__slide} key={slide.id}>
 									<div className={styles.embla__slide__number}>
-										{/* <div className={styles.history__item}> */}
 										<div
 											className={
 												`${styles.slide__item}` + " " + `${styles.slide__text}`

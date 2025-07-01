@@ -61,7 +61,7 @@ export default function RootLayout({
 			<body
 				className={`${newsreader.variable} ${Playfair.variable} ${Atyp.variable} antialiased`}
 			>
-				<Nav />
+				{/* <Nav /> */}
 				{children}
 				<Footer />
 			</body>

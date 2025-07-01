@@ -7,6 +7,7 @@ type LinkProps = {
 	fontSize?: string
 	isDarkBackground?: boolean
 	ref?: React.Ref<HTMLAnchorElement>
+	className?: string
 }
 
 export default function Anchor({
@@ -14,13 +15,14 @@ export default function Anchor({
 	children,
 	fontSize = "1rem",
 	isDarkBackground = false,
+	className,
 	ref,
 	...props
 }: LinkProps) {
 	return (
 		<Link
 			href={href}
-			className={styles.anchor}
+			className={styles.anchor + (className ? ` ${className}` : "")}
 			{...props}
 			data-dark-background={isDarkBackground}
 			style={{

@@ -2,7 +2,7 @@
 
 .footer {
 	background: var(--color-primary);
-	background: radial-gradient(at center bottom, #1f534d, #13332f);
+	// background: radial-gradient(at center bottom, #1f534d, #13332f);
 	color: var(--color-secondary);
 
 	form {
@@ -11,11 +11,9 @@
 			width: 30%;
 			background: var(--color-primary-lighter);
 			color: var(--color-secondary);
-			// border: 1px solid var(--color-primary-lighter);
 			border-radius: var(--border-radius-small);
 			padding: 1rem 2rem;
 			margin-right: 2rem;
-			// font-size: 1rem;
 		}
 		input::placeholder,
 		textarea::placeholder {
@@ -40,10 +38,6 @@
 			ul {
 				margin-top: -2rem;
 			}
-
-			a {
-				// font-size: 1.5rem !important;
-			}
 		}
 
 		.footer__content__contact {
@@ -57,13 +51,14 @@
 				margin-bottom: 1rem;
 			}
 
+			.footer__email {
+				font-size: 1.5rem;
+				margin-block: 1rem;
+			}
+
 			a {
-				position: relative;
 				width: fit-content;
-				left: 0;
-				// font-size: 1.5rem;
 				transition: 0.4s ease-in-out;
-				margin-left: auto;
 
 				&:hover {
 					color: var(--color-tertiary);
@@ -75,20 +70,6 @@
 					background: var(--color-tertiary);
 					transition: 0.4s ease-in-out;
 				}
-			}
-		}
-
-		@media screen and (max-width: $breakpoint-medium) {
-			flex-direction: column;
-			align-items: center;
-
-			.footer__content__nav {
-				margin-bottom: 2rem;
-			}
-
-			.footer__content__contact {
-				text-align: center;
-				margin-left: 0;
 			}
 		}
 	}
@@ -110,6 +91,88 @@
 				span {
 					font-weight: 600;
 				}
+			}
+		}
+	}
+
+	@media screen and (max-width: $breakpoint-medium) {
+		h2 {
+			margin-left: 1rem;
+
+			&::before {
+				width: 12px;
+				left: -20px;
+			}
+		}
+
+		form {
+			input {
+				width: 100%;
+			}
+		}
+
+		.footer__content {
+			flex-direction: column;
+
+			.footer__content__logo {
+				margin-bottom: 2rem;
+			}
+
+			.footer__content__nav {
+				ul {
+					columns: 2;
+					margin: 0;
+
+					li {
+						// margin-top: 1rem;
+						a {
+							margin: 1rem 0;
+							text-align: left;
+							font-size: 13px !important;
+
+							svg {
+								// margin-right: 0.5rem;
+								width: 1.2rem;
+								height: 1.2rem;
+							}
+						}
+					}
+				}
+			}
+
+			.footer__content__contact {
+				width: 100%;
+				text-align: left;
+				margin-left: auto;
+				// margin-bottom: 2rem;
+
+				h3 {
+					margin: 3rem 0 0 0;
+				}
+
+				a:last-child {
+					font-size: 13px !important;
+				}
+			}
+		}
+
+		.footer__bottom {
+			flex-direction: row;
+			// align-items: center;
+			font-size: 12px;
+			text-align: left;
+
+			p {
+				margin-bottom: 0.5rem;
+			}
+
+			div a {
+				margin-top: 2rem;
+				font-size: 12px !important;
+			}
+
+			.footer__bottom__right {
+				text-align: right;
 			}
 		}
 	}
