@@ -107,8 +107,10 @@
 
 	.header__intro {
 		width: var(--page-width);
+		width: 50%;
 		max-width: var(--page-max-width);
-		margin: var(--margin-block) auto;
+		margin-block: var(--margin-block);
+		margin-left: 15%;
 		font-weight: 400;
 		font-size: 2rem;
 	}
@@ -151,6 +153,15 @@
 			width: 100%;
 			font-size: 1.5rem;
 			margin-block: var(--margin-block);
+			margin-left: 0;
+		}
+	}
+
+	@media screen and (max-width: $breakpoint-large) {
+		.header__intro {
+			margin-block: var(--margin-block);
+			margin-left: 0;
+			width: 80%;
 		}
 	}
 }
