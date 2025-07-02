@@ -10,6 +10,7 @@ import Animated from "@/components/AnimatedImage/Animated"
 import { Hero } from "@/components/Header/Hero"
 import Image from "next/image"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
+import EventList from "@/components/EventList/EventList"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -112,144 +113,7 @@ export default function Home() {
 			</section>
 
 			<WaveCss isDarkBackground={false} />
-			<section className='section__fullwidth event__section'>
-				<div className='section__intro' style={{ color: "#C4DED7" }}>
-					<h2>Foredrag og arrangementer</h2>
-					<p className='intro__paragraph'>
-						Anders Karlsen reiser landet rundt for å snakke ærlig om angst,
-						prestasjonspress og det å tørre å være åpen. Se hvor du kan møte ham
-						neste gang.
-					</p>
-				</div>
-
-				<div className='event__list'>
-					<div className='event__item'>
-						<span className='event__date'>8. juli</span>
-
-						<div className='event__container'>
-							<div className='event__title'>
-								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#' isDarkBackground>
-									Meld deg på
-								</Anchor>
-							</div>
-							<div className='event__details'>
-								<div>
-									<h5>18:00 - 20:00</h5>
-									<p>Oslo</p>
-								</div>
-								<div>
-									<p>
-										Sentralen,
-										<br /> Øvre Slottsgate 3
-									</p>
-								</div>
-							</div>
-							<div className='event__image'>
-								<Image
-									src={
-										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-									}
-									alt='Event preview'
-									width={450}
-									height={250}
-								/>
-							</div>
-							<Anchor
-								isDarkBackground
-								className='event__button_mobile'
-								href='#'
-							>
-								Gratis inngang
-							</Anchor>
-						</div>
-					</div>
-
-					<div className='event__item'>
-						<span className='event__date'>15. sept</span>
-
-						<div className='event__container'>
-							<div className='event__title'>
-								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#' isDarkBackground>
-									Meld deg på
-								</Anchor>
-							</div>
-							<div className='event__details'>
-								<div>
-									<h5>18:00 - 20:00</h5>
-									<p>Oslo</p>
-								</div>
-								<div>
-									<p>
-										Sentralen,
-										<br /> Øvre Slottsgate 3
-									</p>
-								</div>
-							</div>
-							<div className='event__image'>
-								<Image
-									src={
-										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-									}
-									alt='Event preview'
-									width={450}
-									height={250}
-								/>
-							</div>
-							<Anchor
-								isDarkBackground
-								className='event__button_mobile'
-								href='#'
-							>
-								Gratis inngang
-							</Anchor>
-						</div>
-					</div>
-
-					<div className='event__item'>
-						<span className='event__date'>5. jan</span>
-
-						<div className='event__container'>
-							<div className='event__title'>
-								<h2>Åpenhet i prestasjonskultur</h2>
-								<Anchor href='#' isDarkBackground>
-									Meld deg på
-								</Anchor>
-							</div>
-							<div className='event__details'>
-								<div>
-									<h5>18:00 - 20:00</h5>
-									<p>Oslo</p>
-								</div>
-								<div>
-									<p>
-										Sentralen,
-										<br /> Øvre Slottsgate 3
-									</p>
-								</div>
-							</div>
-							<div className='event__image'>
-								<Image
-									src={
-										"https://images.pexels.com/photos/2360666/pexels-photo-2360666.jpeg"
-									}
-									alt='Event preview'
-									width={450}
-									height={250}
-								/>
-							</div>
-							<Anchor
-								isDarkBackground
-								className='event__button_mobile'
-								href='#'
-							>
-								Gratis inngang
-							</Anchor>
-						</div>
-					</div>
-				</div>
-			</section>
+			<EventList />
 		</main>
 	)
 }

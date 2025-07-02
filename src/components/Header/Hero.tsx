@@ -20,11 +20,12 @@ export const Hero = () => {
 	const imageContainer = useRef<HTMLDivElement>(null)
 	const imageRef = useRef<HTMLImageElement>(null)
 
-	const tl = gsap.timeline({
-		ease: "power1.out",
-		duration: 0.5,
-	})
+	// const tl = gsap.timeline({
+	// 	ease: "power1.out",
+	// 	duration: 0.5,
+	// })
 
+	let tl
 	const mm = gsap.matchMedia()
 
 	useGSAP(() => {
@@ -42,11 +43,17 @@ export const Hero = () => {
 			type: "lines, words",
 			linesClass: "lineParent",
 		})
-
+		console.clear()
 		// Animations for desktop
 		mm.add(
 			"(min-width: 768px)",
+
 			() => {
+				const tl = gsap.timeline({
+					ease: "power1.out",
+					duration: 0.5,
+				})
+
 				tl.to(
 					imageRef.current,
 					{ y: 0, scale: 1.2, autoAlpha: 1, duration: 2.2 },
@@ -100,59 +107,64 @@ export const Hero = () => {
 		)
 
 		// Animations for mobile
-		mm.add(
-			"(max-width: 767px)",
-			() => {
-				tl.from(
-					split.chars,
-					{
-						opacity: 0,
-						skewY: 5,
-						duration: 0.8,
-						yPercent: 110,
-						stagger: 0.01,
-					}
-					// Adjust the timing as needed
-				)
-					.from(
-						introRef.current,
-						{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
-						"-=.8"
-					)
-					.from(
-						splitPara.words,
-						{
-							opacity: 0,
-							// skewY: 5,
-							duration: 0.7,
-							yPercent: 100,
-							stagger: 0.01,
-						},
-						"-=1" // Adjust the timing as needed
-					)
-					.to(
-						primaryButton.current,
-						{ opacity: 1, autoAlpha: 1, duration: 0.5 },
-						"-=.5"
-					)
-					.to(
-						imageRef.current,
-						{ y: 0, scale: 1.2, autoAlpha: 1, duration: 1.5 },
-						"<"
-					)
-					.to(
-						imageContainer.current,
-						{
-							// clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-							clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-							duration: 1.5,
-							ease: "power2.out",
-						},
-						"<"
-					)
-			},
-			"mobile"
-		)
+		// mm.add(
+		// 	"(max-width: 767px)",
+		// 	() => {
+		// 		const tl = gsap.timeline({
+		// 			ease: "power1.out",
+		// 			duration: 0.5,
+		// 		})
+
+		// 		tl.from(
+		// 			split.chars,
+		// 			{
+		// 				opacity: 0,
+		// 				skewY: 5,
+		// 				duration: 0.8,
+		// 				yPercent: 110,
+		// 				stagger: 0.01,
+		// 			}
+		// 			// Adjust the timing as needed
+		// 		)
+		// 			.from(
+		// 				introRef.current,
+		// 				{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
+		// 				"-=.8"
+		// 			)
+		// 			.from(
+		// 				splitPara.words,
+		// 				{
+		// 					opacity: 0,
+		// 					// skewY: 5,
+		// 					duration: 0.7,
+		// 					yPercent: 100,
+		// 					stagger: 0.01,
+		// 				},
+		// 				"-=1" // Adjust the timing as needed
+		// 			)
+		// 			.to(
+		// 				primaryButton.current,
+		// 				{ opacity: 1, autoAlpha: 1, duration: 0.5 },
+		// 				"-=.5"
+		// 			)
+		// 			.to(
+		// 				imageRef.current,
+		// 				{ y: 0, scale: 1.2, autoAlpha: 1, duration: 1.5 },
+		// 				"<"
+		// 			)
+		// 			.to(
+		// 				imageContainer.current,
+		// 				{
+		// 					// clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+		// 					clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+		// 					duration: 1.5,
+		// 					ease: "power2.out",
+		// 				},
+		// 				"<"
+		// 			)
+		// 	},
+		// 	"mobile"
+		// )
 	}, [imageContainer, imageRef, introRef, h1Ref, primaryButton, tl])
 
 	// useGSAP(() => {
@@ -178,7 +190,7 @@ export const Hero = () => {
 								</p>
 							</div>
 
-							<PrimaryButton ref={primaryButton} href='/historier'>
+							<PrimaryButton ref={primaryButton} href='/start-reisen'>
 								<span>Start din reise</span>
 							</PrimaryButton>
 						</div>
@@ -204,7 +216,7 @@ export const Hero = () => {
 						alene med sin psykiske helse.
 					</p>
 
-					<Anchor href='/historier' isDarkBackground={true}>
+					<Anchor href='/start-reisen' isDarkBackground={true}>
 						Les andres historier
 					</Anchor>
 				</div>

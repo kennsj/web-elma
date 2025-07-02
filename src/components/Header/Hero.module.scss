@@ -88,18 +88,12 @@
 						rgba(18, 51, 47, 65%) 79%
 					);
 
-					// opacity: 0;
-					// border-radius: var(--border-radius-medium);
 					z-index: 1;
-					// overflow: hidden;
 				}
 
 				img {
-					// visibility: hidden;
-					// width: 100%;
 					visibility: hidden;
 					object-fit: cover;
-					// border-radius: var(--border-radius-medium);
 				}
 			}
 		}
@@ -108,12 +102,11 @@
 	.header__intro {
 		width: 70%;
 		max-width: var(--page-max-width);
-		margin: 5rem auto;
+		margin: var(--margin-block) auto;
 
 		p {
 			width: 70%;
 			margin-block: 4rem;
-			// font-size: 2rem;
 			font-weight: 300;
 		}
 	}

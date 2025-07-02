@@ -121,7 +121,7 @@
 
 .embla {
 	width: 90%;
-	margin: 5rem auto;
+	margin: var(--margin-block) auto;
 	--slide-height: 35rem;
 	--slide-spacing: 5rem;
 	--slide-size: 465px;
@@ -152,7 +152,6 @@
 	flex: 0 0 var(--slide-size);
 	min-width: 0;
 	padding-left: var(--slide-spacing);
-	overflow: hidden;
 }
 
 .embla__slide__number {

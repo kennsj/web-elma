@@ -73,7 +73,6 @@
 			background-color: #487062b3;
 			background-color: #d6a58467;
 			animation: wave 40s linear infinite;
-			// animation-play-state: paused;
 		}
 
 		&::after {
@@ -81,20 +80,14 @@
 			background-color: #8299914d;
 			background-color: #9b6d4e69;
 			animation: wave 50s linear infinite;
-			// animation-play-state: paused;
 		}
 	}
-
-	// &:hover .wave::after,
-	// &:hover .wave::before {
-	// 	animation-play-state: paused;
-	// }
 
 	&.button[data-dark-background="true"] {
 		color: var(--color-primary);
 		background: var(--color-secondary);
 		background: var(--color-tertiary);
-		// color: red;
+
 		&:hover {
 			background: var(--color-tertiary);
 			background: var(--color-tertiary-light);
