@@ -8,7 +8,6 @@ import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
 import Animated from "@/components/AnimatedImage/Animated"
 // import { HeaderTwo } from "@/components/Header/HeaderTwo"
 import { Hero } from "@/components/Header/Hero"
-import Image from "next/image"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
 import EventList from "@/components/EventList/EventList"
 
