@@ -4,221 +4,89 @@ import Image from "next/image"
 import styles from "./Hero.module.scss"
 import "@/styles/globals.scss"
 import PrimaryButton from "@/components/Buttons/Primary"
-import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 import WaveCss from "../WaveSeperator/WaveCss"
-import { SplitText } from "gsap/SplitText"
-import Anchor from "@/components/Buttons/Anchor"
-// import { SplitText } from "gsap/all"
 
-export const Hero = () => {
-	const h1Ref = useRef<HTMLHeadingElement>(null)
-	const introRef = useRef<HTMLParagraphElement>(null)
-	const primaryButton = useRef<HTMLAnchorElement>(null)
-	// const headerRef = useRef<HTMLDivElement>(null)
-	const imageContainer = useRef<HTMLDivElement>(null)
-	const imageRef = useRef<HTMLImageElement>(null)
+import { heroAnimation } from "@/animations/heroAnimation"
 
-	// const tl = gsap.timeline({
-	// 	ease: "power1.out",
-	// 	duration: 0.5,
-	// })
+type HeroProps = {
+	title?: React.ReactNode
+	subTitle: React.ReactNode
+	buttonText: string
+	buttonHref?: string
+	intro: React.ReactNode
+	imageSrc: string
+	imageAlt?: string
+	imagePriority?: boolean
+	imageQuality?: number
+	imageSizes?: string
+}
 
-	let tl
-	const mm = gsap.matchMedia()
+export const Hero: React.FC<HeroProps> = ({
+	title,
+	subTitle,
+	buttonText,
+	buttonHref = "",
+	intro,
+	imageSrc,
+	imageAlt = "",
+	imagePriority = true,
+	imageQuality = 100,
+	imageSizes = "(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw",
+}) => {
+	const containerRef = useRef(null)
+	const imageRef = useRef(null)
+	const imageContainer = useRef(null)
+	const headingRef = useRef(null)
+	const paragraphRef = useRef(null)
+	const buttonRef = useRef(null)
+	const introRef = useRef(null)
 
-	useGSAP(() => {
-		gsap.registerPlugin(SplitText)
-
-		new SplitText("h1", { type: "lines", linesClass: "lineChild" })
-		new SplitText("h1", { type: "lines", linesClass: "lineParent" })
-
-		const split = new SplitText(h1Ref.current, {
-			type: "lines, chars",
-			linesClass: "lineParent",
-		})
-
-		const splitPara = new SplitText(introRef.current, {
-			type: "lines, words",
-			linesClass: "lineParent",
-		})
-		console.clear()
-		// Animations for desktop
-		mm.add(
-			"(min-width: 768px)",
-
-			() => {
-				const tl = gsap.timeline({
-					ease: "power1.out",
-					duration: 0.5,
-				})
-
-				tl.to(
-					imageRef.current,
-					{ y: 0, scale: 1.2, autoAlpha: 1, duration: 2.2 },
-					"<"
-				)
-					.to(
-						imageContainer.current,
-						{
-							// clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-							clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-							duration: 2,
-							ease: "power2.out",
-						},
-						"-=1.5"
-					)
-
-					.from(
-						split.chars,
-						{
-							opacity: 0,
-							skewY: 5,
-							duration: 0.8,
-							yPercent: 110,
-							stagger: 0.01,
-						},
-						"-=1.2" // Adjust the timing as needed
-					)
-					.from(
-						splitPara.words,
-						{
-							opacity: 0,
-							// skewY: 5,
-							duration: 0.7,
-							yPercent: 100,
-							stagger: 0.01,
-						},
-						"-=1" // Adjust the timing as needed
-					)
-					.to(
-						primaryButton.current,
-						{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.3 },
-						"-=.9"
-					)
-					.from(
-						introRef.current,
-						{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
-						"-=1"
-					)
-			},
-			"desktop"
-		)
-
-		// Animations for mobile
-		// mm.add(
-		// 	"(max-width: 767px)",
-		// 	() => {
-		// 		const tl = gsap.timeline({
-		// 			ease: "power1.out",
-		// 			duration: 0.5,
-		// 		})
-
-		// 		tl.from(
-		// 			split.chars,
-		// 			{
-		// 				opacity: 0,
-		// 				skewY: 5,
-		// 				duration: 0.8,
-		// 				yPercent: 110,
-		// 				stagger: 0.01,
-		// 			}
-		// 			// Adjust the timing as needed
-		// 		)
-		// 			.from(
-		// 				introRef.current,
-		// 				{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
-		// 				"-=.8"
-		// 			)
-		// 			.from(
-		// 				splitPara.words,
-		// 				{
-		// 					opacity: 0,
-		// 					// skewY: 5,
-		// 					duration: 0.7,
-		// 					yPercent: 100,
-		// 					stagger: 0.01,
-		// 				},
-		// 				"-=1" // Adjust the timing as needed
-		// 			)
-		// 			.to(
-		// 				primaryButton.current,
-		// 				{ opacity: 1, autoAlpha: 1, duration: 0.5 },
-		// 				"-=.5"
-		// 			)
-		// 			.to(
-		// 				imageRef.current,
-		// 				{ y: 0, scale: 1.2, autoAlpha: 1, duration: 1.5 },
-		// 				"<"
-		// 			)
-		// 			.to(
-		// 				imageContainer.current,
-		// 				{
-		// 					// clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-		// 					clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-		// 					duration: 1.5,
-		// 					ease: "power2.out",
-		// 				},
-		// 				"<"
-		// 			)
-		// 	},
-		// 	"mobile"
-		// )
-	}, [imageContainer, imageRef, introRef, h1Ref, primaryButton, tl])
-
-	// useGSAP(() => {
-	// 	gsap.registerPlugin(SplitText)
+	useGSAP(
+		() => {
+			heroAnimation({
+				// container: containerRef.current!,
+				imageRef: imageRef.current!,
+				imageContainer: imageContainer.current!,
+				headingRef: headingRef.current!,
+				paragraphRef: paragraphRef.current!,
+				buttonRef: buttonRef.current!,
+				introRef: introRef.current!,
+			})
+		},
+		{ scope: containerRef }
+	)
 
 	return (
 		<>
-			<header className={styles.header}>
+			<header className={styles.header} ref={containerRef}>
 				<div className={styles.header__container}>
 					<div className={styles.header__content}>
 						<div className={styles.header__title}>
 							<div>
-								<h1 ref={h1Ref}>
-									For deg som vil{" "}
-									<span className={styles.highlighted}>leve</span>
-									, <br />
-									ikke bare <span className={styles.highlighted}>overleve</span>
-								</h1>
-
-								<p ref={introRef}>
-									Hos ELMA møter du forståelse, fellesskap og mot. Det starter
-									med å åpne opp - i ditt tempo. <br />
-								</p>
+								<h1 ref={headingRef}>{title}</h1>
+								<p ref={paragraphRef}>{subTitle}</p>
 							</div>
-
-							<PrimaryButton ref={primaryButton} href='/start-reisen'>
-								<span>Start din reise</span>
+							<PrimaryButton isDarkBackground ref={buttonRef} href={buttonHref}>
+								{buttonText}
 							</PrimaryButton>
 						</div>
-
 						<div className={styles.header__image} ref={imageContainer}>
 							<Image
 								ref={imageRef}
-								src={"/images/anders-moloen.png"}
-								alt={"Mountain"}
-								sizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
+								src={imageSrc}
+								alt={imageAlt}
+								sizes={imageSizes}
 								fill={true}
-								quality={100}
-								priority
+								quality={imageQuality}
+								priority={imagePriority}
 							/>
 						</div>
 					</div>
-				</div>
-				<div className={styles.header__intro}>
-					<p className='intro__paragraph'>
-						Elma ble startet av Anders, som selv har levd med angst i store
-						deler av livet. Gjennom elma ønsker han å skape et trygt rom for
-						deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
-						alene med sin psykiske helse.
+					<p className={styles.header__intro} ref={introRef}>
+						{intro}
 					</p>
-
-					<Anchor href='/start-reisen' isDarkBackground={true}>
-						Les andres historier
-					</Anchor>
 				</div>
 				<WaveCss />
 			</header>

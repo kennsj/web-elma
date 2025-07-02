@@ -58,7 +58,7 @@ export default function Footer() {
 					<h2>
 						Få et lite pust <br />i innboksen
 					</h2>
-					<h2>Åpenhet i prestasjonskultur</h2>
+
 					<p className='intro__paragraph'>
 						Vi sender deg korte, ekte og ærlige oppdateringer fra
 						ELMA-universet. Du får høre om nye videoer, foredrag, historier - og

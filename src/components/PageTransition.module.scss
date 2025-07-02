@@ -1,0 +1,22 @@
+.overlay1,
+.overlay2 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9999;
+	pointer-events: none;
+	transition: none;
+	will-change: transform, opacity, filter;
+}
+
+.overlay1 {
+	transform: translateY(0);
+	background: var(--color-primary-light);
+}
+
+.overlay2 {
+	background: var(--color-primary);
+	transform: translateY(100%);
+}

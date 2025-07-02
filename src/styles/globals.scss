@@ -74,6 +74,19 @@ section {
 	max-width: var(--page-max-width);
 	margin: 0 auto;
 	padding-top: var(--section-padding);
+
+	@media screen and (max-width: $breakpoint-medium) {
+		h2 {
+			font-size: 2rem;
+			line-height: 2rem;
+			margin-left: 1rem;
+
+			&::before {
+				width: 8px;
+				left: -20px;
+			}
+		}
+	}
 }
 
 .section__fullwidth {
@@ -90,6 +103,8 @@ section {
 
 	@media screen and (max-width: $breakpoint-medium) {
 		h2 {
+			font-size: 2rem;
+			line-height: 2rem;
 			margin-left: 1rem;
 
 			&::before {
@@ -108,9 +123,13 @@ section {
 	// font-size: 40px;
 	// font-weight: 700;
 
+	@media screen and (max-width: $breakpoint-large) {
+		width: 70%;
+	}
+
 	@media screen and (max-width: $breakpoint-medium) {
 		width: 90%;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 	}
 }
 
@@ -249,8 +268,9 @@ h4 {
 	background: var(--color-secondary);
 }
 
+.wordClass,
 .lineChild,
 .lineParent {
-	display: inline-block;
+	// display: inline-block;
 	overflow: hidden;
 }

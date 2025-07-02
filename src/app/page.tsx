@@ -1,4 +1,3 @@
-// import { Header } from "@/components/Header/Header"
 import Carousel from "@/components/Carousel/Carousel"
 import "@/styles/globals.scss"
 import { EmblaOptionsType } from "embla-carousel"
@@ -6,7 +5,6 @@ import Anchor from "@/components/Buttons/Anchor"
 
 import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
 import Animated from "@/components/AnimatedImage/Animated"
-// import { HeaderTwo } from "@/components/Header/HeaderTwo"
 import { Hero } from "@/components/Header/Hero"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
 import EventList from "@/components/EventList/EventList"
@@ -23,7 +21,21 @@ const OPTIONS: EmblaOptionsType = {
 export default function Home() {
 	return (
 		<main>
-			<Hero />
+			<Hero
+				title='For deg som vil leve, ikke bare overleve'
+				subTitle='Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo.'
+				buttonText='Start reisen'
+				buttonHref='/start-reisen'
+				imageSrc='/images/anders-moloen.png'
+				imageAlt='Anders Moloen'
+				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
+				imageQuality={100}
+				imagePriority={true}
+				intro='Elma ble startet av Anders, som selv har levd med angst i store
+						deler av livet. Gjennom elma ønsker han å skape et trygt rom for
+						deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
+						alene med sin psykiske helse.'
+			></Hero>
 
 			<section className='section__histories section__fullwidth'>
 				<div className='section__intro'>
