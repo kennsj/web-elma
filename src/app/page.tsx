@@ -8,6 +8,8 @@ import Animated from "@/components/AnimatedImage/Animated"
 import { Hero } from "@/components/Header/Hero"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
 import EventList from "@/components/EventList/EventList"
+import H2 from "@/animations/H2"
+import Paragraph from "@/animations/Paragraph"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -31,27 +33,37 @@ export default function Home() {
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}
 				imagePriority={true}
-				intro='Elma ble startet av Anders, som selv har levd med angst i store
-						deler av livet. Gjennom elma ønsker han å skape et trygt rom for
-						deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
-						alene med sin psykiske helse.'
-			></Hero>
+				// intro='Elma ble startet av Anders, som selv har levd med angst i store
+				// 		deler av livet. Gjennom elma ønsker han å skape et trygt rom for
+				// 		deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
+				// 		alene med sin psykiske helse.'
+			>
+				<Paragraph className={"header__intro"}>
+					Elma ble startet av Anders, som selv har levd med angst i store deler
+					av livet. Gjennom elma ønsker han å skape et trygt rom for deling,
+					forståelse og støtte&mdash;slik at ingen skal måtte stå alene med sin
+					psykiske helse.
+				</Paragraph>
+			</Hero>
 
 			<section className='section__histories section__fullwidth'>
 				<div className='section__intro'>
-					<h2>Ekte stemmer</h2>
-					<p className='intro__paragraph'>
+					{/* <h2>Ekte stemmer</h2> */}
+					<H2 title='Ekte stemmer' />
+
+					<Paragraph className={"intro__paragraph"}>
 						Her deler modige stemmer sine personlige reiser med angst - til
 						ettertanke, gjenkjennelse og håp.
-					</p>
+					</Paragraph>
 				</div>
 
 				<Carousel options={OPTIONS} />
 			</section>
 
 			<section>
+				<H2 title='En tittel som beskriver noe!' />
 				<Animated>
-					<div className='content__spotlight'>
+					<div className='content__spotlight' style={{ marginTop: "10rem" }}>
 						<AnimatedImage
 							src={
 								"https://images.pexels.com/photos/236151/pexels-photo-236151.jpeg"

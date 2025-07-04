@@ -54,7 +54,6 @@ body {
 	background: var(--color-secondary);
 	color: var(--color-primary);
 	font-family: var(--font-atyp), Arial, Helvetica, sans-serif;
-	font-size: clamp(0.95rem, 1vw + 0.25rem, 1rem);
 	overflow-x: hidden;
 }
 
@@ -115,6 +114,16 @@ section {
 	}
 }
 
+.header__intro {
+	width: var(--page-width);
+	width: 50%;
+	max-width: var(--page-max-width);
+	margin-block: var(--margin-block);
+	margin-left: 15%;
+	font-weight: 400;
+	font-size: 2rem;
+}
+
 .intro__paragraph {
 	width: 60%;
 	margin-block: var(--margin-block);
@@ -138,7 +147,14 @@ h1 {
 	/* font-family: var(--font-newsreader); */
 	font-family: var(--font-playfair);
 	font-size: clamp(2.5rem, 5vw + 1rem, 5rem);
+	line-height: clamp(4rem, 8vw + 1rem, 6.5rem);
 	font-weight: 300;
+
+	@media screen and (max-width: $breakpoint-large) {
+		font-size: 4rem;
+		font-size: clamp(2.5rem, 4vw + 0.6rem, 4rem);
+		line-height: clamp(3rem, 5vw + 1rem, 5rem);
+	}
 }
 
 h2 {
@@ -183,6 +199,10 @@ h4 {
 	font-family: var(--font-playfair);
 	font-size: 1.2rem;
 	font-size: clamp(1rem, 1.5vw + 0.2rem, 1.2rem);
+}
+
+p {
+	line-height: 2.6rem;
 }
 
 .content__spotlight {
@@ -269,8 +289,7 @@ h4 {
 }
 
 .wordClass,
-.lineChild,
-.lineParent {
-	// display: inline-block;
+.charClass,
+.lineClass {
 	overflow: hidden;
 }

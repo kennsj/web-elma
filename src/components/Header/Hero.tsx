@@ -15,12 +15,12 @@ type HeroProps = {
 	subTitle: React.ReactNode
 	buttonText: string
 	buttonHref?: string
-	intro: React.ReactNode
 	imageSrc: string
 	imageAlt?: string
 	imagePriority?: boolean
 	imageQuality?: number
 	imageSizes?: string
+	children?: React.ReactNode
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -28,12 +28,12 @@ export const Hero: React.FC<HeroProps> = ({
 	subTitle,
 	buttonText,
 	buttonHref = "",
-	intro,
 	imageSrc,
 	imageAlt = "",
 	imagePriority = true,
 	imageQuality = 100,
 	imageSizes = "(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw",
+	children = null,
 }) => {
 	const containerRef = useRef(null)
 	const imageRef = useRef(null)
@@ -41,7 +41,6 @@ export const Hero: React.FC<HeroProps> = ({
 	const headingRef = useRef(null)
 	const paragraphRef = useRef(null)
 	const buttonRef = useRef(null)
-	const introRef = useRef(null)
 
 	useGSAP(
 		() => {
@@ -52,7 +51,6 @@ export const Hero: React.FC<HeroProps> = ({
 				headingRef: headingRef.current!,
 				paragraphRef: paragraphRef.current!,
 				buttonRef: buttonRef.current!,
-				introRef: introRef.current!,
 			})
 		},
 		{ scope: containerRef }
@@ -84,9 +82,8 @@ export const Hero: React.FC<HeroProps> = ({
 							/>
 						</div>
 					</div>
-					<p className={styles.header__intro} ref={introRef}>
-						{intro}
-					</p>
+
+					{children}
 				</div>
 				<WaveCss />
 			</header>

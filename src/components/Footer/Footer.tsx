@@ -10,6 +10,8 @@ import Image from "next/image"
 import Link from "next/link"
 import Button from "@/components/Buttons/Secondary"
 import Anchor from "@/components/Buttons/Anchor"
+import H2 from "@/animations/H2"
+import Paragraph from "@/animations/Paragraph"
 
 export default function Footer() {
 	const sectionRef = useRef<HTMLElement | null>(null)
@@ -55,15 +57,13 @@ export default function Footer() {
 		<footer className={styles.footer}>
 			<section ref={sectionRef}>
 				<div className={styles.newsletter}>
-					<h2>
-						Få et lite pust <br />i innboksen
-					</h2>
+					<H2 title='Få et lite pust i innboksen' />
 
-					<p className='intro__paragraph'>
+					<Paragraph className='intro__paragraph'>
 						Vi sender deg korte, ekte og ærlige oppdateringer fra
 						ELMA-universet. Du får høre om nye videoer, foredrag, historier - og
 						kanskje noe som treffer akkurat deg.
-					</p>
+					</Paragraph>
 
 					<form
 						action='https://elma.us21.list-manage.com/subscribe/post?u=0c8f1b2d3e4f5a6b7c8d9e0f1&amp;id=2a3b4c5d6e'
@@ -83,6 +83,7 @@ export default function Footer() {
 						<Button
 							type='submit'
 							aria-label='Meld deg på nyhetsbrev'
+							isDarkBackground
 							// className={styles.newsletter__button}
 						>
 							Meld deg på

@@ -7,14 +7,12 @@ export const heroAnimation = ({
 	headingRef,
 	paragraphRef,
 	buttonRef,
-	introRef,
 }: {
 	imageRef: HTMLElement
 	imageContainer: HTMLElement
 	headingRef: HTMLElement
 	paragraphRef: HTMLElement
 	buttonRef: HTMLElement
-	introRef: HTMLElement
 }) => {
 	gsap.registerPlugin(SplitText)
 
@@ -25,8 +23,6 @@ export const heroAnimation = ({
 	const splitPara = new SplitText(paragraphRef, { type: "words" })
 
 	const mm = gsap.matchMedia()
-
-	console.log(headingRef)
 
 	mm.add(
 		{
@@ -69,19 +65,9 @@ export const heroAnimation = ({
 						},
 						"-=0.6"
 					)
-					.from(
-						introRef,
-						{
-							y: 20,
-							opacity: 0,
-							duration: 0.5,
-							stagger: 0.1,
-						},
-						"-=0.6"
-					)
 					.to(
 						buttonRef,
-						{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.3 },
+						{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.7 },
 						"-=0.6"
 					)
 					.to(
@@ -96,14 +82,14 @@ export const heroAnimation = ({
 							duration: 2,
 							ease: "power2.out",
 						},
-						"-=2.4"
+						"-=3s"
 					)
 			} else {
 				tl.to(imageRef, {
 					y: 0,
-					scale: 1.2,
+					scale: 1,
 					autoAlpha: 1,
-					duration: 2.2,
+					duration: 1.5,
 				})
 					.to(
 						imageContainer,
@@ -151,11 +137,6 @@ export const heroAnimation = ({
 						buttonRef,
 						{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.3 },
 						"-=.9"
-					)
-					.from(
-						introRef,
-						{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
-						"-=1"
 					)
 			}
 		}

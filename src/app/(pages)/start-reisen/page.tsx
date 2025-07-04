@@ -31,11 +31,14 @@ export default function Home() {
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}
 				imagePriority={true}
-				intro='Elma ble startet av Anders, som selv har levd med angst i store
-						deler av livet. Gjennom elma ønsker han å skape et trygt rom for
-						deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
-						alene med sin psykiske helse.'
-			></Hero>
+			>
+				<p className={"intro__paragraph"}>
+					Elma ble startet av Anders, som selv har levd med angst i store deler
+					av livet. Gjennom elma ønsker han å skape et trygt rom for deling,
+					forståelse og støtte&mdash;slik at ingen skal måtte stå alene med sin
+					psykiske helse.
+				</p>
+			</Hero>
 
 			<section className='section__histories section__fullwidth'>
 				<div className='section__intro'>

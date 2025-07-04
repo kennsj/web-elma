@@ -3,17 +3,20 @@ import React from "react"
 import Anchor from "../Buttons/Anchor"
 
 import styles from "./Event.module.scss"
+import H2 from "@/animations/H2"
+import Paragraph from "@/animations/Paragraph"
 
 const EventList = () => {
 	return (
 		<section className={`section__fullwidth ${styles.event__section}`}>
 			<div className='section__intro' style={{ color: "#C4DED7" }}>
-				<h2>Foredrag og arrangementer</h2>
-				<p className='intro__paragraph'>
+				<H2 title='Foredrag og arrangementer' />
+
+				<Paragraph className='intro__paragraph'>
 					Anders Karlsen reiser landet rundt for å snakke ærlig om angst,
 					prestasjonspress og det å tørre å være åpen. Se hvor du kan møte ham
 					neste gang.
-				</p>
+				</Paragraph>
 			</div>
 
 			<div className={styles.event__list}>
