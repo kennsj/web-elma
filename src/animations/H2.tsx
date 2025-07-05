@@ -30,7 +30,7 @@ const H2: React.FC<H2Props> = ({ title }) => {
 			trigger: h2Ref.current,
 			start: "top 80%",
 			end: "bottom 20%",
-			markers: true,
+			// markers: true,
 			onEnter: () => {
 				gsap.to(splitTitle.chars, {
 					opacity: 1,
