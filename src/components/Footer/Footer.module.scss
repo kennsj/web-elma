@@ -6,10 +6,6 @@
 	color: var(--color-secondary);
 	overflow-x: hidden;
 
-	> * {
-		outline: 1px solid red;
-	}
-
 	form {
 		input,
 		textarea {
