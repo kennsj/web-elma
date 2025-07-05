@@ -90,9 +90,9 @@ section {
 
 .header__intro {
 	width: var(--page-width);
-	width: 50%;
 	max-width: var(--page-max-width);
 	margin-block: var(--margin-block);
+	width: 60%;
 	margin-left: 15%;
 	font-weight: 400;
 	font-size: 2rem;
@@ -130,6 +130,7 @@ h1 {
 	/* font-family: var(--font-newsreader); */
 	font-family: var(--font-playfair);
 	font-size: clamp(2.5rem, 5vw + 1rem, 5rem);
+	font-size: clamp(2rem, 5vw, 5rem);
 	line-height: clamp(4rem, 8vw + 1rem, 6.5rem);
 	font-weight: 300;
 

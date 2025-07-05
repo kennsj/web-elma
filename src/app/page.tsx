@@ -38,6 +38,7 @@ export default function Home() {
 				// 		deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
 				// 		alene med sin psykiske helse.'
 			>
+				{/* <h1 ref={headingRef}>Hello</h1> */}
 				<Paragraph className={"header__intro"}>
 					Elma ble startet av Anders, som selv har levd med angst i store deler
 					av livet. Gjennom elma ønsker han å skape et trygt rom for deling,

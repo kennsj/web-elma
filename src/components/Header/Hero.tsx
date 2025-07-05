@@ -21,6 +21,7 @@ type HeroProps = {
 	imageQuality?: number
 	imageSizes?: string
 	children?: React.ReactNode
+	ref?: React.RefObject<HTMLDivElement> | null
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -34,6 +35,7 @@ export const Hero: React.FC<HeroProps> = ({
 	imageQuality = 100,
 	imageSizes = "(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw",
 	children = null,
+	ref = null, // Allow passing a ref if needed
 }) => {
 	const containerRef = useRef(null)
 	const imageRef = useRef(null)
