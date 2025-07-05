@@ -31,7 +31,6 @@
 
 		li {
 			display: none;
-			font-size: 1rem;
 			margin-right: 2rem;
 			&:last-child {
 				margin-right: 0;
@@ -56,8 +55,8 @@
 			&::after {
 				content: "";
 				position: relative;
-				width: 15px;
-				height: 2px;
+				width: 13px;
+				height: 1px;
 				background-color: var(--color-secondary);
 				transition: 0.2s ease-in;
 			}

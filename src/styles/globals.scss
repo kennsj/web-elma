@@ -73,19 +73,6 @@ section {
 	max-width: var(--page-max-width);
 	margin: 0 auto;
 	padding-top: var(--section-padding);
-
-	@media screen and (max-width: $breakpoint-medium) {
-		h2 {
-			font-size: 2rem;
-			line-height: 2rem;
-			margin-left: 1rem;
-
-			&::before {
-				width: 8px;
-				left: -20px;
-			}
-		}
-	}
 }
 
 .section__fullwidth {
@@ -99,19 +86,6 @@ section {
 		max-width: var(--page-max-width);
 		margin: 0 auto 5rem auto;
 	}
-
-	@media screen and (max-width: $breakpoint-medium) {
-		h2 {
-			font-size: 2rem;
-			line-height: 2rem;
-			margin-left: 1rem;
-
-			&::before {
-				width: 8px;
-				left: -20px;
-			}
-		}
-	}
 }
 
 .header__intro {
@@ -122,15 +96,24 @@ section {
 	margin-left: 15%;
 	font-weight: 400;
 	font-size: 2rem;
+
+	@media screen and (max-width: $breakpoint-large) {
+		margin-block: var(--margin-block);
+		margin-left: 0;
+		width: 80%;
+	}
+
+	@media screen and (max-width: $breakpoint-medium) {
+		width: 100%;
+		font-size: 1.5rem;
+		line-height: 1.7rem;
+	}
 }
 
 .intro__paragraph {
 	width: 60%;
 	margin-block: var(--margin-block);
 	font-size: 2rem;
-	// font-size: 32px;
-	// font-size: 40px;
-	// font-weight: 700;
 
 	@media screen and (max-width: $breakpoint-large) {
 		width: 70%;
@@ -157,17 +140,35 @@ h1 {
 	}
 }
 
+.h2__wrapper {
+	width: fit-content;
+	position: relative;
+	// outline: 1px solid red;
+
+	.line {
+		position: absolute;
+		// top: 0;
+		bottom: 25%;
+		left: -5%;
+		width: 110%;
+		height: 30%;
+		background-color: var(--color-tertiary-light);
+		background-color: var(--color-tertiary);
+		// z-index: -1;
+	}
+}
+
 h2 {
 	position: relative;
 	font-family: var(--font-playfair);
 	font-size: 3.5rem;
 	font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
 	font-weight: 700;
-	line-height: 4.2rem;
+	line-height: 4.4rem;
 	z-index: 2;
 
 	&::before {
-		content: "";
+		// content: "";
 		position: absolute;
 		width: 12px;
 		height: 150%;
@@ -203,6 +204,10 @@ h4 {
 
 p {
 	line-height: 2.6rem;
+	@media screen and (max-width: $breakpoint-medium) {
+		font-size: 1.2rem;
+		line-height: 1.3rem;
+	}
 }
 
 .content__spotlight {

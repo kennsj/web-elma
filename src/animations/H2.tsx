@@ -30,6 +30,7 @@ const H2: React.FC<H2Props> = ({ title }) => {
 			trigger: h2Ref.current,
 			start: "top 80%",
 			end: "bottom 20%",
+			markers: true,
 			onEnter: () => {
 				gsap.to(splitTitle.chars, {
 					opacity: 1,
@@ -37,7 +38,6 @@ const H2: React.FC<H2Props> = ({ title }) => {
 					skewY: 0,
 					duration: 0.9,
 					ease: "power2.out",
-					// stagger: 0.1,
 					stagger: {
 						amount: 0.1,
 						from: "start",
@@ -47,7 +47,12 @@ const H2: React.FC<H2Props> = ({ title }) => {
 		})
 	}, [h2Ref])
 
-	return <h2 ref={h2Ref}>{title}</h2>
+	return (
+		<div className='h2__wrapper'>
+			{/* <div className='line'></div> */}
+			<h2 ref={h2Ref}>{title}</h2>
+		</div>
+	)
 }
 
 export default H2
