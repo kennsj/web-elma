@@ -48,7 +48,6 @@ export default function Home() {
 
 			<section className='section__histories section__fullwidth'>
 				<div className='section__intro'>
-					{/* <h2>Ekte stemmer</h2> */}
 					<H2 title='Ekte stemmer' />
 
 					<Paragraph className={"intro__paragraph"}>

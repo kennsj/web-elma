@@ -4,6 +4,11 @@
 	background: var(--color-primary);
 	// background: radial-gradient(at center bottom, #1f534d, #13332f);
 	color: var(--color-secondary);
+	overflow-x: hidden;
+
+	> * {
+		outline: 1px solid red;
+	}
 
 	form {
 		input,
