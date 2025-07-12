@@ -14,7 +14,7 @@ const page = () => {
 				title='Ressurser som støtter deg'
 				subTitle='Her finner du verktøy, artikler og ressurser for å håndtere angst'
 				buttonText='Start reisen'
-				buttonHref='/start-reisen'
+				buttonHref='/om'
 				imageSrc='/images/man-mountain-alone.jpg'
 				imageAlt='Anders Moloen'
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'

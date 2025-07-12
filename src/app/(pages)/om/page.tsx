@@ -14,7 +14,7 @@ const page = () => {
 				title='Anders Karlsen er en erfaren foredragsholder og mental helse-aktivist'
 				subTitle='For han handler det om å dele erfaringer og skape forståelse'
 				buttonText='Start reisen'
-				buttonHref='/start-reisen'
+				buttonHref='/om'
 				imageSrc='/images/anders-karlsen-bg.png'
 				imageAlt='Anders Moloen'
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
