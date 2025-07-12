@@ -4,7 +4,6 @@ import Link from "next/link"
 type PrimaryProps = {
 	href: string
 	children: React.ReactNode
-	fontSize?: string
 	isDarkBackground?: boolean
 	ref?: React.Ref<HTMLAnchorElement>
 }
@@ -12,7 +11,6 @@ type PrimaryProps = {
 export default function Primary({
 	href,
 	children,
-	fontSize = "1rem",
 	isDarkBackground = false,
 	ref,
 	...props
@@ -23,9 +21,6 @@ export default function Primary({
 			className={styles.button}
 			{...props}
 			data-dark-background={isDarkBackground}
-			style={{
-				fontSize,
-			}}
 			ref={ref}
 		>
 			<div className={styles.wave}></div>

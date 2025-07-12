@@ -13,7 +13,7 @@
 	color: var(--color-primary);
 	color: var(--color-primary-light);
 	border-radius: var(--border-radius-big);
-	z-index: 1000;
+	z-index: 1001;
 
 	img {
 		width: 170px;
@@ -36,46 +36,6 @@
 				margin-right: 0;
 			}
 		}
-
-		.nav__hamburger {
-			display: flex;
-			flex-direction: column;
-			gap: 0.3rem;
-			align-items: center;
-			justify-content: center;
-			width: 2.5rem;
-			height: 2.5rem;
-			border-radius: var(--border-radius-big);
-			background-color: var(--color-primary);
-			color: var(--color-secondary);
-			cursor: pointer;
-			transition: 0.2s ease-in;
-
-			&::before,
-			&::after {
-				content: "";
-				position: relative;
-				width: 13px;
-				height: 1px;
-				background-color: var(--color-secondary);
-				transition: 0.2s ease-in;
-			}
-
-			&:hover {
-				background-color: var(--color-primary-light);
-				transition: 0.4s ease-out;
-				&::before,
-				&::after {
-					background-color: var(--color-primary);
-					transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-				}
-			}
-
-			svg {
-				width: 1.5rem;
-				height: 1.5rem;
-			}
-		}
 	}
 
 	@media screen and (max-width: $breakpoint-large) {
@@ -83,4 +43,67 @@
 			display: none;
 		}
 	}
+
+	.nav__hamburger {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: var(--border-radius-big);
+		background-color: var(--color-primary);
+		color: var(--color-secondary);
+		cursor: pointer;
+		transition: 0.2s ease-in;
+		transform-origin: center;
+
+		&::before,
+		&::after {
+			content: "";
+			position: relative;
+			width: 13px;
+			height: 1px;
+			background-color: var(--color-secondary);
+			transition: 0.2s ease-in;
+			transform-origin: center;
+		}
+
+		&:hover {
+			background-color: var(--color-primary-light);
+			transition: 0.4s ease-out;
+			&::before,
+			&::after {
+				background-color: var(--color-primary);
+				transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+			}
+		}
+
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+	}
+	.nav__hamburger[data-menu-open="true"] {
+		&::before {
+			transform: rotate(45deg) translate(2px, 1.5px);
+		}
+		&::after {
+			transform: rotate(-45deg) translate(1.5px, -1.5px);
+		}
+	}
+}
+
+.nav__overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: var(--color-tertiary);
+	z-index: 999;
+	transform: translateY(-100%);
+	opacity: 0.2;
+	visibility: hidden;
 }

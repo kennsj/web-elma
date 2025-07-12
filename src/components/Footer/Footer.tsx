@@ -72,14 +72,20 @@ export default function Footer() {
 						noValidate
 						className={styles.newsletter__form}
 					>
-						<input
-							type='email'
-							name='EMAIL'
-							placeholder='Din epost'
-							required
-							aria-label='Din e-postadresse'
-							className={styles.newsletter__input}
-						/>
+						<div>
+							<label htmlFor='EMAIL' className={styles.visuallyHidden}>
+								Din e-postadresse
+							</label>
+							<input
+								type='email'
+								name='EMAIL'
+								placeholder='Din epost'
+								required
+								aria-label='Din e-postadresse'
+								className={styles.newsletter__input}
+							/>
+						</div>
+
 						<Button
 							type='submit'
 							aria-label='Meld deg på nyhetsbrev'

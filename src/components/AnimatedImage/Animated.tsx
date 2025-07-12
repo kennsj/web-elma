@@ -10,20 +10,20 @@ export default function Animated({ children }: { children: React.ReactNode }) {
 	useGSAP(() => {
 		gsap.registerPlugin(ScrollTrigger)
 		gsap.from(ref.current, {
-			ease: "power4.out",
-			delay: 0.1,
+			ease: "power2.out",
+			// delay: 0.1,
 			yPercent: 10,
 			opacity: 0,
 			// skewY: 2,
-			duration: 1.2,
+			duration: 0.8,
 			stagger: 0.1,
-			// scrollTrigger: {
-			// 	trigger: ref.current,
-			// 	start: "top 90%",
-			// 	// end: "top -=100",
-			// 	markers: true,
-			// 	// scrub: true,
-			// },
+			scrollTrigger: {
+				trigger: ref.current,
+				start: "top 90%",
+				// end: "top -=100",
+				// markers: true,
+				// scrub: true,
+			},
 		})
 	}, [ref])
 

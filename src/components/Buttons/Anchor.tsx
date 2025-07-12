@@ -4,7 +4,6 @@ import Link from "next/link"
 type LinkProps = {
 	href: string
 	children: React.ReactNode
-	fontSize?: string
 	isDarkBackground?: boolean
 	ref?: React.Ref<HTMLAnchorElement>
 	className?: string
@@ -13,7 +12,6 @@ type LinkProps = {
 export default function Anchor({
 	href,
 	children,
-	fontSize = "1rem",
 	isDarkBackground = false,
 	className,
 	ref,
@@ -25,9 +23,6 @@ export default function Anchor({
 			className={styles.anchor + (className ? ` ${className}` : "")}
 			{...props}
 			data-dark-background={isDarkBackground}
-			style={{
-				fontSize,
-			}}
 			ref={ref}
 		>
 			{/* <div className={styles.wave}></div> */}

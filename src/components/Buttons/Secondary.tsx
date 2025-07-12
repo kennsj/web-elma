@@ -4,7 +4,6 @@ type ButtonProps = {
 	type: "button" | "submit" | "reset"
 	ariaLabel?: string
 	children: React.ReactNode
-	fontSize?: string
 	isDarkBackground?: boolean
 	ref?: React.Ref<HTMLButtonElement>
 }
@@ -13,7 +12,6 @@ export default function Button({
 	type,
 	ariaLabel,
 	children,
-	fontSize = "1rem",
 	isDarkBackground = false,
 	ref,
 	...props
@@ -25,9 +23,6 @@ export default function Button({
 			aria-label={ariaLabel}
 			{...props}
 			data-dark-background={isDarkBackground}
-			style={{
-				fontSize,
-			}}
 			ref={ref}
 		>
 			<div className={styles.wave}></div>

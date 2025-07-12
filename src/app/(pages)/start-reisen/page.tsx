@@ -26,7 +26,7 @@ export default function Home() {
 				subTitle='Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo.'
 				buttonText='Start reisen'
 				buttonHref='/start-reisen'
-				imageSrc='/images/anders-moloen.png'
+				imageSrc='/images/placeholder1.png'
 				imageAlt='Anders Moloen'
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}

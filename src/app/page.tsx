@@ -47,20 +47,81 @@ export default function Home() {
 			</Hero>
 
 			<section className='section__histories section__fullwidth'>
-				<div className='section__intro'>
-					<H2 title='Ekte stemmer' />
+				<div className='histories__wrapper'>
+					<div className='section__intro'>
+						<H2 title='Ekte stemmer' />
 
-					<Paragraph className={"intro__paragraph"}>
-						Her deler modige stemmer sine personlige reiser med angst - til
-						ettertanke, gjenkjennelse og håp.
-					</Paragraph>
+						<Paragraph className={"intro__paragraph"}>
+							Her deler modige stemmer sine personlige reiser med
+							angst&mdash;til ettertanke, gjenkjennelse og håp.
+						</Paragraph>
+					</div>
+
+					<Carousel options={OPTIONS} />
+					<WaveCss isDarkBackground={false} />
 				</div>
-
-				<Carousel options={OPTIONS} />
 			</section>
 
-			<section>
-				<H2 title='En tittel som beskriver noe!' />
+			<section className='section__about section__fullwidth'>
+				<div className='about__wrapper'>
+					<div className='section__intro'>
+						<H2 title='Mer enn et prosjekt - et pusterom' />
+						{/* <Paragraph className={"intro__paragraph"}>
+							Elma er et fellesskap for alle som lever med angst. Her kan du
+							delta i samtaler, dele erfaringer og finne støtte. Vi tror på
+							kraften av åpenhet og fellesskap, og ønsker å skape et trygt rom
+							for deling og forståelse.
+						</Paragraph> */}
+
+						<Paragraph className={"intro__paragraph"}>
+							Anders vet hvordan det føles når livet kjennes tungt. Han har selv
+							kjent på håpløsheten og mørket — og vet hvor vanskelig det kan
+							være å finne veien tilbake. I dag bruker han sin erfaring til å
+							hjelpe andre, enten du er ungdom, ung voksen, forelder eller
+							fagperson som vil forstå bedre.
+						</Paragraph>
+						<Paragraph className={"intro__paragraph"}>
+							Gjennom sin åpne og direkte formidling når han inn til folk i alle
+							aldre. Det handler ikke om å være perfekt, men om å være ekte – og
+							vise at det er mulig å reise seg, uansett hvor du har vært.
+						</Paragraph>
+					</div>
+
+					<Animated>
+						<div className='content__spotlight'>
+							<AnimatedImage
+								src={"/images/anders-karlsen-bg.png"}
+								alt='Test'
+								className='spotlight__image'
+								width={500}
+								height={500}
+							/>
+							<div className='spotlight__info'>
+								<h4>Om Elma</h4>
+								<Paragraph>
+									En hånd å holde i <br />
+									gjennom livets stormer
+								</Paragraph>
+								<Anchor href='/about'>Les mer</Anchor>
+							</div>
+						</div>
+					</Animated>
+				</div>
+			</section>
+			<WaveCss isDarkBackground={false} rotate />
+
+			<h1
+				style={{
+					textAlign: "center",
+					fontWeight: "bold",
+					fontStyle: "italic",
+					marginBlock: "4rem",
+				}}
+			>
+				Et trygt sted <br /> for urolige sinn
+			</h1>
+
+			{/* <section>
 				<Animated>
 					<div className='content__spotlight' style={{ marginTop: "10rem" }}>
 						<AnimatedImage
@@ -83,7 +144,7 @@ export default function Home() {
 							</Anchor>
 						</div>
 					</div>
-				</Animated>
+				</Animated> 
 
 				<Animated>
 					<div className='content__spotlight'>
@@ -131,8 +192,8 @@ export default function Home() {
 							</Anchor>
 						</div>
 					</div>
-				</Animated>
-			</section>
+				</Animated> 
+			</section> */}
 
 			<WaveCss isDarkBackground={false} />
 			<EventList />

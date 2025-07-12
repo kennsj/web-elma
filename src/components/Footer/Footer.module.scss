@@ -5,20 +5,38 @@
 	// background: radial-gradient(at center bottom, #1f534d, #13332f);
 	color: var(--color-secondary);
 	overflow-x: hidden;
+	padding-block: var(--section-padding);
 
 	form {
-		input,
-		textarea {
-			width: 30%;
-			background: var(--color-primary-lighter);
-			color: var(--color-secondary);
-			border-radius: var(--border-radius-small);
-			padding: 1rem 2rem;
-			margin-right: 2rem;
-		}
-		input::placeholder,
-		textarea::placeholder {
-			color: var(--color-tertiary-light);
+		position: relative;
+
+		div {
+			display: flex;
+			flex-direction: column;
+
+			label {
+				margin-bottom: 1rem;
+				margin-left: 1rem;
+			}
+			input {
+				width: 30%;
+				background: var(--color-primary-lighter);
+				color: var(--color-secondary);
+				border-radius: var(--border-radius-small);
+				padding: 1rem 1rem;
+				margin-right: 2rem;
+				// transition: 0.6s ease-in-out;
+
+				&:focus {
+					background: var(--color-primary);
+					// transition: 0.6s ease-in-out;
+					outline: 1px solid var(--color-tertiary);
+				}
+				&::placeholder {
+					opacity: 0.5;
+					color: var(--color-tertiary-light);
+				}
+			}
 		}
 
 		button {
@@ -120,7 +138,7 @@
 						a {
 							margin: 1rem 0;
 							text-align: left;
-							font-size: 13px !important;
+							font-size: 18px;
 
 							svg {
 								// margin-right: 0.5rem;
@@ -143,7 +161,7 @@
 				}
 
 				a:last-child {
-					font-size: 13px !important;
+					font-size: 14px;
 				}
 			}
 		}
@@ -160,7 +178,7 @@
 
 			div a {
 				margin-top: 2rem;
-				font-size: 12px !important;
+				font-size: 14px;
 			}
 
 			.footer__bottom__right {

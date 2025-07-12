@@ -57,6 +57,10 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	// document.designMode = "on"
+
+	// console.log(document)
+
 	return (
 		<html lang='en'>
 			<body

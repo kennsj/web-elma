@@ -11,6 +11,9 @@ import {
 } from "@/components/Carousel/EmblaCarouselDotButton"
 import Anchor from "../Buttons/Anchor"
 import Link from "next/link"
+import { useGSAP } from "@gsap/react"
+import { useRef } from "react"
+import gsap from "gsap"
 
 type PropType = {
 	options?: EmblaOptionsType
@@ -69,6 +72,15 @@ const slides = [
 		name: "Maria (21)",
 		video: false,
 	},
+	{
+		id: 7,
+		image:
+			"https://images.pexels.com/photos/1161268/pexels-photo-1161268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		quote:
+			"Folk sier jeg virker så rolig. Men det de ikke ser, er hvordan tankene kverner som en storm inni meg - hele tiden.",
+		name: "Maria (21)",
+		video: false,
+	},
 ]
 
 export default function Carousel({ options }: PropType) {
@@ -83,50 +95,52 @@ export default function Carousel({ options }: PropType) {
 				<div className={styles.embla__viewport} ref={emblaRef}>
 					<div className={styles.embla__container}>
 						{slides.map((slide) => {
-							return slide.video ? (
-								<div className={styles.embla__slide} key={slide.id}>
-									<div className={styles.embla__slide__number}>
-										<div
-											className={
-												// `${styles.slide__item}` + " " + `${styles.slide__video}`
-												`${styles.slide__item}` + " " + `${styles.slide__video}`
-											}
-										>
-											<Link href={`/historier/${slide.id}`}>
-												<Image
-													src={slide.image}
-													alt='Anxiety'
-													width={800}
-													height={800}
-												/>
-												<div className={styles.slide__video_overlay}></div>
-												<span>{slide.name}</span>
-											</Link>
-										</div>
-									</div>
-								</div>
-							) : (
-								<div className={styles.embla__slide} key={slide.id}>
-									<div className={styles.embla__slide__number}>
-										<div
-											className={
-												`${styles.slide__item}` + " " + `${styles.slide__text}`
-											}
-										>
-											<Link href={`/historier/${slide.id}`}>
-												<Image
-													src={slide.image}
-													alt='Anxiety'
-													width={800}
-													height={800}
-												/>
-												<p>{slide.quote}</p>
-												<span>{slide.name}</span>
-											</Link>
-										</div>
-									</div>
-								</div>
-							)
+							return <CardItem key={slide.id} slide={slide} />
+
+							// return slide.video ?
+							// (
+							// 	<div className={styles.embla__slide} key={slide.id}>
+							// 		<div className={styles.embla__slide__number}>
+							// 			<div
+							// 				className={
+							// 					`${styles.slide__item}` + " " + `${styles.slide__video}`
+							// 				}
+							// 			>
+							// 				<Link href={`/historier/${slide.id}`}>
+							// 					<Image
+							// 						src={slide.image}
+							// 						alt='Anxiety'
+							// 						width={800}
+							// 						height={800}
+							// 					/>
+							// 					<div className={styles.slide__video_overlay}></div>
+							// 					<span>{slide.name}</span>
+							// 				</Link>
+							// 			</div>
+							// 		</div>
+							// 	</div>
+							// ) : (
+							// 	<div className={styles.embla__slide} key={slide.id}>
+							// 		<div className={styles.embla__slide__number}>
+							// 			<div
+							// 				className={
+							// 					`${styles.slide__item}` + " " + `${styles.slide__text}`
+							// 				}
+							// 			>
+							// 				<Link href={`/historier/${slide.id}`}>
+							// 					<Image
+							// 						src={slide.image}
+							// 						alt='Anxiety'
+							// 						width={800}
+							// 						height={800}
+							// 					/>
+							// 					<p>{slide.quote}</p>
+							// 					<span>{slide.name}</span>
+							// 				</Link>
+							// 			</div>
+							// 		</div>
+							// 	</div>
+							// )
 						})}
 					</div>
 				</div>
@@ -152,5 +166,43 @@ export default function Carousel({ options }: PropType) {
 				</div>
 			</div>
 		</>
+	)
+}
+
+type CardItemProps = {
+	slide: (typeof slides)[number]
+}
+
+function CardItem({ slide }: CardItemProps) {
+	return slide.video ? (
+		<div className={styles.embla__slide}>
+			<div className={styles.embla__slide__number}>
+				<div className={`${styles.slide__item} ${styles.slide__video}`}>
+					<Link href={`/historier/${slide.id}`}>
+						<Image src={slide.image} alt='Anxiety' width={800} height={800} />
+						<div className={styles.slide__video_overlay}></div>
+						<span>
+							{slide.name}
+							{/* {slide.id} */}
+						</span>
+					</Link>
+				</div>
+			</div>
+		</div>
+	) : (
+		<div className={styles.embla__slide}>
+			<div className={styles.embla__slide__number}>
+				<div className={`${styles.slide__item} ${styles.slide__text}`}>
+					<Link href={`/historier/${slide.id}`}>
+						<Image src={slide.image} alt='Anxiety' width={800} height={800} />
+						<p>{slide.quote}</p>
+						<span>
+							{slide.name}
+							{/* {slide.id} */}
+						</span>
+					</Link>
+				</div>
+			</div>
+		</div>
 	)
 }
