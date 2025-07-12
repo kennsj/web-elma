@@ -1,13 +1,13 @@
 "use client"
 
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState } from "react"
 import styles from "./NavBody.module.scss"
 import Image from "next/image"
 import Link from "next/link"
 import gsap from "gsap"
 import SplitText from "gsap/SplitText"
 import { useGSAP } from "@gsap/react"
-import { CustomEase } from "gsap/all"
+
 import { slideIn, slideOut } from "@/components/lib/animations/slide"
 import Anchor from "../Buttons/Anchor"
 
@@ -31,62 +31,31 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 	const imageContainerRef = useRef<HTMLDivElement>(null)
 	const linksRef = useRef<HTMLUListElement>(null)
 
-	const handleMouseEnter = (index: number) => {
-		setActiveIndex(index)
-		gsap.killTweensOf(imageContainerRef.current)
-		gsap.set(imageContainerRef.current, {
-			opacity: 0,
-			scale: 1,
-			display: "block",
-		})
-		gsap.to(imageContainerRef.current, {
-			opacity: 1,
-			scale: 1,
-			duration: 0.8,
-			ease: "power2.out",
-		})
-	}
-
-	const handleMouseLeave = () => {
-		gsap.killTweensOf(imageContainerRef.current)
-		gsap.to(imageContainerRef.current, {
-			opacity: 0,
-			scale: 1,
-			duration: 0.5,
-			ease: "power1.out",
-			onComplete: () => {
-				gsap.set(imageContainerRef.current, { display: "none" })
-				setActiveIndex(null)
-			},
-		})
-	}
-
 	const splitRef = useRef<SplitText | null>(null)
 	const hasAnimatedRef = useRef(false)
 
 	useGSAP(() => {
 		const navBody = navBodyRef.current
 		const links = linksRef.current
-		if (!navBody || !links) return
+		const imageContainer = imageContainerRef.current
+		if (!navBody || !links || !imageContainer) return
 
-		// Kill old tweens
-		gsap.killTweensOf([links, ".char"])
+		gsap.killTweensOf([links, ".char", imageContainer])
 
-		// Animate navBody
 		if (isOpen) {
 			slideIn(navBody, { direction: "top", duration: 0.7, delay: 0.2 })
 			gsap.set(links, { opacity: 1 })
 
-			// Only split and animate if it hasn't already
+			// 👇 FIX: reset hidden image container
+			gsap.set(imageContainer, { display: "block", opacity: 0 })
+
 			if (!hasAnimatedRef.current) {
 				splitRef.current?.revert()
 				splitRef.current = new SplitText(links, {
 					type: "chars",
 					charsClass: "char",
 				})
-
 				const chars = splitRef.current.chars
-
 				gsap.set(chars, { yPercent: 100 })
 				gsap.to(chars, {
 					yPercent: 0,
@@ -101,7 +70,6 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 			}
 		} else {
 			slideOut(navBody, { direction: "top", delay: 0.4 })
-
 			const chars = splitRef.current?.chars
 			if (chars) {
 				gsap.to(chars, {
@@ -122,9 +90,41 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 		}
 	}, [isOpen])
 
+	const handleMouseEnter = (index: number) => {
+		if (activeIndex === index) return
+		setActiveIndex(index)
+
+		const imageContainer = imageContainerRef.current
+		if (!imageContainer) return
+
+		gsap.killTweensOf(imageContainer)
+		gsap.to(imageContainer, {
+			opacity: 1,
+			scale: 1,
+			duration: 0.6,
+			ease: "power2.out",
+		})
+	}
+
+	const handleMouseLeave = () => {
+		const imageContainer = imageContainerRef.current
+		if (!imageContainer) return
+
+		gsap.killTweensOf(imageContainer)
+		gsap.to(imageContainer, {
+			opacity: 0,
+			scale: 0.95,
+			duration: 0.4,
+			ease: "power1.out",
+			onComplete: () => {
+				setActiveIndex(null) // let React hide the <Image>
+			},
+		})
+	}
+
 	return (
 		<div className={styles.nav_body__container} ref={navBodyRef}>
-			<div className={styles.nav_body__top} onMouseLeave={handleMouseLeave}>
+			<div className={styles.nav_body__top}>
 				<div className={styles.nav_body__content}>
 					<div className={styles.nav_body__links}>
 						<ul ref={linksRef}>
@@ -144,6 +144,7 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 					<div className={styles.nav_body__image} ref={imageContainerRef}>
 						{activeIndex !== null && (
 							<Image
+								key={navItems[activeIndex].imgSrc} // 🔑 important!
 								src={navItems[activeIndex].imgSrc}
 								alt='preview'
 								fill
@@ -161,8 +162,6 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 						<Anchor isDarkBackground href='#'>
 							Booking av elma
 						</Anchor>
-						{/* <Link href='mailto:hei@elma.no'>hei@elma.no</Link>
-						<Link href='#'>Booking av elma</Link> */}
 					</div>
 				</div>
 				<div>
