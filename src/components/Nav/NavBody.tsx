@@ -37,6 +37,7 @@ const NavBody: React.FC<Props> = ({
 	const navBodyRef = useRef<HTMLDivElement>(null)
 	const imageContainerRef = useRef<HTMLDivElement>(null)
 	const linksRef = useRef<HTMLUListElement>(null)
+	const hasPreloadedRef = useRef(false)
 
 	const handleMouseEnter = (index: number) => {
 		if (!imageContainerRef.current) return
@@ -130,7 +131,15 @@ const NavBody: React.FC<Props> = ({
 
 			setActiveIndex(null)
 		}
-	}, [isOpen])
+
+		if (!hasPreloadedRef.current && typeof window !== "undefined") {
+			navItems.forEach((item) => {
+				const img = new window.Image()
+				img.src = item.imgSrc
+			})
+			hasPreloadedRef.current = true
+		}
+	}, [navItems, isOpen])
 
 	const router = useRouter()
 	const [isNavigating, setIsNavigating] = useState(false)

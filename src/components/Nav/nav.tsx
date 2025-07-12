@@ -48,6 +48,8 @@ export const Nav = () => {
 		},
 	]
 
+	// Preload images for navItems
+
 	gsap.registerPlugin(CustomEase)
 	const overlayRef = useRef<HTMLDivElement>(null)
 
@@ -70,35 +72,6 @@ export const Nav = () => {
 			})
 		}
 	}, [isOpen])
-
-	// useGSAP(() => {
-	// 	const overlay = overlayRef.current
-
-	// 	if (!overlay) return
-	// 	gsap.killTweensOf(overlay)
-
-	// 	if (isOpen) {
-	// 		gsap.set(overlay, { opacity: 0.5, visibility: "visible" })
-	// 		gsap.to(overlay, {
-	// 			y: 0,
-	// 			duration: 0.9,
-	// 			ease: CustomEase.create("custom", "0.76, 0, 0.24, 1"),
-	// 		})
-	// 	} else {
-	// 		gsap.to(overlay, {
-	// 			y: "-100%",
-	// 			duration: 0.9,
-	// 			delay: 0.6,
-	// 			ease: CustomEase.create("custom", "0.76, 0, 0.24, 1"),
-	// 			// ease: "power2.inOut",
-	// 			onComplete: () => {
-	// 				gsap.set(overlay, { opacity: 0, visibility: "hidden" })
-	// 			},
-	// 		})
-	// 	}
-	// }, [isOpen])
-
-	console.log(isOpen)
 
 	return (
 		<>
