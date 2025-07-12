@@ -32,6 +32,7 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 	const linksRef = useRef<HTMLUListElement>(null)
 
 	const handleMouseEnter = (index: number) => {
+		if (!imageContainerRef.current) return
 		setActiveIndex(index)
 		gsap.killTweensOf(imageContainerRef.current)
 		gsap.set(imageContainerRef.current, {
@@ -69,24 +70,22 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 		const links = linksRef.current
 		if (!navBody || !links) return
 
-		// Kill old tweens
-		gsap.killTweensOf([links, ".char"])
+		const textElements = navBody.querySelectorAll(".split-text")
+		gsap.killTweensOf([textElements, ".char"])
 
-		// Animate navBody
 		if (isOpen) {
 			slideIn(navBody, { direction: "top", duration: 0.7, delay: 0.2 })
 			gsap.set(links, { opacity: 1 })
 
-			// Only split and animate if it hasn't already
 			if (!hasAnimatedRef.current) {
 				splitRef.current?.revert()
-				splitRef.current = new SplitText(links, {
+
+				splitRef.current = new SplitText(textElements, {
 					type: "chars",
 					charsClass: "char",
 				})
 
 				const chars = splitRef.current.chars
-
 				gsap.set(chars, { yPercent: 100 })
 				gsap.to(chars, {
 					yPercent: 0,
@@ -119,6 +118,8 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 				gsap.set(links, { opacity: 0 })
 				hasAnimatedRef.current = false
 			}
+
+			setActiveIndex(null)
 		}
 	}, [isOpen])
 
@@ -135,7 +136,7 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 									onMouseLeave={handleMouseLeave}
 								>
 									<Link href={item.href}>
-										<span>{item.label}</span>
+										<span className='split-text'>{item.label}</span>
 									</Link>
 								</li>
 							))}
@@ -153,22 +154,26 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 					</div>
 				</div>
 				<div className={styles.nav_body__footer}>
-					<div>
+					<div className={styles.nav_body__footer__left}>
 						<h3>Kontakt</h3>
 						<Link className={styles.footer__email} href='mailto:hei@elma.no'>
 							hei@elma.no
 						</Link>
-						<Anchor isDarkBackground href='#'>
+						<Anchor
+							className={styles.nav_footer__email}
+							isDarkBackground
+							href='#'
+						>
 							Booking av elma
 						</Anchor>
 						{/* <Link href='mailto:hei@elma.no'>hei@elma.no</Link>
 						<Link href='#'>Booking av elma</Link> */}
 					</div>
-				</div>
-				<div>
-					<Anchor isDarkBackground href='/om'>
-						Personvern og vilkår
-					</Anchor>
+					<div>
+						<Anchor isDarkBackground href='/om'>
+							Personvern og vilkår
+						</Anchor>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -11,9 +11,6 @@ import {
 } from "@/components/Carousel/EmblaCarouselDotButton"
 import Anchor from "../Buttons/Anchor"
 import Link from "next/link"
-import { useGSAP } from "@gsap/react"
-import { useRef } from "react"
-import gsap from "gsap"
 
 type PropType = {
 	options?: EmblaOptionsType
