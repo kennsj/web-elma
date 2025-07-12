@@ -9,6 +9,7 @@ import SplitText from "gsap/SplitText"
 import { useGSAP } from "@gsap/react"
 import { slideIn, slideOut } from "@/components/lib/animations/slide"
 import Anchor from "../Buttons/Anchor"
+import { useRouter } from "next/navigation"
 
 gsap.registerPlugin(SplitText)
 
@@ -22,9 +23,16 @@ type NavItem = {
 type Props = {
 	navItems: NavItem[]
 	isOpen: boolean
+	overlayRef: React.RefObject<HTMLDivElement | null>
+	setIsOpen: (isOpen: boolean) => void
 }
 
-const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
+const NavBody: React.FC<Props> = ({
+	navItems,
+	isOpen,
+	overlayRef,
+	setIsOpen,
+}) => {
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
 	const navBodyRef = useRef<HTMLDivElement>(null)
 	const imageContainerRef = useRef<HTMLDivElement>(null)
@@ -97,6 +105,8 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 					},
 				})
 			}
+			// Reset isNavigating when menu opens
+			setIsNavigating(false)
 		} else {
 			slideOut(navBody, { direction: "top", delay: 0.4 })
 
@@ -122,6 +132,47 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 		}
 	}, [isOpen])
 
+	const router = useRouter()
+	const [isNavigating, setIsNavigating] = useState(false)
+
+	const handleLinkClick = async (e: React.MouseEvent, href: string) => {
+		e.preventDefault()
+
+		if (isNavigating) return
+		setIsNavigating(true)
+
+		const tl = gsap.timeline()
+
+		// Animate overlay and menu out in parallel
+		tl.to(
+			overlayRef.current,
+			{
+				opacity: 0,
+				duration: 0.4,
+				ease: "power2.inOut",
+			},
+			0
+		) // Start at time 0
+
+		tl.to(
+			navBodyRef.current,
+			{
+				y: -50,
+				opacity: 0,
+				duration: 0.4,
+				ease: "power2.inOut",
+			},
+			0
+		) // Also at time 0
+
+		// Wait for animation to complete before routing
+		tl.call(() => {
+			router.push(href)
+		})
+
+		setIsOpen(false)
+	}
+
 	return (
 		<div className={styles.nav_body__container} ref={navBodyRef}>
 			<div className={styles.nav_body__top} onMouseLeave={handleMouseLeave}>
@@ -134,9 +185,15 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 									onMouseEnter={() => handleMouseEnter(index)}
 									onMouseLeave={handleMouseLeave}
 								>
-									<Link href={item.href}>
+									{/* <Link href={item.href}>
 										<span className='split-text'>{item.label}</span>
-									</Link>
+									</Link> */}
+									<a
+										href={item.href}
+										onClick={(e) => handleLinkClick(e, item.href)}
+									>
+										<span className='split-text'>{item.label}</span>
+									</a>
 								</li>
 							))}
 						</ul>
@@ -155,13 +212,18 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 				<div className={styles.nav_body__footer}>
 					<div className={styles.nav_body__footer__left}>
 						<h3>Kontakt</h3>
-						<Link className={styles.footer__email} href='mailto:hei@elma.no'>
+						<Link
+							className={styles.footer__email}
+							href='mailto:hei@elma.no'
+							onClick={() => setIsOpen(false)}
+						>
 							hei@elma.no
 						</Link>
 						<Anchor
 							className={styles.nav_footer__email}
 							isDarkBackground
 							href='#'
+							onClick={() => setIsOpen(false)}
 						>
 							Booking av elma
 						</Anchor>
@@ -169,7 +231,11 @@ const NavBody: React.FC<Props> = ({ navItems, isOpen }) => {
 						<Link href='#'>Booking av elma</Link> */}
 					</div>
 					<div>
-						<Anchor isDarkBackground href='/om'>
+						<Anchor
+							isDarkBackground
+							href='/om'
+							onClick={() => setIsOpen(false)}
+						>
 							Personvern og vilkår
 						</Anchor>
 					</div>

@@ -7,6 +7,7 @@ type LinkProps = {
 	isDarkBackground?: boolean
 	ref?: React.Ref<HTMLAnchorElement>
 	className?: string
+	onClick?: () => void
 }
 
 export default function Anchor({

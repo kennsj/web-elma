@@ -32,7 +32,7 @@ export const heroAnimation = ({
 		(context) => {
 			const { isMobile } = context.conditions!
 
-			const tl = gsap.timeline()
+			const tl = gsap.timeline({ delay: 0.7 })
 
 			if (isMobile) {
 				tl.from(splitTitle.chars, {

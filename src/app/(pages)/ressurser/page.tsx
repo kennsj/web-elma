@@ -11,11 +11,11 @@ const page = () => {
 	return (
 		<>
 			<Hero
-				title='Anders Karlsen er en erfaren foredragsholder og mental helse-aktivist'
-				subTitle='For han handler det om å dele erfaringer og skape forståelse'
+				title='Ressurser som støtter deg'
+				subTitle='Her finner du verktøy, artikler og ressurser for å håndtere angst'
 				buttonText='Start reisen'
 				buttonHref='/start-reisen'
-				imageSrc='/images/anders-karlsen-bg.png'
+				imageSrc='/images/man-mountain-alone.jpg'
 				imageAlt='Anders Moloen'
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}

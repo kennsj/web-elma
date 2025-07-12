@@ -23,27 +23,27 @@ export const Nav = () => {
 	const navItems = [
 		{ href: "/", label: "Hjem", imgSrc: "/images/anders-moloen.png", index: 0 },
 		{
-			href: "/about",
-			label: "Om",
+			href: "/om",
+			label: "Om elma",
 			imgSrc: "/images/anders-karlsen-bg.png",
 			index: 1,
 		},
 		{
-			href: "/resources",
+			href: "/ressurser",
 			label: "Ressurser",
 			imgSrc: "/images/man-mountain-alone.jpg",
 			index: 2,
 		},
 		{
-			href: "/talks",
+			href: "/foredrag",
 			label: "Foredrag",
 			imgSrc: "/images/person-aurora.webp",
 			index: 3,
 		},
 		{
-			href: "/contact",
+			href: "/kontakt",
 			label: "Kontakt",
-			imgSrc: "/images/man-mountain-alone.jpg",
+			imgSrc: "/images/placeholder1.png",
 			index: 4,
 		},
 	]
@@ -110,6 +110,7 @@ export const Nav = () => {
 							alt='elma logo'
 							width={150}
 							height={150}
+							onClick={() => setIsOpen(false)}
 						/>
 					</Link>
 				</div>
@@ -158,7 +159,12 @@ export const Nav = () => {
 			</nav>
 			{/* <NavBody navItems={navItems} /> */}
 			<div ref={overlayRef} className={styles.nav__overlay}></div>
-			<NavBody navItems={navItems} isOpen={isOpen} />
+			<NavBody
+				navItems={navItems}
+				isOpen={isOpen}
+				setIsOpen={setIsOpen}
+				overlayRef={overlayRef}
+			/>
 		</>
 	)
 }
