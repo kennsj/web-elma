@@ -7,7 +7,6 @@ import Link from "next/link"
 import gsap from "gsap"
 import SplitText from "gsap/SplitText"
 import { useGSAP } from "@gsap/react"
-import { CustomEase } from "gsap/all"
 import { slideIn, slideOut } from "@/components/lib/animations/slide"
 import Anchor from "../Buttons/Anchor"
 
