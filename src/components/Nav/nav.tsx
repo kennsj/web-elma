@@ -4,7 +4,7 @@ import Image from "next/image"
 import styles from "./Nav.module.scss"
 import Link from "next/link"
 import NavBody from "./NavBody"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { CustomEase } from "gsap/all"
@@ -13,7 +13,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export const Nav = () => {
 	const [isOpen, setIsOpen] = useState(false)
-	const [navScrollY, setNavScrollY] = useState(0)
 	const navRef = useRef<HTMLDivElement>(null)
 
 	const navItems = [
@@ -65,23 +64,36 @@ export const Nav = () => {
 				setOptions: { opacity: 0, visibility: "hidden" },
 			})
 		}
+	}, [isOpen])
 
-		const showAnim = gsap
-			.from(navRef.current, { yPercent: -100, paused: true, duration: 0.4 })
-			.progress(1)
+	useGSAP(() => {
+		const nav = navRef.current
+		if (!nav) return
 
-		ScrollTrigger.create({
-			start: "top top",
-			end: "max",
-			onUpdate: (self) => {
-				if (self.direction === -1) {
-					showAnim.play()
-				} else {
-					showAnim.reverse()
-				}
-			},
-		})
-	}, [isOpen, navScrollY])
+		const handleScroll = () => {
+			const footer = document.querySelector("footer")
+			if (!footer) return
+
+			const navRect = nav.getBoundingClientRect()
+			const footerRect = footer.getBoundingClientRect()
+
+			// If nav bottom is below footer top, hide nav
+			if (navRect.bottom > footerRect.top) {
+				nav.style.opacity = "0"
+				nav.style.translate = "0 -10%"
+				nav.style.transition = " 0.3s ease-in-out"
+				nav.style.pointerEvents = "none"
+			} else {
+				nav.style.opacity = "1"
+				nav.style.translate = "0 0"
+				nav.style.transition = " 0.3s ease-in-out"
+				nav.style.pointerEvents = "auto"
+			}
+		}
+
+		window.addEventListener("scroll", handleScroll)
+		return () => window.removeEventListener("scroll", handleScroll)
+	}, [])
 
 	return (
 		<>
