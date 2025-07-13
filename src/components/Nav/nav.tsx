@@ -9,7 +9,6 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { CustomEase } from "gsap/all"
 import { slideIn, slideOut } from "@/components/lib/animations/slide"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export const Nav = () => {
 	const [isOpen, setIsOpen] = useState(false)
