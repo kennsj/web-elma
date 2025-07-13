@@ -4,14 +4,17 @@ import Image from "next/image"
 import styles from "./Nav.module.scss"
 import Link from "next/link"
 import NavBody from "./NavBody"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { CustomEase } from "gsap/all"
 import { slideIn, slideOut } from "@/components/lib/animations/slide"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 export const Nav = () => {
 	const [isOpen, setIsOpen] = useState(false)
+	const [navScrollY, setNavScrollY] = useState(0)
+	const navRef = useRef<HTMLDivElement>(null)
 
 	const navItems = [
 		{ href: "/", label: "Hjem", imgSrc: "/images/anders-moloen.png", index: 0 },
@@ -62,35 +65,57 @@ export const Nav = () => {
 				setOptions: { opacity: 0, visibility: "hidden" },
 			})
 		}
-	}, [isOpen])
+
+		const showAnim = gsap
+			.from(navRef.current, { yPercent: -100, paused: true, duration: 0.4 })
+			.progress(1)
+
+		ScrollTrigger.create({
+			start: "top top",
+			end: "max",
+			onUpdate: (self) => {
+				if (self.direction === -1) {
+					showAnim.play()
+				} else {
+					showAnim.reverse()
+				}
+			},
+		})
+	}, [isOpen, navScrollY])
 
 	return (
 		<>
-			<nav className={styles.nav}>
-				<div>
-					<Link href='/'>
-						<Image
-							src='/images/elma-logo-white.svg'
-							alt='elma logo'
-							width={150}
-							height={150}
-							onClick={() => setIsOpen(false)}
-						/>
-					</Link>
+			<nav ref={navRef} className={styles.nav}>
+				<div className={styles.nav__wrapper}>
+					<div>
+						<Link href='/'>
+							<Image
+								src='/images/elma-logo-white.svg'
+								alt='elma logo'
+								width={150}
+								height={150}
+								onClick={() => setIsOpen(false)}
+							/>
+						</Link>
+					</div>
+					<button
+						className={styles.nav__hamburger}
+						onClick={() => setIsOpen(!isOpen)}
+						datatype='hamburger'
+						aria-label='Toggle navigation'
+						aria-expanded={isOpen}
+						aria-controls='nav-menu'
+						aria-haspopup='true'
+						aria-pressed={isOpen}
+						data-menu-open={isOpen}
+					></button>
 				</div>
-				<button
-					className={styles.nav__hamburger}
-					onClick={() => setIsOpen(!isOpen)}
-					datatype='hamburger'
-					aria-label='Toggle navigation'
-					aria-expanded={isOpen}
-					aria-controls='nav-menu'
-					aria-haspopup='true'
-					aria-pressed={isOpen}
-					data-menu-open={isOpen}
-				></button>
 			</nav>
-			<div ref={overlayRef} className={styles.nav__overlay}></div>
+			<div
+				ref={overlayRef}
+				className={styles.nav__overlay}
+				onClick={() => setIsOpen(false)}
+			></div>
 			<NavBody
 				navItems={navItems}
 				isOpen={isOpen}

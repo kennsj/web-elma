@@ -143,7 +143,6 @@
 						a {
 							margin: 1rem 0;
 							text-align: left;
-							font-size: 18px;
 
 							svg {
 								// margin-right: 0.5rem;
@@ -173,7 +172,6 @@
 
 		.footer__bottom {
 			flex-direction: row;
-			// align-items: center;
 			font-size: 12px;
 			text-align: left;
 
@@ -182,8 +180,8 @@
 			}
 
 			div a {
-				margin-top: 2rem;
-				font-size: 14px;
+				margin-top: 1rem;
+				font-size: 12px;
 			}
 
 			.footer__bottom__right {

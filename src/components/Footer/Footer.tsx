@@ -10,8 +10,8 @@ import Image from "next/image"
 import Link from "next/link"
 import Button from "@/components/Buttons/Secondary"
 import Anchor from "@/components/Buttons/Anchor"
-import H2 from "@/animations/H2"
-import Paragraph from "@/animations/Paragraph"
+import H2 from "@/components/lib/animations/H2"
+import Paragraph from "@/components/lib/animations/Paragraph"
 
 export default function Footer() {
 	const sectionRef = useRef<HTMLElement | null>(null)

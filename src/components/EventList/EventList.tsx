@@ -3,8 +3,8 @@ import React from "react"
 import Anchor from "../Buttons/Anchor"
 
 import styles from "./Event.module.scss"
-import H2 from "@/animations/H2"
-import Paragraph from "@/animations/Paragraph"
+import H2 from "@/components/lib/animations/H2"
+import Paragraph from "@/components/lib/animations/Paragraph"
 
 const EventList = () => {
 	return (

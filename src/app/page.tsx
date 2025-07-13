@@ -8,8 +8,8 @@ import Animated from "@/components/AnimatedImage/Animated"
 import { Hero } from "@/components/Header/Hero"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
 import EventList from "@/components/EventList/EventList"
-import H2 from "@/animations/H2"
-import Paragraph from "@/animations/Paragraph"
+import H2 from "@/components/lib/animations/H2"
+import Paragraph from "@/components/lib/animations/Paragraph"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -75,15 +75,10 @@ export default function Home() {
 
 						<Paragraph className={"intro__paragraph"}>
 							Anders vet hvordan det føles når livet kjennes tungt. Han har selv
-							kjent på håpløsheten og mørket — og vet hvor vanskelig det kan
-							være å finne veien tilbake. I dag bruker han sin erfaring til å
-							hjelpe andre, enten du er ungdom, ung voksen, forelder eller
-							fagperson som vil forstå bedre.
-						</Paragraph>
-						<Paragraph className={"intro__paragraph"}>
-							Gjennom sin åpne og direkte formidling når han inn til folk i alle
-							aldre. Det handler ikke om å være perfekt, men om å være ekte – og
-							vise at det er mulig å reise seg, uansett hvor du har vært.
+							kjent på håpløsheten og mørket, og vet hvor vanskelig det kan være
+							å finne veien tilbake. I dag bruker han sin erfaring til å hjelpe
+							andre, enten du er ungdom, ung voksen, forelder eller fagperson
+							som vil forstå bedre.
 						</Paragraph>
 					</div>
 

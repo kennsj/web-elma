@@ -1,5 +1,5 @@
-import H2 from "@/animations/H2"
-import Paragraph from "@/animations/Paragraph"
+import H2 from "@/components/lib/animations/H2"
+import Paragraph from "@/components/lib/animations/Paragraph"
 import Animated from "@/components/AnimatedImage/Animated"
 import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
 import Anchor from "@/components/Buttons/Anchor"
@@ -94,7 +94,6 @@ const page = () => {
 					</Animated>
 				</div>
 			</section>
-			<WaveCss isDarkBackground={false} rotate />
 		</>
 	)
 }

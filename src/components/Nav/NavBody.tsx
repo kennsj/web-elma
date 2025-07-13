@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect, useCallback } from "react"
 import styles from "./NavBody.module.scss"
 import Image from "next/image"
 import Link from "next/link"
@@ -33,46 +33,49 @@ const NavBody: React.FC<Props> = ({
 	overlayRef,
 	setIsOpen,
 }) => {
-	const [activeIndex, setActiveIndex] = useState<number | null>(null)
-	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
 	const navBodyRef = useRef<HTMLDivElement>(null)
 	const imageContainerRef = useRef<HTMLDivElement>(null)
 	const linksRef = useRef<HTMLUListElement>(null)
 	const footerRef = useRef<HTMLDivElement>(null)
 
-	const isDesktop = () => {
+	const [activeIndex, setActiveIndex] = useState<number | null>(null)
+	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+	const [isNavigating, setIsNavigating] = useState(false)
+	const hasAnimatedRef = useRef(false)
+	const splitRef = useRef<SplitText | null>(null)
+
+	const router = useRouter()
+
+	const isDesktop = useCallback(() => {
 		if (typeof window === "undefined") return false
 		return window.matchMedia("(hover: hover) and (pointer: fine)").matches
-	}
+	}, [])
 
-	const handleMouseEnter = (index: number) => {
+	const handleMouseEnter = useCallback(
+		(index: number) => {
+			if (!isDesktop() || isNavigating || !imageContainerRef.current) return
+			setHoveredIndex(index)
+			setActiveIndex(index)
+
+			gsap.killTweensOf(imageContainerRef.current)
+			gsap.set(imageContainerRef.current, {
+				opacity: 0,
+				scale: 1,
+				display: "block",
+			})
+			gsap.to(imageContainerRef.current, {
+				opacity: 1,
+				scale: 1,
+				duration: 0.8,
+				ease: "power2.out",
+			})
+		},
+		[isDesktop, isNavigating]
+	)
+
+	const handleMouseLeave = useCallback(() => {
 		if (!isDesktop() || isNavigating || !imageContainerRef.current) return
-
-		if (isNavigating) return
-		if (!imageContainerRef.current) return
-
-		setHoveredIndex(index)
-		setActiveIndex(index)
-
-		gsap.killTweensOf(imageContainerRef.current)
-		gsap.set(imageContainerRef.current, {
-			opacity: 0,
-			scale: 1,
-			display: "block",
-		})
-		gsap.to(imageContainerRef.current, {
-			opacity: 1,
-			scale: 1,
-			duration: 0.8,
-			ease: "power2.out",
-		})
-	}
-
-	const handleMouseLeave = () => {
-		if (!isDesktop() || isNavigating) return
-
-		setHoveredIndex(null) // 👈 reset hover blur state
+		setHoveredIndex(null)
 
 		gsap.killTweensOf(imageContainerRef.current)
 		gsap.to(imageContainerRef.current, {
@@ -85,16 +88,12 @@ const NavBody: React.FC<Props> = ({
 				setActiveIndex(null)
 			},
 		})
-	}
-
-	const splitRef = useRef<SplitText | null>(null)
-	const hasAnimatedRef = useRef(false)
+	}, [isDesktop, isNavigating])
 
 	useGSAP(() => {
 		const navBody = navBodyRef.current
 		const links = linksRef.current
 		const footer = footerRef.current
-
 		if (!navBody || !links) return
 
 		const textElements = navBody.querySelectorAll(".split-text")
@@ -106,7 +105,6 @@ const NavBody: React.FC<Props> = ({
 
 			if (!hasAnimatedRef.current) {
 				splitRef.current?.revert()
-
 				splitRef.current = new SplitText(textElements, {
 					type: "chars",
 					charsClass: "char",
@@ -129,16 +127,9 @@ const NavBody: React.FC<Props> = ({
 			gsap.fromTo(
 				footer,
 				{ y: 40, opacity: 0 },
-				{
-					y: 0,
-					opacity: 1,
-					duration: 0.6,
-					ease: "power2.out",
-					delay: 0.9,
-				}
+				{ y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.9 }
 			)
 
-			// Reset isNavigating when menu opens
 			setIsNavigating(false)
 		} else {
 			slideOut(navBody, { direction: "top", delay: 0.4 })
@@ -161,8 +152,6 @@ const NavBody: React.FC<Props> = ({
 				hasAnimatedRef.current = false
 			}
 
-			setActiveIndex(null)
-
 			gsap.to(footer, {
 				y: 40,
 				opacity: 0,
@@ -170,49 +159,48 @@ const NavBody: React.FC<Props> = ({
 				ease: "power2.inOut",
 			})
 		}
-	}, [navItems, isOpen])
-
-	const router = useRouter()
-	const [isNavigating, setIsNavigating] = useState(false)
+	}, [isOpen])
 
 	const handleLinkClick = async (e: React.MouseEvent, href: string) => {
 		e.preventDefault()
-
 		if (isNavigating) return
 		setIsNavigating(true)
 
 		const tl = gsap.timeline()
-
-		// Animate overlay and menu out in parallel
 		tl.to(
 			overlayRef.current,
-			{
-				opacity: 0,
-				duration: 0.4,
-				ease: "power2.inOut",
-			},
-			0
-		) // Start at time 0
-
-		tl.to(
-			navBodyRef.current,
-			{
-				y: -50,
-				opacity: 0,
-				duration: 0.4,
-				// ease: "power2.inOut",
-				ease: "expo.out",
-			},
+			{ opacity: 0, duration: 0.4, ease: "power2.inOut" },
 			0
 		)
-
-		// Wait for animation to complete before routing
-		tl.call(() => {
-			router.push(href)
-		})
+		tl.to(
+			navBodyRef.current,
+			{ y: -50, opacity: 0, duration: 0.4, ease: "expo.out" },
+			0
+		)
+		tl.call(() => router.push(href))
 
 		setIsOpen(false)
 	}
+
+	const escapeHandler = useCallback(
+		(event: KeyboardEvent) => {
+			if (event.key === "Escape" && isOpen) {
+				setIsOpen(false)
+				setHoveredIndex(null)
+				setActiveIndex(null)
+			}
+		},
+		[isOpen, setIsOpen]
+	)
+
+	useEffect(() => {
+		if (isOpen) {
+			document.addEventListener("keydown", escapeHandler)
+		}
+		return () => {
+			document.removeEventListener("keydown", escapeHandler)
+		}
+	}, [isOpen, escapeHandler])
 
 	return (
 		<div className={styles.nav_body__container} ref={navBodyRef}>
@@ -222,11 +210,9 @@ const NavBody: React.FC<Props> = ({
 						<ul ref={linksRef}>
 							{navItems.map((item, index) => (
 								<li
-									key={index}
+									key={item.href}
 									onMouseEnter={() => handleMouseEnter(index)}
 									onMouseLeave={handleMouseLeave}
-									onTouchStart={() => handleMouseEnter(index)}
-									onTouchEnd={handleMouseLeave}
 									style={{
 										filter:
 											hoveredIndex !== null && hoveredIndex !== index
@@ -240,7 +226,6 @@ const NavBody: React.FC<Props> = ({
 									<a
 										href={item.href}
 										onClick={(e) => handleLinkClick(e, item.href)}
-										// onTouchEnd={(e) => handleLinkClick(e, item.href)}
 									>
 										<span className='split-text'>{item.label}</span>
 									</a>
@@ -251,7 +236,7 @@ const NavBody: React.FC<Props> = ({
 					<div className={styles.nav_body__image} ref={imageContainerRef}>
 						{activeIndex !== null && (
 							<Image
-								priority={true}
+								priority
 								src={navItems[activeIndex].imgSrc}
 								alt='preview'
 								fill

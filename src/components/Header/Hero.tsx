@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
 import WaveCss from "../WaveSeperator/WaveCss"
 
-import { heroAnimation } from "@/animations/heroAnimation"
+import { heroAnimation } from "@/components/lib/animations/heroAnimation"
 
 type HeroProps = {
 	title?: React.ReactNode
