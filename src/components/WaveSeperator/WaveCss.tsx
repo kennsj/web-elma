@@ -3,9 +3,11 @@ import styles from "./WaveCss.module.scss"
 export default function WaveCss({
 	isDarkBackground = true,
 	rotate = false,
+	style = {},
 }: {
 	isDarkBackground?: boolean
 	rotate?: boolean
+	style?: React.CSSProperties
 }) {
 	return (
 		<div

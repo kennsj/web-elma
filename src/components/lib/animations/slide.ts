@@ -28,8 +28,6 @@ export const slideIn = (
 
 	gsap.killTweensOf(element)
 
-	// gsap.set(element, { y: fromY, ...setOptions, visibility: "visible" })
-
 	gsap.to(element, {
 		onStart: () => {
 			gsap.set(element, { y: fromY, ...setOptions, visibility: "visible" })

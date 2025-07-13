@@ -34,16 +34,19 @@ const NavBody: React.FC<Props> = ({
 	setIsOpen,
 }) => {
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
+	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
 	const navBodyRef = useRef<HTMLDivElement>(null)
 	const imageContainerRef = useRef<HTMLDivElement>(null)
 	const linksRef = useRef<HTMLUListElement>(null)
-	const hasPreloadedRef = useRef(false)
 
 	const handleMouseEnter = (index: number) => {
 		if (isNavigating) return
 		if (!imageContainerRef.current) return
 
+		setHoveredIndex(index)
 		setActiveIndex(index)
+
 		gsap.killTweensOf(imageContainerRef.current)
 		gsap.set(imageContainerRef.current, {
 			opacity: 0,
@@ -60,6 +63,8 @@ const NavBody: React.FC<Props> = ({
 
 	const handleMouseLeave = () => {
 		if (isNavigating) return
+
+		setHoveredIndex(null) // 👈 reset hover blur state
 
 		gsap.killTweensOf(imageContainerRef.current)
 		gsap.to(imageContainerRef.current, {
@@ -135,14 +140,6 @@ const NavBody: React.FC<Props> = ({
 
 			setActiveIndex(null)
 		}
-
-		if (!hasPreloadedRef.current && typeof window !== "undefined") {
-			navItems.forEach((item) => {
-				const img = new window.Image()
-				img.src = item.imgSrc
-			})
-			hasPreloadedRef.current = true
-		}
 	}, [navItems, isOpen])
 
 	const router = useRouter()
@@ -198,10 +195,16 @@ const NavBody: React.FC<Props> = ({
 									key={index}
 									onMouseEnter={() => handleMouseEnter(index)}
 									onMouseLeave={handleMouseLeave}
+									style={{
+										filter:
+											hoveredIndex !== null && hoveredIndex !== index
+												? "blur(4px)"
+												: "none",
+										opacity:
+											hoveredIndex !== null && hoveredIndex !== index ? 0.7 : 1,
+										transition: "all 0.6s ease-in-out",
+									}}
 								>
-									{/* <Link href={item.href}>
-										<span className='split-text'>{item.label}</span>
-									</Link> */}
 									<a
 										href={item.href}
 										onClick={(e) => handleLinkClick(e, item.href)}
@@ -215,10 +218,15 @@ const NavBody: React.FC<Props> = ({
 					<div className={styles.nav_body__image} ref={imageContainerRef}>
 						{activeIndex !== null && (
 							<Image
+								priority={true}
 								src={navItems[activeIndex].imgSrc}
 								alt='preview'
 								fill
-								style={{ objectFit: "cover", pointerEvents: "none" }}
+								style={{
+									objectFit: "cover",
+									opacity: 0.8,
+									pointerEvents: "none",
+								}}
 							/>
 						)}
 					</div>
