@@ -19,7 +19,7 @@
 				margin-left: 1rem;
 			}
 			input {
-				width: 30%;
+				width: 40%;
 				background: var(--color-primary-lighter);
 				color: var(--color-secondary);
 				border-radius: var(--border-radius-small);
@@ -35,6 +35,14 @@
 				&::placeholder {
 					opacity: 0.5;
 					color: var(--color-tertiary-light);
+				}
+
+				@media screen and (max-width: $breakpoint-large) {
+					width: 60%;
+				}
+
+				@media screen and (max-width: $breakpoint-medium) {
+					width: 100%;
 				}
 			}
 		}
@@ -53,16 +61,15 @@
 		display: flex;
 		justify-content: space-between;
 
-		.footer__content__nav {
-			ul {
-				margin-top: -2rem;
-			}
-		}
-
 		.footer__content__contact {
 			display: flex;
 			flex-direction: column;
+			align-items: end;
 			text-align: right;
+
+			@media screen and (max-width: $breakpoint-medium) {
+				align-items: start;
+			}
 
 			h3 {
 				font-weight: 600;
@@ -71,8 +78,12 @@
 			}
 
 			.footer__email {
-				font-size: 1.5rem;
+				font-size: 2rem;
 				margin-block: 1rem;
+			}
+
+			.footer__booking {
+				margin-right: 35px;
 			}
 
 			a {
@@ -115,12 +126,6 @@
 	}
 
 	@media screen and (max-width: $breakpoint-medium) {
-		form {
-			input {
-				width: 100%;
-			}
-		}
-
 		.footer__content {
 			flex-direction: column;
 

@@ -10,13 +10,6 @@ import gsap from "gsap"
 import { CustomEase } from "gsap/all"
 import { slideIn, slideOut } from "@/components/lib/animations/slide"
 
-// type NavItem = {
-// 	href: string
-// 	label: string
-// 	imgSrc: string
-// 	index: number
-// }
-
 export const Nav = () => {
 	const [isOpen, setIsOpen] = useState(false)
 
@@ -47,8 +40,6 @@ export const Nav = () => {
 			index: 4,
 		},
 	]
-
-	// Preload images for navItems
 
 	gsap.registerPlugin(CustomEase)
 	const overlayRef = useRef<HTMLDivElement>(null)
@@ -87,37 +78,6 @@ export const Nav = () => {
 						/>
 					</Link>
 				</div>
-				<div>
-					<ul className={styles.nav__list}>
-						<div>
-							<li>
-								<Link href='/' className=''>
-									Hjem
-								</Link>
-							</li>
-							<li>
-								<Link href='/about' className=''>
-									Om elma
-								</Link>
-							</li>
-							<li>
-								<Link href='/resources' className={styles.nav__link}>
-									Ressurser
-								</Link>
-							</li>
-							<li>
-								<Link href='/events' className=''>
-									Arrangementer
-								</Link>
-							</li>
-							<li>
-								<Link href='/contact' className=''>
-									Kontakt
-								</Link>
-							</li>
-						</div>
-					</ul>
-				</div>
 				<button
 					className={styles.nav__hamburger}
 					onClick={() => setIsOpen(!isOpen)}
@@ -130,7 +90,6 @@ export const Nav = () => {
 					data-menu-open={isOpen}
 				></button>
 			</nav>
-			{/* <NavBody navItems={navItems} /> */}
 			<div ref={overlayRef} className={styles.nav__overlay}></div>
 			<NavBody
 				navItems={navItems}

@@ -148,7 +148,11 @@ export default function Footer() {
 						<Link className={styles.footer__email} href='mailto:hei@elma.no'>
 							hei@elma.no
 						</Link>
-						<Anchor isDarkBackground href='#'>
+						<Anchor
+							className={styles.footer__booking}
+							isDarkBackground
+							href='#'
+						>
 							Booking av elma
 						</Anchor>
 						{/* <Link href='mailto:hei@elma.no'>hei@elma.no</Link>

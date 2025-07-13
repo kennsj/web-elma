@@ -20,6 +20,10 @@
 		--nav-height: 2rem;
 	}
 
+	@media screen and (max-width: $breakpoint-small) {
+		--nav-height: 1rem;
+	}
+
 	--margin-block: 5rem;
 	@media screen and (max-width: $breakpoint-medium) {
 		--margin-block: 3rem;

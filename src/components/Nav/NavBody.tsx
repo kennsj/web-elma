@@ -41,7 +41,14 @@ const NavBody: React.FC<Props> = ({
 	const linksRef = useRef<HTMLUListElement>(null)
 	const footerRef = useRef<HTMLDivElement>(null)
 
+	const isDesktop = () => {
+		if (typeof window === "undefined") return false
+		return window.matchMedia("(hover: hover) and (pointer: fine)").matches
+	}
+
 	const handleMouseEnter = (index: number) => {
+		if (!isDesktop() || isNavigating || !imageContainerRef.current) return
+
 		if (isNavigating) return
 		if (!imageContainerRef.current) return
 
@@ -63,7 +70,7 @@ const NavBody: React.FC<Props> = ({
 	}
 
 	const handleMouseLeave = () => {
-		if (isNavigating) return
+		if (!isDesktop() || isNavigating) return
 
 		setHoveredIndex(null) // 👈 reset hover blur state
 
@@ -86,6 +93,8 @@ const NavBody: React.FC<Props> = ({
 	useGSAP(() => {
 		const navBody = navBodyRef.current
 		const links = linksRef.current
+		const footer = footerRef.current
+
 		if (!navBody || !links) return
 
 		const textElements = navBody.querySelectorAll(".split-text")
@@ -116,6 +125,19 @@ const NavBody: React.FC<Props> = ({
 					},
 				})
 			}
+
+			gsap.fromTo(
+				footer,
+				{ y: 40, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 0.6,
+					ease: "power2.out",
+					delay: 0.9,
+				}
+			)
+
 			// Reset isNavigating when menu opens
 			setIsNavigating(false)
 		} else {
@@ -140,6 +162,13 @@ const NavBody: React.FC<Props> = ({
 			}
 
 			setActiveIndex(null)
+
+			gsap.to(footer, {
+				y: 40,
+				opacity: 0,
+				duration: 0.4,
+				ease: "power2.inOut",
+			})
 		}
 	}, [navItems, isOpen])
 
@@ -175,7 +204,7 @@ const NavBody: React.FC<Props> = ({
 				ease: "expo.out",
 			},
 			0
-		) // Also at time 0
+		)
 
 		// Wait for animation to complete before routing
 		tl.call(() => {
@@ -196,6 +225,8 @@ const NavBody: React.FC<Props> = ({
 									key={index}
 									onMouseEnter={() => handleMouseEnter(index)}
 									onMouseLeave={handleMouseLeave}
+									onTouchStart={() => handleMouseEnter(index)}
+									onTouchEnd={handleMouseLeave}
 									style={{
 										filter:
 											hoveredIndex !== null && hoveredIndex !== index
@@ -209,6 +240,7 @@ const NavBody: React.FC<Props> = ({
 									<a
 										href={item.href}
 										onClick={(e) => handleLinkClick(e, item.href)}
+										// onTouchEnd={(e) => handleLinkClick(e, item.href)}
 									>
 										<span className='split-text'>{item.label}</span>
 									</a>
@@ -232,8 +264,8 @@ const NavBody: React.FC<Props> = ({
 						)}
 					</div>
 				</div>
-				<div className={styles.nav_body__footer}>
-					<div ref={footerRef} className={styles.nav_body__footer__left}>
+				<div ref={footerRef} className={styles.nav_body__footer}>
+					<div className={styles.nav_footer__left}>
 						<h3>Kontakt</h3>
 						<Link
 							className={styles.footer__email}
@@ -243,21 +275,19 @@ const NavBody: React.FC<Props> = ({
 							hei@elma.no
 						</Link>
 						<Anchor
-							className={styles.nav_footer__email}
+							className={styles.nav_footer__booking}
 							isDarkBackground
 							href='#'
 							onClick={() => setIsOpen(false)}
 						>
 							Booking av elma
 						</Anchor>
-						{/* <Link href='mailto:hei@elma.no'>hei@elma.no</Link>
-						<Link href='#'>Booking av elma</Link> */}
 					</div>
-					<div>
+					<div className={styles.nav_footer__right}>
 						<Anchor
-							isDarkBackground
-							href='/om'
+							href='/personvern'
 							onClick={() => setIsOpen(false)}
+							isDarkBackground
 						>
 							Personvern og vilkår
 						</Anchor>
