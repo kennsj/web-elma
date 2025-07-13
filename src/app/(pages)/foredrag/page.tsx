@@ -66,11 +66,6 @@ const page = () => {
 							hjelpe andre, enten du er ungdom, ung voksen, forelder eller
 							fagperson som vil forstå bedre.
 						</Paragraph>
-						<Paragraph className={"intro__paragraph"}>
-							Gjennom sin åpne og direkte formidling når han inn til folk i alle
-							aldre. Det handler ikke om å være perfekt, men om å være ekte – og
-							vise at det er mulig å reise seg, uansett hvor du har vært.
-						</Paragraph>
 					</div>
 
 					<Animated>

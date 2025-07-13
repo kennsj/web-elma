@@ -2,9 +2,10 @@
 
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { SplitText } from "gsap/SplitText"
-import React from "react"
+import SplitText from "gsap/SplitText"
+import ScrollTrigger from "gsap/ScrollTrigger"
+import React, { useRef } from "react"
+import { usePathname } from "next/navigation"
 
 type ParagraphProps = {
 	children: React.ReactNode
@@ -12,45 +13,51 @@ type ParagraphProps = {
 }
 
 const Paragraph: React.FC<ParagraphProps> = ({ children, className }) => {
-	const paragraphRef = React.useRef<HTMLHeadingElement>(null)
+	const ref = useRef<HTMLParagraphElement>(null)
+	const pathname = usePathname()
+	const splitRef = useRef<SplitText | null>(null)
 
-	useGSAP(() => {
-		gsap.registerPlugin(ScrollTrigger, SplitText)
-		if (!paragraphRef.current) return
+	useGSAP(
+		() => {
+			if (!ref.current) return
 
-		const splitParagraph = new SplitText(paragraphRef.current, {
-			// type: "lines, words, chars",
-			type: "lines, words",
-			linesClass: "lineClass",
-			wordsClass: "wordClass",
-			charsClass: "charClass",
-		})
+			gsap.registerPlugin(SplitText, ScrollTrigger)
 
-		gsap.set(splitParagraph.words, { opacity: 0, yPercent: 100, skewY: 5 })
+			// Revert any previous SplitText
+			splitRef.current?.revert()
 
-		ScrollTrigger.create({
-			trigger: paragraphRef.current,
-			start: "top 80%",
-			end: "bottom 20%",
-			onEnter: () => {
-				gsap.to(splitParagraph.words, {
-					opacity: 1,
-					yPercent: 0,
-					skewY: 0,
-					duration: 0.9,
-					ease: "power2.out",
-					// stagger: 0.1,
-					stagger: {
-						amount: 0.35,
-						from: "start",
-					},
-				})
-			},
-		})
-	}, [paragraphRef])
+			splitRef.current = new SplitText(ref.current, {
+				type: "lines, words",
+				linesClass: "lineClass",
+				wordsClass: "wordClass",
+			})
+
+			gsap.set(splitRef.current.words, { opacity: 0, yPercent: 100, skewY: 5 })
+
+			ScrollTrigger.create({
+				trigger: ref.current,
+				start: "top 80%",
+				end: "bottom 20%",
+				onEnter: () => {
+					gsap.to(splitRef.current!.words, {
+						opacity: 1,
+						yPercent: 0,
+						skewY: 0,
+						duration: 0.9,
+						ease: "power2.out",
+						stagger: {
+							amount: 0.35,
+							from: "start",
+						},
+					})
+				},
+			})
+		},
+		{ dependencies: [pathname], scope: ref, revertOnUpdate: true } // <- triggers on route change
+	)
 
 	return (
-		<p ref={paragraphRef} className={className}>
+		<p ref={ref} className={className}>
 			{children}
 		</p>
 	)
