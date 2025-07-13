@@ -45,7 +45,7 @@ export const slideIn = (
 export const slideOut = (
 	element: HTMLElement,
 	{
-		duration = 0.9,
+		duration = 0.6,
 		delay = 0,
 		ease = "0.76, 0, 0.24, 1",
 		// ease = "power1.inOut",

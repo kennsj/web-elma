@@ -28,9 +28,10 @@ export const heroAnimation = ({
 		{
 			isMobile: "(max-width: 768px)",
 			isDesktop: "(min-width: 769px)",
+			reduceMotion: "(prefers-reduced-motion: reduce)",
 		},
 		(context) => {
-			const { isMobile } = context.conditions!
+			const { isMobile, reduceMotion } = context.conditions!
 
 			const tl = gsap.timeline({ delay: 0.7 })
 
@@ -39,7 +40,7 @@ export const heroAnimation = ({
 					opacity: 0,
 					// skewY: 5,
 					yPercent: 100,
-					duration: 0.8,
+					duration: reduceMotion ? 0 : 0.8,
 					stagger: 0.02,
 					onLoad: () => {
 						gsap.set(headingRef, {
@@ -54,7 +55,7 @@ export const heroAnimation = ({
 							opacity: 0,
 							yPercent: 100,
 							skewY: 5,
-							duration: 0.4,
+							duration: reduceMotion ? 0 : 0.4,
 							stagger: 0.01,
 							onLoad: () => {
 								gsap.set(paragraphRef, {
@@ -67,19 +68,29 @@ export const heroAnimation = ({
 					)
 					.to(
 						buttonRef,
-						{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.7 },
+						{
+							y: 0,
+							opacity: 1,
+							autoAlpha: 1,
+							duration: reduceMotion ? 0 : 0.7,
+						},
 						"-=0.6"
 					)
 					.to(
 						imageRef,
-						{ y: 0, scale: 1.2, autoAlpha: 1, duration: 2.2 },
+						{
+							y: 0,
+							scale: 1.2,
+							autoAlpha: 1,
+							duration: reduceMotion ? 0 : 2.2,
+						},
 						"-=0.2"
 					)
 					.to(
 						imageContainer,
 						{
 							clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-							duration: 2,
+							duration: reduceMotion ? 0 : 2,
 							ease: "power2.out",
 						},
 						"-=3s"
@@ -89,13 +100,13 @@ export const heroAnimation = ({
 					y: 0,
 					scale: 1,
 					autoAlpha: 1,
-					duration: 1.5,
+					duration: reduceMotion ? 0 : 1.5,
 				})
 					.to(
 						imageContainer,
 						{
 							clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-							duration: 2,
+							duration: reduceMotion ? 0 : 2,
 							ease: "power2.out",
 						},
 						"-=1.5"
@@ -106,7 +117,7 @@ export const heroAnimation = ({
 							opacity: 0,
 							skewY: 5,
 							yPercent: 110,
-							duration: 0.8,
+							duration: reduceMotion ? 0 : 0.8,
 							stagger: 0.01,
 							onLoad: () => {
 								gsap.set(headingRef, {
@@ -122,7 +133,7 @@ export const heroAnimation = ({
 						{
 							opacity: 0,
 							yPercent: 100,
-							duration: 0.7,
+							duration: reduceMotion ? 0 : 0.7,
 							stagger: 0.01,
 							onLoad: () => {
 								gsap.set(paragraphRef, {
@@ -135,7 +146,12 @@ export const heroAnimation = ({
 					)
 					.to(
 						buttonRef,
-						{ y: 0, opacity: 1, autoAlpha: 1, duration: 0.3 },
+						{
+							y: 0,
+							opacity: 1,
+							autoAlpha: 1,
+							duration: reduceMotion ? 0 : 0.3,
+						},
 						"-=.9"
 					)
 			}

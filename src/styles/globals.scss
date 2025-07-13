@@ -259,8 +259,6 @@ p {
 		p {
 			font-size: 2.5rem;
 			line-height: 2.8rem;
-			// font-style: italic;
-			// margin-bottom: 2rem;
 		}
 	}
 
@@ -302,20 +300,6 @@ p {
 	color: var(--color-secondary);
 	padding-block: var(--section-padding);
 	// padding-inline: var(--section-padding);
-
-	h2 {
-		// margin-left: 15vw;
-	}
-
-	// .intro__paragraph {
-	// 	margin-inline: 15vw;
-
-	// 	@media screen and (max-width: $breakpoint-medium) {
-	// 		width: 90%;
-	// 		font-size: 1.2rem;
-	// 		line-height: 1.7rem;
-	// 	}
-	// }
 }
 
 .wordClass,

@@ -19,7 +19,8 @@ const Paragraph: React.FC<ParagraphProps> = ({ children, className }) => {
 		if (!paragraphRef.current) return
 
 		const splitParagraph = new SplitText(paragraphRef.current, {
-			type: "lines, words, chars",
+			// type: "lines, words, chars",
+			type: "lines, words",
 			linesClass: "lineClass",
 			wordsClass: "wordClass",
 			charsClass: "charClass",

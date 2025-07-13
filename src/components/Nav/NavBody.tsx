@@ -40,7 +40,9 @@ const NavBody: React.FC<Props> = ({
 	const hasPreloadedRef = useRef(false)
 
 	const handleMouseEnter = (index: number) => {
+		if (isNavigating) return
 		if (!imageContainerRef.current) return
+
 		setActiveIndex(index)
 		gsap.killTweensOf(imageContainerRef.current)
 		gsap.set(imageContainerRef.current, {
@@ -57,6 +59,8 @@ const NavBody: React.FC<Props> = ({
 	}
 
 	const handleMouseLeave = () => {
+		if (isNavigating) return
+
 		gsap.killTweensOf(imageContainerRef.current)
 		gsap.to(imageContainerRef.current, {
 			opacity: 0,
@@ -169,7 +173,8 @@ const NavBody: React.FC<Props> = ({
 				y: -50,
 				opacity: 0,
 				duration: 0.4,
-				ease: "power2.inOut",
+				// ease: "power2.inOut",
+				ease: "expo.out",
 			},
 			0
 		) // Also at time 0
