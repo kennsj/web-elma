@@ -39,6 +39,7 @@ const NavBody: React.FC<Props> = ({
 	const navBodyRef = useRef<HTMLDivElement>(null)
 	const imageContainerRef = useRef<HTMLDivElement>(null)
 	const linksRef = useRef<HTMLUListElement>(null)
+	const footerRef = useRef<HTMLDivElement>(null)
 
 	const handleMouseEnter = (index: number) => {
 		if (isNavigating) return
@@ -232,7 +233,7 @@ const NavBody: React.FC<Props> = ({
 					</div>
 				</div>
 				<div className={styles.nav_body__footer}>
-					<div className={styles.nav_body__footer__left}>
+					<div ref={footerRef} className={styles.nav_body__footer__left}>
 						<h3>Kontakt</h3>
 						<Link
 							className={styles.footer__email}
