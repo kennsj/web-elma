@@ -147,7 +147,9 @@
 				}
 			}
 
-			&:hover {
+			&:hover,
+			&:focus,
+			&:active {
 				background-color: #5b918a;
 				background-color: var(--color-primary-dark);
 				color: var(--color-tertiary);

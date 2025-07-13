@@ -28,6 +28,9 @@
 	@media screen and (max-width: $breakpoint-medium) {
 		--margin-block: 3rem;
 	}
+	@media screen and (max-width: $breakpoint-small) {
+		--margin-block: 2rem;
+	}
 
 	--section-padding: 10rem;
 	@media screen and (max-width: $breakpoint-medium) {
@@ -84,6 +87,7 @@ section {
 	width: var(--page-width);
 	max-width: var(--page-max-width);
 	margin: 0 auto;
+	// padding-block: var(--section-padding);
 }
 
 .section__fullwidth {
@@ -95,6 +99,11 @@ section {
 		width: var(--page-width);
 		max-width: var(--page-max-width);
 		margin: 0 auto 5rem auto;
+	}
+
+	&[data-background="dark"] {
+		background: var(--color-primary);
+		color: var(--color-secondary);
 	}
 }
 

@@ -2,10 +2,12 @@ import React from "react"
 import Paragraph from "../lib/animations/Paragraph"
 import Button from "../Buttons/Secondary"
 import H2 from "../lib/animations/H2"
+import styles from "./Newsletter.module.scss"
 
 const Newsletter = () => {
 	return (
-		<div className={styles.newsletter}>
+		// <section className='section__fullwidth' data-background='dark'>
+		<div className={styles.newsletter__wrapper}>
 			<H2 title='Få et lite pust i innboksen' />
 
 			<Paragraph className='intro__paragraph'>
@@ -53,6 +55,7 @@ const Newsletter = () => {
 						</Anchor> */}
 			</form>
 		</div>
+		// </section>
 	)
 }
 

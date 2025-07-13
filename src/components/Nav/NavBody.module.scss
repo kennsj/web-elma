@@ -54,21 +54,23 @@
 					}
 
 					li {
-						// display: none;
 						margin-bottom: 3rem;
-						// font-family: var(--font-playfair);
-						font-size: 3rem;
-						font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
-						font-weight: 400;
-						color: var(--color-secondary);
-						cursor: pointer;
-						overflow: hidden;
-						transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-						&:hover {
-							color: var(--color-primary-light);
-							color: var(--color-tertiary);
+						a {
+							font-size: 3rem;
+							font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
+							font-weight: 400;
+							color: var(--color-secondary);
+							cursor: pointer;
+							overflow: hidden;
 							transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+							&:hover,
+							&:focus,
+							&:active {
+								color: var(--color-primary-light);
+								color: var(--color-tertiary);
+								transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+							}
 						}
 					}
 				}
@@ -120,7 +122,9 @@
 					font-weight: 100;
 					transition: 0.4s ease-in-out;
 
-					&:hover {
+					&:hover,
+					&:focus,
+					&:active {
 						color: var(--color-tertiary);
 						transition: 0.4s ease-in-out;
 					}

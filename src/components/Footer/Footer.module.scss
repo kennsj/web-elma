@@ -7,51 +7,6 @@
 	overflow-x: hidden;
 	padding-block: var(--section-padding);
 
-	form {
-		position: relative;
-
-		div {
-			display: flex;
-			flex-direction: column;
-
-			label {
-				margin-bottom: 1rem;
-				margin-left: 1rem;
-			}
-			input {
-				width: 40%;
-				background: var(--color-primary-lighter);
-				color: var(--color-secondary);
-				border-radius: var(--border-radius-small);
-				padding: 1rem 1rem;
-				margin-right: 2rem;
-				// transition: 0.6s ease-in-out;
-
-				&:focus {
-					background: var(--color-primary);
-					// transition: 0.6s ease-in-out;
-					outline: 1px solid var(--color-tertiary);
-				}
-				&::placeholder {
-					opacity: 0.5;
-					color: var(--color-tertiary-light);
-				}
-
-				@media screen and (max-width: $breakpoint-large) {
-					width: 60%;
-				}
-
-				@media screen and (max-width: $breakpoint-medium) {
-					width: 100%;
-				}
-			}
-		}
-
-		button {
-			width: auto;
-		}
-	}
-
 	hr {
 		margin-block: var(--margin-block);
 		opacity: 0.2;
@@ -90,12 +45,16 @@
 				width: fit-content;
 				transition: 0.4s ease-in-out;
 
-				&:hover {
+				&:hover,
+				&:focus,
+				&:active {
 					color: var(--color-tertiary);
 					transition: 0.4s ease-in-out;
 				}
 
-				&:hover::after {
+				&:hover::after,
+				&:focus::after,
+				&:active::after {
 					transform: scaleX(200%);
 					background: var(--color-tertiary);
 					transition: 0.4s ease-in-out;

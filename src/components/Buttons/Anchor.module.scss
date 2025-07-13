@@ -19,12 +19,15 @@
 		transition: 0.4s ease-in-out;
 	}
 
-	&:hover {
+	&:hover,
+	&:focus,
+	&:active {
 		color: var(--color-tertiary);
 		transition: 0.4s ease-in-out;
 	}
 
-	&:hover::after {
+	&:hover::after,
+	&:focus::after {
 		transform: scaleX(200%);
 		background: var(--color-tertiary);
 		transition: 0.4s ease-in-out;
@@ -60,14 +63,18 @@
 		}
 	}
 
-	&:hover .line {
+	&:hover .line,
+	&:focus .line,
+	&:active .line {
 		opacity: 1;
 		stroke: var(--color-tertiary);
 		transform: translateX(-40%);
 		transition: 0.7s ease;
 	}
 
-	&:hover .tip {
+	&:hover .tip,
+	&:focus .tip,
+	&:active .tip {
 		transform: translateX(-10px);
 		stroke: var(--color-tertiary);
 		transition: 0.4s ease-out;
@@ -81,7 +88,9 @@
 			background: var(--color-secondary);
 		}
 
-		&:hover::after {
+		&:hover::after,
+		&:focus::after,
+		&:active::after {
 			background: var(--color-tertiary);
 		}
 
@@ -90,7 +99,9 @@
 			stroke: var(--color-secondary);
 		}
 
-		&:hover {
+		&:hover,
+		&:focus,
+		&:active {
 			color: var(--color-tertiary);
 			transition: 0.7s ease;
 
