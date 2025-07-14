@@ -8,10 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import styles from "./Footer.module.scss"
 import Image from "next/image"
 import Link from "next/link"
-import Button from "@/components/Buttons/Secondary"
 import Anchor from "@/components/Buttons/Anchor"
-import H2 from "@/components/lib/animations/H2"
-import Paragraph from "@/components/lib/animations/Paragraph"
 import Newsletter from "../Forms/Newsletter"
 
 export default function Footer() {
