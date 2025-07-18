@@ -1,5 +1,8 @@
+"use client"
+
 import styles from "./Anchor.module.scss"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 type LinkProps = {
 	href: string
@@ -16,12 +19,22 @@ export default function Anchor({
 	isDarkBackground = false,
 	className,
 	ref,
+	onClick,
 	...props
 }: LinkProps) {
+	const router = useRouter()
+
+	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+		e.preventDefault()
+		if (onClick) onClick()
+		router.push(href)
+	}
+
 	return (
 		<Link
 			href={href}
 			className={styles.anchor + (className ? ` ${className}` : "")}
+			onClick={handleClick}
 			{...props}
 			data-dark-background={isDarkBackground}
 			ref={ref}

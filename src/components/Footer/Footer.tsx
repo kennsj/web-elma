@@ -106,8 +106,6 @@ export default function Footer() {
 						>
 							Booking av elma
 						</Anchor>
-						{/* <Link href='mailto:hei@elma.no'>hei@elma.no</Link>
-						<Link href='#'>Booking av elma</Link> */}
 					</div>
 				</div>
 				<hr />
@@ -121,14 +119,14 @@ export default function Footer() {
 					</div>
 					<div className={styles.footer__bottom__right}>
 						Design og kode
-						<Link
+						<a
 							href='mailto:kennethsjorgensen@gmail.com'
 							target='_blank'
 							rel='noreferrer'
 						>
 							Kenneth <br />
 							<span>Jørgensen</span>
-						</Link>
+						</a>
 					</div>
 				</div>
 			</section>

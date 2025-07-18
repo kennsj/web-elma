@@ -1,5 +1,6 @@
 @use "tailwindcss";
 @use "@/styles/breakpoints.scss" as *;
+@use "@/styles/overrides.scss";
 
 :root {
 	--color-primary: #12332f;

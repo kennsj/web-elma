@@ -58,8 +58,8 @@ export const Nav = () => {
 		} else {
 			slideOut(overlay, {
 				direction: "top",
-				duration: 0.5,
-				delay: 0.5,
+				duration: 0.7,
+				delay: 0.7,
 				setOptions: { opacity: 0, visibility: "hidden" },
 			})
 		}

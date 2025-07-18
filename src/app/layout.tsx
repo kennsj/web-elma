@@ -6,7 +6,6 @@ import { Nav } from "@/components/Nav/nav"
 
 import "@/styles/globals.scss"
 import Footer from "@/components/Footer/Footer"
-// import PageTransition from "@/components/PageTransition"
 
 const newsreader = Newsreader({
 	variable: "--font-newsreader",
@@ -66,7 +65,6 @@ export default function RootLayout({
 			<body
 				className={`${newsreader.variable} ${Playfair.variable} ${Atyp.variable} antialiased`}
 			>
-				{/* <PageTransition /> */}
 				<Nav />
 				{children}
 				<Footer />
