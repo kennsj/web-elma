@@ -149,9 +149,9 @@ h1 {
 	/* font-family: Geist_mono, "Playfair Display", serif; */
 	/* font-family: var(--font-newsreader); */
 	font-family: var(--font-playfair);
-	font-size: clamp(2.5rem, 5vw + 1rem, 5rem);
-	font-size: clamp(2rem, 5vw, 5rem);
-	line-height: clamp(4rem, 8vw + 1rem, 6.5rem);
+	font-size: clamp(2rem, 5vw + 1rem, 4rem);
+	font-size: clamp(2rem, 5vw, 4rem);
+	line-height: clamp(2.5rem, 8vw + 1rem, 5rem);
 	font-weight: 300;
 
 	@media screen and (max-width: $breakpoint-large) {

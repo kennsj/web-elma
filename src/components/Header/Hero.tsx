@@ -60,6 +60,17 @@ export const Hero: React.FC<HeroProps> = ({
 		<>
 			<header className={styles.header} ref={containerRef}>
 				<div className={styles.header__container}>
+					<div className={styles.header__image} ref={imageContainer}>
+						<Image
+							ref={imageRef}
+							src={imageSrc}
+							alt={imageAlt}
+							sizes={imageSizes}
+							fill={true}
+							quality={imageQuality}
+							priority={imagePriority}
+						/>
+					</div>
 					<div className={styles.header__content}>
 						<div className={styles.header__title}>
 							<div>
@@ -70,19 +81,8 @@ export const Hero: React.FC<HeroProps> = ({
 								{buttonText}
 							</PrimaryButton>
 						</div>
-						<div className={styles.header__image} ref={imageContainer}>
-							<Image
-								ref={imageRef}
-								src={imageSrc}
-								alt={imageAlt}
-								sizes={imageSizes}
-								fill={true}
-								quality={imageQuality}
-								priority={imagePriority}
-							/>
-						</div>
 					</div>
-					{children}
+					<div className={styles.header__intro}>{children}</div>
 				</div>
 				<WaveCss />
 			</header>
