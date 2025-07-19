@@ -24,7 +24,7 @@ export default function Home() {
 	return (
 		<main>
 			<Hero
-				title='For deg som vil leve, ikke bare overleve'
+				title='For deg som vil <span>leve</span>, ikke bare <span>overleve</span>'
 				subTitle='Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo.'
 				buttonText='Start reisen'
 				buttonHref='/om'

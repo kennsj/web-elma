@@ -60,6 +60,35 @@ export const Hero: React.FC<HeroProps> = ({
 		<>
 			<header className={styles.header} ref={containerRef}>
 				<div className={styles.header__container}>
+					<div className={styles.header__content}>
+						<div className={styles.header__title}>
+							<div className={styles.header__title__text}>
+								<h1
+									ref={headingRef}
+									className='title'
+									dangerouslySetInnerHTML={{
+										__html:
+											typeof title === "string"
+												? title.replaceAll(
+														"<span>",
+														'<span style="color: var(--color-tertiary); font-weight: bold; " class="highlight">'
+													)
+												: "",
+									}}
+								/>
+							</div>
+							<div className={styles.header__title__intro}>
+								<p ref={paragraphRef}>{subTitle}</p>
+								<PrimaryButton
+									isDarkBackground
+									ref={buttonRef}
+									href={buttonHref}
+								>
+									{buttonText}
+								</PrimaryButton>
+							</div>
+						</div>
+					</div>
 					<div className={styles.header__image} ref={imageContainer}>
 						<Image
 							ref={imageRef}
@@ -70,17 +99,6 @@ export const Hero: React.FC<HeroProps> = ({
 							quality={imageQuality}
 							priority={imagePriority}
 						/>
-					</div>
-					<div className={styles.header__content}>
-						<div className={styles.header__title}>
-							<div>
-								<h1 ref={headingRef}>{title}</h1>
-								<p ref={paragraphRef}>{subTitle}</p>
-							</div>
-							<PrimaryButton isDarkBackground ref={buttonRef} href={buttonHref}>
-								{buttonText}
-							</PrimaryButton>
-						</div>
 					</div>
 					<div className={styles.header__intro}>{children}</div>
 				</div>
