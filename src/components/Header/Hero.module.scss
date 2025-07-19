@@ -282,13 +282,7 @@
 					width: 70%;
 
 					@media screen and (max-width: $breakpoint-medium) {
-						width: 80%;
-					}
-
-					@media screen and (max-width: $breakpoint-small) {
-						h1 {
-							width: 100%;
-						}
+						width: 100%;
 					}
 				}
 
@@ -381,16 +375,37 @@
 				object-fit: cover;
 				z-index: 1;
 			}
+
+			@media screen and (max-width: $breakpoint-medium) {
+				aspect-ratio: 16/10;
+			}
 		}
 
 		.header__intro {
-			position: relative;
-			// margin-top: 50%;
-			// padding-block: 2rem;
-			// transform: translateY(50%);
+			// width: var(--page-width);
+			// max-width: var(--page-max-width);
+			margin: 0 auto;
+
+			@media screen and (max-width: $breakpoint-large) {
+				margin-left: 5%;
+			}
 
 			p {
 				width: 50%;
+
+				@media screen and (max-width: $breakpoint-large) {
+					width: 70%;
+				}
+
+				@media screen and (max-width: $breakpoint-medium) {
+					width: 80%;
+				}
+
+				@media screen and (max-width: $breakpoint-small) {
+					width: 100%;
+					font-size: 1rem;
+					line-height: 1.3rem;
+				}
 			}
 		}
 	}

@@ -100,6 +100,7 @@ export const Hero: React.FC<HeroProps> = ({
 							priority={imagePriority}
 						/>
 					</div>
+
 					<div className={styles.header__intro}>{children}</div>
 				</div>
 				<WaveCss />
