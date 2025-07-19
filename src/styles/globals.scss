@@ -146,19 +146,34 @@ section {
 }
 
 h1 {
-	/* font-family: Geist_mono, "Playfair Display", serif; */
-	/* font-family: var(--font-newsreader); */
+	// font-family: Geist_mono, "Playfair Display", serif;
+	// font-family: var(--font-newsreader);
 	// font-family: var(--font-playfair);
-	font-size: clamp(2rem, 5vw + 1rem, 4rem);
-	font-size: clamp(2rem, 5vw, 4rem);
-	line-height: clamp(2.5rem, 8vw + 1rem, 5rem);
+	font-size: clamp(3rem, 5vw + 1rem, 6rem);
+	font-size: clamp(3rem, 5vw, 6rem);
+	line-height: clamp(4rem, 5.5vw + 1rem, 8rem);
 	font-weight: 300;
 
-	@media screen and (max-width: $breakpoint-large) {
-		font-size: 4rem;
-		font-size: clamp(2.5rem, 4vw + 0.6rem, 4rem);
-		line-height: clamp(3rem, 5vw + 1rem, 5rem);
-	}
+	// @media screen and (max-width: $breakpoint-large) {
+	// 	font-size: 4rem;
+	// 	font-size: clamp(2.5rem, 4vw + 0.6rem, 4rem);
+	// 	line-height: clamp(3rem, 5vw + 1rem, 5rem);
+
+	// 	font-size: 3.5rem;
+	// 	line-height: 4.5rem;
+	// }
+
+	// @media screen and (max-width: $breakpoint-medium) {
+	// 	font-size: 3rem;
+	// 	font-size: clamp(3rem, 2vw + 0.3rem, 4rem);
+	// 	line-height: clamp(3.5rem, 3vw + 0.3rem, 5.5rem);
+	// }
+
+	// @media screen and (max-width: $breakpoint-small) {
+	// 	font-size: 2rem;
+	// 	font-size: clamp(3rem, 2vw + 0.3rem, 4rem);
+	// 	line-height: clamp(3.5rem, 3vw + 0.3rem, 5.5rem);
+	// }
 }
 
 .h2__wrapper {

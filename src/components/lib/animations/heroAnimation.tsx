@@ -1,5 +1,6 @@
 import gsap from "gsap"
 import SplitText from "gsap/SplitText"
+import ScrollTrigger from "gsap/ScrollTrigger"
 
 export const heroAnimation = ({
 	imageRef,
@@ -14,7 +15,7 @@ export const heroAnimation = ({
 	paragraphRef: HTMLElement
 	buttonRef: HTMLElement
 }) => {
-	gsap.registerPlugin(SplitText)
+	gsap.registerPlugin(SplitText, ScrollTrigger)
 
 	const splitTitle = new SplitText(headingRef, {
 		type: "words, chars",
@@ -22,139 +23,86 @@ export const heroAnimation = ({
 	})
 	const splitPara = new SplitText(paragraphRef, { type: "words" })
 
-	const mm = gsap.matchMedia()
+	// Set initial states
+	gsap.set(headingRef, { visibility: "visible" })
+	gsap.set(paragraphRef, { visibility: "visible" })
 
-	mm.add(
-		{
-			isMobile: "(max-width: 768px)",
-			isDesktop: "(min-width: 769px)",
-			reduceMotion: "(prefers-reduced-motion: reduce)",
+	// Create main timeline
+	const tl = gsap.timeline({ delay: 0.5 })
+
+	// Title animation
+	tl.from(splitTitle.chars, {
+		opacity: 0,
+		yPercent: 100,
+		skewY: 5,
+		duration: 0.8,
+		stagger: 0.02,
+		ease: "power2.out",
+	})
+
+		// Paragraph animation
+		.from(
+			splitPara.words,
+			{
+				opacity: 0,
+				yPercent: 100,
+				skewY: 5,
+				duration: 0.7,
+				stagger: 0.02,
+				ease: "power2.out",
+			},
+			"-=0.4"
+		)
+
+		// Button animation (concurrent with paragraph)
+		.to(
+			buttonRef,
+			{
+				y: 0,
+				opacity: 1,
+				autoAlpha: 1,
+				duration: 0.4,
+				ease: "power2.out",
+			},
+			"<-.01"
+		)
+
+		// Image animations
+		.to(
+			imageRef,
+			{
+				y: 0,
+				autoAlpha: 1,
+				duration: 0.5,
+				ease: "power1.out",
+			},
+			"<"
+		)
+
+		.to(
+			imageContainer,
+			{
+				clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+				duration: 1.8,
+				ease: "power2.inOut",
+			},
+			"+.5"
+		)
+
+	// Add scroll trigger for parallax effect
+	ScrollTrigger.create({
+		trigger: imageContainer,
+		start: "top bottom",
+		end: "bottom top",
+		scrub: 1,
+		onUpdate: (self) => {
+			gsap.to(imageRef, {
+				scale: 1 + self.progress * 0.1,
+				duration: 0.1,
+			})
 		},
-		(context) => {
-			const { isMobile, reduceMotion } = context.conditions!
+	})
 
-			const tl = gsap.timeline({ delay: 0.7 })
-
-			if (isMobile) {
-				tl.from(splitTitle.chars, {
-					opacity: 0,
-					// skewY: 5,
-					yPercent: 100,
-					duration: reduceMotion ? 0 : 0.8,
-					stagger: 0.02,
-					onLoad: () => {
-						gsap.set(headingRef, {
-							visibility: "visible",
-							opacity: 1,
-						})
-					},
-				})
-					.from(
-						splitPara.words,
-						{
-							opacity: 0,
-							yPercent: 100,
-							skewY: 5,
-							duration: reduceMotion ? 0 : 0.4,
-							stagger: 0.01,
-							onLoad: () => {
-								gsap.set(paragraphRef, {
-									visibility: "visible",
-									opacity: 1,
-								})
-							},
-						},
-						"-=0.6"
-					)
-					.to(
-						buttonRef,
-						{
-							y: 0,
-							opacity: 1,
-							autoAlpha: 1,
-							duration: reduceMotion ? 0 : 0.7,
-						},
-						"-=0.6"
-					)
-					.to(
-						imageRef,
-						{
-							y: 0,
-							scale: 1.2,
-							autoAlpha: 1,
-							duration: reduceMotion ? 0 : 2.2,
-						},
-						"-=0.2"
-					)
-					.to(
-						imageContainer,
-						{
-							clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-							duration: reduceMotion ? 0 : 2,
-							ease: "power2.out",
-						},
-						"-=3s"
-					)
-			} else {
-				tl.to(imageRef, {
-					y: 0,
-					scale: 1,
-					autoAlpha: 1,
-					duration: reduceMotion ? 0 : 1.5,
-				})
-					.to(
-						imageContainer,
-						{
-							clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-							duration: reduceMotion ? 0 : 2,
-							ease: "power2.out",
-						},
-						"-=1.5"
-					)
-					.from(
-						splitTitle.chars,
-						{
-							opacity: 0,
-							skewY: 5,
-							yPercent: 110,
-							duration: reduceMotion ? 0 : 0.8,
-							stagger: 0.01,
-							onLoad: () => {
-								gsap.set(headingRef, {
-									visibility: "visible",
-									opacity: 1,
-								})
-							},
-						},
-						"-=1.2"
-					)
-					.from(
-						splitPara.words,
-						{
-							opacity: 0,
-							yPercent: 100,
-							duration: reduceMotion ? 0 : 0.7,
-							stagger: 0.01,
-							onLoad: () => {
-								gsap.set(paragraphRef, {
-									visibility: "visible",
-									opacity: 1,
-								})
-							},
-						},
-						"-=1"
-					)
-					.to(
-						buttonRef,
-						{
-							y: 0,
-							opacity: 1,
-							autoAlpha: 1,
-							duration: reduceMotion ? 0 : 0.3,
-						},
-						"-=.9"
-					)
-			}
-		}
-	)
+	// Return the timeline for external control if needed
+	return { timeline: tl }
 }
