@@ -1,6 +1,5 @@
 @use "tailwindcss";
 @use "@/styles/breakpoints.scss" as *;
-@use "@/styles/overrides.scss";
 
 :root {
 	--color-primary: #12332f;
@@ -239,10 +238,11 @@ h4 {
 }
 
 p {
+	font-size: 1.5rem;
 	line-height: 2.6rem;
 	@media screen and (max-width: $breakpoint-medium) {
 		font-size: 1.2rem;
-		line-height: 1.3rem;
+		line-height: 1.8rem;
 	}
 }
 
@@ -263,7 +263,6 @@ p {
 		height: 100%;
 		aspect-ratio: 16 / 10;
 		object-fit: cover;
-		border-radius: var(--border-radius-big);
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 		@media screen and (max-width: $breakpoint-large) {
@@ -375,8 +374,10 @@ p {
 	// padding-inline: var(--section-padding);
 }
 
+.char,
 .wordClass,
 .charClass,
 .lineClass {
+	display: inline-block;
 	overflow: hidden;
 }

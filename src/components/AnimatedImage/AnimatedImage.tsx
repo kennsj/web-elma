@@ -27,7 +27,7 @@ export default function AnimatedImage({
 		gsap.to(imgRef.current, {
 			ease: "power4.out",
 			opacity: 1,
-			scale: 1.2,
+			// scale: 1.2,
 			duration: 1.8,
 			scrollTrigger: {
 				trigger: imgRef.current,

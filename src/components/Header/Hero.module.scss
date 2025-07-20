@@ -384,14 +384,23 @@
 		.header__intro {
 			// width: var(--page-width);
 			// max-width: var(--page-max-width);
-			margin: 0 auto;
+			// margin: 0 auto;
+
+			// display: flex;
+			width: var(--page-width);
+			max-width: var(--page-max-width);
+			margin: 10rem auto 0 auto;
 
 			@media screen and (max-width: $breakpoint-large) {
 				margin-left: 5%;
 			}
 
 			p {
-				width: 50%;
+				font-size: 3rem;
+				line-height: 4rem;
+				// width: 50%;
+				padding-block: var(--margin-block);
+				margin: 0;
 
 				@media screen and (max-width: $breakpoint-large) {
 					width: 70%;

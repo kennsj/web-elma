@@ -95,12 +95,12 @@ export const heroAnimation = ({
 		start: "top bottom",
 		end: "bottom top",
 		scrub: 1,
-		onUpdate: (self) => {
-			gsap.to(imageRef, {
-				scale: 1 + self.progress * 0.1,
-				duration: 0.1,
-			})
-		},
+		// onUpdate: (self) => {
+		// 	gsap.to(imageRef, {
+		// 		scale: 1 + self.progress * 0.1,
+		// 		duration: 0.1,
+		// 	})
+		// },
 	})
 
 	// Return the timeline for external control if needed

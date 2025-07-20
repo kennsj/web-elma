@@ -58,12 +58,14 @@ export default function Footer() {
 				<hr />
 				<div className={styles.footer__content}>
 					<div className={styles.footer__content__logo}>
-						<Image
-							src='/images/elma-logo-white.svg'
-							alt='ELMA Logo'
-							width={150}
-							height={150}
-						/>
+						<Link href='/'>
+							<Image
+								src='/images/elma-logo-white.svg'
+								alt='ELMA Logo'
+								width={150}
+								height={150}
+							/>
+						</Link>
 					</div>
 					<div className={styles.footer__content__nav}>
 						<ul>

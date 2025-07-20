@@ -1,6 +1,9 @@
-import Carousel from "@/components/Carousel/Carousel"
 import "@/styles/globals.scss"
 import { EmblaOptionsType } from "embla-carousel"
+import { type SanityDocument } from "next-sanity"
+import { client } from "@/sanity/client"
+
+import Carousel from "@/components/Carousel/Carousel"
 import Anchor from "@/components/Buttons/Anchor"
 
 import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
@@ -17,10 +20,26 @@ const OPTIONS: EmblaOptionsType = {
 	align: "start",
 }
 
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
+`
+
+const sanityOptions = { next: { revalidate: 30 } }
+
 // const SLIDE_COUNT = 9
 // const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
-export default function Home() {
+export default async function Home() {
+	const posts = await client.fetch<SanityDocument[]>(
+		POSTS_QUERY,
+		{},
+		sanityOptions
+	)
+
+	console.log(posts)
+
 	return (
 		<main>
 			<Hero
@@ -81,6 +100,23 @@ export default function Home() {
 							som vil forstå bedre.
 						</Paragraph>
 					</div>
+
+					{posts.map((post) => (
+						<div className='content__spotlight' key={post._id}>
+							<Animated
+								src={`/images/posts/${post.slug.current}.jpg`}
+								alt={post.title}
+								className='about__image'
+								width={500}
+								height={500}
+							></Animated>
+							<div className='spotlight__info'>
+								<h4>{post.title}</h4>
+								<Paragraph>{post.body}</Paragraph>
+								<Anchor href={`/${post.slug.current}`}>Les mer</Anchor>
+							</div>
+						</div>
+					))}
 
 					<Animated>
 						<div className='content__spotlight'>
