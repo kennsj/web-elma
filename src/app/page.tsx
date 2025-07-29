@@ -2,6 +2,7 @@ import "@/styles/globals.scss"
 import { EmblaOptionsType } from "embla-carousel"
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
+import imageUrlBuilder from "@sanity/image-url"
 
 import Carousel from "@/components/Carousel/Carousel"
 import Anchor from "@/components/Buttons/Anchor"
@@ -23,8 +24,12 @@ const OPTIONS: EmblaOptionsType = {
 const POSTS_QUERY = `*[
   _type == "post"
   && defined(slug.current)
-]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
-`
+  ]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, mainImage {
+    asset->{
+      url
+    }
+  }}
+  `
 
 const sanityOptions = { next: { revalidate: 30 } }
 
@@ -38,7 +43,7 @@ export default async function Home() {
 		sanityOptions
 	)
 
-	console.log(posts)
+	console.log(posts[0].mainImage)
 
 	return (
 		<main>
@@ -103,13 +108,14 @@ export default async function Home() {
 
 					{posts.map((post) => (
 						<div className='content__spotlight' key={post._id}>
-							<Animated
-								src={`/images/posts/${post.slug.current}.jpg`}
+							<AnimatedImage
+								// src={"/images/anders-karlsen-bg.png"}
+								src={"/" + `${post.mainImage.asset.url}`}
 								alt={post.title}
 								className='about__image'
 								width={500}
 								height={500}
-							></Animated>
+							/>
 							<div className='spotlight__info'>
 								<h4>{post.title}</h4>
 								<Paragraph>{post.body}</Paragraph>
@@ -151,80 +157,6 @@ export default async function Home() {
 			>
 				Et trygt sted <br /> for urolige sinn
 			</h1>
-
-			{/* <section>
-				<Animated>
-					<div className='content__spotlight' style={{ marginTop: "10rem" }}>
-						<AnimatedImage
-							src={
-								"https://images.pexels.com/photos/236151/pexels-photo-236151.jpeg"
-							}
-							alt='Test'
-							className='spotlight__image'
-							width={500}
-							height={500}
-						/>
-						<div className='spotlight__info'>
-							<h4>Om Elma</h4>
-							<h3>
-								En hånd å holde i <br />
-								gjennom livets stormer
-							</h3>
-							<Anchor href='#' isDarkBackground>
-								Les mer
-							</Anchor>
-						</div>
-					</div>
-				</Animated> 
-
-				<Animated>
-					<div className='content__spotlight'>
-						<AnimatedImage
-							src={
-								"https://images.pexels.com/photos/897817/pexels-photo-897817.jpeg"
-							}
-							alt='Test'
-							className='spotlight__image'
-							width={500}
-							height={500}
-						/>
-						<div className='spotlight__info'>
-							<h4>Om Elma</h4>
-							<h3>
-								En hånd å holde i <br />
-								gjennom livets stormer
-							</h3>
-							<Anchor href='#' isDarkBackground>
-								Les mer
-							</Anchor>
-						</div>
-					</div>
-				</Animated>
-
-				<Animated>
-					<div className='content__spotlight'>
-						<AnimatedImage
-							src={
-								"https://images.pexels.com/photos/185801/pexels-photo-185801.jpeg"
-							}
-							alt='Test'
-							className='spotlight__image'
-							width={500}
-							height={500}
-						/>
-						<div className='spotlight__info'>
-							<h4>Om Elma</h4>
-							<h3>
-								En hånd å holde i <br />
-								gjennom livets stormer
-							</h3>
-							<Anchor href='#' isDarkBackground>
-								Les mer
-							</Anchor>
-						</div>
-					</div>
-				</Animated> 
-			</section> */}
 
 			<WaveCss isDarkBackground={false} />
 			<EventList />

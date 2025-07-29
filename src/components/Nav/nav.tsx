@@ -105,6 +105,7 @@ export const Nav = () => {
 								alt='elma logo'
 								width={150}
 								height={150}
+								priority
 								onClick={() => setIsOpen(false)}
 							/>
 						</Link>
