@@ -2,13 +2,14 @@ import "@/styles/globals.scss"
 import { EmblaOptionsType } from "embla-carousel"
 import { type SanityDocument } from "next-sanity"
 import { client } from "@/sanity/client"
-import imageUrlBuilder from "@sanity/image-url"
+
+import { frontPagePostQuery } from "@/components/lib/sanity/queries"
 
 import Carousel from "@/components/Carousel/Carousel"
 import Anchor from "@/components/Buttons/Anchor"
 
 import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
-import Animated from "@/components/AnimatedImage/Animated"
+
 import { Hero } from "@/components/Header/Hero"
 import WaveCss from "@/components/WaveSeperator/WaveCss"
 import EventList from "@/components/EventList/EventList"
@@ -21,29 +22,17 @@ const OPTIONS: EmblaOptionsType = {
 	align: "start",
 }
 
-const POSTS_QUERY = `*[
-  _type == "post"
-  && defined(slug.current)
-  ]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, mainImage {
-    asset->{
-      url
-    }
-  }}
-  `
+const POST_LIMIT = 3 // Maximum number of posts to display on homepage
 
-const sanityOptions = { next: { revalidate: 30 } }
-
-// const SLIDE_COUNT = 9
-// const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
-
+/*
+   Home page component that fetches posts and renders the main landing sections for the ELMA website.
+*/
 export default async function Home() {
-	const posts = await client.fetch<SanityDocument[]>(
-		POSTS_QUERY,
-		{},
-		sanityOptions
-	)
+	const posts = await client.fetch(frontPagePostQuery)
 
-	console.log(posts[0].mainImage)
+	// Limit the number of posts
+
+	console.log(posts)
 
 	return (
 		<main>
@@ -106,47 +95,35 @@ export default async function Home() {
 						</Paragraph>
 					</div>
 
-					{posts.map((post) => (
-						<div className='content__spotlight' key={post._id}>
-							<AnimatedImage
-								// src={"/images/anders-karlsen-bg.png"}
-								src={"/" + `${post.mainImage.asset.url}`}
-								alt={post.title}
-								className='about__image'
-								width={500}
-								height={500}
-							/>
-							<div className='spotlight__info'>
-								<h4>{post.title}</h4>
-								<Paragraph>{post.body}</Paragraph>
-								<Anchor href={`/${post.slug.current}`}>Les mer</Anchor>
+					{posts.length > 0 ? (
+						posts.map((post: SanityDocument) => (
+							<div className='content__spotlight' key={post._id}>
+								<AnimatedImage
+									// src={"/images/anders-karlsen-bg.png"}
+									src={
+										post.mainImage?.asset?.url ?? "/images/fallback-image.png"
+									}
+									alt={post.title}
+									className='about__image'
+									width={500}
+									height={500}
+									// fill
+								/>
+								<div className='spotlight__info'>
+									<h4>{post.title}</h4>
+									<Paragraph>{post.subtitle}</Paragraph>
+									<Anchor href={`/${post.slug.current}`}>Les mer</Anchor>
+								</div>
 							</div>
-						</div>
-					))}
-
-					<Animated>
-						<div className='content__spotlight'>
-							<AnimatedImage
-								src={"/images/anders-karlsen-bg.png"}
-								alt='Test'
-								className='spotlight__image'
-								width={500}
-								height={500}
-							/>
-							<div className='spotlight__info'>
-								<h4>Om Elma</h4>
-								<Paragraph>
-									En hånd å holde i <br />
-									gjennom livets stormer
-								</Paragraph>
-								<Anchor href='/about'>Les mer</Anchor>
-							</div>
-						</div>
-					</Animated>
+						))
+					) : (
+						<p className='no-posts-message'>
+							Ingen historier tilgjengelig akkurat nå.
+						</p>
+					)}
 				</div>
 			</section>
 			<WaveCss isDarkBackground={false} rotate />
-
 			<h1
 				style={{
 					textAlign: "center",
