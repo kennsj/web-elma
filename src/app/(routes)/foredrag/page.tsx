@@ -1,5 +1,5 @@
 import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
-import Paragraph from "@/components/lib/animations/ParagraphAnimation"
+import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 import { Hero } from "@/components/Layout/Hero/Hero"
 import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
 import React from "react"

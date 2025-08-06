@@ -11,10 +11,6 @@ import Image from "next/image"
 export default async function ContentPreview() {
 	const posts = await client.fetch(frontPagePostQuery)
 
-	// Limit the number of posts
-
-	console.log(posts)
-
 	return (
 		<section className='section__about section__fullwidth'>
 			<div className='about__wrapper'>

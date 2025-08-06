@@ -22,3 +22,30 @@ export const frontPagePostQuery = `*[_type == "post"] | order(publishedAt desc)[
   },
   subtitle
 }`
+
+export const eventQuery = `*[_type == "event"] | order(scheduledAt asc) {
+  _id,
+  title,
+  subtitle,
+  slug,
+  scheduledAt,
+  image {
+    asset -> {
+      url
+    },
+    alt
+  }
+}`
+
+export const singleEventQuery = `*[_type == "event" && slug.current == $slug][0] {
+  title,
+  subtitle,
+  scheduledAt,
+  image {
+    asset -> {
+      url
+    },
+    alt
+  },
+  body
+}`
