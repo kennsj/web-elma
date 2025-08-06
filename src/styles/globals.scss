@@ -133,6 +133,7 @@ section {
 	width: 60%;
 	margin-block: var(--margin-block);
 	font-size: 2rem;
+	line-height: 2.6rem;
 
 	@media screen and (max-width: $breakpoint-large) {
 		width: 70%;
@@ -141,38 +142,15 @@ section {
 	@media screen and (max-width: $breakpoint-medium) {
 		width: 90%;
 		font-size: 1.2rem;
+		line-height: 1.6rem;
 	}
 }
 
 h1 {
-	// font-family: Geist_mono, "Playfair Display", serif;
-	// font-family: var(--font-newsreader);
-	// font-family: var(--font-playfair);
 	font-size: clamp(3rem, 5vw + 1rem, 6rem);
 	font-size: clamp(3rem, 5vw, 6rem);
 	line-height: clamp(4rem, 5.5vw + 1rem, 8rem);
 	font-weight: 300;
-
-	// @media screen and (max-width: $breakpoint-large) {
-	// 	font-size: 4rem;
-	// 	font-size: clamp(2.5rem, 4vw + 0.6rem, 4rem);
-	// 	line-height: clamp(3rem, 5vw + 1rem, 5rem);
-
-	// 	font-size: 3.5rem;
-	// 	line-height: 4.5rem;
-	// }
-
-	// @media screen and (max-width: $breakpoint-medium) {
-	// 	font-size: 3rem;
-	// 	font-size: clamp(3rem, 2vw + 0.3rem, 4rem);
-	// 	line-height: clamp(3.5rem, 3vw + 0.3rem, 5.5rem);
-	// }
-
-	// @media screen and (max-width: $breakpoint-small) {
-	// 	font-size: 2rem;
-	// 	font-size: clamp(3rem, 2vw + 0.3rem, 4rem);
-	// 	line-height: clamp(3.5rem, 3vw + 0.3rem, 5.5rem);
-	// }
 }
 
 .h2__wrapper {
@@ -239,10 +217,10 @@ h4 {
 
 p {
 	font-size: 1.5rem;
-	line-height: 2.6rem;
+	line-height: 2rem;
 	@media screen and (max-width: $breakpoint-medium) {
 		font-size: 1.2rem;
-		line-height: 1.8rem;
+		line-height: 2rem;
 	}
 }
 
@@ -294,13 +272,6 @@ p {
 			opacity: 0.4;
 		}
 
-		p {
-			margin-block: 2rem;
-			font-size: 2rem;
-			line-height: 2.4rem;
-			text-align: center;
-		}
-
 		a {
 			margin-left: -35px;
 		}
@@ -327,8 +298,6 @@ p {
 
 			p {
 				margin-block: 1rem;
-				font-size: 2rem;
-				line-height: 2.2rem;
 			}
 		}
 	}
@@ -354,8 +323,6 @@ p {
 
 			p {
 				margin-block: 1rem;
-				font-size: 2rem;
-				line-height: 2.2rem;
 			}
 		}
 	}

@@ -49,13 +49,11 @@
 		max-width: var(--page-max-width);
 		margin-block: 2rem;
 		padding: 0;
+
 		img {
-			// width: 170px;
-			// width: auto;
 			height: auto;
 
 			@media screen and (max-width: $breakpoint-medium) {
-				height: auto;
 				width: 100px;
 			}
 		}

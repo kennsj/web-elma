@@ -1,60 +1,16 @@
-"use client"
-
-import gsap from "gsap"
-import { useGSAP } from "@gsap/react"
-import { useRef } from "react"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+// "use client"
 
 import styles from "./Footer.module.scss"
 import Image from "next/image"
 import Link from "next/link"
 import Anchor from "@/components/Buttons/Anchor"
-import Newsletter from "../Forms/Newsletter"
+import Newsletter from "../../Forms/Newsletter"
 
 export default function Footer() {
-	const sectionRef = useRef<HTMLElement | null>(null)
-	const tl = useRef<gsap.core.Timeline | null>(null)
-
-	gsap.registerPlugin(ScrollTrigger)
-
-	useGSAP(() => {
-		tl.current = gsap.timeline({
-			scrollTrigger: {
-				trigger: sectionRef.current,
-				start: "top 80%",
-				end: "bottom 30%",
-				toggleActions: "play none none reverse",
-			},
-		})
-
-		tl.current
-			.from(".headline", {
-				y: 40,
-				opacity: 0,
-				duration: 0.8,
-				ease: "power2.out",
-			})
-			.from(
-				".paragraph",
-				{ y: 20, opacity: 0, duration: 0.6, stagger: 0.2 },
-				"-=0.4"
-			)
-			.from(
-				".value",
-				{ y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
-				"-=0.5"
-			)
-			.from(
-				".cta-button",
-				{ scale: 0.9, opacity: 0, duration: 0.4, ease: "back.out(1.7)" },
-				"-=0.4"
-			)
-	}, [])
-
 	return (
 		<footer className={styles.footer}>
 			<Newsletter />
-			<section ref={sectionRef}>
+			<section>
 				<hr />
 				<div className={styles.footer__content}>
 					<div className={styles.footer__content__logo}>

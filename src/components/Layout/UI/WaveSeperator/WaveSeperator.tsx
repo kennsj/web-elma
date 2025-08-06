@@ -1,4 +1,4 @@
-import styles from "./WaveCss.module.scss"
+import styles from "./WaveSeperator.module.scss"
 
 export default function WaveCss({
 	isDarkBackground = true,

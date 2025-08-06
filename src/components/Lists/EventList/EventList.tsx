@@ -1,10 +1,10 @@
 import Image from "next/image"
 import React from "react"
-import Anchor from "../Buttons/Anchor"
+import Anchor from "@/components/Buttons/Anchor"
 
 import styles from "./Event.module.scss"
-import H2 from "@/components/lib/animations/H2"
-import Paragraph from "@/components/lib/animations/Paragraph"
+import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
+import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 
 const EventList = () => {
 	return (

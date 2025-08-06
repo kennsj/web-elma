@@ -8,8 +8,8 @@ import { EmblaOptionsType } from "embla-carousel"
 import {
 	DotButton,
 	useDotButton,
-} from "@/components/Carousel/EmblaCarouselDotButton"
-import Anchor from "../Buttons/Anchor"
+} from "@/components/Lists/Carousel/EmblaCarouselDotButton"
+import Anchor from "@/components/Buttons/Anchor"
 import Link from "next/link"
 
 type PropType = {

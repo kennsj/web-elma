@@ -1,7 +1,7 @@
 import React from "react"
-import Paragraph from "../lib/animations/Paragraph"
-import Button from "../Buttons/Secondary"
-import H2 from "../lib/animations/H2"
+import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
+import Button from "@/components/Buttons/Secondary"
+import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
 import styles from "./Newsletter.module.scss"
 
 const Newsletter = () => {

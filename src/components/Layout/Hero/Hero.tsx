@@ -6,7 +6,7 @@ import "@/styles/globals.scss"
 import PrimaryButton from "@/components/Buttons/Primary"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
-import WaveCss from "../WaveSeperator/WaveCss"
+import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
 
 import { heroAnimation } from "@/components/lib/animations/heroAnimation"
 

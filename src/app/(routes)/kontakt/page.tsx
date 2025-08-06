@@ -1,10 +1,7 @@
-import H2 from "@/components/lib/animations/H2"
-import Paragraph from "@/components/lib/animations/Paragraph"
-import Animated from "@/components/AnimatedImage/Animated"
-import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
-import Anchor from "@/components/Buttons/Anchor"
-import { Hero } from "@/components/Header/Hero"
-import WaveCss from "@/components/WaveSeperator/WaveCss"
+import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
+import Paragraph from "@/components/lib/animations/ParagraphAnimation"
+import { Hero } from "@/components/Layout/Hero/Hero"
+import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
 import React from "react"
 
 const page = () => {
@@ -67,26 +64,6 @@ const page = () => {
 							fagperson som vil forstå bedre.
 						</Paragraph>
 					</div>
-
-					<Animated>
-						<div className='content__spotlight'>
-							<AnimatedImage
-								src={"/images/anders-karlsen-bg.png"}
-								alt='Test'
-								className='spotlight__image'
-								width={500}
-								height={500}
-							/>
-							<div className='spotlight__info'>
-								<h4>Om Elma</h4>
-								<Paragraph>
-									En hånd å holde i <br />
-									gjennom livets stormer
-								</Paragraph>
-								<Anchor href='/about'>Les mer</Anchor>
-							</div>
-						</div>
-					</Animated>
 				</div>
 			</section>
 		</>

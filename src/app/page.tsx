@@ -1,20 +1,14 @@
 import "@/styles/globals.scss"
 import { EmblaOptionsType } from "embla-carousel"
-import { type SanityDocument } from "next-sanity"
-import { client } from "@/sanity/client"
 
-import { frontPagePostQuery } from "@/components/lib/sanity/queries"
+import Carousel from "@/components/Lists/Carousel/Carousel"
 
-import Carousel from "@/components/Carousel/Carousel"
-import Anchor from "@/components/Buttons/Anchor"
-
-import AnimatedImage from "@/components/AnimatedImage/AnimatedImage"
-
-import { Hero } from "@/components/Header/Hero"
-import WaveCss from "@/components/WaveSeperator/WaveCss"
-import EventList from "@/components/EventList/EventList"
-import H2 from "@/components/lib/animations/H2"
-import Paragraph from "@/components/lib/animations/Paragraph"
+import { Hero } from "@/components/Layout/Hero/Hero"
+import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
+import EventList from "@/components/Lists/EventList/EventList"
+import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
+import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
+import About from "@/components/Layout/Cards/Card/Card"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -22,18 +16,7 @@ const OPTIONS: EmblaOptionsType = {
 	align: "start",
 }
 
-const POST_LIMIT = 3 // Maximum number of posts to display on homepage
-
-/*
-   Home page component that fetches posts and renders the main landing sections for the ELMA website.
-*/
 export default async function Home() {
-	const posts = await client.fetch(frontPagePostQuery)
-
-	// Limit the number of posts
-
-	console.log(posts)
-
 	return (
 		<main>
 			<Hero
@@ -75,54 +58,7 @@ export default async function Home() {
 				</div>
 			</section>
 
-			<section className='section__about section__fullwidth'>
-				<div className='about__wrapper'>
-					<div className='section__intro'>
-						<H2 title='Mer enn et prosjekt - et pusterom' />
-						{/* <Paragraph className={"intro__paragraph"}>
-							Elma er et fellesskap for alle som lever med angst. Her kan du
-							delta i samtaler, dele erfaringer og finne støtte. Vi tror på
-							kraften av åpenhet og fellesskap, og ønsker å skape et trygt rom
-							for deling og forståelse.
-						</Paragraph> */}
-
-						<Paragraph className={"intro__paragraph"}>
-							Anders vet hvordan det føles når livet kjennes tungt. Han har selv
-							kjent på håpløsheten og mørket, og vet hvor vanskelig det kan være
-							å finne veien tilbake. I dag bruker han sin erfaring til å hjelpe
-							andre, enten du er ungdom, ung voksen, forelder eller fagperson
-							som vil forstå bedre.
-						</Paragraph>
-					</div>
-
-					{posts.length > 0 ? (
-						posts.map((post: SanityDocument) => (
-							<div className='content__spotlight' key={post._id}>
-								<AnimatedImage
-									// src={"/images/anders-karlsen-bg.png"}
-									src={
-										post.mainImage?.asset?.url ?? "/images/fallback-image.png"
-									}
-									alt={post.title}
-									className='about__image'
-									width={500}
-									height={500}
-									// fill
-								/>
-								<div className='spotlight__info'>
-									<h4>{post.title}</h4>
-									<Paragraph>{post.subtitle}</Paragraph>
-									<Anchor href={`/${post.slug.current}`}>Les mer</Anchor>
-								</div>
-							</div>
-						))
-					) : (
-						<p className='no-posts-message'>
-							Ingen historier tilgjengelig akkurat nå.
-						</p>
-					)}
-				</div>
-			</section>
+			<About />
 			<WaveCss isDarkBackground={false} rotate />
 			<h1
 				style={{

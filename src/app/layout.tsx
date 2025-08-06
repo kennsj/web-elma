@@ -5,7 +5,7 @@ import localFont from "next/font/local"
 import { Nav } from "@/components/Nav/nav"
 
 import "@/styles/globals.scss"
-import Footer from "@/components/Footer/Footer"
+import Footer from "@/components/Layout/Footer/Footer"
 
 const newsreader = Newsreader({
 	variable: "--font-newsreader",
