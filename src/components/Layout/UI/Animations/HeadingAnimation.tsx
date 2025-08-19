@@ -7,7 +7,7 @@ import { SplitText } from "gsap/SplitText"
 import React from "react"
 
 type H2Props = {
-	title: string
+	title: string | React.ReactNode
 }
 
 const H2: React.FC<H2Props> = ({ title }) => {

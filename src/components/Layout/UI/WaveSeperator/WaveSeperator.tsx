@@ -1,6 +1,6 @@
 import styles from "./WaveSeperator.module.scss"
 
-export default function WaveCss({
+export default function WaveSeperator({
 	isDarkBackground = true,
 	rotate = false,
 }: {

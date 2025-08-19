@@ -49,7 +49,7 @@
 
 	--border-radius-big: 5rem;
 	--border-radius-medium: 1.5rem;
-	--border-radius-small: 10px;
+	--border-radius-small: 5px;
 
 	// Fonts
 	--anchor-font-size: 1.5rem;
@@ -348,3 +348,7 @@ p {
 	display: inline-block;
 	overflow: hidden;
 }
+
+/* Import additional component styles */
+@import "blog";
+@import "utilities";

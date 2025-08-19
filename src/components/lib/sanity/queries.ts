@@ -23,29 +23,79 @@ export const frontPagePostQuery = `*[_type == "post"] | order(publishedAt desc)[
   subtitle
 }`
 
-export const eventQuery = `*[_type == "event"] | order(scheduledAt asc) {
-  _id,
-  title,
-  subtitle,
-  slug,
-  scheduledAt,
-  image {
-    asset -> {
-      url
+export const allEventsQuery = `
+  *[_type == "event"] | order(date asc) {
+    _id,
+    title,
+    slug,
+    date,
+    startTime,
+    endTime,
+    city,
+    address,
+    location,
+    entryType,
+    description,
+    mainImage{
+      asset->{url}
     },
-    alt
+    seo,
+    _updatedAt,
+    "status": select(
+      date > now() => "upcoming",
+      date <= now() => "expired"
+    )
   }
-}`
+`
 
-export const singleEventQuery = `*[_type == "event" && slug.current == $slug][0] {
-  title,
-  subtitle,
-  scheduledAt,
-  image {
-    asset -> {
-      url
+export const singleEventQuery = `
+  *[_type == "event" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    date,
+    startTime,
+    endTime,
+    city,
+    address,
+    location,
+    entryType,
+    description,
+    mainImage {
+      asset -> {
+        _id,
+        url
+      },
+      alt
     },
-    alt
-  },
-  body
-}`
+    seo {
+      metaTitle,
+      metaDescription,
+      ogImage {
+        asset -> {
+          _id
+        }
+      },
+      keywords,
+      noIndex,
+      canonicalUrl
+    },
+    _updatedAt
+  }
+`
+
+export const upcomingEventsQuery = `
+  *[_type == "event" && date >= now()] | order(date asc) {
+    _id,
+    title,
+    slug,
+    date,
+    city,
+    address,
+    location,
+    entryType,
+    mainImage{
+      asset->{url}
+    }
+  }
+`

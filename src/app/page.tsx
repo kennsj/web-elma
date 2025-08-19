@@ -1,4 +1,5 @@
 import "@/styles/globals.scss"
+import { Metadata } from "next"
 import { EmblaOptionsType } from "embla-carousel"
 
 import Carousel from "@/components/Lists/Carousel/Carousel"
@@ -14,6 +15,35 @@ const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
 	loop: true,
 	align: "start",
+}
+
+export const metadata: Metadata = {
+	title: "ELMA - For deg som vil leve, ikke bare overleve",
+	description:
+		"Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo. Anders Karlsen reiser landet rundt for å snakke ærlig om angst og psykisk helse.",
+	keywords: [
+		"angst",
+		"psykisk helse",
+		"foredrag",
+		"Anders Karlsen",
+		"støtte",
+		"fellesskap",
+	],
+	openGraph: {
+		title: "ELMA - For deg som vil leve, ikke bare overleve",
+		description:
+			"Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo.",
+		type: "website",
+		locale: "no_NO",
+		url: "https://your-domain.com", // Replace with your actual domain
+		siteName: "ELMA",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "ELMA - For deg som vil leve, ikke bare overleve",
+		description:
+			"Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo.",
+	},
 }
 
 export default async function Home() {
@@ -60,19 +90,12 @@ export default async function Home() {
 
 			<About />
 			<WaveCss isDarkBackground={false} rotate />
-			<h1
-				style={{
-					textAlign: "center",
-					fontWeight: "bold",
-					fontStyle: "italic",
-					marginBlock: "4rem",
-				}}
-			>
-				Et trygt sted <br /> for urolige sinn
-			</h1>
 
-			<WaveCss isDarkBackground={false} />
-			<EventList />
+			<EventList
+				title='Foredrag og arrangementer'
+				intro='Anders Karlsen reiser landet rundt for å snakke ærlig om angst, prestasjonspress og det å tørre å være åpen. Se hvor du kan møte ham neste gang.'
+				showExpiredEvents={false}
+			/>
 		</main>
 	)
 }

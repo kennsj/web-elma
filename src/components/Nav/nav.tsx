@@ -23,22 +23,28 @@ export const Nav = () => {
 			index: 1,
 		},
 		{
-			href: "/ressurser",
-			label: "Ressurser",
+			href: "/blog",
+			label: "Blog",
 			imgSrc: "/images/man-mountain-alone.jpg",
 			index: 2,
 		},
 		{
-			href: "/foredrag",
-			label: "Foredrag",
+			href: "/ressurser",
+			label: "Ressurser",
 			imgSrc: "/images/person-aurora.webp",
 			index: 3,
 		},
 		{
-			href: "/kontakt",
-			label: "Kontakt",
+			href: "/events",
+			label: "Foredrag",
 			imgSrc: "/images/placeholder1.png",
 			index: 4,
+		},
+		{
+			href: "/kontakt",
+			label: "Kontakt",
+			imgSrc: "/images/wave.jpg",
+			index: 5,
 		},
 	]
 

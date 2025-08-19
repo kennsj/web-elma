@@ -36,7 +36,7 @@ export default function Footer() {
 								</Anchor>
 							</li>
 							<li>
-								<Anchor isDarkBackground href='/foredrag'>
+								<Anchor isDarkBackground href='/events'>
 									Foredrag
 								</Anchor>
 							</li>
