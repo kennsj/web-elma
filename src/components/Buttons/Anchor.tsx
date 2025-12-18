@@ -2,7 +2,7 @@
 
 import styles from "./Anchor.module.scss"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { usePageTransition } from "../lib/animations/PageTransition"
 
 type LinkProps = {
 	href: string
@@ -11,6 +11,7 @@ type LinkProps = {
 	ref?: React.Ref<HTMLAnchorElement>
 	className?: string
 	onClick?: () => void
+	tabIndex?: number
 }
 
 export default function Anchor({
@@ -20,14 +21,13 @@ export default function Anchor({
 	className,
 	ref,
 	onClick,
+	tabIndex,
 	...props
 }: LinkProps) {
-	const router = useRouter()
+	const { handleTransitionClick } = usePageTransition()
 
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-		e.preventDefault()
-		if (onClick) onClick()
-		router.push(href)
+		handleTransitionClick(href, e, onClick)
 	}
 
 	return (
@@ -38,6 +38,7 @@ export default function Anchor({
 			{...props}
 			data-dark-background={isDarkBackground}
 			ref={ref}
+			tabIndex={tabIndex}
 		>
 			{/* <div className={styles.wave}></div> */}
 			{children}

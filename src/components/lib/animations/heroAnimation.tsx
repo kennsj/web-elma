@@ -13,7 +13,7 @@ export const heroAnimation = ({
 	imageContainer: HTMLElement
 	headingRef: HTMLElement
 	paragraphRef: HTMLElement
-	buttonRef: HTMLElement
+	buttonRef?: HTMLElement | null
 }) => {
 	gsap.registerPlugin(SplitText, ScrollTrigger)
 
@@ -24,11 +24,15 @@ export const heroAnimation = ({
 	const splitPara = new SplitText(paragraphRef, { type: "words" })
 
 	// Set initial states
-	gsap.set(headingRef, { visibility: "visible" })
-	gsap.set(paragraphRef, { visibility: "visible" })
+	gsap.set(headingRef, { autoAlpha: 1 })
+	gsap.set(paragraphRef, { autoAlpha: 1 })
+	gsap.set(imageRef, { autoAlpha: 0, y: 50 })
+	if (buttonRef) {
+		gsap.set(buttonRef, { autoAlpha: 0, y: 10 })
+	}
 
 	// Create main timeline
-	const tl = gsap.timeline({ delay: 0.5 })
+	const tl = gsap.timeline({ delay: 0.2 })
 
 	// Title animation
 	tl.from(splitTitle.chars, {
@@ -54,8 +58,10 @@ export const heroAnimation = ({
 			"-=0.4"
 		)
 
-		// Button animation (concurrent with paragraph)
-		.to(
+		
+	// Button animation (concurrent with paragraph) - only if button exists
+	if (buttonRef) {
+		tl.to(
 			buttonRef,
 			{
 				y: 0,
@@ -64,8 +70,11 @@ export const heroAnimation = ({
 				duration: 0.4,
 				ease: "power2.out",
 			},
-			"<-.01"
+			"-=0.4"
 		)
+	}
+
+	tl
 
 		// Image animations
 		.to(

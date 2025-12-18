@@ -15,7 +15,7 @@
 		margin-top: 4px;
 
 		.line {
-			opacity: 1;
+			opacity: 0;
 			transition: opacity 100ms ease-out;
 			stroke-width: 2px;
 			fill: transparent;
@@ -30,17 +30,16 @@
 			fill: transparent;
 		}
 	}
-
-	&:hover .line,
-	&:focus .line,
+	&:hover,
+	&:focus,
 	&:active .line {
 		opacity: 1;
 		transform: translateX(-40%);
 		transition: transform 0.7s ease;
 	}
 
-	&:hover .tip,
-	&:focus .tip,
+	&:hover,
+	&:focus,
 	&:active .tip {
 		transform: translateX(-10px);
 		transition: 0.4s ease-out;
@@ -100,8 +99,8 @@
 		}
 	}
 
-	&:hover .wave,
-	&:focus .wave,
+	&:hover,
+	&:focus,
 	&:active .wave {
 		// animation-play-state: paused;
 		transform: translateY(-4%);

@@ -2,6 +2,8 @@ import { Metadata } from "next"
 import { client } from "@/sanity/client"
 import Link from "next/link"
 import Image from "next/image"
+import { Hero } from "@/components/Layout/Hero/Hero"
+import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 
 interface BlogPost {
 	_id: string
@@ -56,6 +58,28 @@ export default async function BlogPage() {
 
 	return (
 		<main className='blog-page'>
+			<Hero
+				title='Oversikt over alle blogginnleggene'
+				subTitle='Her kan du lese de nyeste innleggene om psykisk helse, angst og personlig utvikling fra Anders Karlsen.'
+				// buttonText='Start reisen'
+				// buttonHref='/om-elma'
+				imageSrc='/images/anders-moloen.webp'
+				imageAlt='Anders Moloen'
+				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
+				imageQuality={100}
+				imagePriority={true}
+				// intro='Elma ble startet av Anders, som selv har levd med angst i store
+				// 		deler av livet. Gjennom elma ønsker han å skape et trygt rom for
+				// 		deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
+				// 		alene med sin psykiske helse.'
+			>
+				<Paragraph className={"header__intro"}>
+					Elma ble startet av Anders, som selv har levd med angst i store deler
+					av livet. Gjennom elma ønsker han å skape et trygt rom for deling,
+					forståelse og støtte&mdash;slik at ingen skal måtte stå alene med sin
+					psykiske helse.
+				</Paragraph>
+			</Hero>
 			<header className='blog-header'>
 				<h1>Blog</h1>
 				<p>

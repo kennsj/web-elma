@@ -11,7 +11,7 @@ const page = () => {
 				title='Ønsker du å kontakte oss?'
 				subTitle='Vi er her for å hjelpe deg, og vi vil gjerne høre fra deg'
 				buttonText='Start reisen'
-				buttonHref='/om'
+				buttonHref='/om-elma'
 				imageSrc='/images/placeholder1.png'
 				imageAlt='Anders Moloen'
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'

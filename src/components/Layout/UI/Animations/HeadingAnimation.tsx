@@ -44,13 +44,7 @@ const H2: React.FC<H2Props> = ({ title }) => {
 					},
 				})
 			},
-
-			onLeave: () => {
-				ScrollTrigger.refresh()
-			},
 		})
-
-		ScrollTrigger.refresh()
 	}, [h2Ref])
 
 	return (

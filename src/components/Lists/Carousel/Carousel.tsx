@@ -115,6 +115,7 @@ export default function Carousel({ options, limit = 7 }: PropType) {
 							/>
 						))}
 					</div>
+					{/* Link to show full page of stories when mroe are added */}
 					<Anchor href='#' isDarkBackground={false}>
 						Utforsk flere
 					</Anchor>

@@ -1,4 +1,3 @@
-import "@/styles/globals.scss"
 import { Metadata } from "next"
 import { EmblaOptionsType } from "embla-carousel"
 
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
 			"Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo.",
 		type: "website",
 		locale: "no_NO",
-		url: "https://your-domain.com", // Replace with your actual domain
+		url: "https://your-domain.com", // Replace
 		siteName: "ELMA",
 	},
 	twitter: {
@@ -48,21 +47,18 @@ export const metadata: Metadata = {
 
 export default async function Home() {
 	return (
-		<main>
+		<>
 			<Hero
-				title='For deg som vil <span>leve</span>, ikke bare <span>overleve</span>'
+				key='home-hero'
+				title='For deg som vil <span>leve</span>, <br /> ikke bare <span>overleve</span>'
 				subTitle='Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo.'
 				buttonText='Start reisen'
-				buttonHref='/om'
-				imageSrc='/images/anders-moloen.png'
+				buttonHref='/om-elma'
+				imageSrc='/images/anders-moloen.webp'
 				imageAlt='Anders Moloen'
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}
 				imagePriority={true}
-				// intro='Elma ble startet av Anders, som selv har levd med angst i store
-				// 		deler av livet. Gjennom elma ønsker han å skape et trygt rom for
-				// 		deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
-				// 		alene med sin psykiske helse.'
 			>
 				<Paragraph className={"header__intro"}>
 					Elma ble startet av Anders, som selv har levd med angst i store deler
@@ -71,31 +67,32 @@ export default async function Home() {
 					psykiske helse.
 				</Paragraph>
 			</Hero>
+			<main>
+				<section className='section__histories section__fullwidth'>
+					<div className='histories__wrapper'>
+						<div className='section__intro'>
+							<H2 title='Ekte stemmer' />
 
-			<section className='section__histories section__fullwidth'>
-				<div className='histories__wrapper'>
-					<div className='section__intro'>
-						<H2 title='Ekte stemmer' />
+							<Paragraph className={"intro__paragraph"}>
+								Her deler modige stemmer sine personlige reiser med
+								angst&mdash;til ettertanke, gjenkjennelse og håp.
+							</Paragraph>
+						</div>
 
-						<Paragraph className={"intro__paragraph"}>
-							Her deler modige stemmer sine personlige reiser med
-							angst&mdash;til ettertanke, gjenkjennelse og håp.
-						</Paragraph>
+						<Carousel options={OPTIONS} />
+						<WaveCss isDarkBackground={false} />
 					</div>
-
-					<Carousel options={OPTIONS} />
-					<WaveCss isDarkBackground={false} />
-				</div>
-			</section>
-
-			<About />
-			<WaveCss isDarkBackground={false} rotate />
-
-			<EventList
-				title='Foredrag og arrangementer'
-				intro='Anders Karlsen reiser landet rundt for å snakke ærlig om angst, prestasjonspress og det å tørre å være åpen. Se hvor du kan møte ham neste gang.'
-				showExpiredEvents={false}
-			/>
-		</main>
+				</section>
+				<About />
+				{/* <WaveCss isDarkBackground={false} rotate /> */}
+				{/* Disabled for now */}
+				<EventList
+					title='Foredrag og arrangementer'
+					intro='Anders Karlsen reiser landet rundt for å snakke ærlig om angst, prestasjonspress og det å tørre å være åpen. Se hvor du kan møte ham neste gang.'
+					showExpiredEvents={false}
+				/>
+				{/* <WaveCss isDarkBackground={false} /> */}
+			</main>
+		</>
 	)
 }

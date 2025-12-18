@@ -10,16 +10,17 @@ import Image from "next/image"
 import { Clock, MapPin } from "lucide-react"
 
 interface EventPageProps {
-	params: {
+	params: Promise<{
 		slug: string
-	}
+	}>
 }
 
 // Generate metadata for the event page
 export async function generateMetadata({
 	params,
 }: EventPageProps): Promise<Metadata> {
-	const event = await client.fetch(singleEventQuery, { slug: params.slug })
+	const { slug } = await params
+	const event = await client.fetch(singleEventQuery, { slug })
 
 	if (!event) {
 		return {
@@ -53,7 +54,8 @@ export async function generateStaticParams() {
 }
 
 export default async function EventPage({ params }: EventPageProps) {
-	const event = await client.fetch(singleEventQuery, { slug: params.slug })
+	const { slug } = await params
+	const event = await client.fetch(singleEventQuery, { slug })
 
 	if (!event) {
 		notFound()

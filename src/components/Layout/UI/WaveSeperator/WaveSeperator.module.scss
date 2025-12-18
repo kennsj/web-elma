@@ -2,6 +2,7 @@
 
 .waveContainer {
 	padding-top: 5rem;
+	line-height: 0;
 	// background: var(--color-primary);
 }
 
@@ -12,38 +13,19 @@
 	margin-bottom: -7px;
 	min-height: 100px;
 	max-height: 150px;
+	display: block;
+	overflow: hidden;
+	vertical-align: middle;
+
+	@media screen and (max-width: $breakpoint-medium) {
+		margin-bottom: -10px;
+		transform: translateY(1px);
+	}
 }
 
 .parallax > use {
-	animation: move-forever 15s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
-}
-.parallax > use:nth-child(1) {
-	animation-delay: -2s;
-	animation-duration: 7s * 7;
-	@media screen and (max-width: $breakpoint-medium) {
-		animation-duration: 7s * 2;
-	}
-}
-.parallax > use:nth-child(2) {
-	animation-delay: -3s;
-	animation-duration: 10s * 7;
-	@media screen and (max-width: $breakpoint-medium) {
-		animation-duration: 10s * 2;
-	}
-}
-.parallax > use:nth-child(3) {
-	animation-delay: -4s;
-	animation-duration: 13s * 7;
-	@media screen and (max-width: $breakpoint-medium) {
-		animation-duration: 13s * 2;
-	}
-}
-.parallax > use:nth-child(4) {
-	animation-delay: -5s;
-	animation-duration: 20s * 7;
-	@media screen and (max-width: $breakpoint-medium) {
-		animation-duration: 20s * 2;
-	}
+	animation: move-forever cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+	// Duration and delay set via inline styles for randomization
 }
 @keyframes move-forever {
 	0% {

@@ -4,49 +4,49 @@ import Image from "next/image"
 import styles from "./Nav.module.scss"
 import Link from "next/link"
 import NavBody from "./NavBody"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { CustomEase } from "gsap/all"
 import { slideIn, slideOut } from "@/components/lib/animations/slide"
+import { usePageTransition } from "../lib/animations/PageTransition"
+import { NAV_LINKS } from "@/components/lib/links/links"
 
 export const Nav = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const navRef = useRef<HTMLDivElement>(null)
 
-	const navItems = [
-		{ href: "/", label: "Hjem", imgSrc: "/images/anders-moloen.png", index: 0 },
-		{
-			href: "/om",
-			label: "Om elma",
-			imgSrc: "/images/anders-karlsen-bg.png",
-			index: 1,
-		},
-		{
-			href: "/blog",
-			label: "Blog",
-			imgSrc: "/images/man-mountain-alone.jpg",
-			index: 2,
-		},
-		{
-			href: "/ressurser",
-			label: "Ressurser",
-			imgSrc: "/images/person-aurora.webp",
-			index: 3,
-		},
-		{
-			href: "/events",
-			label: "Foredrag",
-			imgSrc: "/images/placeholder1.png",
-			index: 4,
-		},
-		{
-			href: "/kontakt",
-			label: "Kontakt",
-			imgSrc: "/images/wave.jpg",
-			index: 5,
-		},
-	]
+	// Use centralized nav links
+	const navItems = NAV_LINKS
+
+	// Preload images when menu opens
+	useEffect(() => {
+		if (isOpen) {
+			const links: HTMLLinkElement[] = []
+
+			navItems.forEach((item) => {
+				// Create actual image elements to force browser to load and cache
+				const img = new window.Image()
+				img.src = item.imgSrc
+
+				// Also add preload link for Next.js optimization
+				const link = document.createElement("link")
+				link.rel = "preload"
+				link.as = "image"
+				link.href = item.imgSrc
+				document.head.appendChild(link)
+				links.push(link)
+			})
+
+			// Cleanup function to remove preload links
+			return () => {
+				links.forEach((link) => {
+					document.head.removeChild(link)
+				})
+			}
+		}
+		// eslint-disable-next-line
+	}, [isOpen])
 
 	gsap.registerPlugin(CustomEase)
 	const overlayRef = useRef<HTMLDivElement>(null)
@@ -100,17 +100,24 @@ export const Nav = () => {
 		return () => window.removeEventListener("scroll", handleScroll)
 	}, [])
 
+	const { handleTransitionClick } = usePageTransition()
+
+	const handleClick =
+		(href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+			handleTransitionClick(href, e)
+		}
+
 	return (
 		<>
 			<nav ref={navRef} className={styles.nav}>
 				<div className={styles.nav__wrapper}>
 					<div>
-						<Link href='/'>
+						<Link href='/' onClick={handleClick("/")}>
 							<Image
-								src='/images/elma-logo-white.svg'
+								src='/images/logo-elma.svg'
 								alt='elma logo'
-								width={150}
-								height={150}
+								width={50}
+								height={50}
 								priority
 								onClick={() => setIsOpen(false)}
 							/>

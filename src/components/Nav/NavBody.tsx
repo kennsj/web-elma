@@ -8,11 +8,10 @@ import Link from "next/link"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import Anchor from "../Buttons/Anchor"
-import { useRouter } from "next/navigation"
+import { usePageTransition } from "@/components/lib/animations/PageTransition"
 import {
 	animateNavOpen,
 	animateNavClose,
-	handleNavLinkClick,
 	handleNavItemMouseEnter,
 	handleNavItemMouseLeave,
 } from "@/components/lib/animations/navAnimation"
@@ -45,8 +44,9 @@ const NavBody: React.FC<Props> = ({
 	const [activeIndex, setActiveIndex] = useState<number | null>(null)
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 	const [isNavigating, setIsNavigating] = useState(false)
+	const [imageKey, setImageKey] = useState(0)
+	const [imageLoaded, setImageLoaded] = useState(false)
 	const hasAnimatedRef = useRef(false)
-	// Use any type for SplitText to avoid TypeScript errors with GSAP plugins
 	const splitRef = useRef<SplitText | null>(null)
 
 	const isDesktop = useCallback(() => {
@@ -56,6 +56,8 @@ const NavBody: React.FC<Props> = ({
 
 	const handleMouseEnter = useCallback(
 		(index: number) => {
+			setImageKey((prev) => prev + 1)
+			setImageLoaded(false)
 			handleNavItemMouseEnter(
 				index,
 				imageContainerRef as React.RefObject<HTMLDivElement>,
@@ -129,21 +131,17 @@ const NavBody: React.FC<Props> = ({
 		}
 	}, [isOpen, cleanupAllAnimations])
 
-	const router = useRouter()
+	const { handleTransitionClick } = usePageTransition()
 
-	const handleLinkClick = async (e: React.MouseEvent, href: string) => {
-		const refs = {
-			navBodyRef: navBodyRef as React.RefObject<HTMLDivElement>,
-			imageContainerRef: imageContainerRef as React.RefObject<HTMLDivElement>,
-			linksRef: linksRef as React.RefObject<HTMLUListElement>,
-			footerRef: footerRef as React.RefObject<HTMLDivElement>,
-			overlayRef: overlayRef as React.RefObject<HTMLDivElement>,
-			splitRef: splitRef as React.RefObject<SplitText | null>,
-			activeTimelines: activeTimelines as React.RefObject<gsap.core.Timeline[]>,
-			hasAnimatedRef: hasAnimatedRef as React.RefObject<boolean>,
-		}
-
-		handleNavLinkClick(e, href, refs, setIsNavigating, setIsOpen, router)
+	const handleLinkClick = async (
+		e: React.MouseEvent<HTMLAnchorElement>,
+		href: string
+	) => {
+		// Trigger page transition with nav close as callback
+		handleTransitionClick(href, e, () => {
+			setIsOpen(false)
+			setIsNavigating(false)
+		})
 	}
 
 	const escapeHandler = useCallback(
@@ -201,14 +199,17 @@ const NavBody: React.FC<Props> = ({
 					<div className={styles.nav_body__image} ref={imageContainerRef}>
 						{activeIndex !== null && (
 							<Image
+								key={imageKey}
 								priority
 								src={navItems[activeIndex].imgSrc}
 								alt='preview'
 								fill
+								onLoad={() => setImageLoaded(true)}
 								style={{
 									objectFit: "cover",
-									opacity: 0.8,
+									opacity: imageLoaded ? 0.8 : 0,
 									pointerEvents: "none",
+									transition: "opacity 0.3s ease-in-out",
 								}}
 							/>
 						)}
@@ -221,6 +222,7 @@ const NavBody: React.FC<Props> = ({
 							className={styles.footer__email}
 							href='mailto:hei@elma.no'
 							onClick={() => setIsOpen(false)}
+							tabIndex={isOpen ? 0 : -1}
 						>
 							hei@elma.no
 						</Link>
@@ -229,6 +231,7 @@ const NavBody: React.FC<Props> = ({
 							isDarkBackground
 							href='#'
 							onClick={() => setIsOpen(false)}
+							tabIndex={isOpen ? 0 : -1}
 						>
 							Booking av elma
 						</Anchor>
@@ -238,6 +241,7 @@ const NavBody: React.FC<Props> = ({
 							href='/personvern'
 							onClick={() => setIsOpen(false)}
 							isDarkBackground
+							tabIndex={isOpen ? 0 : -1}
 						>
 							Personvern og vilkår
 						</Anchor>

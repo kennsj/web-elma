@@ -34,7 +34,7 @@ const defaultSEO = {
 	defaultTitle: "ELMA - For deg som vil leve, ikke bare overleve",
 	defaultDescription:
 		"Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo. Anders Karlsen reiser landet rundt for å snakke ærlig om angst og psykisk helse.",
-	siteUrl: "https://your-domain.com", // Replace with your actual domain
+	siteUrl: "https://your-domain.com", // Replace
 }
 
 export function generateSEOMetadata({

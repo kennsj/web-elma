@@ -134,8 +134,8 @@
 .spinner {
 	width: 40px;
 	height: 40px;
-	border: 4px solid var(--border-color, #e5e5e5);
-	border-top: 4px solid var(--primary-color, #12332f);
+	border: 4px solid var(--primary-color, #12332f);
+	border-top: 4px solid var(--border-color, #e5e5e5);
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 }

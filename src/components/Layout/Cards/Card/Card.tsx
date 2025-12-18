@@ -8,6 +8,8 @@ import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 import Anchor from "@/components/Buttons/Anchor"
 import Image from "next/image"
 
+import styles from "./Card.module.scss"
+
 export default async function ContentPreview() {
 	const posts = await client.fetch(frontPagePostQuery)
 
@@ -28,20 +30,20 @@ export default async function ContentPreview() {
 
 				{posts.length > 0 ? (
 					posts.map((post: SanityDocument) => (
-						<div className='content__spotlight' key={post._id}>
+						<div className={styles.card} key={post._id}>
+							<div className={styles.card__content}>
+								<h4>{post.title}</h4>
+								<Paragraph>{post.subtitle}</Paragraph>
+								<Anchor href={`/blog/${post.slug.current}`}>Les mer</Anchor>
+							</div>
 							<Image
 								src={post.mainImage?.asset?.url ?? "/images/fallback-image.png"}
 								alt={post.title}
-								className='about__image'
-								width={500}
-								height={500}
-								// fill
+								fill={true}
+								// width={500}
+								// height={500}
+								className={styles.card__image}
 							/>
-							<div className='spotlight__info'>
-								<h4>{post.title}</h4>
-								<Paragraph>{post.subtitle}</Paragraph>
-								<Anchor href={`/${post.slug.current}`}>Les mer</Anchor>
-							</div>
 						</div>
 					))
 				) : (

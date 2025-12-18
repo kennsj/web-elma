@@ -9,9 +9,13 @@ export default function useScrollTriggerRefresh() {
 	const pathname = usePathname()
 
 	useEffect(() => {
-		// Wait a frame before refreshing scroll triggers
-		requestAnimationFrame(() => {
-			ScrollTrigger.refresh()
-		})
+		// Delay refresh to avoid interrupting momentum scroll on mobile
+		const timer = setTimeout(() => {
+			requestAnimationFrame(() => {
+				ScrollTrigger.refresh()
+			})
+		}, 300) // Wait for momentum to settle
+
+		return () => clearTimeout(timer)
 	}, [pathname])
 }

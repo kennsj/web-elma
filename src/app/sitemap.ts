@@ -14,7 +14,7 @@ interface PostType {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const baseUrl = "https://your-domain.com" // Replace with your actual domain
+	const baseUrl = "https://your-domain.com" // Replace
 
 	// Static routes
 	const staticRoutes = [
@@ -25,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			priority: 1,
 		},
 		{
-			url: `${baseUrl}/om`,
+			url: `${baseUrl}/om-elma`,
 			lastModified: new Date(),
 			changeFrequency: "monthly" as const,
 			priority: 0.8,

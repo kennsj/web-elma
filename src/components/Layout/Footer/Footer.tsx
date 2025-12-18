@@ -5,6 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 import Anchor from "@/components/Buttons/Anchor"
 import Newsletter from "../../Forms/Newsletter"
+import { TransitionLink } from "@/components/lib/animations/PageTransition"
+import { NAV_LINKS } from "@/components/lib/links/links"
 
 export default function Footer() {
 	return (
@@ -25,65 +27,50 @@ export default function Footer() {
 					</div>
 					<div className={styles.footer__content__nav}>
 						<ul>
-							<li>
-								<Anchor isDarkBackground href='/start'>
-									Start din reise
-								</Anchor>
-							</li>
-							<li>
-								<Anchor isDarkBackground href='/historier'>
-									Historier
-								</Anchor>
-							</li>
-							<li>
-								<Anchor isDarkBackground href='/events'>
-									Foredrag
-								</Anchor>
-							</li>
-							<li>
-								<Anchor isDarkBackground href='/hjelp'>
-									Trenger du hjelp?
-								</Anchor>
-							</li>
-							<li>
-								<Anchor isDarkBackground href='/om'>
-									Om elma
-								</Anchor>
-							</li>
+							{NAV_LINKS.map((link) => (
+								<li key={link.href}>
+									<Anchor isDarkBackground href={link.href}>
+										{link.label}
+									</Anchor>
+								</li>
+							))}
 						</ul>
 					</div>
 					<div className={styles.footer__content__contact}>
 						<h3>Kontakt</h3>
-						<Link className={styles.footer__email} href='mailto:hei@elma.no'>
+						<TransitionLink
+							className={styles.footer__email}
+							href='mailto:hei@elma.no'
+						>
 							hei@elma.no
-						</Link>
-						<Anchor
+						</TransitionLink>
+						{/*  */}
+						{/* <Anchor
 							className={styles.footer__booking}
 							isDarkBackground
 							href='#'
 						>
 							Booking av elma
-						</Anchor>
+						</Anchor> */}
 					</div>
 				</div>
 				<hr />
 				<div className={styles.footer__bottom}>
-					<div>
-						{/* <p>© {new Date().getFullYear()} E.L.M.A.</p> */}
+					<div className={styles.footer__bottom__left}>
 						<p>Laget med omtanke</p>
+						{/* <p>© {new Date().getFullYear()} ELMA</p> */}
 						<Anchor isDarkBackground href='/personvern'>
 							Personvern og vilkår
 						</Anchor>
 					</div>
 					<div className={styles.footer__bottom__right}>
-						Design og kode
+						Design og utvikling
 						<a
-							href='mailto:kennethsjorgensen@gmail.com'
+							href='mailto:kennethsjorgensen@gmail.com title=Kenneth Jørgensen'
 							target='_blank'
 							rel='noreferrer'
 						>
-							Kenneth <br />
-							<span>Jørgensen</span>
+							Kenneth <span>Jørgensen</span>
 						</a>
 					</div>
 				</div>

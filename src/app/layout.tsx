@@ -1,11 +1,14 @@
+import "@/styles/globals.scss"
+import "@/components/Layout/Hero/Hero.module.scss"
+
 import type { Metadata } from "next"
-import { Newsreader, Oswald } from "next/font/google"
+import { Newsreader, Oswald, Signika_Negative, Syne } from "next/font/google"
 import localFont from "next/font/local"
 
+import { ViewTransitions } from "next-view-transitions"
 import { Nav } from "@/components/Nav/nav"
-
-import "@/styles/globals.scss"
 import Footer from "@/components/Layout/Footer/Footer"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const newsreader = Newsreader({
 	variable: "--font-newsreader",
@@ -16,6 +19,18 @@ const Playfair = Oswald({
 	variable: "--font-playfair",
 	subsets: ["latin"],
 	// weight: ["400"],
+})
+
+const Signika = Signika_Negative({
+	variable: "--font-signika",
+	subsets: ["latin"],
+	weight: ["300", "400", "500", "600", "700"],
+})
+
+const SyneFont = Syne({
+	variable: "--font-syne",
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700", "800"],
 })
 
 // const Playfair = Playfair_Display({
@@ -47,7 +62,7 @@ const Atyp = localFont({
 })
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://your-domain.com"), // Replace with your actual domain
+	metadataBase: new URL("https://your-domain.com"), // Replace
 	title: {
 		default: "ELMA - For deg som vil leve, ikke bare overleve",
 		template: "%s | ELMA",
@@ -62,7 +77,16 @@ export const metadata: Metadata = {
 		"støtte",
 		"fellesskap",
 		"mental helse",
+		"åpenhet",
+		"mestring",
+		"et liv med angst",
+		"selvhjelp",
+		"åpenhet",
+		"stigma",
+		"livskvalitet",
+		"bedre hverdag",
 		"Norge",
+		"Bodø",
 	],
 	authors: [{ name: "ELMA" }],
 	creator: "ELMA",
@@ -81,7 +105,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "no_NO",
-		url: "https://your-domain.com", // Replace with your actual domain
+		url: "https://your-domain.com", // Replace
 		siteName: "ELMA",
 		title: "ELMA - For deg som vil leve, ikke bare overleve",
 		description:
@@ -111,14 +135,17 @@ export default function RootLayout({
 	// console.log(document)
 
 	return (
-		<html lang='no'>
-			<body
-				className={`${newsreader.variable} ${Playfair.variable} ${Atyp.variable} antialiased`}
-			>
-				<Nav />
-				{children}
-				<Footer />
-			</body>
-		</html>
+		<ViewTransitions>
+			<html lang='no'>
+				<body
+					className={`${newsreader.variable} ${Playfair.variable} ${Atyp.variable} ${Signika.variable} ${SyneFont.variable} antialiased`}
+				>
+					<Nav />
+					{children}
+					<Footer />
+					<SpeedInsights />
+				</body>
+			</html>
+		</ViewTransitions>
 	)
 }

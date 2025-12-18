@@ -1,5 +1,7 @@
+"use client"
+
 import styles from "./Buttons.module.scss"
-import Link from "next/link"
+import { usePageTransition } from "@/components/lib/animations/PageTransition"
 
 type PrimaryProps = {
 	href: string
@@ -15,8 +17,15 @@ export default function Primary({
 	ref,
 	...props
 }: PrimaryProps) {
+	const { handleTransitionClick } = usePageTransition()
+
+	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+		handleTransitionClick(href, e)
+	}
+
 	return (
-		<Link
+		<a
+			onClick={handleClick}
 			href={href}
 			className={styles.button}
 			{...props}
@@ -48,6 +57,6 @@ export default function Primary({
 					strokeLinecap='round'
 				/>
 			</svg>
-		</Link>
+		</a>
 	)
 }

@@ -2,7 +2,6 @@
 import Image from "next/image"
 
 import styles from "./Hero.module.scss"
-import "@/styles/globals.scss"
 import PrimaryButton from "@/components/Buttons/Primary"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
@@ -13,7 +12,7 @@ import { heroAnimation } from "@/components/lib/animations/heroAnimation"
 type HeroProps = {
 	title?: React.ReactNode
 	subTitle: React.ReactNode
-	buttonText: string
+	buttonText?: string
 	buttonHref?: string
 	imageSrc: string
 	imageAlt?: string
@@ -44,17 +43,29 @@ export const Hero: React.FC<HeroProps> = ({
 
 	useGSAP(
 		() => {
+			if (
+				!imageRef.current ||
+				!imageContainer.current ||
+				!headingRef.current ||
+				!paragraphRef.current
+			)
+				return
+
 			heroAnimation({
-				// container: containerRef.current!,
-				imageRef: imageRef.current!,
-				imageContainer: imageContainer.current!,
-				headingRef: headingRef.current!,
-				paragraphRef: paragraphRef.current!,
-				buttonRef: buttonRef.current!,
+				imageRef: imageRef.current,
+				imageContainer: imageContainer.current,
+				headingRef: headingRef.current,
+				paragraphRef: paragraphRef.current,
+				buttonRef: buttonRef.current,
 			})
 		},
-		{ scope: containerRef }
+		{ dependencies: [imageSrc] }
 	)
+
+	// Debug: Log styles to see if they're loading
+	if (typeof window !== "undefined" && !styles.header) {
+		console.error("Hero styles not loaded:", styles)
+	}
 
 	return (
 		<>
@@ -69,23 +80,27 @@ export const Hero: React.FC<HeroProps> = ({
 									dangerouslySetInnerHTML={{
 										__html:
 											typeof title === "string"
-												? title.replaceAll(
-														"<span>",
-														'<span style="color: var(--color-tertiary); font-weight: bold; " class="highlight">'
-													)
+												? title
+														.replaceAll(
+															"<span>",
+															'<span style="color: var(--color-tertiary); font-weight: bold; " class="highlight">'
+														)
+														.replaceAll("<br>", "<br />")
 												: "",
 									}}
 								/>
 							</div>
 							<div className={styles.header__title__intro}>
 								<p ref={paragraphRef}>{subTitle}</p>
-								<PrimaryButton
-									isDarkBackground
-									ref={buttonRef}
-									href={buttonHref}
-								>
-									{buttonText}
-								</PrimaryButton>
+								{buttonHref && buttonText && (
+									<PrimaryButton
+										isDarkBackground
+										ref={buttonRef}
+										href={buttonHref}
+									>
+										{buttonText}
+									</PrimaryButton>
+								)}
 							</div>
 						</div>
 					</div>

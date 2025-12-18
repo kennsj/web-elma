@@ -5,6 +5,7 @@ import { generateSEOMetadata } from "@/components/lib/sanity/seo"
 import { PortableText } from "@portabletext/react"
 import Image from "next/image"
 import Link from "next/link"
+import { Hero } from "@/components/Layout/Hero/Hero"
 
 // Query for single blog post
 const postQuery = `
@@ -42,16 +43,17 @@ const postQuery = `
 `
 
 interface BlogPostPageProps {
-	params: {
+	params: Promise<{
 		slug: string
-	}
+	}>
 }
 
 // Generate metadata for the blog post
 export async function generateMetadata({
 	params,
 }: BlogPostPageProps): Promise<Metadata> {
-	const post = await client.fetch(postQuery, { slug: params.slug })
+	const { slug } = await params
+	const post = await client.fetch(postQuery, { slug })
 
 	if (!post) {
 		return {
@@ -88,7 +90,7 @@ export async function generateStaticParams() {
 // Portable Text components for rich content
 const portableTextComponents = {
 	types: {
-		image: ({ value }: any) => (
+		image: ({ value }: { value: { asset: { url: string }; alt?: string } }) => (
 			<div className='blog-image'>
 				<Image
 					src={value.asset.url}
@@ -101,15 +103,27 @@ const portableTextComponents = {
 		),
 	},
 	block: {
-		h2: ({ children }: any) => <h2 className='blog-h2'>{children}</h2>,
-		h3: ({ children }: any) => <h3 className='blog-h3'>{children}</h3>,
-		h4: ({ children }: any) => <h4 className='blog-h4'>{children}</h4>,
-		blockquote: ({ children }: any) => (
+		h2: ({ children }: { children?: React.ReactNode }) => (
+			<h2 className='blog-h2'>{children}</h2>
+		),
+		h3: ({ children }: { children?: React.ReactNode }) => (
+			<h3 className='blog-h3'>{children}</h3>
+		),
+		h4: ({ children }: { children?: React.ReactNode }) => (
+			<h4 className='blog-h4'>{children}</h4>
+		),
+		blockquote: ({ children }: { children?: React.ReactNode }) => (
 			<blockquote className='blog-quote'>{children}</blockquote>
 		),
 	},
 	marks: {
-		link: ({ children, value }: any) => (
+		link: ({
+			children,
+			value,
+		}: {
+			children?: React.ReactNode
+			value?: { href: string }
+		}) => (
 			<a
 				href={value?.href}
 				target='_blank'
@@ -123,7 +137,8 @@ const portableTextComponents = {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-	const post = await client.fetch(postQuery, { slug: params.slug })
+	const { slug } = await params
+	const post = await client.fetch(postQuery, { slug })
 
 	if (!post) {
 		notFound()
@@ -143,7 +158,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 			name: "ELMA",
 			logo: {
 				"@type": "ImageObject",
-				url: "https://your-domain.com/logo.png", // Replace with your logo
+				url: "https://your-domain.com/logo.png", // Replace
 			},
 		},
 		datePublished: post.publishedAt,
@@ -161,6 +176,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 			<script
 				type='application/ld+json'
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+			/>
+
+			<Hero
+				title={post.title}
+				subTitle={post.subtitle || ""}
+				imageSrc={
+					post.mainImage?.asset?.url || "/images/default-blog-image.jpg"
+				}
+				imageAlt={post.mainImage?.alt || post.title}
+				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
+				imageQuality={100}
+				imagePriority={true}
 			/>
 
 			<main className='blog-post'>

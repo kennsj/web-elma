@@ -41,23 +41,37 @@
 			.nav_body__links {
 				position: relative;
 				height: fit-content;
-				top: 50%;
+				top: 55%;
 				transform: translateY(-50%);
-				// margin-left: 15%;
 				ul {
-					column-count: 3;
-					column-gap: 5rem;
+					display: grid;
+					grid-template-columns: repeat(4, 1fr);
+					column-gap: 2.5rem;
+					row-gap: 0;
 
 					@media screen and (max-width: $breakpoint-large) {
-						column-count: 2;
-						column-gap: 2rem;
+						grid-template-columns: repeat(3, 1fr);
+					}
+
+					@media screen and (max-width: $breakpoint-medium) {
+						grid-template-columns: repeat(2, 1fr);
+						column-gap: 1.5rem;
+					}
+
+					@media screen and (max-width: $breakpoint-small) {
+						grid-template-columns: 1fr;
 					}
 
 					li {
-						margin-bottom: 3rem;
+						font-size: 3rem;
+
+						@media screen and (max-width: $breakpoint-medium) {
+							font-size: 2rem;
+							// margin-bottom: 0.5rem;
+						}
 						a {
-							font-size: 3rem;
-							font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
+							// font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
+							width: fit-content;
 							font-weight: 400;
 							color: var(--color-secondary);
 							cursor: pointer;
@@ -136,7 +150,7 @@
 				}
 
 				@media screen and (max-width: $breakpoint-medium) {
-					font-size: 1rem;
+					font-size: 2rem;
 					h3 {
 						font-weight: 600;
 						color: var(--color-tertiary);
@@ -151,7 +165,7 @@
 				@media screen and (max-width: $breakpoint-small) {
 					font-size: 0.7rem;
 					h3 {
-						font-size: 1rem;
+						font-size: 2rem;
 						font-weight: 600;
 						color: var(--color-tertiary);
 						margin-block: 0;

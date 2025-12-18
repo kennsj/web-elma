@@ -16,6 +16,17 @@
 		display: flex;
 		justify-content: space-between;
 
+		.footer__content__nav {
+			ul {
+				column-count: 2;
+				gap: 10rem;
+
+				@media screen and (max-width: $breakpoint-large) {
+					gap: 5rem;
+				}
+			}
+		}
+
 		.footer__content__contact {
 			display: flex;
 			flex-direction: column;
@@ -68,6 +79,12 @@
 		justify-content: space-between;
 		padding-bottom: 5rem;
 
+		.footer__bottom__left {
+			a {
+				margin-top: 0.5rem;
+			}
+		}
+
 		.footer__bottom__right {
 			display: flex;
 			flex-direction: column;
@@ -94,27 +111,6 @@
 
 				img {
 					height: auto;
-				}
-			}
-
-			.footer__content__nav {
-				ul {
-					columns: 2;
-					margin: 0;
-
-					li {
-						// margin-top: 1rem;
-						a {
-							margin: 1rem 0;
-							text-align: left;
-
-							svg {
-								// margin-right: 0.5rem;
-								width: 1.2rem;
-								height: 1.2rem;
-							}
-						}
-					}
 				}
 			}
 
