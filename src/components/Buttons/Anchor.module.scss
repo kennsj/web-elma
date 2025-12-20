@@ -13,7 +13,7 @@
 		bottom: -30%;
 		width: 50%;
 		height: 1px;
-		background: var(--color-primary);
+		background: currentColor;
 		transition: width 0.3s ease-in-out;
 		transform-origin: left;
 		transition: 0.4s ease-in-out;
@@ -29,7 +29,7 @@
 	&:hover::after,
 	&:focus::after {
 		transform: scaleX(200%);
-		background: var(--color-tertiary);
+		background: currentColor;
 		transition: 0.4s ease-in-out;
 	}
 
@@ -83,16 +83,6 @@
 	&[data-dark-background="true"] {
 		color: var(--color-secondary);
 		transition: 0.7s ease;
-
-		&::after {
-			background: var(--color-secondary);
-		}
-
-		&:hover::after,
-		&:focus::after,
-		&:active::after {
-			background: var(--color-tertiary);
-		}
 
 		svg .tip,
 		.line {

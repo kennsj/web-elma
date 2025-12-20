@@ -46,7 +46,7 @@
 
 				.event__container {
 					display: flex;
-					align-items: center;
+					align-items: start;
 					padding-inline: 10%;
 					margin: 0 auto;
 
@@ -103,16 +103,6 @@
 					.event__image img {
 						border-radius: var(--border-radius-small);
 					}
-
-					@media screen and (max-width: $breakpoint-large) {
-						width: var(--page-width);
-						max-width: var(--page-max-width);
-						// flex-direction: column;
-						// align-items: flex-start;
-						margin: 0 auto;
-						padding-block: 2rem;
-						padding-inline: 0%;
-					}
 				}
 
 				&:hover,
@@ -133,29 +123,31 @@
 		@media screen and (max-width: 1024px) {
 			.event__item {
 				.event__container {
-					width: var(--page-width);
-					max-width: var(--page-max-width);
+					// width: var(--page-width);
+					width: 100%;
+					// max-width: var(--page-max-width);
 					flex-direction: column;
 					align-items: flex-start;
-					margin: 0 auto;
+					margin: 0;
 
 					.event__title {
-						width: 80%;
-						margin-bottom: 3rem;
+						width: 100% !important;
+						// margin-bottom: 3rem;
 						// margin-top: -1rem;
 
 						a {
-							display: none;
+							// display: none;
 						}
 					}
 
 					.event__details {
 						width: 100%;
 						display: flex;
-						flex-direction: column;
+						flex-direction: column-reverse;
 						align-items: flex-start;
 						justify-content: space-between;
 						margin: 0 0 1rem 0;
+						margin-left: 0 !important;
 						padding: 0;
 
 						p {

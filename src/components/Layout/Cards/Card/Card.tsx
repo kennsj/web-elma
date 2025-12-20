@@ -31,19 +31,23 @@ export default async function ContentPreview() {
 				{posts.length > 0 ? (
 					posts.map((post: SanityDocument) => (
 						<div className={styles.card} key={post._id}>
+							<Image
+								src={post.mainImage?.asset?.url ?? "/images/fallback-image.png"}
+								alt={post.title}
+								width={500}
+								height={500}
+								// style={{
+								// 	width: "100%",
+								// 	height: "100%",
+								// 	objectFit: "cover",
+								// }}
+								className={styles.card__image}
+							/>
 							<div className={styles.card__content}>
 								<h4>{post.title}</h4>
 								<Paragraph>{post.subtitle}</Paragraph>
 								<Anchor href={`/blog/${post.slug.current}`}>Les mer</Anchor>
 							</div>
-							<Image
-								src={post.mainImage?.asset?.url ?? "/images/fallback-image.png"}
-								alt={post.title}
-								fill={true}
-								// width={500}
-								// height={500}
-								className={styles.card__image}
-							/>
 						</div>
 					))
 				) : (
