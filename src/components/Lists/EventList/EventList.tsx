@@ -24,7 +24,7 @@ export default async function EventList({
 			<div className={styles.event__wrapper}>
 				<div
 					className='section__intro'
-					style={{ color: `${isDark ? "#C4DED7" : "#12332F"}` }}
+					style={{ color: `${isDark ? "#12332F" : "#C4DED7"}` }}
 				>
 					<H2 title={title} />
 					<Paragraph className='intro__paragraph'>{intro}</Paragraph>

@@ -84,7 +84,7 @@ export default async function Home() {
 					</div>
 				</section>
 				<About />
-				{/* <WaveCss isDarkBackground={false} rotate /> */}
+				<WaveCss isDarkBackground={false} rotate />
 				{/* Disabled for now */}
 				<EventList
 					title='Foredrag og arrangementer'

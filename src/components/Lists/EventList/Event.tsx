@@ -3,7 +3,7 @@ import styles from "./Event.module.scss"
 // import { allEventsQuery } from "@/components/lib/sanity/queries"
 import Image from "next/image"
 import { Clock, Map } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/components/ui/Link"
 
 interface EventType {
 	_id: string
