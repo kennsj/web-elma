@@ -8,9 +8,9 @@ import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 import Anchor from "@/components/Buttons/Anchor"
 import Image from "next/image"
 
-import styles from "./Card.module.scss"
+import styles from "./FeaturedCard.module.scss"
 
-export default async function Card() {
+export default async function FeaturedCard() {
 	const posts = await client.fetch(frontPagePostQuery)
 
 	return (
@@ -31,6 +31,11 @@ export default async function Card() {
 				{posts.length > 0 ? (
 					posts.map((post: SanityDocument) => (
 						<div className={styles.card} key={post._id}>
+							<div className={styles.card__content}>
+								<h2>{post.title}</h2>
+								<Paragraph>{post.subtitle}</Paragraph>
+								<Anchor href={`/blog/${post.slug.current}`}>Les mer</Anchor>
+							</div>
 							<Image
 								src={post.mainImage?.asset?.url ?? "/images/fallback-image.png"}
 								alt={post.title}
@@ -43,11 +48,6 @@ export default async function Card() {
 								// }}
 								className={styles.card__image}
 							/>
-							<div className={styles.card__content}>
-								<h4>{post.title}</h4>
-								<Paragraph>{post.subtitle}</Paragraph>
-								<Anchor href={`/blog/${post.slug.current}`}>Les mer</Anchor>
-							</div>
 						</div>
 					))
 				) : (

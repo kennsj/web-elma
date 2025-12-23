@@ -31,12 +31,12 @@ export const NAV_LINKS: NavLink[] = [
 		imgSrc: "/images/person-aurora.webp",
 		index: 1,
 	},
-	// {
-	// 	href: "/blog",
-	// 	label: "Blogg",
-	// 	imgSrc: "/images/man-mountain-alone.jpg",
-	// 	index: 2,
-	// },
+	{
+		href: "/hjelp",
+		label: "Hjelp",
+		imgSrc: "/images/person-aurora.webp",
+		index: 2,
+	},
 	{
 		href: "/stotte",
 		label: "Støtte",
@@ -44,9 +44,9 @@ export const NAV_LINKS: NavLink[] = [
 		index: 3,
 	},
 	{
-		href: "/hjelp",
-		label: "Hjelp",
-		imgSrc: "/images/person-aurora.webp",
+		href: "/blog",
+		label: "Blogg",
+		imgSrc: "/images/man-mountain-alone.jpg",
 		index: 4,
 	},
 	{

@@ -40,7 +40,6 @@ export default function Anchor({
 			ref={ref}
 			tabIndex={tabIndex}
 		>
-			{/* <div className={styles.wave}></div> */}
 			{children}
 			<svg
 				width='24'

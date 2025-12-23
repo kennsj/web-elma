@@ -20,6 +20,7 @@ type HeroProps = {
 	imageQuality?: number
 	imageSizes?: string
 	children?: React.ReactNode
+	showWave?: boolean
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -33,6 +34,7 @@ export const Hero: React.FC<HeroProps> = ({
 	imageQuality = 100,
 	imageSizes = "(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw",
 	children = null,
+	showWave = true,
 }) => {
 	const containerRef = useRef(null)
 	const imageRef = useRef(null)
@@ -118,7 +120,7 @@ export const Hero: React.FC<HeroProps> = ({
 
 					<div className={styles.header__intro}>{children}</div>
 				</div>
-				<WaveCss />
+				{showWave && <WaveCss />}
 			</header>
 		</>
 	)

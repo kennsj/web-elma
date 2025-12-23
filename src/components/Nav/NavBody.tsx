@@ -89,27 +89,21 @@ const NavBody: React.FC<Props> = ({
 		if (activeTimelines.current.length > 0) {
 			activeTimelines.current.forEach((tl) => {
 				if (tl && tl.isActive()) {
-					// Prefer reversing the animation if possible
 					tl.reverse()
 				} else if (tl) {
-					// Kill if it's not active (can't be reversed)
 					tl.kill()
 				}
 			})
 		}
 
-		// Kill any direct tweens on navBody only
 		const navBody = navBodyRef.current
 		if (navBody) gsap.killTweensOf(navBody)
-
-		// DO NOT kill animations on links, footer, or characters
-		// This allows all UI elements to animate smoothly when spamclicking
 	}, [])
 
 	useGSAP(() => {
 		if (!navBodyRef.current || !linksRef.current || !footerRef.current) return
 
-		// Create refs object for our animation functions
+		// Create refs object for the animation functions
 		const refs = {
 			navBodyRef: navBodyRef as React.RefObject<HTMLDivElement>,
 			imageContainerRef: imageContainerRef as React.RefObject<HTMLDivElement>,
@@ -171,24 +165,25 @@ const NavBody: React.FC<Props> = ({
 					<div className={styles.nav_body__links}>
 						<ul ref={linksRef}>
 							{navItems.map((item, index) => (
-								<li
-									key={item.href}
-									onMouseEnter={() => handleMouseEnter(index)}
-									onMouseLeave={handleMouseLeave}
-									style={{
-										filter:
-											hoveredIndex !== null && hoveredIndex !== index
-												? "blur(4px)"
-												: "none",
-										opacity:
-											hoveredIndex !== null && hoveredIndex !== index ? 0.7 : 1,
-										transition: "all 0.6s ease-in-out",
-									}}
-								>
+								<li key={item.href}>
 									<a
+										key={item.href}
+										onFocus={() => handleMouseEnter(index)}
+										onMouseEnter={() => handleMouseEnter(index)}
+										onMouseLeave={handleMouseLeave}
+										style={{
+											filter:
+												hoveredIndex !== null && hoveredIndex !== index
+													? "blur(4px)"
+													: "none",
+											opacity:
+												hoveredIndex !== null && hoveredIndex !== index
+													? 0.7
+													: 1,
+											transition: "all 0.6s ease-in-out",
+										}}
 										href={item.href}
 										onClick={(e) => handleLinkClick(e, item.href)}
-										style={{ display: "inline-block", overflow: "hidden" }}
 									>
 										<span className='split-text'>{item.label}</span>
 									</a>
@@ -226,7 +221,7 @@ const NavBody: React.FC<Props> = ({
 						>
 							hei@elma.no
 						</Link>
-						<Anchor
+						{/* <Anchor
 							className={styles.nav_footer__booking}
 							isDarkBackground
 							href='#'
@@ -234,7 +229,7 @@ const NavBody: React.FC<Props> = ({
 							tabIndex={isOpen ? 0 : -1}
 						>
 							Booking av elma
-						</Anchor>
+						</Anchor> */}
 					</div>
 					<div className={styles.nav_footer__right}>
 						<Anchor

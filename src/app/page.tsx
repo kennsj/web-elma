@@ -8,7 +8,7 @@ import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
 import EventList from "@/components/Lists/EventList/EventList"
 import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
 import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
-import About from "@/components/Layout/Cards/Card/Card"
+import About from "@/components/Layout/Cards/Card/FeaturedCard"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -51,7 +51,7 @@ export default async function Home() {
 			<Hero
 				key='home-hero'
 				title='For deg som vil <span>leve</span>, <br /> ikke bare <span>overleve</span>'
-				subTitle='Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp - i ditt tempo.'
+				subTitle='Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp. I ditt tempo.'
 				buttonText='Start reisen'
 				buttonHref='/om-elma'
 				imageSrc='/images/anders-moloen.webp'
@@ -61,8 +61,8 @@ export default async function Home() {
 				imagePriority={true}
 			>
 				<Paragraph className={"header__intro"}>
-					Elma ble startet av Anders, som selv har levd med angst i store deler
-					av livet. Gjennom elma ønsker han å skape et trygt rom for deling,
+					ELMA ble startet av Anders, som selv har levd med angst i store deler
+					av livet. Gjennom ELMA ønsker han å skape et trygt rom for deling,
 					forståelse og støtte&mdash;slik at ingen skal måtte stå alene med sin
 					psykiske helse.
 				</Paragraph>

@@ -58,8 +58,6 @@ export const heroAnimation = ({
 			"-=0.4"
 		)
 
-		
-	// Button animation (concurrent with paragraph) - only if button exists
 	if (buttonRef) {
 		tl.to(
 			buttonRef,

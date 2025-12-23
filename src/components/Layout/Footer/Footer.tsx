@@ -18,10 +18,10 @@ export default function Footer() {
 					<div className={styles.footer__content__logo}>
 						<Link href='/'>
 							<Image
-								src='/images/elma-logo-white.svg'
+								src='/images/logo-elma.svg'
 								alt='ELMA Logo'
-								width={150}
-								height={150}
+								width={50}
+								height={50}
 							/>
 						</Link>
 					</div>
@@ -40,6 +40,7 @@ export default function Footer() {
 						<h3>Kontakt</h3>
 						<TransitionLink
 							className={styles.footer__email}
+							// Replace
 							href='mailto:hei@elma.no'
 						>
 							hei@elma.no
@@ -58,13 +59,12 @@ export default function Footer() {
 				<div className={styles.footer__bottom}>
 					<div className={styles.footer__bottom__left}>
 						<p>Laget med omtanke</p>
-						{/* <p>© {new Date().getFullYear()} ELMA</p> */}
 						<Anchor isDarkBackground href='/personvern'>
 							Personvern og vilkår
 						</Anchor>
 					</div>
 					<div className={styles.footer__bottom__right}>
-						Design og utvikling
+						<p>Design og utvikling</p>
 						<a
 							href='mailto:kennethsjorgensen@gmail.com title=Kenneth Jørgensen'
 							target='_blank'
