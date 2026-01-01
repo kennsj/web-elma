@@ -1,9 +1,18 @@
 @use "@/styles/breakpoints" as *;
 
 .newsletter__wrapper {
-	max-width: var(--page-max-width);
-	width: var(--page-width);
 	margin: 0 auto;
+
+	p {
+		width: 60%;
+		font-size: clamp(32px, 5vw + 16px, 48px);
+		line-height: clamp(38px, 6vw + 18px, 68px);
+		color: var(--color-tertiary);
+
+		@media screen and (max-width: $breakpoint-medium) {
+			width: 100%;
+		}
+	}
 
 	form {
 		position: relative;

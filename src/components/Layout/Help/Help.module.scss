@@ -1,0 +1,16 @@
+@use "@/styles/breakpoints.scss" as *;
+
+.help__cards {
+	width: 100vw;
+	width: 100vi;
+	margin-left: calc(-50vw + 50%);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2rem;
+
+	@media screen and (max-width: $breakpoint-ultra-wide) {
+		width: 100%;
+		margin: 0;
+	}
+}

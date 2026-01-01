@@ -2,7 +2,17 @@ import "@/styles/globals.scss"
 import "@/components/Layout/Hero/Hero.module.scss"
 
 import type { Metadata } from "next"
-import { Newsreader, Oswald, Signika_Negative, Syne } from "next/font/google"
+import {
+	Newsreader,
+	Oswald,
+	Signika_Negative,
+	Syne,
+	Playfair_Display,
+	Sen,
+	Source_Sans_3,
+	IBM_Plex_Sans,
+	DM_Sans,
+} from "next/font/google"
 import localFont from "next/font/local"
 
 import { ViewTransitions } from "next-view-transitions"
@@ -15,8 +25,14 @@ const newsreader = Newsreader({
 	subsets: ["latin"],
 })
 
-const Playfair = Oswald({
+const playfair = Playfair_Display({
 	variable: "--font-playfair",
+	subsets: ["latin"],
+	// weight: ["400"],
+})
+
+const Oswald_font = Oswald({
+	variable: "--font-oswald",
 	subsets: ["latin"],
 	// weight: ["400"],
 })
@@ -31,6 +47,30 @@ const SyneFont = Syne({
 	variable: "--font-syne",
 	subsets: ["latin"],
 	weight: ["400", "500", "600", "700", "800"],
+})
+
+const SenFont = Sen({
+	variable: "--font-sen",
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700", "800"],
+})
+
+const SourceSans = Source_Sans_3({
+	variable: "--font-source-sans",
+	subsets: ["latin"],
+	// weight: ["400", "500", "600", "700", "800"],
+})
+
+const IBM_Plex = IBM_Plex_Sans({
+	variable: "--font-ibm-plex",
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"],
+})
+
+const DMSansFont = DM_Sans({
+	variable: "--font-dm-sans",
+	subsets: ["latin"],
+	weight: ["400", "500", "600", "700"],
 })
 
 // const Playfair = Playfair_Display({
@@ -138,7 +178,7 @@ export default function RootLayout({
 		<ViewTransitions>
 			<html lang='no'>
 				<body
-					className={`${newsreader.variable} ${Playfair.variable} ${Atyp.variable} ${Signika.variable} ${SyneFont.variable} antialiased`}
+					className={`${IBM_Plex.variable} ${newsreader.variable} ${playfair.variable} ${Atyp.variable} ${Signika.variable} ${SyneFont.variable} ${Oswald_font.variable} ${SenFont.variable} ${SourceSans.variable} ${DMSansFont.variable} antialiased`}
 				>
 					<Nav />
 					{children}

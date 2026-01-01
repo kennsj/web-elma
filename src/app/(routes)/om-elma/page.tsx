@@ -1,8 +1,8 @@
 import { Metadata } from "next"
 import { Hero } from "@/components/Layout/Hero/Hero"
 import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
-import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
 import About from "@/components/Layout/Cards/Card/Card"
+import HeadingAnimation from "@/components/Layout/UI/Animations/HeadingAnimation"
 
 export const metadata: Metadata = {
 	title: "Hva er elma? | ELMA",
@@ -33,40 +33,7 @@ const page = () => {
 					angst og psykiske utfordringer.
 				</Paragraph>
 			</Hero>
-			<main>
-				<section className='section__histories section__fullwidth'>
-					<div className='section__intro'>
-						<H2 title='Hva er elma?' />
-
-						<Paragraph className={"intro__paragraph"}>
-							Det er et personlig og samfunnsrettet prosjekt som tar
-							utgangspunkt i virkelige opplevelser av angst – og ønsket om å
-							gjøre noe meningsfullt ut av dem.
-						</Paragraph>
-
-						<Paragraph className={"intro__paragraph"}>
-							Mange lever med angst i stillhet. ELMA finnes for å synliggjøre
-							det som ofte er usynlig, og for å senke terskelen for å snakke om
-							psykisk helse.
-						</Paragraph>
-
-						<H2 title='Hvorfor elma eksisterer' />
-						<Paragraph>
-							Angst kan oppleves ensom, skamfull og vanskelig å forklare. ELMA
-							finnes for å:
-						</Paragraph>
-						<ul>
-							<ol>normalisere det som føles vanskelig</ol>
-							<ol>gi gjenkjennelse til dem som kjenner seg igjen</ol>
-							<ol>vise at det finnes håp, også når det føles tungt</ol>
-						</ul>
-						<Paragraph>
-							Dette handler ikke om å ha alle svarene – men om å være ærlig.
-						</Paragraph>
-					</div>
-					<About />
-				</section>
-			</main>
+			<main></main>
 		</>
 	)
 }

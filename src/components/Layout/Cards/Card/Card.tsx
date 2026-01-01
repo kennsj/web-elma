@@ -1,5 +1,4 @@
 import React from "react"
-import H2 from "../../UI/Animations/HeadingAnimation"
 import { client } from "@/sanity/client"
 
 import { frontPagePostQuery } from "@/components/lib/sanity/queries"
@@ -9,15 +8,19 @@ import Anchor from "@/components/Buttons/Anchor"
 import Image from "next/image"
 
 import styles from "./Card.module.scss"
+import HeadingAnimation from "../../UI/Animations/HeadingAnimation"
 
 export default async function Card() {
 	const posts = await client.fetch(frontPagePostQuery)
 
 	return (
-		<section className='section__about section__fullwidth'>
-			<div className='about__wrapper'>
+		<section>
+			<div className='section__content'>
 				<div className='section__intro'>
-					<H2 title='Mer enn et prosjekt - et pusterom' />
+					<HeadingAnimation
+						title='Mer enn et prosjekt - et pusterom'
+						level='h2'
+					/>
 
 					<Paragraph className={"intro__paragraph"}>
 						Anders vet hvordan det føles når livet kjennes tungt. Han har selv

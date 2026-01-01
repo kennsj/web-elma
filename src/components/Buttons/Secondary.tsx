@@ -37,7 +37,7 @@ export default function Button({
 				<path
 					className={styles.tip}
 					d='M17.5 1L23 6.5L17.5 12'
-					stroke={isDarkBackground ? "#0b2621" : "#e2fbf8"}
+					stroke={isDarkBackground ? "#0b2621" : "#ddddda"}
 					strokeWidth='1'
 					strokeLinecap='round'
 					strokeLinejoin='round'
@@ -45,7 +45,7 @@ export default function Button({
 				<path
 					className={styles.line}
 					d='M21 6.5H1'
-					stroke={isDarkBackground ? "#0b2621" : "#e2fbf8"}
+					stroke={isDarkBackground ? "#0b2621" : "#ddddda"}
 					strokeWidth='1'
 					strokeLinecap='round'
 				/>

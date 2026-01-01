@@ -1,5 +1,8 @@
 @use "tailwindcss";
 @use "@/styles/breakpoints.scss" as *;
+// @use "blog";
+// @use "utilities";
+@import url("https://use.typekit.net/wxz5pcq.css");
 
 :root {
 	--color-primary: #12332f;
@@ -7,6 +10,7 @@
 	--color-primary-light: #bce0b5;
 	--color-primary-lighter: #163b37;
 	--color-secondary: #e2fbf8;
+	--color-secondary: #ddddda;
 	--color-tertiary: #be8c6d;
 	--color-tertiary-light: #ddb9a1;
 
@@ -15,38 +19,10 @@
 	--page-min-width: 320px;
 
 	--nav-height: 5rem;
-
-	@media screen and (max-width: $breakpoint-medium) {
-		--nav-height: 2rem;
-	}
-
-	@media screen and (max-width: $breakpoint-small) {
-		--nav-height: 1rem;
-	}
-
 	--margin-block: 5rem;
-	@media screen and (max-width: $breakpoint-medium) {
-		--margin-block: 3rem;
-	}
-	@media screen and (max-width: $breakpoint-small) {
-		--margin-block: 2rem;
-	}
-
 	--section-padding: 10rem;
-	@media screen and (max-width: $breakpoint-medium) {
-		--section-padding: 5rem;
-	}
-
 	--card-padding: 5rem 3rem;
-	@media screen and (max-width: $breakpoint-medium) {
-		--card-padding: 3rem 2rem;
-	}
-
 	--card-padding-small: 3rem 2rem;
-	@media screen and (max-width: $breakpoint-medium) {
-		--card-padding-small: 2rem 1.5rem;
-	}
-
 	--border-radius-big: 5rem;
 	--border-radius-medium: 1.5rem;
 	--border-radius-small: 5px;
@@ -54,7 +30,17 @@
 	// Fonts
 	--anchor-font-size: 1.5rem;
 
+	@media screen and (max-width: $breakpoint-medium) {
+		--nav-height: 2rem;
+		--margin-block: 3rem;
+		--section-padding: 5rem;
+		--card-padding: 3rem 2rem;
+		--card-padding-small: 2rem 1.5rem;
+	}
+
 	@media screen and (max-width: $breakpoint-small) {
+		--nav-height: 1rem;
+		--margin-block: 2rem;
 		--anchor-font-size: 0.8rem;
 	}
 }
@@ -68,7 +54,13 @@
 body {
 	background: var(--color-secondary);
 	color: var(--color-primary);
-	font-family: var(--font-atyp), Arial, Helvetica, sans-serif;
+	font-family: "niveau-grotesk", sans-serif;
+	// font-family: var(--font-atyp), Arial, Helvetica, sans-serif;
+	// font-weight: 700;
+	// font-family: "niveau-grotesk", sans-serif;
+	// font-weight: 700;
+	// font-style: italic;
+
 	// font-family: "Signika Negative", sans-serif;
 	overflow-x: hidden;
 }
@@ -85,10 +77,19 @@ main {
 }
 
 section {
+	margin: 0 auto;
+	// padding-block: var(--section-padding);
+
+	&[data-theme="dark"] {
+		background: var(--color-primary);
+		color: var(--color-secondary);
+	}
+}
+
+.section__content {
 	width: var(--page-width);
 	max-width: var(--page-max-width);
 	margin: 0 auto;
-	// padding-block: var(--section-padding);
 }
 
 .section__fullwidth {
@@ -96,59 +97,24 @@ section {
 	max-width: 100%;
 	margin: 0 auto;
 
-	.section__intro {
-		width: var(--page-width);
-		max-width: var(--page-max-width);
-		margin: 0 auto 5rem auto;
-	}
-
 	&[data-background="dark"] {
 		background: var(--color-primary);
 		color: var(--color-secondary);
 	}
 }
 
-.intro__paragraph {
-	width: 60%;
-	margin-block: var(--margin-block);
-	font-size: 2rem;
-	line-height: 2.6rem;
-
-	@media screen and (max-width: $breakpoint-large) {
-		width: 70%;
-	}
-
-	@media screen and (max-width: $breakpoint-medium) {
-		width: 90%;
-		font-size: 1.2rem;
-		line-height: 1.6rem;
-	}
+.heading__wrapper {
+	width: fit-content;
+	position: relative;
 }
 
 h1 {
 	font-family: "Signika Negative", sans-serif;
 	font-family: "Syne", sans-serif;
+	font-family: "Playfair Display", sans-serif;
 	font-size: clamp(3rem, 5vw, 6rem);
 	line-height: clamp(4rem, 5.5vw + 1rem, 8rem);
-	font-weight: 500;
-}
-
-.h2__wrapper {
-	width: fit-content;
-	position: relative;
-	// outline: 1px solid red;
-
-	.line {
-		position: absolute;
-		// top: 0;
-		bottom: 25%;
-		left: -5%;
-		width: 110%;
-		height: 30%;
-		background-color: var(--color-tertiary-light);
-		background-color: var(--color-tertiary);
-		// z-index: -1;
-	}
+	font-weight: 100;
 }
 
 h2 {
@@ -182,9 +148,11 @@ h2 {
 }
 
 h3 {
+	font-family: "Syne", sans-serif;
 	position: relative;
 	font-size: 1.5rem;
 	font-size: clamp(1.2rem, 2vw + 0.25rem, 1.5rem);
+	// font-size: 40px;
 	font-weight: 400;
 }
 
@@ -198,6 +166,22 @@ h4 {
 p {
 	font-size: 1.5rem;
 	line-height: 2rem;
+
+	font-size: clamp(20px, 4vw + 12px, 28px);
+	line-height: clamp(28px, 5vw + 14px, 38px);
+
+	font-size: clamp(18px, 18px + 14 * (100vw - 375px) / 1065, 32px);
+	line-height: clamp(24px, 24px + 18 * (100vw - 375px) / 1065, 42px);
+
+	// font-size: 48px;
+
+	padding-bottom: 1.5rem;
+
+	font-family: var(--font-sen), Arial, Helvetica, sans-serif;
+	font-family: var(--font-source-sans), Arial, Helvetica, sans-serif;
+	font-family: var(--font-ibm-plex), Arial, Helvetica, sans-serif;
+	font-family: var(--font-dm-sans), Arial, Helvetica, sans-serif;
+
 	@media screen and (max-width: $breakpoint-medium) {
 		font-size: 1.2rem;
 		line-height: 2rem;
@@ -215,6 +199,23 @@ p {
 	color: var(--color-secondary);
 	padding-block: var(--section-padding);
 	// padding-inline: var(--section-padding);
+}
+
+.image--fullwidth {
+	position: relative;
+	width: var(--page-max-width);
+	max-width: none;
+	margin-left: calc(-50vw + 50%);
+	margin-bottom: 4rem;
+	z-index: 1000;
+	outline: 25px solid var(--color-secondary);
+	// box-sizing: ;
+}
+
+.text-reveal__word {
+	display: inline-block;
+	opacity: 0.3;
+	transition: opacity 0.1s;
 }
 
 .char,
@@ -249,7 +250,3 @@ p {
 	z-index: 1;
 	animation: none !important;
 }
-
-/* Import additional component styles */
-@import "blog";
-@import "utilities";

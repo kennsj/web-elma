@@ -1,0 +1,104 @@
+@use "@/styles/breakpoints.scss" as *;
+
+.intro {
+	padding-top: 5rem;
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (max-width: $breakpoint-medium) {
+		width: 100%;
+	}
+
+	.title {
+		// font-size: 18px;
+		margin-bottom: 2rem;
+		width: 45%;
+
+		@media screen and (max-width: $breakpoint-medium) {
+			width: 100%;
+			background: transparent;
+			margin-bottom: 2rem;
+		}
+	}
+
+	.intro__content {
+		display: flex;
+		gap: 3rem;
+
+		@media screen and (max-width: $breakpoint-medium) {
+			flex-direction: column;
+		}
+
+		.left {
+			width: 45%;
+			position: sticky;
+			top: calc(var(--nav-height) + 2rem);
+			align-self: flex-start;
+
+			@media screen and (max-width: $breakpoint-medium) {
+				width: 100%;
+				position: static;
+				margin-top: 0;
+				padding-top: 0;
+				background: transparent;
+			}
+		}
+
+		&-full-width-img {
+			width: 100vw;
+		}
+
+		.right {
+			width: 60%;
+			display: flex;
+			flex-direction: column;
+			font-size: 28px;
+			line-height: 38px;
+
+			p {
+				margin-bottom: 2rem;
+			}
+
+			@media screen and (max-width: $breakpoint-medium) {
+				width: 100%;
+			}
+
+			&[data-theme="light"] {
+				color: var(--color-primary);
+			}
+
+			&[data-theme="dark"] {
+				color: var(--color-secondary);
+			}
+
+			a {
+				margin-top: 3rem;
+			}
+		}
+	}
+}
+
+.wide {
+	width: 100%;
+}
+
+.intro__paragraph {
+	position: relative;
+	font-size: 48px;
+	line-height: 58px;
+	font-size: clamp(32px, 5vw + 16px, 48px);
+	line-height: clamp(38px, 6vw + 18px, 68px);
+	color: var(--color-tertiary);
+	font-weight: 300;
+	font-family: var(--font-newsreader);
+	z-index: 0;
+}
+
+// Color variants for TextWide component
+.intro[data-color="dark"] .intro__paragraph {
+	color: var(--color-primary);
+}
+
+.intro[data-color="light"] .intro__paragraph {
+	color: var(--color-primary-light);
+}

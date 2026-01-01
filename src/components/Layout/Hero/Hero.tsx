@@ -14,7 +14,7 @@ type HeroProps = {
 	subTitle: React.ReactNode
 	buttonText?: string
 	buttonHref?: string
-	imageSrc: string
+	imageSrc?: string
 	imageAlt?: string
 	imagePriority?: boolean
 	imageQuality?: number
@@ -45,13 +45,8 @@ export const Hero: React.FC<HeroProps> = ({
 
 	useGSAP(
 		() => {
-			if (
-				!imageRef.current ||
-				!imageContainer.current ||
-				!headingRef.current ||
-				!paragraphRef.current
-			)
-				return
+			// Only require headingRef and paragraphRef - image refs are optional
+			if (!headingRef.current || !paragraphRef.current) return
 
 			heroAnimation({
 				imageRef: imageRef.current,
@@ -61,7 +56,7 @@ export const Hero: React.FC<HeroProps> = ({
 				buttonRef: buttonRef.current,
 			})
 		},
-		{ dependencies: [imageSrc] }
+		{ dependencies: [imageSrc, title] }
 	)
 
 	// Debug: Log styles to see if they're loading
@@ -76,21 +71,23 @@ export const Hero: React.FC<HeroProps> = ({
 					<div className={styles.header__content}>
 						<div className={styles.header__title}>
 							<div className={styles.header__title__text}>
-								<h1
-									ref={headingRef}
-									className='title'
-									dangerouslySetInnerHTML={{
-										__html:
-											typeof title === "string"
-												? title
-														.replaceAll(
-															"<span>",
-															'<span style="color: var(--color-tertiary); font-weight: bold; " class="highlight">'
-														)
-														.replaceAll("<br>", "<br />")
-												: "",
-									}}
-								/>
+								{title && (
+									<h1
+										ref={headingRef}
+										className='title'
+										dangerouslySetInnerHTML={{
+											__html:
+												typeof title === "string"
+													? title
+															.replaceAll(
+																"<span>",
+																'<span style="color: var(--color-tertiary); font-weight: bold; " class="highlight">'
+															)
+															.replaceAll("<br>", "<br />")
+													: String(title),
+										}}
+									/>
+								)}
 							</div>
 							<div className={styles.header__title__intro}>
 								<p ref={paragraphRef}>{subTitle}</p>
@@ -106,17 +103,19 @@ export const Hero: React.FC<HeroProps> = ({
 							</div>
 						</div>
 					</div>
-					<div className={styles.header__image} ref={imageContainer}>
-						<Image
-							ref={imageRef}
-							src={imageSrc}
-							alt={imageAlt}
-							sizes={imageSizes}
-							fill={true}
-							quality={imageQuality}
-							priority={imagePriority}
-						/>
-					</div>
+					{imageSrc && (
+						<div className={styles.header__image} ref={imageContainer}>
+							<Image
+								ref={imageRef}
+								src={imageSrc}
+								alt={imageAlt}
+								sizes={imageSizes}
+								fill={true}
+								quality={imageQuality}
+								priority={imagePriority}
+							/>
+						</div>
+					)}
 
 					<div className={styles.header__intro}>{children}</div>
 				</div>

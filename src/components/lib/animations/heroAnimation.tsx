@@ -9,8 +9,8 @@ export const heroAnimation = ({
 	paragraphRef,
 	buttonRef,
 }: {
-	imageRef: HTMLElement
-	imageContainer: HTMLElement
+	imageRef?: HTMLElement | null
+	imageContainer?: HTMLElement | null
 	headingRef: HTMLElement
 	paragraphRef: HTMLElement
 	buttonRef?: HTMLElement | null
@@ -26,7 +26,12 @@ export const heroAnimation = ({
 	// Set initial states
 	gsap.set(headingRef, { autoAlpha: 1 })
 	gsap.set(paragraphRef, { autoAlpha: 1 })
-	gsap.set(imageRef, { autoAlpha: 0, y: 50 })
+
+	// Only set image states if image elements exist
+	if (imageRef) {
+		gsap.set(imageRef, { autoAlpha: 0, y: 50 })
+	}
+
 	if (buttonRef) {
 		gsap.set(buttonRef, { autoAlpha: 0, y: 10 })
 	}
@@ -72,10 +77,9 @@ export const heroAnimation = ({
 		)
 	}
 
-	tl
-
-		// Image animations
-		.to(
+	// Image animations - only if image elements exist
+	if (imageRef) {
+		tl.to(
 			imageRef,
 			{
 				y: 0,
@@ -85,8 +89,10 @@ export const heroAnimation = ({
 			},
 			"<"
 		)
+	}
 
-		.to(
+	if (imageContainer) {
+		tl.to(
 			imageContainer,
 			{
 				clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
@@ -95,20 +101,23 @@ export const heroAnimation = ({
 			},
 			"+.5"
 		)
+	}
 
-	// Add scroll trigger for parallax effect
-	ScrollTrigger.create({
-		trigger: imageContainer,
-		start: "top bottom",
-		end: "bottom top",
-		scrub: 1,
-		// onUpdate: (self) => {
-		// 	gsap.to(imageRef, {
-		// 		scale: 1 + self.progress * 0.1,
-		// 		duration: 0.1,
-		// 	})
-		// },
-	})
+	// Add scroll trigger for parallax effect only if image container exists
+	if (imageContainer) {
+		ScrollTrigger.create({
+			trigger: imageContainer,
+			start: "top bottom",
+			end: "bottom top",
+			scrub: 1,
+			// onUpdate: (self) => {
+			// 	gsap.to(imageRef, {
+			// 		scale: 1 + self.progress * 0.1,
+			// 		duration: 0.1,
+			// 	})
+			// },
+		})
+	}
 
 	// Return the timeline for external control if needed
 	return { timeline: tl }

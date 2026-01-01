@@ -11,7 +11,7 @@ export function slideInOut() {
 			{ transform: "translateY(-35%)", opacity: 1 },
 		],
 		{
-			duration: 600,
+			duration: 800,
 			easing: "cubic-bezier(0.215, 0.61, 0.355, 1)",
 			fill: "forwards",
 			pseudoElement: "::view-transition-old(root)",
@@ -28,7 +28,7 @@ export function slideInOut() {
 			},
 		],
 		{
-			duration: 600,
+			duration: 800,
 			easing: "cubic-bezier(0.215, 0.61, 0.355, 1)",
 			fill: "forwards",
 			pseudoElement: "::view-transition-new(root)",

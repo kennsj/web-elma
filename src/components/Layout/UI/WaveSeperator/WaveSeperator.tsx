@@ -102,9 +102,9 @@ export default function WaveSeperator({
 											? "#225650"
 											: index === 2
 												? "#37746D"
-												: "#E2FBF8"
+												: "#ddddda"
 									: index === 0
-										? "#E2FBF8"
+										? "#ddddda"
 										: index === 1
 											? "#37746D"
 											: index === 2

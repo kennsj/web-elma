@@ -3,6 +3,10 @@
 import styles from "./Anchor.module.scss"
 import Link from "next/link"
 import { usePageTransition } from "../lib/animations/PageTransition"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useRef } from "react"
 
 type LinkProps = {
 	href: string
@@ -12,6 +16,7 @@ type LinkProps = {
 	className?: string
 	onClick?: () => void
 	tabIndex?: number
+	ref?: React.Ref<HTMLAnchorElement>
 }
 
 export default function Anchor({
@@ -19,12 +24,36 @@ export default function Anchor({
 	children,
 	isDarkBackground = false,
 	className,
-	ref,
 	onClick,
 	tabIndex,
+	ref,
 	...props
 }: LinkProps) {
 	const { handleTransitionClick } = usePageTransition()
+	const anchorRef = useRef<HTMLAnchorElement>(null)
+
+	useGSAP(() => {
+		if (!anchorRef.current) return
+
+		gsap.registerPlugin(ScrollTrigger)
+
+		// Set initial state
+		gsap.set(anchorRef.current, { opacity: 0, y: 20 })
+
+		ScrollTrigger.create({
+			trigger: anchorRef.current,
+			start: "top 90%",
+			end: "bottom 10%",
+			onEnter: () => {
+				gsap.to(anchorRef.current, {
+					opacity: 1,
+					y: 0,
+					duration: 0.6,
+					ease: "power2.out",
+				})
+			},
+		})
+	}, [anchorRef])
 
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
 		handleTransitionClick(href, e, onClick)
@@ -37,7 +66,8 @@ export default function Anchor({
 			onClick={handleClick}
 			{...props}
 			data-dark-background={isDarkBackground}
-			ref={ref}
+			ref={anchorRef}
+			// {ref ? { ref } : {}}
 			tabIndex={tabIndex}
 		>
 			{children}
@@ -51,7 +81,6 @@ export default function Anchor({
 				<path
 					className={styles.tip}
 					d='M17.5 1L23 6.5L17.5 12'
-					// stroke={isDarkBackground ? "#e2fbf8" : "#0b2621"}
 					strokeWidth='1'
 					strokeLinecap='round'
 					strokeLinejoin='round'
@@ -59,7 +88,6 @@ export default function Anchor({
 				<path
 					className={styles.line}
 					d='M21 6.5H1'
-					// stroke={isDarkBackground ? "#e2fbf8" : "#0b2621"}
 					strokeWidth='1'
 					strokeLinecap='round'
 				/>

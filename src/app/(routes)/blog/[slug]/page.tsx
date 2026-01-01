@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react"
 import Image from "next/image"
 import Link from "next/link"
 import { Hero } from "@/components/Layout/Hero/Hero"
+import styles from "./BlogPage.module.scss"
 
 // Query for single blog post
 const postQuery = `
@@ -178,38 +179,107 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 				dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
 			/>
 
+			{/* Hero Section - matching the design from the image */}
 			<Hero
-				title={post.title}
-				subTitle={post.subtitle || ""}
-				imageSrc={
-					post.mainImage?.asset?.url || "/images/default-blog-image.jpg"
-				}
-				imageAlt={post.mainImage?.alt || post.title}
+				title='Å leve med angst, delt for å gi håp'
+				subTitle='ELMA er et sted for ærlige samtaler om psykisk helse. Et trygt rom for deling, forståelse og fellesskap. I ditt tempo.'
+				imageSrc='/images/anders-moloen.webp'
+				imageAlt='Anders - grunnlegger av ELMA'
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}
 				imagePriority={true}
 			/>
 
 			<main className='blog-post'>
-				<article>
-					<header className='blog-header'>
+				{/* Date info in upper left corner */}
+				<div className={styles.pageInfo}>
+					<time>
+						{new Date(post.publishedAt).toLocaleDateString("no-NO", {
+							day: "numeric",
+							month: "long",
+							year: "numeric",
+						})}
+					</time>
+				</div>
+
+				{/* Main content section matching the image layout */}
+				<section className={styles.contentSection}>
+					<div className={styles.contentWrapper}>
+						{/* Left side - text content */}
+						<div>
+							<h1 className={styles.mainTitle}>
+								Å leve med angst, delt for å gi håp
+							</h1>
+
+							<p className={styles.introText}>
+								ELMA ble startet av Anders Karlsen, som selv har levd med angst
+								i store deler av livet. Erfaringene hans har gitt en dyp
+								forståelse for hvor vanskelig det kan føles å stå alene med
+								tanker og følelser som er utfordrende å sette ord på.
+							</p>
+
+							<p className={styles.supportingText}>
+								Mange opplever at psykisk helse forblir noe man bærer i
+								stillhet. ELMA ønsker å endre på dette.
+							</p>
+						</div>
+
+						{/* Right side - featured image */}
+						<div>
+							{post.mainImage && (
+								<div className={styles.imageWrapper}>
+									<Image
+										src={post.mainImage.asset.url}
+										alt={post.mainImage.alt || post.title}
+										width={600}
+										height={400}
+										priority
+										className={styles.landscapeImage}
+									/>
+								</div>
+							)}
+						</div>
+					</div>
+				</section>
+
+				{/* Additional image sections matching the layout */}
+				<section className={styles.imageSection}>
+					<div className={styles.imageWrapper}>
+						<Image
+							src='/images/two-people-landscape.jpg'
+							alt='To personer som ser ut over landskap'
+							width={600}
+							height={400}
+							className={styles.landscapeImage}
+						/>
+					</div>
+				</section>
+
+				<section className={styles.imageSection}>
+					<div className={styles.imageWrapper}>
+						<Image
+							src='/images/hands-together.jpg'
+							alt='Hender sammen - støtte og fellesskap'
+							width={400}
+							height={300}
+							className={styles.handsImage}
+						/>
+					</div>
+				</section>
+
+				{/* Original blog content */}
+				<article className={styles.blogArticle}>
+					<header className={styles.blogHeader}>
 						{/* Breadcrumbs */}
 						<nav className='breadcrumbs'>
 							<Link href='/'>Hjem</Link> / <Link href='/blog'>Blog</Link> /{" "}
 							<span>{post.title}</span>
 						</nav>
 
-						<h1>{post.title}</h1>
+						<h2>{post.title}</h2>
 						{post.subtitle && <p className='subtitle'>{post.subtitle}</p>}
 
 						<div className='post-meta'>
-							<time dateTime={post.publishedAt}>
-								{new Date(post.publishedAt).toLocaleDateString("no-NO", {
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								})}
-							</time>
 							{post.author && <span className='author'>av {post.author}</span>}
 							{post.categories && post.categories.length > 0 && (
 								<div className='categories'>
@@ -223,20 +293,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 						</div>
 					</header>
 
-					{post.mainImage && (
-						<div className='featured-image'>
-							<Image
-								src={post.mainImage.asset.url}
-								alt={post.mainImage.alt || post.title}
-								width={1200}
-								height={630}
-								priority
-								className='rounded-lg'
-							/>
-						</div>
-					)}
-
-					<div className='blog-content'>
+					<div className={styles.blogContent}>
 						<PortableText
 							value={post.body}
 							components={portableTextComponents}
@@ -244,7 +301,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 					</div>
 
 					{/* Back to blog */}
-					<footer className='blog-footer'>
+					<footer className={styles.blogFooter}>
 						<Link href='/blog' className='back-to-blog'>
 							← Tilbake til alle innlegg
 						</Link>
