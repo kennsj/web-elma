@@ -78,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({
 													? title
 															.replaceAll(
 																"<span>",
-																'<span style="color: var(--color-tertiary); font-weight: bold; " class="highlight">',
+																'<span style="color: var(--color-tertiary); font-style: italic;" class="highlight">',
 															)
 															.replaceAll("<br>", "<br />")
 													: String(title),
@@ -113,7 +113,9 @@ export const Hero: React.FC<HeroProps> = ({
 							/>
 						</div>
 					)}
-					<p>{children}</p>
+					{children && (
+						<div className={styles.header__children}>{children}</div>
+					)}
 				</div>
 			</header>
 		</>

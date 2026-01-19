@@ -18,8 +18,8 @@ export const useTextReveal = (options: UseTextRevealOptions = {}) => {
 	const {
 		animateBy = "line",
 		triggerStart = "top 85%",
-		triggerEnd = "top 60%",
-		initialOpacity = 0.3,
+		triggerEnd = "top 70%",
+		initialOpacity = 0.1,
 	} = options
 
 	const splitsRef = useRef<SplitText[]>([])

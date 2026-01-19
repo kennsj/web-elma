@@ -70,6 +70,7 @@ export default async function Home() {
 							subTitle='ELMA handler om noe mange kjenner på – men sjelden snakker om'
 							introduction='Bak ELMA står Anders Karlsen, som i sine voksne år bestemte seg for å være åpen om det som hadde styrt livet hans i over 20 år; en usynlig kamp mot angst og det å bære på det som er vanskelig alene.'
 							dataTheme='light'
+							animateBy='line'
 							// animateBy='paragraph'
 						>
 							<p>
@@ -130,44 +131,44 @@ export default async function Home() {
 						</TextWide>
 						<div className='partners__logo-container'>
 							<Image
-								src='/images/partners/auto-elektro-as.webp'
+								src='/images/partners/auto-elektro-as.png'
 								alt='Auto Elektro AS Bodø'
-								width={400}
-								height={150}
 								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
 								quality={90}
+								height={450}
+								width={200}
 							/>
 							<Image
-								src='/images/partners/auto-elektro-as.webp'
+								src='/images/partners/sulland.png'
 								alt='Auto Elektro AS Bodø'
-								width={400}
-								height={150}
 								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
 								quality={90}
+								height={450}
+								width={200}
 							/>
 							<Image
-								src='/images/partners/auto-elektro-as.webp'
+								src='/images/partners/bopro.png'
 								alt='Auto Elektro AS Bodø'
-								width={400}
-								height={150}
 								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
 								quality={90}
+								height={450}
+								width={200}
 							/>
 							<Image
-								src='/images/partners/auto-elektro-as.webp'
+								src='/images/partners/sulland.png'
 								alt='Auto Elektro AS Bodø'
-								width={400}
-								height={150}
 								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
 								quality={90}
+								height={450}
+								width={200}
 							/>
 							<Image
-								src='/images/partners/auto-elektro-as.webp'
+								src='/images/partners/auto-elektro-as.png'
 								alt='Auto Elektro AS Bodø'
-								width={400}
-								height={150}
 								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
 								quality={90}
+								height={450}
+								width={200}
 							/>
 						</div>
 					</div>

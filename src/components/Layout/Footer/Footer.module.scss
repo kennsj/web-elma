@@ -8,6 +8,10 @@
 	// overflow-x: hidden;
 	// padding-block: var(--section-padding);
 
+	section {
+		margin-bottom: 0;
+	}
+
 	hr {
 		margin-block: var(--margin-block);
 		opacity: 0.2;
