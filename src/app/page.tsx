@@ -8,7 +8,6 @@ import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
 // import EventList from "@/components/Lists/EventList/EventList"
 import About from "@/components/Layout/Cards/Card/FeaturedCard"
 import { TextNarrow, TextWide } from "@/components/ui/TextBlocks"
-import { FadeInLetters } from "@/components/Layout/UI/Animations/ParagraphFadeIn"
 import Image from "next/image"
 import Anchor from "@/components/Buttons/Anchor"
 
