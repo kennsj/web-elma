@@ -1,8 +1,6 @@
 import { Metadata } from "next"
 import { Hero } from "@/components/Layout/Hero/Hero"
 import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
-import About from "@/components/Layout/Cards/Card/Card"
-import HeadingAnimation from "@/components/Layout/UI/Animations/HeadingAnimation"
 import Image from "next/image"
 import { TextNarrow } from "@/components/ui/TextBlocks"
 

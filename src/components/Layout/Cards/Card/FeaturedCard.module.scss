@@ -9,11 +9,6 @@
 	max-width: var(--page-max-width);
 	margin: 0 auto;
 
-	& * {
-		// outline: 1px solid red;
-		box-sizing: border-box;
-	}
-
 	&:first-child {
 		margin-top: 0;
 	}
@@ -44,9 +39,6 @@
 
 		p {
 			margin-block: 1.5rem;
-		}
-
-		a {
 		}
 	}
 

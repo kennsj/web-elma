@@ -1,9 +1,7 @@
 "use client"
 
 import React, { useRef, useLayoutEffect } from "react"
-import HeadingAnimation from "@/components/Layout/UI/Animations/HeadingAnimation"
 import styles from "./Text.module.scss"
-import Anchor from "@/components/Buttons/Anchor"
 import { useTextReveal } from "./useTextReveal"
 
 type Props = {
