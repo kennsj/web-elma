@@ -5,13 +5,11 @@ import styles from "./Event.module.scss"
 import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 
 export default async function EventList({
-	title,
 	intro,
 	isDark = true,
 	showExpiredEvents = true,
 }: {
 	isDark?: boolean
-	title?: string
 	intro?: string
 	showExpiredEvents?: boolean
 }) {

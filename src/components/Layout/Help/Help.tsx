@@ -8,7 +8,7 @@ const Help = () => {
 		<>
 			<TextNarrow
 				title='Få hjelp'
-				introduction='Trenger du noen å snakke med?'
+				subTitle='Trenger du noen å snakke med?'
 				dataTheme='light'
 			>
 				<p>

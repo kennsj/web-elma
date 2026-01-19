@@ -16,7 +16,6 @@ type LinkProps = {
 	className?: string
 	onClick?: () => void
 	tabIndex?: number
-	ref?: React.Ref<HTMLAnchorElement>
 }
 
 export default function Anchor({
@@ -26,7 +25,6 @@ export default function Anchor({
 	className,
 	onClick,
 	tabIndex,
-	ref,
 	...props
 }: LinkProps) {
 	const { handleTransitionClick } = usePageTransition()

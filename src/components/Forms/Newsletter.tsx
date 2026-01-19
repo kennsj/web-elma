@@ -5,7 +5,7 @@ import { TextWide } from "../ui/TextBlocks"
 const Newsletter = () => {
 	return (
 		<div className={styles.newsletter__wrapper}>
-			<TextWide title='Meld deg på vårt nyhetsbrev' color='light'>
+			<TextWide title='Meld deg på vårt nyhetsbrev' dataTheme='light'>
 				Hold deg oppdatert på kommende foredrag, arrangementer og nyheter fra
 				ELMA.
 			</TextWide>

@@ -39,7 +39,7 @@ export default function ParagraphFadeIn({
 
 		// Find all text elements to split
 		const textElements = container.querySelectorAll(
-			"p, div, span, h1, h2, h3, h4, h5, h6"
+			"p, div, span, h1, h2, h3, h4, h5, h6",
 		)
 
 		// Use SplitText to split text based on animation type
@@ -81,7 +81,7 @@ export default function ParagraphFadeIn({
 				splitElements.push(...(split.chars || []))
 			} else {
 				splitElements.push(
-					...split[animationType === "words" ? "words" : "lines"]
+					...split[animationType === "words" ? "words" : "lines"],
 				)
 			}
 		} else {
@@ -102,7 +102,7 @@ export default function ParagraphFadeIn({
 					splitElements.push(...(split.chars || []))
 				} else {
 					splitElements.push(
-						...split[animationType === "words" ? "words" : "lines"]
+						...split[animationType === "words" ? "words" : "lines"],
 					)
 				}
 			})
@@ -137,7 +137,7 @@ export default function ParagraphFadeIn({
 		// Create individual ScrollTriggers for each element to reveal words as they enter viewport
 		const triggers: ScrollTrigger[] = []
 
-		elementsToAnimate.forEach((element, index) => {
+		elementsToAnimate.forEach((element) => {
 			const trigger = ScrollTrigger.create({
 				trigger: element,
 				start: "top 85%", // Start revealing when word is 85% down the viewport

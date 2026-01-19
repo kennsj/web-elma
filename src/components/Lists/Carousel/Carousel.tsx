@@ -11,7 +11,6 @@ import {
 } from "@/components/Lists/Carousel/EmblaCarouselDotButton"
 import Anchor from "@/components/Buttons/Anchor"
 import Link from "next/link"
-import StaggeredReveal from "@/components/Layout/UI/Animations/StaggeredReveal"
 
 type PropType = {
 	options?: EmblaOptionsType

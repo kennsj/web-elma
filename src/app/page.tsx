@@ -61,14 +61,7 @@ export default async function Home() {
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}
 				imagePriority={true}
-			>
-				<FadeInLetters>
-					<p>
-						Enten du selv sliter med angst, kjenner noen som gjør det, eller
-						bare ønsker å lære mer om psykisk helse, er du velkommen her.
-					</p>
-				</FadeInLetters>
-			</Hero>
+			/>
 
 			<main>
 				<section>

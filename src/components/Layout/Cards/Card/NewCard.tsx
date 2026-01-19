@@ -1,4 +1,3 @@
-import { url } from "inspector"
 import styles from "./Card.module.scss"
 
 type NewCardProps = {

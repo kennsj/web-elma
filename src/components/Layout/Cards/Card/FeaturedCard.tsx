@@ -2,7 +2,6 @@ import { client } from "@/sanity/client"
 
 import { frontPagePostQuery } from "@/components/lib/sanity/queries"
 import { type SanityDocument } from "next-sanity"
-import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 import Anchor from "@/components/Buttons/Anchor"
 
 import styles from "./FeaturedCard.module.scss"

@@ -5,7 +5,6 @@ import styles from "./Hero.module.scss"
 import PrimaryButton from "@/components/Buttons/Primary"
 import { useGSAP } from "@gsap/react"
 import { useRef } from "react"
-import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
 
 import { heroAnimation } from "@/components/lib/animations/heroAnimation"
 
@@ -20,7 +19,6 @@ type HeroProps = {
 	imageQuality?: number
 	imageSizes?: string
 	children?: React.ReactNode
-	showWave?: boolean
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -34,7 +32,6 @@ export const Hero: React.FC<HeroProps> = ({
 	imageQuality = 100,
 	imageSizes = "(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw",
 	children = null,
-	showWave = true,
 }) => {
 	const containerRef = useRef(null)
 	const imageRef = useRef(null)
@@ -56,7 +53,7 @@ export const Hero: React.FC<HeroProps> = ({
 				buttonRef: buttonRef.current,
 			})
 		},
-		{ dependencies: [imageSrc, title] }
+		{ dependencies: [imageSrc, title] },
 	)
 
 	// Debug: Log styles to see if they're loading
@@ -81,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({
 													? title
 															.replaceAll(
 																"<span>",
-																'<span style="color: var(--color-tertiary); font-weight: bold; " class="highlight">'
+																'<span style="color: var(--color-tertiary); font-weight: bold; " class="highlight">',
 															)
 															.replaceAll("<br>", "<br />")
 													: String(title),
@@ -116,6 +113,7 @@ export const Hero: React.FC<HeroProps> = ({
 							/>
 						</div>
 					)}
+					<p>{children}</p>
 				</div>
 			</header>
 		</>

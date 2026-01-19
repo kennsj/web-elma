@@ -19,7 +19,6 @@ export default function NotFound() {
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}
 				imagePriority={true}
-				showWave={false}
 			></Hero>
 		</>
 	)
