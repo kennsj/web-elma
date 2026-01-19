@@ -26,7 +26,8 @@
 			}
 
 			.header__title {
-				flex-direction: row;
+				display: flex;
+				flex-direction: column;
 
 				h1 {
 					opacity: 0;
@@ -42,26 +43,21 @@
 					font-weight: 800;
 				}
 
-				.header__title__text {
+				.header__subtitle {
+					display: flex;
 					flex-direction: column;
-					width: 75%;
+					width: 80%;
 
 					@media screen and (max-width: $breakpoint-medium) {
 						width: 100%;
 					}
-				}
-
-				.header__title__intro {
-					display: flex;
-					align-items: end;
-					gap: 5rem;
 
 					p {
-						width: 60%;
 						font-size: 2.5rem;
-						// font-size: 54px;
 						line-height: 3.5rem;
-						margin-block: 5rem;
+						font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+						line-height: clamp(2rem, 3vw + 1rem, 3.5rem);
+						margin: 5rem 0 3rem 0;
 						opacity: 0;
 						visibility: hidden;
 
@@ -95,16 +91,6 @@
 							margin-bottom: 3rem;
 						}
 					}
-				}
-
-				p {
-					font-size: 1.5rem;
-					line-height: 1.8rem;
-					margin-block: 3rem;
-					text-shadow:
-						0 4px 24px rgba(0, 0, 0, 0.25),
-						0 1.5px 0 rgba(17, 48, 44, 0.15);
-					opacity: 1;
 				}
 
 				a {
@@ -144,38 +130,6 @@
 
 			@media screen and (max-width: $breakpoint-medium) {
 				aspect-ratio: 16/10;
-			}
-		}
-
-		.header__intro {
-			width: var(--page-width);
-			max-width: var(--page-max-width);
-			margin: 0 auto;
-
-			@media screen and (max-width: $breakpoint-large) {
-				margin-left: 5%;
-			}
-
-			p {
-				width: 90%;
-				font-size: 3rem;
-				line-height: 4rem;
-				padding-block: var(--margin-block);
-				margin: 0;
-
-				@media screen and (max-width: $breakpoint-large) {
-					width: 70%;
-				}
-
-				@media screen and (max-width: $breakpoint-medium) {
-					width: 80%;
-				}
-
-				@media screen and (max-width: $breakpoint-small) {
-					width: 100%;
-					font-size: 1rem;
-					line-height: 1.3rem;
-				}
 			}
 		}
 	}

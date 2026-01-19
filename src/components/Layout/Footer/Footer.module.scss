@@ -3,7 +3,7 @@
 .footer {
 	width: 100%;
 	background: var(--color-primary);
-	background: radial-gradient(at center bottom, #1f534d, #13332f);
+	// background: radial-gradient(at center bottom, #1f534d, var(--color-primary));
 	color: var(--color-secondary);
 	// overflow-x: hidden;
 	// padding-block: var(--section-padding);
@@ -19,6 +19,7 @@
 
 		.footer__content__nav {
 			ul {
+				font-family: var(--font-playfair);
 				font-weight: 200;
 				column-count: 2;
 				gap: 10rem;

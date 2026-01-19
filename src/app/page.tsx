@@ -9,13 +9,10 @@ import EventList from "@/components/Lists/EventList/EventList"
 import About from "@/components/Layout/Cards/Card/FeaturedCard"
 import { TextNarrow, TextWide } from "@/components/ui/TextBlocks"
 import Help from "@/components/Layout/Help/Help"
-import {
-	FadeInLetters,
-	FadeInParagraph,
-	FadeInWords,
-} from "@/components/Layout/UI/Animations/ParagraphFadeIn"
+import { FadeInLetters } from "@/components/Layout/UI/Animations/ParagraphFadeIn"
 import Image from "next/image"
-import TextReveal from "@/components/Layout/UI/Animations/FadeIn"
+import Anchor from "@/components/Buttons/Anchor"
+import HeadingAnimation from "@/components/Layout/UI/Animations/HeadingAnimation"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -67,12 +64,6 @@ export default async function Home() {
 				imageQuality={100}
 				imagePriority={true}
 			>
-				{/* <TextWide color='light'>
-					ELMA ble startet av Anders, som selv har levd med angst i store deler
-					av livet. Gjennom ELMA ønsker han å skape et trygt rom for deling,
-					forståelse og støtte, slik at ingen skal måtte stå alene med sin
-					psykiske helse.
-				</TextWide> */}
 				<FadeInLetters>
 					<p>
 						Enten du selv sliter med angst, kjenner noen som gjør det, eller
@@ -86,95 +77,112 @@ export default async function Home() {
 					<div className='section__content'>
 						<TextNarrow
 							title='Om ELMA'
-							introduction='Å leve med angst, delt for å gi gjenkjennelse og håp'
+							subTitle='ELMA handler om noe mange kjenner på – men sjelden snakker om'
+							introduction='Bak ELMA står Anders Karlsen, som i sine voksne år bestemte seg for å være åpen om det som hadde styrt livet hans i over 20 år; en usynlig kamp mot angst og det å bære på det som er vanskelig alene.'
 							dataTheme='light'
-							link={{ href: "/om-elma", label: "Lær mer om ELMA" }}
+							// animateBy='paragraph'
 						>
-							{/* <FadeInLetters initialOpacity={0.3}>
-								<p>
-									Prosjektet springer ut av egne erfaringer, og et ønske om å
-									normalisere det mange bærer på i stillhet. Gjennom tekst,
-									video og delte historier ønker ELMA å skape rom for
-									gjenkjennelse, ærlighet og fellesskap.
-								</p>
+							<p>
+								Gjennom tekst, videoer, refleksjoner og historier ønsker ELMA å
+								skape et rom for gjenkjennelse, styrke og fellesskap. For de som
+								skjenner det på kroppen, for de som står tett på, og for de som
+								ønsker å forstå mer—dette er en invitasjon for å bli med på en
+								reise mot større åpenhet og aksept rundt psykisk helse.
+							</p>
 
-								<p>
-									Mange opplever at psykisk helse forblir noe man bærer i
-									stillhet. ELMA ønsker å endre på dette, ved å tilby et trygt
-									rom for deling og forståelse. Gjennom ærlige samtaler og
-									personlige historier håper ELMA å bidra til et mer åpent
-									samfunn, hvor ingen trenger å føle seg alene med sine
-									utfordringer.
-								</p>
-
-								<Image
-									src='/images/anders-moloen.webp'
-									alt='Anders holder foredrag'
-									width={800}
-									height={400}
-									className='image--fullwidth'
-								/>
-
-								<p>
-									ELMA ble startet av Anders Karlsen, som selv har levd med
-									angst i store deler av livet. Erfaringene hans har gitt en dyp
-									forståelse for hvor vanskelig det kan føles å stå alene med
-									tanker og følelser som er utfordrende å sette ord på.
-								</p>
-							</FadeInLetters> */}
-							<TextReveal initialOpacity={0.3}>
-								<p>
-									Prosjektet springer ut av egne erfaringer, og et ønske om å
-									normalisere det mange bærer på i stillhet. Gjennom tekst,
-									video og delte historier ønker ELMA å skape rom for
-									gjenkjennelse, ærlighet og fellesskap.
-								</p>
-
-								<p>
-									Mange opplever at psykisk helse forblir noe man bærer i
-									stillhet. ELMA ønsker å endre på dette, ved å tilby et trygt
-									rom for deling og forståelse. Gjennom ærlige samtaler og
-									personlige historier håper ELMA å bidra til et mer åpent
-									samfunn, hvor ingen trenger å føle seg alene med sine
-									utfordringer.
-								</p>
-
-								<Image
-									src='/images/anders-moloen.webp'
-									alt='Anders holder foredrag'
-									width={800}
-									height={400}
-									className='image--fullwidth'
-								/>
-
-								<p>
-									ELMA ble startet av Anders Karlsen, som selv har levd med
-									angst i store deler av livet. Erfaringene hans har gitt en dyp
-									forståelse for hvor vanskelig det kan føles å stå alene med
-									tanker og følelser som er utfordrende å sette ord på.
-								</p>
-							</TextReveal>
+							<Anchor href='/om-elma' className='textnarrow__link'>
+								Lær mer om ELMA
+							</Anchor>
 						</TextNarrow>
 					</div>
+					<WaveCss isDarkBackground={false} />
 				</section>
 
-				{/* <section className='section__histories section__fullwidth'>
-					<div className='histories__wrapper'>
+				<section data-theme='dark'>
+					<div className='section__content'>
 						<div className='section__intro'>
-							<HeadingAnimation level='h2' title='Ekte stemmer' />
-
-							<Paragraph className={"intro__paragraph"}>
+							<TextWide
+								title='Ekte stemmer'
+								// dataTheme='dark'
+								// animateBy='paragraph'
+							>
 								Her deler modige stemmer sine personlige reiser med
 								angst&mdash;til ettertanke, gjenkjennelse og håp.
-							</Paragraph>
-						</div>
+							</TextWide>
+							{/* <TextNarrow
+								title='Om ELMA'
+								introduction='Å leve med angst, delt for å gi gjenkjennelse og håp'
+								dataTheme='dark'
+								// animateBy='paragraph'
+							>
+								<p>
+									Her deler modige stemmer sine personlige reiser med
+									angst&mdash;til ettertanke, gjenkjennelse og håp.
+								</p>
 
-						<Carousel options={OPTIONS} />
-						<WaveCss isDarkBackground={false} />
+								<Anchor href='/om-elma' className='textnarrow__link'>
+									Lær mer om ELMA
+								</Anchor>
+							</TextNarrow> */}
+						</div>
 					</div>
-				</section> */}
-				<WaveCss isDarkBackground={false} />
+					<Carousel options={OPTIONS} />
+					<WaveCss isDarkBackground={true} />
+				</section>
 				<About />
+				<section>
+					<div className='section__content'>
+						<TextWide title='Takk til våre partnere' dataTheme='light'>
+							Vi er stolte av å samarbeide med engasjerte aktører som deler vårt
+							mål; å skape mer åpenhet og trygghet rundt psykisk helse. Deres
+							støtte gjør det mulig å nå ut til flere, og å gjøre en forskjell,
+							sammen.
+						</TextWide>
+						<div className='partners__logo-container'>
+							<Image
+								src='/images/partners/auto-elektro-as.webp'
+								alt='Auto Elektro AS Bodø'
+								width={400}
+								height={150}
+								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
+								quality={90}
+							/>
+							<Image
+								src='/images/partners/auto-elektro-as.webp'
+								alt='Auto Elektro AS Bodø'
+								width={400}
+								height={150}
+								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
+								quality={90}
+							/>
+							<Image
+								src='/images/partners/auto-elektro-as.webp'
+								alt='Auto Elektro AS Bodø'
+								width={400}
+								height={150}
+								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
+								quality={90}
+							/>
+							<Image
+								src='/images/partners/auto-elektro-as.webp'
+								alt='Auto Elektro AS Bodø'
+								width={400}
+								height={150}
+								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
+								quality={90}
+							/>
+							<Image
+								src='/images/partners/auto-elektro-as.webp'
+								alt='Auto Elektro AS Bodø'
+								width={400}
+								height={150}
+								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
+								quality={90}
+							/>
+						</div>
+					</div>
+					<WaveCss isDarkBackground={false} />
+				</section>
 				{/* <WaveCss isDarkBackground={false} rotate /> */}
 				{/* Disabled for now */}
 				{/* <EventList

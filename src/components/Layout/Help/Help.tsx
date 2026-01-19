@@ -2,7 +2,6 @@ import { TextNarrow } from "@/components/ui/TextBlocks"
 import styles from "./Help.module.scss"
 import HelpCard from "../Cards/Card/HelpCard"
 import StaggeredReveal from "../UI/Animations/StaggeredReveal"
-import Paragraph from "../UI/Animations/ParagraphAnimation"
 
 const Help = () => {
 	return (
@@ -12,10 +11,10 @@ const Help = () => {
 				introduction='Trenger du noen å snakke med?'
 				dataTheme='light'
 			>
-				<Paragraph>
+				<p>
 					ELMA kan ikke erstatte profesjonell hjelp. Hvis du har det vanskelig,
 					finnes det mennesker og tjenester som kan støtte deg akkurat nå.
-				</Paragraph>
+				</p>
 			</TextNarrow>
 
 			<StaggeredReveal className={styles.help__cards} delay={0.3}>

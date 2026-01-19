@@ -1,6 +1,6 @@
 @use "@/styles/breakpoints.scss" as *;
 
-.intro {
+.content {
 	padding-top: 5rem;
 	display: flex;
 	flex-direction: column;
@@ -12,7 +12,7 @@
 	.title {
 		// font-size: 18px;
 		margin-bottom: 2rem;
-		width: 45%;
+		// width: 20%;
 
 		@media screen and (max-width: $breakpoint-medium) {
 			width: 100%;
@@ -21,7 +21,7 @@
 		}
 	}
 
-	.intro__content {
+	.content__container {
 		display: flex;
 		gap: 3rem;
 
@@ -29,11 +29,28 @@
 			flex-direction: column;
 		}
 
-		.left {
+		.lead__container {
 			width: 45%;
-			position: sticky;
-			top: calc(var(--nav-height) + 2rem);
+			// position: sticky;
+			top: calc(var(--nav-height) + 20%);
 			align-self: flex-start;
+
+			.subTitle {
+				position: relative;
+				font-size: 48px;
+				line-height: 58px;
+				font-size: clamp(32px, 5vw + 16px, 48px);
+				line-height: clamp(38px, 6vw + 18px, 58px);
+				color: var(--color-tertiary);
+				font-weight: 200;
+				font-family: var(--font-playfair);
+				font-style: italic;
+				z-index: 0;
+			}
+
+			@media screen and (max-width: $breakpoint-large) {
+				// width: 80%;
+			}
 
 			@media screen and (max-width: $breakpoint-medium) {
 				width: 100%;
@@ -48,15 +65,17 @@
 			width: 100vw;
 		}
 
-		.right {
+		.body__content {
 			width: 60%;
 			display: flex;
 			flex-direction: column;
-			font-size: 28px;
-			line-height: 38px;
 
 			p {
 				margin-bottom: 2rem;
+			}
+
+			@media screen and (max-width: $breakpoint-large) {
+				// width: 80%;
 			}
 
 			@media screen and (max-width: $breakpoint-medium) {
@@ -82,23 +101,30 @@
 	width: 100%;
 }
 
-.intro__paragraph {
+.introduction {
 	position: relative;
 	font-size: 48px;
 	line-height: 58px;
 	font-size: clamp(32px, 5vw + 16px, 48px);
-	line-height: clamp(38px, 6vw + 18px, 68px);
-	color: var(--color-tertiary);
-	font-weight: 300;
-	font-family: var(--font-newsreader);
-	z-index: 0;
+	line-height: clamp(38px, 6vw + 18px, 58px);
+	// line-height: clamp(38px, 6vw + 18px, 68px);
+	// color: var(--color-tertiary);
+	font-weight: 400;
+
+	&[data-color="dark"] {
+		color: var(--color-secondary);
+	}
+
+	&[data-color="light"] {
+		color: var(--color-primary);
+	}
 }
 
 // Color variants for TextWide component
-.intro[data-color="dark"] .intro__paragraph {
+.introduction[data-color="dark"] .intro__paragraph {
 	color: var(--color-primary);
 }
 
-.intro[data-color="light"] .intro__paragraph {
+.introduction[data-color="light"] .intro__paragraph {
 	color: var(--color-primary-light);
 }

@@ -38,16 +38,16 @@ export default function Anchor({
 		gsap.registerPlugin(ScrollTrigger)
 
 		// Set initial state
-		gsap.set(anchorRef.current, { opacity: 0, y: 20 })
+		gsap.set(anchorRef.current, { opacity: 0 })
 
 		ScrollTrigger.create({
 			trigger: anchorRef.current,
-			start: "top 90%",
+			start: "top 95%",
 			end: "bottom 10%",
 			onEnter: () => {
 				gsap.to(anchorRef.current, {
 					opacity: 1,
-					y: 0,
+
 					duration: 0.6,
 					ease: "power2.out",
 				})

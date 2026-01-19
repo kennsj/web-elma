@@ -13,18 +13,18 @@ export default function Footer() {
 	return (
 		<footer className={styles.footer}>
 			<section className='section__content'>
-				<Newsletter />
-				<hr />
+				{/* <Newsletter />
+				<hr /> */}
 				<TextNarrow
 					dataTheme='dark'
 					title='Fotnote'
-					introduction='Noen av bildene på denne nettsiden er generert med hjelp av kunstig intelligens (KI)'
+					subTitle='Noen av bildene på denne nettsiden er generert med hjelp av kunstig intelligens (KI)'
 				>
 					<p>
 						Dette er et bevisst valg i en tidlig fase mens vi jobber for å kunne
 						løfte frem ekte mennesker og historier på sikt. Ingen mennesker er
 						KI-generert, og ingen bilder hvor Anders står frem i bilder er
-						KI-generert.
+						KI-generert.¨
 					</p>
 				</TextNarrow>
 
@@ -36,8 +36,8 @@ export default function Footer() {
 								<Image
 									src='/images/logo-elma.svg'
 									alt='ELMA Logo'
-									width={50}
-									height={50}
+									width={40}
+									height={40}
 								/>
 							</Link>
 						</div>

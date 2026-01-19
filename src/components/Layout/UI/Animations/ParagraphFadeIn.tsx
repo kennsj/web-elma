@@ -25,7 +25,7 @@ export default function ParagraphFadeIn({
 	children,
 	className = "",
 	animationType = "letters",
-	initialOpacity,
+	initialOpacity = 0.5,
 	staggerDelay = 0.2,
 	triggerStart = "top 90%",
 	triggerEnd = "bottom 60%",
@@ -63,7 +63,10 @@ export default function ParagraphFadeIn({
 
 		if (textElements.length === 0) {
 			// If no text elements found, split the entire container
-			const split = new SplitText(container, { type: splitType })
+			const split = SplitText.create(container, {
+				type: splitType,
+				mask: "lines",
+			})
 			splits.push(split)
 			// For letters, use chars; for others, use the appropriate split type
 			if (animationType === "letters") {
@@ -84,7 +87,7 @@ export default function ParagraphFadeIn({
 		} else {
 			// Split each text element
 			textElements.forEach((element) => {
-				const split = new SplitText(element, { type: splitType })
+				const split = SplitText.create(element, { type: splitType })
 				splits.push(split)
 				// For letters, use chars; for others, use the appropriate split type
 				if (animationType === "letters") {
@@ -140,10 +143,7 @@ export default function ParagraphFadeIn({
 				start: "top 85%", // Start revealing when word is 85% down the viewport
 				end: "top 65%", // Fully revealed when word is 65% down the viewport
 				scrub: 1,
-				   animation: gsap.to(
-					   element,
-					   { opacity: 1, duration: 1, ease: "none" }
-				   ),
+				animation: gsap.to(element, { opacity: 1, duration: 1, ease: "none" }),
 				markers: false,
 			})
 			triggers.push(trigger)

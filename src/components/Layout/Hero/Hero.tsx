@@ -89,7 +89,7 @@ export const Hero: React.FC<HeroProps> = ({
 									/>
 								)}
 							</div>
-							<div className={styles.header__title__intro}>
+							<div className={styles.header__subtitle}>
 								<p ref={paragraphRef}>{subTitle}</p>
 								{buttonHref && buttonText && (
 									<PrimaryButton
@@ -116,10 +116,7 @@ export const Hero: React.FC<HeroProps> = ({
 							/>
 						</div>
 					)}
-
-					<div className={styles.header__intro}>{children}</div>
 				</div>
-				{showWave && <WaveCss />}
 			</header>
 		</>
 	)

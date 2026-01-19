@@ -3,13 +3,10 @@ import "@/components/Layout/Hero/Hero.module.scss"
 
 import type { Metadata } from "next"
 import {
-	Newsreader,
-	Oswald,
 	Signika_Negative,
 	Syne,
 	Playfair_Display,
 	Sen,
-	Source_Sans_3,
 	IBM_Plex_Sans,
 	DM_Sans,
 } from "next/font/google"
@@ -20,20 +17,10 @@ import { Nav } from "@/components/Nav/nav"
 import Footer from "@/components/Layout/Footer/Footer"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-const newsreader = Newsreader({
-	variable: "--font-newsreader",
-	subsets: ["latin"],
-})
-
 const playfair = Playfair_Display({
 	variable: "--font-playfair",
 	subsets: ["latin"],
-	// weight: ["400"],
-})
-
-const Oswald_font = Oswald({
-	variable: "--font-oswald",
-	subsets: ["latin"],
+	style: ["normal", "italic"],
 	// weight: ["400"],
 })
 
@@ -55,12 +42,6 @@ const SenFont = Sen({
 	weight: ["400", "500", "600", "700", "800"],
 })
 
-const SourceSans = Source_Sans_3({
-	variable: "--font-source-sans",
-	subsets: ["latin"],
-	// weight: ["400", "500", "600", "700", "800"],
-})
-
 const IBM_Plex = IBM_Plex_Sans({
 	variable: "--font-ibm-plex",
 	subsets: ["latin"],
@@ -70,7 +51,7 @@ const IBM_Plex = IBM_Plex_Sans({
 const DMSansFont = DM_Sans({
 	variable: "--font-dm-sans",
 	subsets: ["latin"],
-	weight: ["400", "500", "600", "700"],
+	weight: ["300", "400", "700"],
 })
 
 // const Playfair = Playfair_Display({
@@ -178,7 +159,7 @@ export default function RootLayout({
 		<ViewTransitions>
 			<html lang='no'>
 				<body
-					className={`${IBM_Plex.variable} ${newsreader.variable} ${playfair.variable} ${Atyp.variable} ${Signika.variable} ${SyneFont.variable} ${Oswald_font.variable} ${SenFont.variable} ${SourceSans.variable} ${DMSansFont.variable} antialiased`}
+					className={`${IBM_Plex.variable}  ${playfair.variable} ${Atyp.variable} ${Signika.variable} ${SyneFont.variable} ${SenFont.variable} ${DMSansFont.variable} antialiased`}
 				>
 					<Nav />
 					{children}

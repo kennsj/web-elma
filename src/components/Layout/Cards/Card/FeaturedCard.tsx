@@ -15,7 +15,7 @@ export default async function FeaturedCard() {
 	const posts = await client.fetch(frontPagePostQuery)
 
 	return (
-		<section className=' section__fullwidth' data-theme='dark'>
+		<section className=' section__fullwidth' data-theme='light'>
 			<div className='section__content'>
 				{/* <Paragraph className={"intro__paragraph"}>
 						Anders vet hvordan det føles når livet kjennes tungt. Han har selv
@@ -25,7 +25,7 @@ export default async function FeaturedCard() {
 						vil forstå bedre.
 					</Paragraph> */}
 
-				<TextWide title='Aktuelt' color='light'>
+				<TextWide title='Aktuelt' dataTheme='light'>
 					Å leve med angst, delt for å gi gjenkjennelse og håp
 				</TextWide>
 

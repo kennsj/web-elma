@@ -1,5 +1,7 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useRef } from "react"
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
 import styles from "./WaveSeperator.module.scss"
 
 export default function WaveSeperator({
@@ -9,56 +11,39 @@ export default function WaveSeperator({
 	isDarkBackground?: boolean
 	rotate?: boolean
 }) {
-	const [isMounted, setIsMounted] = useState(false)
+	// Use fixed wave parameters for consistent SSR/CSR rendering
+	const waveParams = [
+		{ x: 45, y: 0, opacity: 0.8, waveType: 1 },
+		{ x: 50, y: 3, opacity: 0.85, waveType: 2 },
+		{ x: 55, y: 5, opacity: 0.9, waveType: 1 },
+		{ x: 60, y: 7.5, opacity: 1, waveType: 2 },
+	]
 
-	useEffect(() => {
-		setIsMounted(true)
-	}, [])
+	const svgRef = useRef<SVGSVGElement>(null)
 
-	// Generate random wave parameters on each render (client-side only)
-	const random = (min: number, max: number) => Math.random() * (max - min) + min
-
-	const waveParams = isMounted
-		? [
-				{
-					x: random(30, 60),
-					y: random(-1, 1),
-					duration: random(40, 55),
-					delay: random(-3, 0),
-					opacity: random(0.7, 0.95),
-					waveType: 1,
-				},
-				{
-					x: random(35, 65),
-					y: random(2, 4),
-					duration: random(55, 75),
-					delay: random(-4, -1),
-					opacity: random(0.75, 1),
-					waveType: 2,
-				},
-				{
-					x: random(40, 70),
-					y: random(4, 6),
-					duration: random(70, 95),
-					delay: random(-6, -2),
-					opacity: random(0.8, 1),
-					waveType: 1,
-				},
-				{
-					x: random(45, 75),
-					y: random(6, 9),
-					duration: random(95, 130),
-					delay: random(-8, -3),
-					opacity: 1,
-					waveType: 2,
-				},
-			]
-		: [
-				{ x: 45, y: 0, duration: 47, delay: -1.5, opacity: 0.8, waveType: 1 },
-				{ x: 50, y: 3, duration: 65, delay: -2.5, opacity: 0.85, waveType: 2 },
-				{ x: 55, y: 5, duration: 82, delay: -4, opacity: 0.9, waveType: 1 },
-				{ x: 60, y: 7.5, duration: 112, delay: -5.5, opacity: 1, waveType: 2 },
-			]
+	useGSAP(
+		() => {
+			if (!svgRef.current) return
+			const uses = svgRef.current.querySelectorAll("use")
+			uses.forEach((el, i) => {
+				// Front waves (lower index) move faster, back waves slower
+				const baseDuration = 8 // overall speed up
+				const duration = baseDuration + i * 3.5 // front wave fastest
+				gsap.fromTo(
+					el,
+					{ x: waveParams[i].x - 20 },
+					{
+						x: waveParams[i].x + 20,
+						duration,
+						repeat: -1,
+						yoyo: true,
+						ease: "power1.inOut",
+					},
+				)
+			})
+		},
+		{ scope: svgRef },
+	)
 
 	return (
 		<div
@@ -68,6 +53,7 @@ export default function WaveSeperator({
 			}}
 		>
 			<svg
+				ref={svgRef}
 				className={styles.waves}
 				xmlns='http://www.w3.org/2000/svg'
 				xmlnsXlink='http://www.w3.org/1999/xlink'
@@ -102,9 +88,11 @@ export default function WaveSeperator({
 											? "#225650"
 											: index === 2
 												? "#37746D"
-												: "#ddddda"
+												: // : "#ddddda"
+													"#e2fbf8"
 									: index === 0
-										? "#ddddda"
+										? // ? "#ddddda"
+											"#e2fbf8"
 										: index === 1
 											? "#37746D"
 											: index === 2
@@ -112,10 +100,6 @@ export default function WaveSeperator({
 												: "#12332F"
 							}
 							opacity={wave.opacity}
-							style={{
-								animationDuration: `${wave.duration}s`,
-								animationDelay: `${wave.delay}s`,
-							}}
 						/>
 					))}
 				</g>

@@ -25,13 +25,14 @@ const HeadingAnimation: React.FC<HeadingAnimationProps> = ({
 		gsap.registerPlugin(ScrollTrigger, SplitText)
 		if (!headingRef.current) return
 
-		const splitTitle = new SplitText(headingRef.current, {
-			type: "lines, words, chars",
-			linesClass: "lineClass",
-			wordsClass: "wordClass",
-			charsClass: "charClass",
+		const splitTitle = SplitText.create(headingRef.current, {
+			type: "lines,words,chars",
+			mask: "lines",
 		})
 
+		// Manually set overflow clip on lines for masking effect
+		gsap.set(splitTitle.lines, { overflow: "clip" })
+		// Set initial state for chars
 		gsap.set(splitTitle.chars, { opacity: 0, yPercent: 100, skewY: 5 })
 
 		ScrollTrigger.create({

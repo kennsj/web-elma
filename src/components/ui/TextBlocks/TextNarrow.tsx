@@ -1,131 +1,75 @@
 "use client"
 
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
-import SplitText from "gsap/SplitText"
-import ScrollTrigger from "gsap/ScrollTrigger"
-import React, { useRef } from "react"
-import { usePathname } from "next/navigation"
+import React, { useRef, useLayoutEffect } from "react"
 import HeadingAnimation from "@/components/Layout/UI/Animations/HeadingAnimation"
 import styles from "./Text.module.scss"
 import Anchor from "@/components/Buttons/Anchor"
-import {
-	FadeInLetters,
-	FadeInWords,
-} from "@/components/Layout/UI/Animations/ParagraphFadeIn"
-import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
+import { useTextReveal } from "./useTextReveal"
 
 type Props = {
 	className?: string
 	title: string
-	children: string | React.ReactNode
-	introduction: string | React.ReactNode
+	subTitle: string | React.ReactNode
+	introduction?: string | React.ReactNode
+	children?: string | React.ReactNode
 	dataTheme?: string
-	link?: { href: string; label: string }
+	animateBy?: "line" | "paragraph"
 }
 
 const TextNarrow = ({
 	title,
-	children,
+	subTitle,
 	introduction,
+	children,
 	dataTheme,
-	link,
+	animateBy = "line",
 }: Props) => {
-	const introRef = useRef<HTMLParagraphElement>(null)
+	const subTitleRef = useRef<HTMLParagraphElement>(null)
 	const contentRef = useRef<HTMLDivElement>(null)
-	const pathname = usePathname()
+	const { addTarget, cleanup } = useTextReveal({ animateBy })
 
-	useGSAP(
-		() => {
-			gsap.registerPlugin(SplitText, ScrollTrigger)
-
-			// Animate introduction paragraph
-			if (introRef.current) {
-				const introSplit = new SplitText(introRef.current, {
-					type: "lines",
-					linesClass: "lineClass",
-				})
-
-				gsap.set(introSplit.lines, { opacity: 0, y: 15 })
-
-				ScrollTrigger.create({
-					trigger: introRef.current,
-					start: "top 85%",
-					onEnter: () => {
-						gsap.to(introSplit.lines, {
-							opacity: 1,
-							y: 0,
-							duration: 0.6,
-							ease: "power2.out",
-							stagger: 0.08,
-						})
-					},
-				})
-			}
-
-			// Animate content paragraphs if any
+	useLayoutEffect(() => {
+		const initAnimations = async () => {
+			if (subTitleRef.current) await addTarget(subTitleRef.current)
 			if (contentRef.current) {
-				const paragraphs = contentRef.current.querySelectorAll("p")
-
-				if (paragraphs.length > 0) {
-					// Create splits for all paragraphs
-					const splits = Array.from(paragraphs).map((paragraph) => {
-						const split = new SplitText(paragraph, {
-							type: "lines",
-							linesClass: "lineClass",
-						})
-						gsap.set(split.lines, { opacity: 0, y: 12 })
-						return { paragraph, split }
-					})
-
-					// Progressive reveal with overlap for natural reading flow
-					ScrollTrigger.create({
-						trigger: paragraphs[0],
-						start: "top 85%",
-						onEnter: () => {
-							const tl = gsap.timeline()
-
-							splits.forEach(({ split }, index) => {
-								// Start next paragraph before current finishes (overlap)
-								tl.to(
-									split.lines,
-									{
-										opacity: 1,
-										y: 0,
-										duration: 0.5,
-										ease: "power2.out",
-										stagger: 0.05, // Fast line stagger
-									},
-									index * 0.2
-								) // Overlap timing for seamless flow
-							})
-						},
-					})
+				const elements = Array.from(
+					contentRef.current.querySelectorAll(
+						"p, li, h1, h2, h3, h4, h5, h6, span",
+					),
+				)
+				for (const el of elements) {
+					await addTarget(el as HTMLElement)
 				}
 			}
-		},
-		{
-			dependencies: [pathname],
-			revertOnUpdate: true,
 		}
-	)
+
+		initAnimations()
+
+		return cleanup
+	}, [addTarget, cleanup])
 
 	return (
-		<div className={styles.intro}>
-			<HeadingAnimation title={title} level='h3' className={styles.title} />
-			<div className={styles.intro__content}>
-				<div className={styles.left}>
-					<Paragraph className={styles.intro__paragraph}>
-						{introduction}
-					</Paragraph>
+		<div className={styles.content}>
+			<h4 className={styles.title} data-theme={dataTheme}>
+				{title}
+			</h4>
+			<div className={styles.content__container}>
+				<div className={styles.lead__container}>
+					<h3 className={styles.subTitle} data-theme={dataTheme}>
+						{subTitle}
+					</h3>
 				</div>
-				<div ref={contentRef} data-theme={dataTheme} className={styles.right}>
-					<FadeInWords>{children}</FadeInWords>
-					{link && (
-						<Anchor href={link.href} className={styles.intro__link}>
-							{link.label}
-						</Anchor>
+				<div
+					ref={contentRef}
+					data-theme={dataTheme}
+					className={styles.body__content}
+				>
+					{introduction && (
+						<p className={styles.introduction} data-theme={dataTheme}>
+							{introduction}
+						</p>
 					)}
+					{typeof children === "string" ? <p>{children}</p> : children}
 				</div>
 			</div>
 		</div>

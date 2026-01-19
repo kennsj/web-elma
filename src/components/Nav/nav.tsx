@@ -16,7 +16,6 @@ export const Nav = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const navRef = useRef<HTMLDivElement>(null)
 
-	// Use centralized nav links
 	const navItems = NAV_LINKS
 
 	// Preload images when menu opens
@@ -25,7 +24,6 @@ export const Nav = () => {
 			const links: HTMLLinkElement[] = []
 
 			navItems.forEach((item) => {
-				// Create actual image elements to force browser to load and cache
 				const img = new window.Image()
 				img.src = item.imgSrc
 
@@ -45,8 +43,7 @@ export const Nav = () => {
 				})
 			}
 		}
-		// eslint-disable-next-line
-	}, [isOpen])
+	})
 
 	gsap.registerPlugin(CustomEase)
 	const overlayRef = useRef<HTMLDivElement>(null)
@@ -116,8 +113,9 @@ export const Nav = () => {
 							<Image
 								src='/images/logo-elma.svg'
 								alt='elma logo'
-								width={50}
-								height={50}
+								width={40}
+								height={40}
+								sizes='(max-width: 768px) 30px, 120px'
 								priority
 								onClick={() => setIsOpen(false)}
 							/>

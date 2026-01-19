@@ -17,11 +17,17 @@ export const heroAnimation = ({
 }) => {
 	gsap.registerPlugin(SplitText, ScrollTrigger)
 
-	const splitTitle = new SplitText(headingRef, {
-		type: "words, chars",
-		wordsClass: "wordClass",
+	const splitTitle = SplitText.create(headingRef, {
+		type: "lines, words, chars",
+		mask: "lines",
 	})
-	const splitPara = new SplitText(paragraphRef, { type: "words" })
+	const splitPara = SplitText.create(paragraphRef, {
+		type: "words",
+		mask: "words",
+	})
+
+	// Set proper display on words to maintain natural wrapping
+	gsap.set(splitPara.words, { display: "inline-block" })
 
 	// Set initial states
 	gsap.set(headingRef, { autoAlpha: 1 })
@@ -56,8 +62,8 @@ export const heroAnimation = ({
 				opacity: 0,
 				yPercent: 100,
 				skewY: 5,
-				duration: 0.7,
-				stagger: 0.02,
+				duration: 0.8,
+				stagger: 0.03,
 				ease: "power2.out",
 			},
 			"-=0.4"
@@ -73,7 +79,7 @@ export const heroAnimation = ({
 				duration: 0.4,
 				ease: "power2.out",
 			},
-			"-=0.4"
+			"-=.9"
 		)
 	}
 
