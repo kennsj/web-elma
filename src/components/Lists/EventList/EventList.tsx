@@ -2,7 +2,6 @@ import React from "react"
 import Event from "./Event"
 
 import styles from "./Event.module.scss"
-import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
 import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 
 export default async function EventList({
@@ -26,7 +25,6 @@ export default async function EventList({
 					className='section__intro'
 					style={{ color: `${isDark ? "#12332F" : "#C4DED7"}` }}
 				>
-					<H2 title={title} />
 					<Paragraph className='intro__paragraph'>{intro}</Paragraph>
 				</div>
 

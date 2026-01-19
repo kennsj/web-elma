@@ -1,4 +1,3 @@
-import H2 from "@/components/Layout/UI/Animations/HeadingAnimation"
 import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 import { Hero } from "@/components/Layout/Hero/Hero"
 import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
@@ -33,8 +32,6 @@ const page = () => {
 			<section className='section__histories section__fullwidth'>
 				<div className='histories__wrapper'>
 					<div className='section__intro'>
-						<H2 title='Ekte stemmer' />
-
 						<Paragraph className={"intro__paragraph"}>
 							Her deler modige stemmer sine personlige reiser med
 							angst&mdash;til ettertanke, gjenkjennelse og håp.
@@ -48,7 +45,6 @@ const page = () => {
 			<section className='section__about section__fullwidth'>
 				<div className='about__wrapper'>
 					<div className='section__intro'>
-						<H2 title='Mer enn et prosjekt - et pusterom' />
 						{/* <Paragraph className={"intro__paragraph"}>
 							Elma er et fellesskap for alle som lever med angst. Her kan du
 							delta i samtaler, dele erfaringer og finne støtte. Vi tror på
