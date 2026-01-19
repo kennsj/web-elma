@@ -2,7 +2,7 @@
 
 import { useRef, useLayoutEffect } from "react"
 import styles from "./Text.module.scss"
-import HeadingAnimation from "@/components/Layout/UI/Animations/HeadingAnimation"
+// import HeadingAnimation from "@/components/Layout/UI/Animations/HeadingAnimation"
 import { useTextReveal } from "./useTextReveal"
 
 type Props = {
