@@ -75,10 +75,10 @@ const page = () => {
 						<div className='section__intro'>
 							<HeadingAnimation level='h2' title='Ekte stemmer' />
 
-							<Paragraph className={"intro__paragraph"}>
+							<p className={"intro__paragraph"}>
 								Her deler modige stemmer sine personlige reiser med
 								angst&mdash;til ettertanke, gjenkjennelse og håp.
-							</Paragraph>
+							</p>
 						</div>
 
 						<Carousel options={OPTIONS} />
