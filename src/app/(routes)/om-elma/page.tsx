@@ -1,6 +1,5 @@
 import { Metadata } from "next"
 import { Hero } from "@/components/Layout/Hero/Hero"
-import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 import Image from "next/image"
 import { TextNarrow } from "@/components/ui/TextBlocks"
 
@@ -24,15 +23,7 @@ const page = () => {
 				imageSizes='(max-width: 768px) 500px, (max-width: 1200px) 50vw, 33vw'
 				imageQuality={100}
 				imagePriority={true}
-			>
-				<Paragraph>
-					ELMA er mer enn bare et navn – det er en bevegelse. En bevegelse som
-					handler om å bryte ned barrierer, dele erfaringer og finne styrke i
-					fellesskap. Vi tror på kraften av ærlige samtaler og ekte historier
-					for å skape en verden der ingen trenger å føle seg alene i møte med
-					angst og psykiske utfordringer.
-				</Paragraph>
-			</Hero>
+			></Hero>
 			<main>
 				<section>
 					<div className='section__content'>

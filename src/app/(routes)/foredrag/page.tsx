@@ -1,4 +1,3 @@
-import Paragraph from "@/components/Layout/UI/Animations/ParagraphAnimation"
 import { Hero } from "@/components/Layout/Hero/Hero"
 import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
 import React from "react"
@@ -19,12 +18,12 @@ const page = () => {
 				// 		deling, forståelse og støtte&mdash;slik at ingen skal måtte stå
 				// 		alene med sin psykiske helse.'
 			>
-				<Paragraph className={"header__intro"}>
+				<p className={"header__intro"}>
 					Elma ble startet av Anders, som selv har levd med angst i store deler
 					av livet. Gjennom elma ønsker han å skape et trygt rom for deling,
 					forståelse og støtte&mdash;slik at ingen skal måtte stå alene med sin
 					psykiske helse.
-				</Paragraph>
+				</p>
 			</Hero>
 
 			<section className='section__histories section__fullwidth'>
