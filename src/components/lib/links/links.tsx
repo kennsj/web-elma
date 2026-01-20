@@ -31,20 +31,20 @@ export const NAV_LINKS: NavLink[] = [
 		imgSrc: "/images/person-aurora.webp",
 		index: 1,
 	},
+	// {
+	// 	href: "/hjelp",
+	// 	label: "Hjelp",
+	// 	imgSrc: "/images/person-aurora.webp",
+	// 	index: 2,
+	// },
+	// {
+	// 	href: "/stotte",
+	// 	label: "Støtte",
+	// 	imgSrc: "/images/person-aurora.webp",
+	// 	index: 3,
+	// },
 	{
-		href: "/hjelp",
-		label: "Hjelp",
-		imgSrc: "/images/person-aurora.webp",
-		index: 2,
-	},
-	{
-		href: "/stotte",
-		label: "Støtte",
-		imgSrc: "/images/person-aurora.webp",
-		index: 3,
-	},
-	{
-		href: "/blog",
+		href: "/blogg",
 		label: "Blogg",
 		imgSrc: "/images/man-mountain-alone.jpg",
 		index: 4,
@@ -89,7 +89,7 @@ export const FOOTER_LINKS: FooterLink[] = [
  */
 export function mergeWithSanityLinks(
 	staticLinks: NavLink[],
-	sanityLinks: NavLink[] = []
+	sanityLinks: NavLink[] = [],
 ): NavLink[] {
 	// Merge logic: Sanity links override static ones with same href
 	const linkMap = new Map<string, NavLink>()

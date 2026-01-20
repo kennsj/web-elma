@@ -37,7 +37,13 @@ export const useTextReveal = (options: UseTextRevealOptions = {}) => {
 			splitsRef.current = []
 		},
 		{
-			dependencies: [pathname, animateBy],
+			dependencies: [
+				pathname,
+				animateBy,
+				triggerStart,
+				triggerEnd,
+				initialOpacity,
+			],
 		},
 	)
 

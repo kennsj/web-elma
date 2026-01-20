@@ -1,4 +1,4 @@
-import Button from "@/components/Buttons/Secondary"
+import Button from "@/components/Layout/UI/Buttons/Secondary"
 import styles from "./Newsletter.module.scss"
 import { TextWide } from "../ui/TextBlocks"
 

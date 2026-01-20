@@ -3,7 +3,7 @@
 import styles from "./Footer.module.scss"
 import Image from "next/image"
 import Link from "next/link"
-import Anchor from "@/components/Buttons/Anchor"
+import Anchor from "@/components/Layout/UI/Buttons/Anchor"
 // import Newsletter from "../../Forms/Newsletter"
 import { TransitionLink } from "@/components/lib/animations/PageTransition"
 import { NAV_LINKS } from "@/components/lib/links/links"
@@ -19,6 +19,9 @@ export default function Footer() {
 					dataTheme='dark'
 					title='Fotnote'
 					subTitle='Noen av bildene på denne nettsiden er generert med hjelp av kunstig intelligens (KI)'
+					triggerStart='top 100%'
+					triggerEnd='top 85%'
+					initialOpacity={0.25}
 				>
 					<p>
 						Dette er et bevisst valg i en tidlig fase mens vi jobber for å kunne

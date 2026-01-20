@@ -5,14 +5,16 @@
 	margin-top: 1.5em;
 	transition: all 0.3s ease-in-out;
 	padding: 1rem 3rem;
-	border-radius: var(--border-radius-big);
+	border-radius: var(--border-radius-large);
 	overflow: hidden;
 	cursor: pointer;
 
 	svg {
 		margin-left: 1.3rem;
 		margin-right: -1rem;
-		margin-top: 4px;
+		transform: rotate(-45deg) translateY(-0.6rem);
+		transform-origin: center;
+		// margin-top: 4px;
 
 		.line {
 			opacity: 1;

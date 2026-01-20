@@ -1,4 +1,4 @@
-import Anchor from "@/components/Buttons/Anchor"
+import Anchor from "@/components/Layout/UI/Buttons/Anchor"
 import styles from "./Card.module.scss"
 
 type HelpCardProps = {

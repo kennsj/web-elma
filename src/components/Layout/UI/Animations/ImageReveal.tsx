@@ -75,7 +75,7 @@ const ImageReveal: React.FC<ImageRevealProps> = ({
 							duration,
 							ease: "power2.inOut",
 						},
-						"+=0.2"
+						"+=0.2",
 					)
 				},
 			})
@@ -111,7 +111,7 @@ const ImageReveal: React.FC<ImageRevealProps> = ({
 					duration,
 					ease: "power2.inOut",
 				},
-				"+=0.2"
+				"+=0.2",
 			)
 		}
 	}, [triggerOnView, delay, duration, parallax])

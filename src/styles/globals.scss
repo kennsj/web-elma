@@ -21,10 +21,11 @@
 
 	--nav-height: 5rem;
 	--margin-block: 5rem;
+	--section-margin: 10rem;
 	--section-padding: 10rem;
 	--card-padding: 5rem 3rem;
 	--card-padding-small: 3rem 2rem;
-	--border-radius-big: 5rem;
+	--border-radius-large: 5rem;
 	--border-radius-medium: 1.5rem;
 	--border-radius-small: 5px;
 
@@ -34,6 +35,7 @@
 	@media screen and (max-width: $breakpoint-medium) {
 		--nav-height: 2rem;
 		--margin-block: 3rem;
+		--section-margin: 5rem;
 		--section-padding: 5rem;
 		--card-padding: 3rem 2rem;
 		--card-padding-small: 2rem 1.5rem;
@@ -56,6 +58,7 @@ body {
 	background: var(--color-secondary);
 	color: var(--color-primary);
 	font-family: "niveau-grotesk", sans-serif;
+	font-family: "DM Sans", sans-serif;
 	overflow-x: hidden;
 }
 
@@ -82,7 +85,7 @@ section {
 .section__content {
 	width: var(--page-width);
 	max-width: var(--page-max-width);
-	margin: 0 auto var(--section-padding) auto;
+	margin: 0 auto var(--section-margin) auto;
 	padding-top: var(--section-padding);
 }
 
@@ -158,10 +161,12 @@ h4 {
 	font-size: clamp(1rem, 1.5vw + 0.2rem, 1.2rem);
 
 	font-family: "Syne", sans-serif;
+	font-family: "DM Sans", sans-serif;
 	position: relative;
 	font-size: clamp(1.2rem, 2vw + 0.25rem, 1.5rem);
 	font-size: 1rem;
-	font-weight: 400;
+	font-weight: 700;
+	letter-spacing: -0.01em;
 	text-transform: uppercase;
 
 	background: var(--color-secondary);

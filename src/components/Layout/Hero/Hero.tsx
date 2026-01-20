@@ -4,7 +4,7 @@ import Image from "next/image"
 import styles from "./Hero.module.scss"
 import PrimaryButton from "@/components/Buttons/Primary"
 import { useGSAP } from "@gsap/react"
-import { useRef } from "react"
+import React, { useRef } from "react"
 
 import { heroAnimation } from "@/components/lib/animations/heroAnimation"
 
@@ -19,6 +19,37 @@ type HeroProps = {
 	imageQuality?: number
 	imageSizes?: string
 	children?: React.ReactNode
+}
+
+const renderTitleContent = (titleStr: string) => {
+	const lines = titleStr.split("\n")
+	return lines.map((line, lineIndex) => {
+		// Parse span tags safely
+		const parts = line.split(/(<span>.*?<\/span>)/g)
+		return (
+			<React.Fragment key={lineIndex}>
+				{parts.map((part, partIndex) => {
+					if (part.startsWith("<span>") && part.endsWith("</span>")) {
+						const content = part.slice(6, -7) // Remove <span> and </span>
+						return (
+							<span
+								key={partIndex}
+								style={{
+									color: "var(--color-tertiary)",
+									fontStyle: "italic",
+								}}
+								className='highlight'
+							>
+								{content}
+							</span>
+						)
+					}
+					return part
+				})}
+				{lineIndex < lines.length - 1 && <br />}
+			</React.Fragment>
+		)
+	})
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -69,21 +100,11 @@ export const Hero: React.FC<HeroProps> = ({
 						<div className={styles.header__title}>
 							<div className={styles.header__title__text}>
 								{title && (
-									<h1
-										ref={headingRef}
-										className='title'
-										dangerouslySetInnerHTML={{
-											__html:
-												typeof title === "string"
-													? title
-															.replaceAll(
-																"<span>",
-																'<span style="color: var(--color-tertiary); font-style: italic;" class="highlight">',
-															)
-															.replaceAll("<br>", "<br />")
-													: String(title),
-										}}
-									/>
+									<h1 ref={headingRef} className='title'>
+										{typeof title === "string"
+											? renderTitleContent(title)
+											: title}
+									</h1>
 								)}
 							</div>
 							<div className={styles.header__subtitle}>

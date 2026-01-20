@@ -9,7 +9,8 @@ import WaveCss from "@/components/Layout/UI/WaveSeperator/WaveSeperator"
 import About from "@/components/Layout/Cards/Card/FeaturedCard"
 import { TextNarrow, TextWide } from "@/components/ui/TextBlocks"
 import Image from "next/image"
-import Anchor from "@/components/Buttons/Anchor"
+import Anchor from "@/components/Layout/UI/Buttons/Anchor"
+import Help from "@/components/Layout/Help/Help"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -28,6 +29,11 @@ export const metadata: Metadata = {
 		"Anders Karlsen",
 		"støtte",
 		"fellesskap",
+		"Anders Karlsen",
+		"mental helse",
+		"ELMA",
+		"et liv med angst",
+		"leve med angst",
 	],
 	openGraph: {
 		title: "ELMA - For deg som vil leve, ikke bare overleve",
@@ -51,7 +57,9 @@ export default async function Home() {
 		<>
 			<Hero
 				key='home-hero'
-				title='For deg som vil <span>leve</span>, <br /> ikke bare <span>overleve</span>'
+				title={
+					"For deg som vil <span>leve</span>, \nikke bare <span>overleve</span>"
+				}
 				subTitle='Hos ELMA møter du forståelse, fellesskap og mot. Det starter med å åpne opp. I ditt tempo.'
 				buttonText='Start reisen'
 				buttonHref='/om-elma'
@@ -118,9 +126,14 @@ export default async function Home() {
 						</div>
 					</div>
 					<Carousel options={OPTIONS} />
-					<WaveCss isDarkBackground={true} />
 				</section>
 				<About />
+
+				<section>
+					<div className='section__content'>
+						<Help />
+					</div>
+				</section>
 				<section>
 					<div className='section__content'>
 						<TextWide title='Takk til våre partnere' dataTheme='light'>
@@ -130,21 +143,27 @@ export default async function Home() {
 							sammen.
 						</TextWide>
 						<div className='partners__logo-container'>
-							<Image
-								src='/images/partners/auto-elektro-as.png'
-								alt='Auto Elektro AS Bodø'
-								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
-								quality={90}
-								height={450}
-								width={200}
-							/>
-							<Image
+							<a
+								href='https://autoelektroas.boschcarservice.no/'
+								target='_blank'
+								rel='noopener noreferrer'
+							>
+								<Image
+									src='/images/partners/auto-elektro-as.png'
+									alt='Auto Elektro AS Bodø'
+									sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
+									quality={90}
+									height={450}
+									width={300}
+								/>
+							</a>
+							{/* <Image
 								src='/images/partners/sulland.png'
 								alt='Auto Elektro AS Bodø'
 								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
 								quality={90}
 								height={450}
-								width={200}
+								width={150}
 							/>
 							<Image
 								src='/images/partners/bopro.png'
@@ -152,7 +171,7 @@ export default async function Home() {
 								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
 								quality={90}
 								height={450}
-								width={200}
+								width={150}
 							/>
 							<Image
 								src='/images/partners/sulland.png'
@@ -160,7 +179,7 @@ export default async function Home() {
 								sizes='(max-width: 768px) 50px, 50px, (max-width: 1200px) 80vw, 800px'
 								quality={90}
 								height={450}
-								width={200}
+								width={150}
 							/>
 							<Image
 								src='/images/partners/auto-elektro-as.png'
@@ -169,7 +188,7 @@ export default async function Home() {
 								quality={90}
 								height={450}
 								width={200}
-							/>
+							/> */}
 						</div>
 					</div>
 					<WaveCss isDarkBackground={false} />

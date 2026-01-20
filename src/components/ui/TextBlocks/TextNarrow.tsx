@@ -12,6 +12,9 @@ type Props = {
 	children?: string | React.ReactNode
 	dataTheme?: string
 	animateBy?: "line" | "paragraph"
+	triggerStart?: string
+	triggerEnd?: string
+	initialOpacity?: number
 }
 
 const TextNarrow = ({
@@ -21,10 +24,18 @@ const TextNarrow = ({
 	children,
 	dataTheme,
 	animateBy = "line",
+	triggerStart,
+	triggerEnd,
+	initialOpacity,
 }: Props) => {
 	const subTitleRef = useRef<HTMLParagraphElement>(null)
 	const contentRef = useRef<HTMLDivElement>(null)
-	const { addTarget, cleanup } = useTextReveal({ animateBy })
+	const { addTarget, cleanup } = useTextReveal({
+		animateBy,
+		triggerStart,
+		triggerEnd,
+		initialOpacity,
+	})
 
 	useLayoutEffect(() => {
 		const initAnimations = async () => {
@@ -54,7 +65,14 @@ const TextNarrow = ({
 			<div className={styles.content__container}>
 				<div className={styles.lead__container}>
 					<h3 className={styles.subTitle} data-theme={dataTheme}>
-						{subTitle}
+						{typeof subTitle === "string"
+							? subTitle.split("\n").map((line, i) => (
+									<React.Fragment key={i}>
+										{line}
+										{i < subTitle.split("\n").length - 1 && <br />}
+									</React.Fragment>
+								))
+							: subTitle}
 					</h3>
 				</div>
 				<div
