@@ -9,7 +9,7 @@ import {
 	DotButton,
 	useDotButton,
 } from "@/components/Lists/Carousel/EmblaCarouselDotButton"
-import Anchor from "@/components/Buttons/Anchor"
+import Anchor from "@/components/Layout/UI/Buttons/Anchor"
 import Link from "next/link"
 
 type PropType = {

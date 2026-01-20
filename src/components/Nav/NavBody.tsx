@@ -7,7 +7,7 @@ import Link from "next/link"
 
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import Anchor from "../Buttons/Anchor"
+import Anchor from "@/components/Layout/UI/Buttons/Anchor"
 import { usePageTransition } from "@/components/lib/animations/PageTransition"
 import {
 	animateNavOpen,
@@ -64,10 +64,10 @@ const NavBody: React.FC<Props> = ({
 				isNavigating,
 				setHoveredIndex,
 				setActiveIndex,
-				isDesktop
+				isDesktop,
 			)
 		},
-		[isDesktop, isNavigating]
+		[isDesktop, isNavigating],
 	)
 
 	const handleMouseLeave = useCallback(() => {
@@ -76,7 +76,7 @@ const NavBody: React.FC<Props> = ({
 			isNavigating,
 			setHoveredIndex,
 			setActiveIndex,
-			isDesktop
+			isDesktop,
 		)
 	}, [isDesktop, isNavigating])
 
@@ -129,7 +129,7 @@ const NavBody: React.FC<Props> = ({
 
 	const handleLinkClick = async (
 		e: React.MouseEvent<HTMLAnchorElement>,
-		href: string
+		href: string,
 	) => {
 		// Trigger page transition with nav close as callback
 		handleTransitionClick(href, e, () => {
@@ -146,7 +146,7 @@ const NavBody: React.FC<Props> = ({
 				setActiveIndex(null)
 			}
 		},
-		[isOpen, setIsOpen]
+		[isOpen, setIsOpen],
 	)
 
 	useEffect(() => {

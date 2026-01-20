@@ -2,7 +2,7 @@
 
 import styles from "./Anchor.module.scss"
 import Link from "next/link"
-import { usePageTransition } from "../lib/animations/PageTransition"
+import { usePageTransition } from "@/components/lib/animations/PageTransition"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"

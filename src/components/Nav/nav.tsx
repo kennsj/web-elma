@@ -9,7 +9,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { CustomEase } from "gsap/all"
 import { slideIn, slideOut } from "@/components/lib/animations/slide"
-import { usePageTransition } from "../lib/animations/PageTransition"
+import { usePageTransition } from "@/components/lib/animations/PageTransition"
 import { NAV_LINKS } from "@/components/lib/links/links"
 
 export const Nav = () => {
