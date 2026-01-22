@@ -16,7 +16,6 @@ type LinkProps = {
 	className?: string
 	onClick?: () => void
 	tabIndex?: number
-	dataDarkBackground?: boolean
 }
 
 export default function Anchor({
@@ -26,7 +25,6 @@ export default function Anchor({
 	className,
 	onClick,
 	tabIndex,
-	dataDarkBackground,
 	...props
 }: LinkProps) {
 	const { handleTransitionClick } = usePageTransition()
