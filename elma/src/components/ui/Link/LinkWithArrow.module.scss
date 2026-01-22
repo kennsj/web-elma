@@ -1,0 +1,115 @@
+.anchor {
+	position: relative;
+	display: inline-flex;
+	flex-direction: column;
+	width: fit-content;
+	margin-bottom: 1.5em;
+	transition: 0.3s ease-in-out;
+	font-size: var(--anchor-font-size);
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: -30%;
+		width: 50%;
+		height: 1px;
+		background: var(--color-primary);
+		transition: width 0.3s ease-in-out;
+		transform-origin: left;
+		transition: 0.4s ease-in-out;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: var(--color-tertiary);
+		transition: 0.4s ease-in-out;
+	}
+
+	&:hover::after,
+	&:focus::after {
+		transform: scaleX(200%);
+		background: var(--color-tertiary);
+		transition: 0.4s ease-in-out;
+	}
+
+	svg {
+		// margin-left: 1.3rem;
+		position: absolute;
+		right: 0;
+		top: 55%;
+		transform: translateY(-50%);
+		margin-right: -3rem;
+		// margin-top: 4px;
+		margin-left: auto;
+		transition: 0.4s ease-out;
+		// margin-top: calc(-0.5rem + 13%);
+
+		.line {
+			opacity: 0;
+			stroke-width: 2px;
+
+			stroke: var(--color-primary);
+			transform: translateX(-100%);
+			transition: 0.2s ease-in;
+		}
+
+		.tip {
+			stroke-width: 2px;
+			stroke: var(--color-primary);
+			fill: transparent;
+			transform: translateX(-15px);
+			transition: 0.4s ease-out;
+		}
+	}
+
+	&:hover .line,
+	&:focus .line,
+	&:active .line {
+		opacity: 1;
+		stroke: var(--color-tertiary);
+		transform: translateX(-40%);
+		transition: 0.7s ease;
+	}
+
+	&:hover .tip,
+	&:focus .tip,
+	&:active .tip {
+		transform: translateX(-10px);
+		stroke: var(--color-tertiary);
+		transition: 0.4s ease-out;
+	}
+
+	&[data-dark-background="true"] {
+		color: var(--color-secondary);
+		transition: 0.7s ease;
+
+		&::after {
+			background: var(--color-secondary);
+		}
+
+		&:hover::after,
+		&:focus::after,
+		&:active::after {
+			background: var(--color-tertiary);
+		}
+
+		svg .tip,
+		.line {
+			stroke: var(--color-secondary);
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: var(--color-tertiary);
+			transition: 0.7s ease;
+
+			svg .tip,
+			.line {
+				stroke: var(--color-tertiary);
+				transition: 0.7s ease;
+			}
+		}
+	}
+}

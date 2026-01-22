@@ -1,0 +1,45 @@
+@use "@/styles/breakpoints.scss" as *;
+
+.waveContainer {
+	padding-top: 5rem;
+	line-height: 0;
+	// background: var(--color-primary);
+}
+
+.waves {
+	position: relative;
+	width: 100%;
+	height: 15vh;
+	margin-bottom: -7px;
+	min-height: 100px;
+	max-height: 150px;
+	display: block;
+	overflow: hidden;
+	vertical-align: middle;
+
+	@media screen and (max-width: $breakpoint-medium) {
+		margin-bottom: -10px;
+		transform: translateY(1px);
+	}
+}
+
+.parallax > use {
+	animation: move-forever cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+	// Duration and delay set via inline styles for randomization
+}
+@keyframes move-forever {
+	0% {
+		transform: translate3d(-90px, 0, 0);
+	}
+	100% {
+		transform: translate3d(85px, 0, 0);
+	}
+}
+
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+	.waves {
+		height: 40px;
+		min-height: 40px;
+	}
+}

@@ -1,0 +1,130 @@
+@use "@/styles/breakpoints.scss" as *;
+
+.content {
+	padding-top: 5rem;
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (max-width: $breakpoint-medium) {
+		width: 100%;
+	}
+
+	.title {
+		// font-size: 18px;
+		margin-bottom: 2rem;
+		// width: 20%;
+
+		@media screen and (max-width: $breakpoint-medium) {
+			width: 100%;
+			background: transparent;
+			margin-bottom: 2rem;
+		}
+	}
+
+	.content__container {
+		display: flex;
+		gap: 3rem;
+
+		@media screen and (max-width: $breakpoint-medium) {
+			flex-direction: column;
+		}
+
+		.lead__container {
+			width: 45%;
+			// position: sticky;
+			top: calc(var(--nav-height) + 20%);
+			align-self: flex-start;
+
+			.subTitle {
+				position: relative;
+				font-size: 48px;
+				line-height: 58px;
+				font-size: clamp(32px, 5vw + 16px, 48px);
+				line-height: clamp(38px, 6vw + 18px, 58px);
+				color: var(--color-tertiary);
+				font-weight: 200;
+				font-family: var(--font-playfair);
+				font-style: italic;
+				z-index: 0;
+			}
+
+			@media screen and (max-width: $breakpoint-large) {
+				// width: 80%;
+			}
+
+			@media screen and (max-width: $breakpoint-medium) {
+				width: 100%;
+				position: static;
+				margin-top: 0;
+				padding-top: 0;
+				background: transparent;
+			}
+		}
+
+		&-full-width-img {
+			width: 100vw;
+		}
+
+		.body__content {
+			width: 60%;
+			display: flex;
+			flex-direction: column;
+
+			p {
+				margin-bottom: 2rem;
+			}
+
+			@media screen and (max-width: $breakpoint-large) {
+				// width: 80%;
+			}
+
+			@media screen and (max-width: $breakpoint-medium) {
+				width: 100%;
+			}
+
+			&[data-theme="light"] {
+				color: var(--color-primary);
+			}
+
+			&[data-theme="dark"] {
+				color: var(--color-secondary);
+			}
+
+			a {
+				margin-top: 3rem;
+			}
+		}
+	}
+}
+
+.wide {
+	width: 100%;
+}
+
+.introduction {
+	position: relative;
+	font-size: 48px;
+	line-height: 58px;
+	font-size: clamp(32px, 5vw + 16px, 48px);
+	line-height: clamp(38px, 6vw + 18px, 58px);
+	// line-height: clamp(38px, 6vw + 18px, 68px);
+	// color: var(--color-tertiary);
+	font-weight: 400;
+
+	&[data-color="dark"] {
+		color: var(--color-secondary);
+	}
+
+	&[data-color="light"] {
+		color: var(--color-primary);
+	}
+}
+
+// Color variants for TextWide component
+.introduction[data-color="dark"] .intro__paragraph {
+	color: var(--color-primary);
+}
+
+.introduction[data-color="light"] .intro__paragraph {
+	color: var(--color-primary-light);
+}
