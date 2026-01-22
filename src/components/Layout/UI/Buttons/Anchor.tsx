@@ -16,6 +16,7 @@ type LinkProps = {
 	className?: string
 	onClick?: () => void
 	tabIndex?: number
+	dataDarkBackground?: boolean
 }
 
 export default function Anchor({
@@ -25,6 +26,7 @@ export default function Anchor({
 	className,
 	onClick,
 	tabIndex,
+	dataDarkBackground,
 	...props
 }: LinkProps) {
 	const { handleTransitionClick } = usePageTransition()
@@ -40,7 +42,7 @@ export default function Anchor({
 
 		ScrollTrigger.create({
 			trigger: anchorRef.current,
-			start: "top 95%",
+			start: "top 100%",
 			end: "bottom 10%",
 			onEnter: () => {
 				gsap.to(anchorRef.current, {
@@ -75,10 +77,12 @@ export default function Anchor({
 				viewBox='0 0 24 13'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
+				data-dark-background={isDarkBackground}
 			>
 				<path
 					className={styles.tip}
 					d='M17.5 1L23 6.5L17.5 12'
+					stroke='currentColor'
 					strokeWidth='1'
 					strokeLinecap='round'
 					strokeLinejoin='round'
@@ -86,6 +90,7 @@ export default function Anchor({
 				<path
 					className={styles.line}
 					d='M21 6.5H1'
+					stroke='currentColor'
 					strokeWidth='1'
 					strokeLinecap='round'
 				/>

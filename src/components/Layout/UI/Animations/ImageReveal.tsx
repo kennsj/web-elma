@@ -7,12 +7,11 @@ import { useRef } from "react"
 import Image from "next/image"
 
 type ImageRevealProps = {
+	className?: string
 	src: string
 	alt: string
 	width?: number
 	height?: number
-	className?: string
-	containerClassName?: string
 	priority?: boolean
 	fill?: boolean
 	sizes?: string
@@ -24,12 +23,11 @@ type ImageRevealProps = {
 }
 
 const ImageReveal: React.FC<ImageRevealProps> = ({
+	className,
 	src,
 	alt,
 	width,
 	height,
-	className,
-	containerClassName,
 	priority = false,
 	fill = false,
 	sizes,
@@ -119,35 +117,25 @@ const ImageReveal: React.FC<ImageRevealProps> = ({
 	return (
 		<div
 			ref={containerRef}
-			className={`image-reveal-container ${containerClassName || ""}`}
 			style={{
-				position: "relative",
+				borderRadius: "20px",
 				overflow: "hidden",
+				position: "relative",
+				// width: fill ? "100%" : width,
+				// height: fill ? "100%" : height,
 			}}
 		>
-			<div
-				ref={imageRef}
-				className={`image-reveal-wrapper ${className || ""}`}
-				style={{
-					position: fill ? "absolute" : "relative",
-					width: fill ? "100%" : width,
-					height: fill ? "100%" : height,
-				}}
-			>
+			<div ref={imageRef}>
 				<Image
+					className={className}
 					src={src}
 					alt={alt}
-					width={fill ? undefined : width}
-					height={fill ? undefined : height}
+					width={width}
+					height={height}
 					fill={fill}
 					priority={priority}
 					sizes={sizes}
 					quality={quality}
-					style={{
-						objectFit: "cover",
-						width: "100%",
-						height: "100%",
-					}}
 				/>
 			</div>
 		</div>

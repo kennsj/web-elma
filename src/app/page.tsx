@@ -10,7 +10,7 @@ import About from "@/components/Layout/Cards/Card/FeaturedCard"
 import { TextNarrow, TextWide } from "@/components/ui/TextBlocks"
 import Image from "next/image"
 import Anchor from "@/components/Layout/UI/Buttons/Anchor"
-import Help from "@/components/Layout/Help/Help"
+// import Help from "@/components/Layout/Help/Help"
 
 const OPTIONS: EmblaOptionsType = {
 	dragFree: true,
@@ -129,11 +129,11 @@ export default async function Home() {
 				</section>
 				<About />
 
-				<section>
+				{/* <section>
 					<div className='section__content'>
 						<Help />
 					</div>
-				</section>
+				</section> */}
 				<section>
 					<div className='section__content'>
 						<TextWide title='Takk til våre partnere' dataTheme='light'>

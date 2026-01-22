@@ -47,19 +47,20 @@
 
 		.line {
 			opacity: 0;
-			stroke-width: 2px;
-
-			stroke: var(--color-primary);
 			transform: translateX(-100%);
 			transition: 0.2s ease-in;
 		}
 
 		.tip {
-			stroke-width: 2px;
-			stroke: var(--color-primary);
 			fill: transparent;
 			transform: translateX(-15px);
 			transition: 0.4s ease-out;
+		}
+
+		.line,
+		.tip[data-dark-background="true"] {
+			stroke: var(--color-secondary);
+			transition: 0.7s ease;
 		}
 	}
 

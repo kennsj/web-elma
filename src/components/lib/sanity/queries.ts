@@ -10,9 +10,10 @@ export const singlePostQuery = `*[_type == "post" && slug.current == $slug][0] {
   body
 }`
 
-export const frontPagePostQuery = `*[_type == "post"] | order(publishedAt desc)[0...3] {
+export const frontPagePostQuery = `*[_type == "post"] | order(publishedAt desc)[0...5] {
   _id,
   title,
+  publishedAt,
   slug,
   mainImage {
     asset -> {
@@ -20,7 +21,8 @@ export const frontPagePostQuery = `*[_type == "post"] | order(publishedAt desc)[
     },
     alt
   },
-  subtitle
+  subtitle,
+  categories
 }`
 
 export const allEventsQuery = `

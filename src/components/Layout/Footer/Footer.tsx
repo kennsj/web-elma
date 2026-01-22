@@ -78,10 +78,10 @@ export default function Footer() {
 					<hr />
 					<div className={styles.footer__bottom}>
 						<div className={styles.footer__bottom__left}>
-							<p>© ELMA 2026. Laget med omtanke.</p>
-							<Anchor isDarkBackground href='/personvern'>
-								Personvern og vilkår
-							</Anchor>
+							<p>
+								© ELMA 2026 <br /> Laget med omtanke
+							</p>
+							<Anchor href='/personvern'>Personvern og vilkår</Anchor>
 						</div>
 						<div className={styles.footer__bottom__right}>
 							<p>Design og utvikling</p>
